@@ -1,0 +1,10 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "PERIODIC_OWNER_AND_READY_CHECK",
+  "result": "OWNER_STABLE_NO_READY",
+  "generation": 1,
+  "active_invocation_id_matches": true,
+  "action": "continue substantive bounded work",
+  "next_unit": "UNIT_GRANULARITY_POLICY"
+}
