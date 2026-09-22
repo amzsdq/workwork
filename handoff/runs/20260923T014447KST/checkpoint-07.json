@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:46:50+09:00",
+  "elapsed_sec": 123,
+  "unit": "HANDOFF_TIMING_MODEL_REFINEMENT",
+  "result": "COMPLETE",
+  "artifact": "handoff/TIMING_MODEL.md",
+  "insight": "successor lead must cover bootstrap readiness plus predecessor in-flight safe-unit tail; near handoff window unit granularity affects transfer latency",
+  "next_unit": "CHECK_FOR_SUCCESSOR_READY_THEN_CONTINUE_BOUNDED_WORK"
+}
