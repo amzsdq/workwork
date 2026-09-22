@@ -12,7 +12,7 @@ Each probe invocation should consume as many still-useful units as needed while 
 
 2. Measurement schema hardening
 - Define exact event fields and allowed nullability for timing probes.
-- Define START, target-cross, pre-close, scheduler-write-start/end, and next-wake timestamps.
+- Define START, pre-arm-write start/end, workload start, target-cross, pre-close, close-end, and next-wake timestamps.
 - Keep event records compact enough for repeated use.
 
 3. Failure-classification cases
@@ -23,8 +23,9 @@ Each probe invocation should consume as many still-useful units as needed while 
 - Check whether +2m ascent / +1m refinement can bias the recommended cap.
 - Define what evidence changes lower bound, candidate upper bound, and production cap.
 
-5. Close-reserve estimator
-- Define rolling summary fields for median, upper-tail/max, and sample count.
+5. Close-reserve and pre-arm estimator
+- Define rolling summary fields for close overhead and start-of-turn pre-arm overhead separately.
+- Track planned gap versus actual idle gap on the following wake.
 - Keep the estimator usable with sparse observations and explicit uncertainty.
 
 6. Handoff policy simulation logic
