@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "MINIMAL_CHECKPOINT_UNIT",
+  "result": "COMPLETE",
+  "purpose": "maintain active substantive checkpoint path while successor bootstrap evidence is pending",
+  "next_unit": "READY_CHECK"
+}
