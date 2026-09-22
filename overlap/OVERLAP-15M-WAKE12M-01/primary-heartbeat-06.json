@@ -1,0 +1,10 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "role": "PRIMARY",
+  "seq": 6,
+  "observed_kst": "2026-09-23T01:27:45+09:00",
+  "elapsed_sec_approx": 627,
+  "workload_subprofile": "TIMING_SCHEMA_AND_OVERLAP_METRIC_ANALYSIS",
+  "active_work": true,
+  "scheduled_overlap_wake_kst": "2026-09-23T01:29:18+09:00"
+}
