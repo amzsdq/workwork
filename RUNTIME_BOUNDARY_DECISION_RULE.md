@@ -4,7 +4,7 @@ Purpose: prevent false promotion of a runtime limit from sparse or misclassified
 
 ## Evidence states per target class
 Each target runtime class has four counters:
-- `clean_pass`: substantive run reached the class and closed durably with scheduler state verified.
+- `clean_pass`: pre-arm scheduler state was verified at START, the run reached the class, and durable close completed normally.
 - `duration_fail`: credible near/after-target close-loss or forced termination without independent non-duration cause.
 - `non_duration_fail`: explicit independent GitHub/network/tool/provider failure.
 - `under_target`: substantive work ended before the class; informative for workload generation but not boundary evidence.
@@ -34,16 +34,18 @@ Use approximately 1-minute target classes between last clean L and first credibl
 A candidate operating cap C requires initially:
 - >=5 clean closes at/near C,
 - no unresolved duration failure at or below C,
-- preserved checkpoint and final RRULE scheduler write on each counted pass,
+- preserved start-of-turn pre-arm RRULE state and final durable checkpoint on each counted pass,
 - observed next wake for the prior run where measurable,
 - explicit safety margin below the credible failure boundary.
 
 If variance in close overhead or elapsed runtime is large, widen the safety margin rather than increasing policy complexity first.
 
 ## Close-reserve measurement
-For every timing pass record `pre_close_ts`, `scheduler_write_start_ts`, and `scheduler_write_end_ts` when practical.
+For every timing pass record `pre_close_ts` and `close_end_ts` when practical.
 
-`close_overhead_sec = scheduler_write_end_ts - pre_close_ts`
+`close_overhead_sec = close_end_ts - pre_close_ts`
+
+The scheduler pre-arm happens at START and is not part of close reserve. Track `prearm_overhead_sec` separately.
 
 Until enough observations exist, do not hard-code a close reserve from one sample. Track at least median and upper-tail/max observed close overhead. Phase C may then test whether a fixed reserve is sufficient or adaptive reserve materially improves utilization.
 
