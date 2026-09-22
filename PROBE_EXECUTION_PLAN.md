@@ -32,3 +32,16 @@ Completing one useful unit is not a reason to hand off before target if another 
 
 ## Evidence integrity
 Synthetic cases validate decision logic only. They must be labeled SIMULATION/LOGIC_TEST and can never raise SAFE_LOWER_BOUND or create a FAILURE_BOUNDARY.
+
+
+## Workload-profile rotation
+Use `RUNTIME_WORKLOAD_PROFILES.md` for empirical probes. Record the selected workload_profile in each timing event.
+
+Initial coarse-ascent rotation:
+- 12m: W5 MICRO_UNIT_CHAIN
+- 14m: W3 MIXED_IO
+- 16m: W4 REASONING_HEAVY
+- 18m: W2 WRITE_CHECKPOINT_HEAVY
+- 20m: W6 LARGE_UNIT
+
+Do not treat this rotation as cross-profile validation by itself. Before promoting a universal cap, retest the candidate limit across representative profiles.
