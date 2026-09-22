@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "SHORT_REASONING_UNIT",
+  "result": "COMPLETE",
+  "finding": "EARLY_READY_HANDOFF should measure abandoned residual budget from READY observation, not successor wake, because wake-to-READY is productive shadow preparation rather than predecessor capacity loss",
+  "next_unit": "READY_CHECK"
+}
