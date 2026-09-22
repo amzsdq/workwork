@@ -1,0 +1,12 @@
+{
+  "invocation_id": "20260923T021227KST",
+  "role": "SHADOW_SUCCESSOR",
+  "predecessor_invocation_id": "20260923T014447KST",
+  "ready_at_kst": "2026-09-23T02:12:27+09:00",
+  "bootstrap_ready_sec": 0,
+  "proposed_next_unit": "RECOVER_STALE_OWNER_AND_REBASE_CONTROLLED_HANDOFF_SAMPLE",
+  "files_state_read": ["SUCCESSOR_HANDOFF_RESEARCH.md","state/current.json","handoff/runs/20260923T020057KST/ready.json","handoff/runs/20260923T014447KST/checkpoint-12.json"],
+  "authority_write_performed": false,
+  "scheduler_write_performed": false,
+  "note": "Durable state still names the 01:44 owner and no durable transfer was found. This invocation does not fabricate ownership."
+}
