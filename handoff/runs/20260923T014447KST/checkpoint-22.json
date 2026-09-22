@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "TRANSFER_ATOMICITY_ANALYSIS",
+  "result": "COMPLETE",
+  "artifact": "handoff/TRANSFER_ATOMICITY.md",
+  "linearization_point": "successful exact-SHA update of handoff-state.json with incremented generation and successor owner",
+  "next_unit": "SCHEDULER_FENCING_DESIGN"
+}
