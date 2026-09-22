@@ -1,0 +1,21 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "HANDOFF_INVARIANT_AND_METRIC_VALIDATION",
+  "result": "COMPLETE",
+  "validated_invariants": [
+    "single_authoritative_owner",
+    "shadow_read_and_prepare_only_before_transfer",
+    "owner_only_scheduler_writer",
+    "CAS_style_generation_transfer",
+    "append_only_per_invocation_evidence",
+    "early_ready_handoff_at_next_safe_unit_boundary"
+  ],
+  "measurement_notes": {
+    "handoff_gap_origin": "predecessor_authoritative_work_end",
+    "handoff_gap_destination": "successor_authoritative_work_start",
+    "lead_optimization_formula": "bootstrap_ready + predecessor_unit_tail + safety_margin",
+    "negative_handoff_gap_interpretation": "invalid metric ordering or duplicate authority; never count as clean"
+  },
+  "next_unit": "SUCCESSOR_READY_SCHEMA_AND_TRANSFER_CHECKLIST"
+}
