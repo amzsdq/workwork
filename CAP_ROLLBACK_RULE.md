@@ -17,7 +17,7 @@ Track:
 
 ## Immediate rollback triggers
 Reduce the active cap to the highest lower target class with prior clean evidence if either occurs:
-1. one confirmed duration-related failure at or below the promoted cap that loses the durable close or final recurring scheduler write; or
+1. one confirmed duration-related failure at or below the promoted cap that loses the durable close despite a valid pre-armed recurring wake; or
 2. two ambiguous close-loss events at/near the cap before an independent non-duration cause is established.
 
 Do not rollback for an explicit independent GitHub/network/tool/provider failure.
@@ -37,3 +37,9 @@ With sparse evidence, prefer conservative rollback rather than inventing a preci
 If failures are caused by admission-policy overshoot rather than the underlying runtime ceiling, first rollback the policy aggressiveness (larger reserve / earlier soft cutoff). If failures persist with conservative admission, rollback the operating cap itself.
 
 This distinction is important: `runtime boundary` and `policy-induced overshoot` are different failure mechanisms.
+
+## Pre-armed gap rollback
+Gap policy is separate from runtime-cap rollback.
+- If a smaller planned gap causes overlap/concurrent invocation, missed close, stale-authority behavior, or materially worse wake reliability, immediately return to the last validated larger gap.
+- Do not lower the runtime cap solely because a too-small planned gap caused the failure unless the failure also demonstrates a runtime-boundary problem.
+- Re-promoting a smaller gap requires repeated clean wake/close evidence at the fixed runtime policy.
