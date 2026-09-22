@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "MINIMAL_REASONING_UNIT",
+  "result": "COMPLETE",
+  "finding": "if successor start jitter/queueing is materially larger in controlled trials than prior overlap probe, lead must include wake-delivery variance separately from bootstrap time",
+  "next_unit": "READY_CHECK"
+}
