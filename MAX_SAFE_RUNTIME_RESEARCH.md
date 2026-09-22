@@ -24,6 +24,7 @@ This is one integrated research problem. The +3m relay lead is a fixed control v
 7. First credible duration-related failure brackets the upper boundary.
 8. Refine the bracket at ~1m resolution.
 9. If no boundary is observed, report only a lower bound and keep ascending.
+10. Apply `RUNTIME_BOUNDARY_DECISION_RULE.md` for evidence classification, failure bracketing, refinement, and cap promotion. A single coarse PASS may advance the next probe but never promotes a production cap.
 
 ## Phase B — operating-cap validation
 The production cap is not max_observed_success.
