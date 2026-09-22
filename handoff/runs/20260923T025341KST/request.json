@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T025341KST",
+  "role": "SHADOW_SUCCESSOR",
+  "predecessor_invocation_id": "20260923T022947KST",
+  "observed_generation": 2,
+  "actual_start_kst": "2026-09-23T02:53:41+09:00",
+  "scheduled_for_kst": "2026-09-23T02:55:44+09:00",
+  "note": "Invocation arrived 123 seconds before durable scheduled_for; classified as early/manual-or-runtime trigger relative to current state. No authority mutation performed."
+}
