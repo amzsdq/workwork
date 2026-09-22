@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "ACTIVE_LOAD_CHECKPOINT_CHAIN_A",
+  "result": "COMPLETE",
+  "input": "current handoff research artifacts",
+  "derived": ["single owner linearization", "owner-only scheduler fencing", "READY threshold", "handoff-window admission"],
+  "next_unit": "ACTIVE_LOAD_CHECKPOINT_CHAIN_B"
+}
