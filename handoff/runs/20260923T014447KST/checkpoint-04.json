@@ -1,0 +1,12 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "LEAD_TIME_EXPERIMENT_SCORING_MODEL",
+  "result": "COMPLETE",
+  "artifact": "handoff/LEAD_NOTES.md",
+  "current_candidate_lead_sec": 180,
+  "promotion_floor_clean_samples": 5,
+  "next_candidate_if_excess_margin_sec": 120,
+  "fallback_if_insufficient_sec": 240,
+  "next_unit": "CONCURRENCY_FAILURE_MODE_MATRIX"
+}
