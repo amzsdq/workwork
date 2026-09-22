@@ -1,3 +1,4 @@
 {"ts":"2026-09-22T22:28:30+09:00","event":"BOOTSTRAP","result":"PASS","work":"Initialized workwork durable relay state","next":"Apply same-automation recurring RRULE relay contract"}
 {"ts":"2026-09-22T22:29:51+09:00","event":"GOAL_SET","result":"PASS","work":"Research narrowed to maximum safe runtime before handoff; adaptive ascent starts above prior 10m baseline","next":"TARGET_RUNTIME=12m"}
 {"ts":"2026-09-22T22:35:00+09:00","event":"GOAL_REFINED","result":"PASS","work":"Extended the same research goal to derive a reproducible handoff/admission policy after locating the runtime boundary","next":"BOUNDARY_SEARCH_TARGET=12m; POLICY_PHASE=PENDING"}
+{"ts":"2026-09-22T23:23:10+09:00","event":"CONTROL_BASELINE_LOCK","result":"PASS","work":"Fixed relay lead time at +3m as control baseline; runtime and handoff policy remain the study variables","next":"TARGET_RUNTIME=12m"}
