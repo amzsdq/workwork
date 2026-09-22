@@ -1,5 +1,5 @@
 {
-  "schema_version": 5,
+  "schema_version": 6,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_and_reproducible_handoff_policy",
@@ -21,11 +21,30 @@
     "first_failure_boundary_minutes": null,
     "last_clean_target_minutes": 10,
     "promoted_operating_cap_minutes": null,
-    "repeated_validation_required": 5
+    "repeated_validation_required": 5,
+    "workload_generalization": {
+      "enabled": true,
+      "next_profile": "W5_MICRO_UNIT_CHAIN",
+      "profiles": [
+        "W1_READ_HEAVY",
+        "W2_WRITE_CHECKPOINT_HEAVY",
+        "W3_MIXED_IO",
+        "W4_REASONING_HEAVY",
+        "W5_MICRO_UNIT_CHAIN",
+        "W6_LARGE_UNIT",
+        "W7_CLOSE_HEAVY"
+      ],
+      "universal_cap_requires_cross_profile_validation": true
+    }
   },
   "policy_research": {
     "phase": "PENDING_RUNTIME_BOUNDARY",
-    "variants": ["FIXED_THRESHOLD", "SOFT_CUTOFF_HARD_CAP", "ESTIMATED_NEXT_TASK_ADMISSION", "ADAPTIVE_ADMISSION"],
+    "variants": [
+      "FIXED_THRESHOLD",
+      "SOFT_CUTOFF_HARD_CAP",
+      "ESTIMATED_NEXT_TASK_ADMISSION",
+      "ADAPTIVE_ADMISSION"
+    ],
     "promoted_policy": null,
     "soft_cutoff_minutes": null,
     "hard_cap_minutes": null,
@@ -39,5 +58,5 @@
     "boundary_effect": "NONE",
     "note": "EVIDENCE_INTEGRITY_NOTE.md"
   },
-  "updated_at": "2026-09-22T23:45:25+09:00"
+  "updated_at": "2026-09-23T00:54:31+09:00"
 }
