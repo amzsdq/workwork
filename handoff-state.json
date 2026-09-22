@@ -1,0 +1,7 @@
+{
+  "generation": 0,
+  "status": "IDLE",
+  "current_successor_lead_sec": 180,
+  "nominal_active_runtime_sec": 900,
+  "handoff_policy": "EARLY_READY_HANDOFF"
+}
