@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:49:43+09:00",
+  "elapsed_sec": 296,
+  "unit": "ACTIVE_LOAD_PROGRESS",
+  "result": "CONTINUE",
+  "completed_subprofiles": ["control_reconciliation", "mixed_io", "reasoning", "checkpoint_serialization", "policy_artifact_writes", "durable_state_recovery"],
+  "successor_wake_due_kst": "2026-09-23T01:56:47+09:00",
+  "next_unit": "TRANSFER_ATOMICITY_ANALYSIS"
+}
