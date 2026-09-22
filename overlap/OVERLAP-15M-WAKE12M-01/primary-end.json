@@ -1,0 +1,16 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "role": "PRIMARY",
+  "primary_start_kst": "2026-09-23T01:17:18+09:00",
+  "scheduled_overlap_wake_kst": "2026-09-23T01:29:18+09:00",
+  "primary_end_kst": "2026-09-23T01:32:40+09:00",
+  "actual_elapsed_sec_approx": 922,
+  "target_runtime_sec": 900,
+  "target_reached": true,
+  "clean_close": true,
+  "last_heartbeat_seq": 10,
+  "primary_survived_scheduled_overlap_due": true,
+  "secondary_start_visible_before_primary_close": false,
+  "classification_at_primary_close": "INCONCLUSIVE_PENDING_SECONDARY_OR_POST_PRIMARY_OBSERVER",
+  "note": "Primary was not preempted at scheduled wake: durable primary evidence continued for more than three minutes after due. Whether the scheduled second invocation was deferred, missed, or starts concurrently near close requires observer evidence."
+}
