@@ -1,0 +1,17 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "target_runtime_sec": 900,
+  "target_end_kst": "2026-09-23T01:59:47+09:00",
+  "scheduler_strategy": "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
+  "successor_lead_sec": 180,
+  "scheduled_successor_wake_kst": "2026-09-23T01:56:47+09:00",
+  "successor_ready_observed_before_close": false,
+  "authority_transfer_performed": false,
+  "owner_generation": 1,
+  "sample_result": "NO_HANDOFF_BEFORE_TARGET_PENDING_NEXT_INVOCATION_CLASSIFICATION",
+  "duration_failure": false,
+  "duplicate_authoritative_work_count": 0,
+  "scheduler_writer_conflicts": 0,
+  "checkpoint_loss": false
+}
