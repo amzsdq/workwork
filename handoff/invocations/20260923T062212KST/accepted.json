@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T062212KST",
+  "role": "ACTIVE_OWNER",
+  "authority_generation": 6,
+  "predecessor_invocation_id": "20260923T054339KST",
+  "ready_at_kst": "2026-09-23T06:22:20+09:00",
+  "accepted_at_kst": "2026-09-23T07:24:31+09:00",
+  "transfer_classification": "FENCED_RECOVERY_NOT_CLEAN_NORMAL_HANDOFF",
+  "reason": "generation-5 owner remained authoritative far beyond 900-second nominal horizon while a durable READY successor existed; recovery fencing required",
+  "clean_handoff": false
+}
