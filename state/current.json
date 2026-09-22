@@ -24,7 +24,7 @@
     "repeated_validation_required": 5,
     "workload_generalization": {
       "enabled": true,
-      "next_profile": "W5_MICRO_UNIT_CHAIN",
+      "next_profile": "TEST_GENERATED_MIXED_LOAD",
       "profiles": [
         "W1_READ_HEAVY",
         "W2_WRITE_CHECKPOINT_HEAVY",
@@ -34,7 +34,9 @@
         "W6_LARGE_UNIT",
         "W7_CLOSE_HEAVY"
       ],
-      "universal_cap_requires_cross_profile_validation": true
+      "universal_cap_requires_cross_profile_validation": true,
+      "test_generated_load_allowed": true,
+      "idle_waiting_counts_as_test_load": false
     }
   },
   "policy_research": {
@@ -58,5 +60,5 @@
     "boundary_effect": "NONE",
     "note": "EVIDENCE_INTEGRITY_NOTE.md"
   },
-  "updated_at": "2026-09-23T00:54:31+09:00"
+  "updated_at": "2026-09-23T00:59:00+09:00"
 }
