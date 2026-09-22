@@ -1,0 +1,12 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "TRANSFER_LATENCY_BUDGET_ANALYSIS",
+  "result": "COMPLETE",
+  "analysis": {
+    "lead_budget_components": ["successor_start_jitter", "successor_bootstrap_to_READY", "predecessor_inflight_unit_tail", "authority_transfer_control_overhead"],
+    "observed_prior_start_jitter_sec": 4,
+    "unknowns_requiring_this_sample": ["bootstrap_to_READY", "unit_tail_after_READY", "transfer_overhead"]
+  },
+  "next_unit": "CONTINUE_ACTIVE_LOAD"
+}
