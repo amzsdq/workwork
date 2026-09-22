@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:51:08+09:00",
+  "elapsed_sec": 381,
+  "unit": "ACTIVE_LOAD_PROGRESS",
+  "result": "CONTINUE",
+  "scheduler_prearm_status": "VERIFIED",
+  "owner_generation": 1,
+  "next_unit": "READY_CHECK_AND_BOUNDED_POLICY_SYNTHESIS"
+}
