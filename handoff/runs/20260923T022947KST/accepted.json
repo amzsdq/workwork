@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T022947KST",
+  "role": "ACTIVE_OWNER",
+  "generation": 2,
+  "predecessor_invocation_id": "20260923T021630KST",
+  "ready_at_kst": "2026-09-23T02:30:20+09:00",
+  "authority_transfer_at_kst": "2026-09-23T02:43:44+09:00",
+  "accepted_at_kst": "2026-09-23T02:43:44+09:00",
+  "status": "ACCEPTED_VIA_FENCED_RECOVERY",
+  "note": "Not counted as clean normal handoff because predecessor did not observe READY and transfer at a live safe-unit boundary."
+}
