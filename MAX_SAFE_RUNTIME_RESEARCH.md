@@ -15,7 +15,7 @@ This is one integrated research problem. The +3m relay lead is a fixed control v
 - Longer turns improve theoretical duty cycle, but a failed final checkpoint/rearm can make expected availability worse.
 
 ## Phase A — boundary search
-1. Use substantive work only; no sleeping/padding.
+1. Test-generated workload is valid substantive experimental work when it is deliberately used to exercise runtime behavior and the workload profile is recorded. Idle waiting/sleeping only to consume time remains excluded.
 2. Record actual start, useful work, close time.
 3. Coarse ascent from prior 10m baseline in about +2m classes.
 4. Clean PASS requires substantive work + durable checkpoint + successful final same-automation RRULE update + correct returned DTSTART/RRULE/enabled state.
@@ -98,3 +98,7 @@ Avoid unrelated orchestration expansion.
 Runtime safety must be tested across heterogeneous real workload shapes defined in `RUNTIME_WORKLOAD_PROFILES.md`.
 
 A single profile may advance an exploratory lower bound, but a final universal operating cap requires replication across representative workload profiles near the candidate boundary. If a realistic profile has materially worse close behavior or a lower failure boundary, the final policy must account for it rather than averaging the risk away.
+
+
+## Test-load interpretation
+For this study, deliberately generated reasoning/I-O/checkpoint workload is part of the experiment, not padding, when it is bounded, measured, and assigned a workload profile. Older wording that broadly rejects artificial/generated load should be interpreted narrowly as rejecting idle/no-op time consumption, not rejecting purposeful stress workload.
