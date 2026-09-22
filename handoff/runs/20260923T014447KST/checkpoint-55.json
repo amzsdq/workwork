@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "PRE_WAKE_INVARIANT_CHECK",
+  "result": "PASS",
+  "invariants": {"owner_generation":1,"scheduler_mutations_after_prearm":0,"duplicate_authoritative_work_count":0,"checkpoint_loss":false},
+  "next_unit": "SHORT_REASONING_UNIT"
+}
