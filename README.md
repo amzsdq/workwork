@@ -10,14 +10,14 @@ The final output is not a single number. It must be an operational policy that c
 ## Why this matters
 With a 10-minute work floor and ~3-minute relay gap, idealized duty cycle is only 10/(10+3) ≈ 76.9% before scheduler jitter and failures. Longer safe turns can materially improve utilization, but pushing too close to the runtime ceiling can lose the final checkpoint/scheduler write and reduce real availability.
 
-The optimization target is long-run useful-work utilization, not merely the longest single observed run.
+The optimization target is long-run useful-work utilization, not merely the longest single observed run. Relay lead time remains fixed at +3m while runtime/handoff policy is varied.
 
 ## Research contract
 - Reuse the same automation for normal continuation; no replacement automation.
 - Keep a complete recurring VEVENT containing `RRULE:FREQ=HOURLY`.
 - Do not use DTSTART-only one-shot or `dtstart_offset_json`.
 - Normal clean path performs one final scheduler mutation per turn.
-- Current lead-time baseline is ~+3 minutes and remains an empirical baseline, not a platform guarantee.
+- Relay lead time is fixed at +3 minutes for this study. Prior relay research currently supports +3m as the best available baseline; this program treats it as a control variable, not a research variable. It is still empirical rather than a platform guarantee.
 - Measure real elapsed runtime and useful work separately. Never pad, sleep, or invent busywork just to hit a duration target.
 - A run is only a clean timing PASS if substantive work occurred, durable evidence was saved, and the final recurring scheduler write returned the intended DTSTART/RRULE/enabled state.
 - WRITE_OK is not future WAKE_OK.
