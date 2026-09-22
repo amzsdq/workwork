@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "MEASUREMENT_SEMANTICS_CHECK",
+  "result": "PASS",
+  "measurement_status": "IN_PROGRESS",
+  "fields_pending_successor": ["successor_actual_start_kst", "successor_ready_at_kst", "authority_transfer_at_kst", "successor_accept_at_kst", "handoff_gap_sec", "overlap_sec"],
+  "next_unit": "ACTIVE_REASONING_LOAD_POLICY_COMPARISON"
+}
