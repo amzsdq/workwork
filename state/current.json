@@ -24,22 +24,22 @@
     "evidence_path": "overlap/OVERLAP-15M-WAKE12M-01/"
   },
   "handoff_research": {
-    "status": "GEN5_ACTIVE_OWNER_RECOVERED_TRANSFER_NOT_CLEAN",
-    "active_invocation_id": "20260923T054339KST",
-    "authority_generation": 5,
-    "predecessor_invocation_id": "20260923T041813KST",
+    "status": "GEN6_ACTIVE_OWNER_RECOVERED_TRANSFER_NOT_CLEAN",
+    "active_invocation_id": "20260923T062212KST",
+    "authority_generation": 6,
+    "predecessor_invocation_id": "20260923T054339KST",
     "nominal_active_runtime_sec": 900,
     "successor_lead_candidates_sec": [180,120,60,240],
     "current_successor_lead_sec": 180,
-    "successor_scheduled_for_kst": "2026-09-23T06:23:20+09:00",
+    "successor_scheduled_for_kst": null,
     "handoff_policy": "EARLY_READY_HANDOFF",
     "scheduler_strategy": "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
     "authority_model": "ACTIVE_OWNER_PLUS_SHADOW_SUCCESSOR_WITH_FENCED_RECOVERY",
     "control_path": "handoff/control-v1.json",
     "append_only_per_invocation": true,
-    "last_ready_at_kst": "2026-09-23T05:44:20+09:00",
-    "last_transfer_at_kst": "2026-09-23T06:11:20+09:00",
+    "last_ready_at_kst": "2026-09-23T06:22:20+09:00",
+    "last_transfer_at_kst": "2026-09-23T07:24:31+09:00",
     "last_transfer_classification": "FENCED_RECOVERY_NOT_CLEAN_NORMAL_HANDOFF"
   },
-  "updated_at": "2026-09-23T06:11:20+09:00"
+  "updated_at": "2026-09-23T07:24:31+09:00"
 }
