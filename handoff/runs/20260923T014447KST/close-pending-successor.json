@@ -1,0 +1,17 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "status": "TARGET_CLOSE_PENDING_SUCCESSOR_EVIDENCE",
+  "predecessor_start_kst": "2026-09-23T01:44:47+09:00",
+  "nominal_target_end_kst": "2026-09-23T01:59:47+09:00",
+  "successor_scheduled_for_kst": "2026-09-23T01:56:47+09:00",
+  "successor_ready_observed": false,
+  "authority_transfer_performed": false,
+  "scheduler_prearm_ok": true,
+  "owner_generation": 1,
+  "duplicate_authoritative_work_count": 0,
+  "scheduler_writer_conflicts": 0,
+  "checkpoint_loss": false,
+  "classification": "PENDING_WAKE_OR_SUCCESSOR_OBSERVATION",
+  "instruction_for_next_invocation": "fresh-read authority and immutable evidence; if predecessor remains owner, classify wake/start/READY evidence before any recovery or new scheduling"
+}
