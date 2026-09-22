@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "MINIMAL_REASONING_UNIT",
+  "result": "COMPLETE",
+  "finding": "successor lead should be optimized on actual successor START and READY distributions, not scheduled wake alone",
+  "next_unit": "READY_CHECK"
+}
