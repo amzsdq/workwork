@@ -1,0 +1,15 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:45:03+09:00",
+  "unit": "CONTROL_PLANE_RECONCILIATION",
+  "result": "COMPLETE",
+  "observations": {
+    "overlap_probe_reconciled": true,
+    "concurrency_classification": "CONCURRENT",
+    "authority_claim_generation": 1,
+    "scheduler_prearm_ok": true,
+    "scheduler_prearm_target_kst": "2026-09-23T01:56:47+09:00"
+  },
+  "next_unit": "HANDOFF_INVARIANT_AND_METRIC_VALIDATION"
+}
