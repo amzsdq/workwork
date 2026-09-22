@@ -1,0 +1,10 @@
+{
+  "invocation_id": "20260923T025341KST",
+  "role": "SHADOW_SUCCESSOR",
+  "predecessor_invocation_id": "20260923T022947KST",
+  "observed_generation": 2,
+  "ready_at_kst": "2026-09-23T02:54:05+09:00",
+  "bootstrap_ready_sec": 24,
+  "proposed_next_unit": "Observe live predecessor boundary and accept generation-3 authority only after explicit fenced transfer; then prearm successor immediately as ACTIVE_OWNER.",
+  "authoritative_mutation_performed": false
+}
