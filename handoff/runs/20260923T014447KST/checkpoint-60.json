@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "MINIMAL_BOUNDED_UNIT",
+  "result": "COMPLETE",
+  "work": "revalidate transfer checklist ordering before successor due",
+  "next_unit": "POST_WAKE_READY_CHECK"
+}
