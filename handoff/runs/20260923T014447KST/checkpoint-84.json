@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:59:25+09:00",
+  "elapsed_sec": 878,
+  "unit": "LAST_SUCCESSOR_EVIDENCE_CHECK",
+  "result": "NO_SUCCESSOR_READY_EVIDENCE",
+  "seconds_after_scheduled_wake": 158,
+  "remaining_nominal_runtime_sec": 22,
+  "next": "persist target-end evidence without fabricating transfer"
+}
