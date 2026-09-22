@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:48:28+09:00",
+  "elapsed_sec": 221,
+  "unit": "UNIT_GRANULARITY_POLICY",
+  "result": "COMPLETE",
+  "artifact": "handoff/UNIT_GRANULARITY.md",
+  "decision": "normal unit sizing before handoff window; shorter naturally bounded substantive units near successor wake; no new ordinary unit after READY",
+  "next_unit": "CONTROL_OVERHEAD_ACCOUNTING"
+}
