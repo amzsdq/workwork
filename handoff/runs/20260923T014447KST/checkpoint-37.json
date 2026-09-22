@@ -1,0 +1,10 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:53:01+09:00",
+  "elapsed_sec": 494,
+  "unit": "SHORT_BOUNDED_REASONING_UNIT",
+  "result": "COMPLETE",
+  "finding": "if measured predecessor unit-tail dominates successor bootstrap, optimize near-window unit admission before increasing successor lead",
+  "next_unit": "READY_CHECK"
+}
