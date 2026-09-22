@@ -37,15 +37,16 @@ W7 CLOSE_HEAVY
 
 ## Rules
 - Choose a profile before each empirical probe and record workload_profile.
-- Work must materially advance this single research goal.
-- No artificial calls, meaningless writes, sleeps, loops, or token padding.
+- Test-generated load is valid experimental work when it is deliberately selected to exercise runtime behavior and its profile is recorded.
+- Allowed test load includes bounded reasoning, repeated repository reads, controlled read/write/checkpoint sequences, chains of short tasks, larger analysis units, and mixed-load sequences.
+- Do not use idle waiting or sleeping merely to consume wall time. Do not perform unrecorded no-op activity.
 - A safe runtime from one profile is not automatically universal.
 - Candidate operating limits must later be replicated across representative profiles.
 - At minimum, generalization should include MIXED_IO, MICRO_UNIT_CHAIN, and either REASONING_HEAVY or LARGE_UNIT near the candidate cap.
 - If one realistic profile has a lower credible boundary, use that risk in the final cap or adopt profile-aware admission only if evidence justifies the extra complexity.
 
 ## Initial rotation
-12m: W5 MICRO_UNIT_CHAIN
+12m: W3/W5 TEST_GENERATED_MIXED_LOAD (reasoning + bounded reads/writes/checkpoints + micro-unit chaining)
 14m: W3 MIXED_IO
 16m: W4 REASONING_HEAVY
 18m: W2 WRITE_CHECKPOINT_HEAVY
