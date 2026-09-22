@@ -1,0 +1,13 @@
+{
+  "test": "checkpoint_serialization",
+  "seq": 1,
+  "owner_generation": 1,
+  "payload": {
+    "bounded_units_completed": 10,
+    "scheduler_prearmed": true,
+    "handoff_policy": "EARLY_READY_HANDOFF",
+    "successor_lead_sec": 180,
+    "authority_invariant": "single_owner"
+  },
+  "expected_next": "deserialize_and_verify"
+}
