@@ -1,5 +1,5 @@
 {
-  "schema_version": 12,
+  "schema_version": 13,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
@@ -24,22 +24,22 @@
     "evidence_path": "overlap/OVERLAP-15M-WAKE12M-01/"
   },
   "handoff_research": {
-    "status": "GEN3_ACTIVE_OWNER_RECOVERED_TRANSFER_NOT_CLEAN",
-    "active_invocation_id": "20260923T025341KST",
-    "authority_generation": 3,
-    "predecessor_invocation_id": "20260923T022947KST",
+    "status": "GEN4_ACTIVE_OWNER_RECOVERED_TRANSFER_NOT_CLEAN",
+    "active_invocation_id": "20260923T041813KST",
+    "authority_generation": 4,
+    "predecessor_invocation_id": "20260923T025341KST",
     "nominal_active_runtime_sec": 900,
     "successor_lead_candidates_sec": [180,120,60,240],
     "current_successor_lead_sec": 180,
-    "successor_scheduled_for_kst": "2026-09-23T04:15:34+09:00",
+    "successor_scheduled_for_kst": "2026-09-23T04:44:00+09:00",
     "handoff_policy": "EARLY_READY_HANDOFF",
     "scheduler_strategy": "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
     "authority_model": "ACTIVE_OWNER_PLUS_SHADOW_SUCCESSOR_WITH_FENCED_RECOVERY",
     "control_path": "handoff/control-v1.json",
     "append_only_per_invocation": true,
-    "last_ready_at_kst": "2026-09-23T02:54:05+09:00",
-    "last_transfer_at_kst": "2026-09-23T04:03:34+09:00",
+    "last_ready_at_kst": "2026-09-23T04:31:04+09:00",
+    "last_transfer_at_kst": "2026-09-23T04:32:00+09:00",
     "last_transfer_classification": "FENCED_RECOVERY_NOT_CLEAN_NORMAL_HANDOFF"
   },
-  "updated_at": "2026-09-23T04:03:34+09:00"
+  "updated_at": "2026-09-23T04:41:12+09:00"
 }
