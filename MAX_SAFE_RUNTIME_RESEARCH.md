@@ -3,14 +3,14 @@
 ## Research question
 What is the maximum empirically safe substantive-work duration for one ChatGPT Automation RRULE relay invocation, and what handoff/admission policy most reliably reproduces near that optimum over many turns?
 
-This is one integrated research problem. The +3m relay lead is a fixed control variable:
+This is one integrated research problem. Wake scheduling is pre-armed at turn start; planned gap is now an experimental variable:
 1. characterize the runtime failure boundary,
 2. choose a safe operating cap,
 3. derive a repeatable policy that uses as much of that cap as practical.
 
 ## Current operating context
 - Previous operating floor: about 10 minutes of work before handoff.
-- Relay lead time: fixed +3 minutes for this study, based on the current best prior relay result. Do not optimize or vary relay lead time inside this program.
+- Wake rule: immediately after TURN_START, pre-arm NEXT_WAKE = START_TS + target_runtime + planned_gap. Use planned_gap=3m as the initial baseline because prior relay research found +3m best among tested end-of-turn leads. Do not wait until turn end to schedule the next wake.
 - A simplistic 10m work / 3m gap cycle has idealized duty cycle 76.9% before jitter/failures.
 - Longer turns improve theoretical duty cycle, but a failed final checkpoint/rearm can make expected availability worse.
 
@@ -18,7 +18,7 @@ This is one integrated research problem. The +3m relay lead is a fixed control v
 1. Test-generated workload is valid substantive experimental work when it is deliberately used to exercise runtime behavior and the workload profile is recorded. Idle waiting/sleeping only to consume time remains excluded.
 2. Record actual start, useful work, close time.
 3. Coarse ascent from prior 10m baseline in about +2m classes.
-4. Clean PASS requires substantive work + durable checkpoint + successful final same-automation RRULE update + correct returned DTSTART/RRULE/enabled state.
+4. Clean PASS requires a successful same-automation RRULE pre-arm at TURN_START + active target workload + durable close checkpoint. The pre-arm return must contain the intended DTSTART/RRULE/enabled state; no scheduler mutation is performed at normal turn end.
 5. Next invocation provides retrospective WAKE_OK evidence.
 6. Separate duration-related failures from unrelated tool/network/provider failures.
 7. First credible duration-related failure brackets the upper boundary.
@@ -102,3 +102,33 @@ A single profile may advance an exploratory lower bound, but a final universal o
 
 ## Test-load interpretation
 For this study, deliberately generated reasoning/I-O/checkpoint workload is part of the experiment, not padding, when it is bounded, measured, and assigned a workload profile. Older wording that broadly rejects artificial/generated load should be interpreted narrowly as rejecting idle/no-op time consumption, not rejecting purposeful stress workload.
+
+
+## Phase D — pre-armed gap optimization
+After the runtime boundary/operating cap is sufficiently characterized, hold runtime policy approximately fixed and test planned wake gaps.
+
+Definition:
+- planned_gap = NEXT_WAKE - (START_TS + target_runtime)
+- actual_idle_gap = NEXT_INVOCATION_START - CURRENT_INVOCATION_CLOSE
+
+The planned gap is not the actual idle gap because close overhead and runtime overshoot consume part of it.
+
+Initial sequence:
+- baseline planned_gap=3m
+- then 2m
+- then 1m if continuation remains stable
+- consider intermediate or larger values when evidence warrants
+
+Measure:
+- prearm_scheduler_write_ok/state_ok
+- actual_elapsed_sec
+- close_overhead_sec
+- actual_idle_gap_sec
+- wake jitter
+- overlap/concurrent invocation
+- missed wake
+- incomplete close/checkpoint
+- long-run useful-work duty cycle
+
+Promotion rule:
+Choose the smallest planned gap that repeatedly preserves clean close + stable next wake without overlap/concurrency or materially higher failure risk. Do not minimize gap independently of runtime safety.
