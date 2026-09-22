@@ -1,0 +1,14 @@
+{
+  "invocation_id": "20260923T073918KST",
+  "accepted_at_kst": "2026-09-23T08:35:44+09:00",
+  "role_after_accept": "ACTIVE_OWNER",
+  "authority_generation": 7,
+  "predecessor_invocation_id": "20260923T062212KST",
+  "ready_at_kst": "2026-09-23T07:39:31+09:00",
+  "transfer_classification": "FENCED_RECOVERY_NOT_CLEAN_NORMAL_HANDOFF",
+  "reason": "generation 6 remained authoritative far beyond nominal 900s horizon; durable READY successor existed",
+  "duplicate_authoritative_work_count": 0,
+  "scheduler_writer_conflicts": 0,
+  "checkpoint_loss": false,
+  "clean_handoff": false
+}
