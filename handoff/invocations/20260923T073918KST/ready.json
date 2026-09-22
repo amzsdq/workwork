@@ -1,0 +1,13 @@
+{
+  "invocation_id": "20260923T073918KST",
+  "role": "SHADOW_SUCCESSOR",
+  "ready_at_kst": "2026-09-23T07:39:31+09:00",
+  "bootstrap_ready_sec": 13,
+  "observed_generation": 6,
+  "predecessor_invocation_id": "20260923T062212KST",
+  "prepared_next_unit": "accept authority only after fenced transfer; immediately reconcile control/state, pre-arm next successor, then execute bounded handoff measurement unit",
+  "authoritative_work_performed": false,
+  "scheduler_write_performed": false,
+  "ready_classification": "READY_SHADOW_ONLY",
+  "wake_jitter_sec": 167
+}
