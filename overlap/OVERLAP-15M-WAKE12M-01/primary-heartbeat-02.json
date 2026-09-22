@@ -1,0 +1,9 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "role": "PRIMARY",
+  "seq": 2,
+  "observed_kst": "2026-09-23T01:20:15+09:00",
+  "elapsed_sec_approx": 177,
+  "workload_subprofile": "PROTOCOL_COMPARISON_AND_RUNTIME_POLICY_ANALYSIS",
+  "note": "Active workload continued after durable primary start and pre-arm."
+}
