@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "SHADOW_VALUE_MODEL",
+  "result": "COMPLETE",
+  "model": "shadow overlap is productive when preparation displaces work that would otherwise occur after transfer; raw overlap duration alone is neither cost nor benefit",
+  "measurement_implication": "track successor_shadow_useful_sec separately from total overlap_sec and predecessor residual abandoned",
+  "next_unit": "READY_CHECK"
+}
