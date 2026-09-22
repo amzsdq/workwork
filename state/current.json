@@ -1,113 +1,39 @@
 {
-  "schema_version": 9,
+  "schema_version": 10,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
   "relay": {
     "recurring_rrule": "FREQ=HOURLY",
     "lead_time_minutes": 3,
-    "lead_time_source": "prior relay research; currently best available baseline",
-    "normal_scheduler_mutations_per_turn": 1,
-    "scheduling_mode": "PREARM_AT_TURN_START",
-    "end_of_turn_scheduler_write": false,
-    "initial_planned_gap_minutes": 3,
-    "gap_is_research_variable": true
+    "scheduling_mode": "ACTIVE_OWNER_IMMEDIATE_PREARM"
   },
   "runtime_research": {
-    "phase": "OVERLAP_PROBE_TEMPORARY",
     "prior_operational_baseline_minutes": 10,
-    "baseline_status": "prior_evidence_not_formally_revalidated_here",
-    "next_target_minutes": 12,
-    "coarse_step_minutes": 2,
-    "refinement_step_minutes": 1,
     "first_failure_boundary_minutes": null,
-    "last_clean_target_minutes": 10,
-    "promoted_operating_cap_minutes": null,
-    "repeated_validation_required": 5,
-    "workload_generalization": {
-      "enabled": true,
-      "next_profile": "TEST_GENERATED_MIXED_LOAD",
-      "profiles": [
-        "W1_READ_HEAVY",
-        "W2_WRITE_CHECKPOINT_HEAVY",
-        "W3_MIXED_IO",
-        "W4_REASONING_HEAVY",
-        "W5_MICRO_UNIT_CHAIN",
-        "W6_LARGE_UNIT",
-        "W7_CLOSE_HEAVY"
-      ],
-      "universal_cap_requires_cross_profile_validation": true,
-      "test_generated_load_allowed": true,
-      "idle_waiting_counts_as_test_load": false
-    }
-  },
-  "policy_research": {
-    "phase": "PENDING_RUNTIME_BOUNDARY",
-    "variants": [
-      "FIXED_THRESHOLD",
-      "SOFT_CUTOFF_HARD_CAP",
-      "ESTIMATED_NEXT_TASK_ADMISSION",
-      "ADAPTIVE_ADMISSION"
-    ],
-    "promoted_policy": null,
-    "soft_cutoff_minutes": null,
-    "hard_cap_minutes": null,
-    "safety_margin_sec": null,
-    "close_overhead_sec": null
-  },
-  "evidence_integrity": {
-    "suspect_event": "PROBE_WORKLOAD_AND_SCHEMA_ADDED",
-    "suspect_timestamp": "2026-09-22T23:00:00+09:00",
-    "timing_use_allowed": false,
-    "boundary_effect": "NONE",
-    "note": "EVIDENCE_INTEGRITY_NOTE.md"
-  },
-  "updated_at": "2026-09-23T01:38:04+09:00",
-  "gap_research": {
-    "phase": "BASELINE_PREARM_3M",
-    "definition": "NEXT_WAKE = TURN_START + target_runtime + planned_gap",
-    "current_planned_gap_minutes": 3,
-    "candidate_gaps_minutes": [
-      3,
-      2,
-      1
-    ],
-    "actual_idle_gap_measured_next_turn": true,
-    "overlap_or_concurrent_wake_must_be_false": true,
-    "promoted_gap_minutes": null
+    "last_clean_target_minutes": 12,
+    "promoted_operating_cap_minutes": null
   },
   "overlap_probe": {
-    "active": true,
+    "active": false,
     "probe_id": "OVERLAP-15M-WAKE12M-01",
-    "phase": "READY_FOR_PRIMARY",
-    "primary_target_minutes": 15,
-    "wake_offset_minutes": 12,
-    "nominal_overlap_minutes": 3,
-    "workload_profile": "TEST_GENERATED_MIXED_LOAD",
-    "evidence_path": "overlap/OVERLAP-15M-WAKE12M-01/",
-    "result": null
+    "phase": "COMPLETE",
+    "result": "CONCURRENT",
+    "observed_overlap_sec": 198,
+    "observer_start_jitter_sec": 4,
+    "evidence_path": "overlap/OVERLAP-15M-WAKE12M-01/"
   },
   "handoff_research": {
-    "status": "PLANNED",
+    "status": "SAMPLE_001_ACTIVE_OWNER",
+    "active_invocation_id": "20260923T014447KST",
     "nominal_active_runtime_sec": 900,
-    "successor_lead_candidates_sec": [
-      180,
-      120,
-      60,
-      240
-    ],
-    "handoff_policy_candidates": [
-      "EARLY_READY_HANDOFF",
-      "TARGET_HOLD"
-    ],
-    "scheduler_strategy_candidates": [
-      "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
-      "S2_POST_BOOTSTRAP_PREARM",
-      "S3_SHADOW_IMMEDIATE_PREARM_ISOLATED"
-    ],
-    "baseline_scheduler_strategy": "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
+    "successor_lead_candidates_sec": [180,120,60,240],
     "current_successor_lead_sec": 180,
+    "successor_scheduled_for_kst": "2026-09-23T01:56:47+09:00",
+    "handoff_policy": "EARLY_READY_HANDOFF",
+    "scheduler_strategy": "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
     "authority_model": "ACTIVE_OWNER_PLUS_SHADOW_SUCCESSOR",
     "append_only_per_invocation": true
-  }
+  },
+  "updated_at": "2026-09-23T01:45:03+09:00"
 }
