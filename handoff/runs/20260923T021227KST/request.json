@@ -1,0 +1,10 @@
+{
+  "invocation_id": "20260923T021227KST",
+  "role": "SHADOW_SUCCESSOR",
+  "predecessor_invocation_id": "20260923T014447KST",
+  "actual_start_kst": "2026-09-23T02:12:27+09:00",
+  "request_at_kst": "2026-09-23T02:12:27+09:00",
+  "observed_state_status": "SAMPLE_001_ACTIVE_OWNER",
+  "authority_write_performed": false,
+  "scheduler_write_performed": false
+}
