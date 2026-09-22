@@ -1,7 +1,12 @@
 {
-  "generation": 0,
-  "status": "IDLE",
+  "generation": 1,
+  "status": "ACTIVE",
+  "active_invocation_id": "20260923T014447KST",
+  "predecessor_invocation_id": null,
+  "successor_invocation_id": null,
   "current_successor_lead_sec": 180,
   "nominal_active_runtime_sec": 900,
-  "handoff_policy": "EARLY_READY_HANDOFF"
+  "handoff_policy": "EARLY_READY_HANDOFF",
+  "scheduler_strategy": "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
+  "updated_at": "2026-09-23T01:44:47+09:00"
 }
