@@ -1,0 +1,16 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "classification": "CONCURRENT",
+  "primary_start_kst": "2026-09-23T01:17:18+09:00",
+  "scheduled_overlap_wake_kst": "2026-09-23T01:29:18+09:00",
+  "observer_start_kst": "2026-09-23T01:29:22+09:00",
+  "observer_start_jitter_sec": 4,
+  "primary_end_kst": "2026-09-23T01:32:40+09:00",
+  "observed_overlap_sec": 198,
+  "evidence": [
+    "primary-start.json",
+    "primary-end.json",
+    "observer-01.json"
+  ],
+  "reason": "The observer invocation began about four seconds after the scheduled wake while the primary invocation later recorded a clean end more than three minutes after observer start. Therefore both invocations overlapped in execution; the scheduled wake neither preempted nor waited for the primary to close."
+}
