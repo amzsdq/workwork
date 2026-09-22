@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T025341KST",
+  "accepted_at_kst": "2026-09-23T04:03:34+09:00",
+  "authority_generation": 3,
+  "predecessor_invocation_id": "20260923T022947KST",
+  "transfer_classification": "FENCED_RECOVERY_NOT_CLEAN_NORMAL_HANDOFF",
+  "role_after_accept": "ACTIVE_OWNER",
+  "next_unit": "Prearm successor then execute authoritative handoff research workload while checking READY at safe unit boundaries."
+}
