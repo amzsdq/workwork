@@ -1,0 +1,11 @@
+{
+  "recovery_at_kst": "2026-09-23T04:03:34+09:00",
+  "stale_generation": 2,
+  "stale_owner_invocation_id": "20260923T022947KST",
+  "last_transfer_at_kst": "2026-09-23T02:43:44+09:00",
+  "ready_successor_invocation_id": "20260923T025341KST",
+  "successor_ready_at_kst": "2026-09-23T02:54:05+09:00",
+  "action": "FENCE_STALE_OWNER_AND_TRANSFER_TO_DURABLE_READY_SUCCESSOR",
+  "new_generation": 3,
+  "classification": "FENCED_RECOVERY_NOT_CLEAN_NORMAL_HANDOFF"
+}
