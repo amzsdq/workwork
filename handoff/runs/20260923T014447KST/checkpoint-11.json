@@ -1,0 +1,10 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "BOUNDED_CHECKPOINT_SERIALIZATION_STRESS",
+  "result": "PASS",
+  "serialized_artifact": "serialization-test-01.json",
+  "readback_verified": true,
+  "owner_generation_verified": 1,
+  "next_unit": "READY_RACE_SCENARIO_REASONING"
+}
