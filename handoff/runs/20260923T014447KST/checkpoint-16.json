@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:49:03+09:00",
+  "elapsed_sec": 256,
+  "unit": "SUCCESSOR_PREPARATION_WORK_DEFINITION",
+  "result": "COMPLETE",
+  "artifact": "handoff/SHADOW_PREP.md",
+  "ready_definition": "successor can start the proposed non-duplicating unit immediately after valid transfer without broad re-bootstrap",
+  "next_unit": "OWNER_STATE_AND_READY_CHECK"
+}
