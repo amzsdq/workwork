@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "READY_CHECK",
+  "result": "NO_READY",
+  "action": "continue short bounded substantive unit",
+  "next_unit": "SHADOW_VALUE_MODEL"
+}
