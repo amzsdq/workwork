@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "MINIMAL_REASONING_UNIT",
+  "result": "COMPLETE",
+  "finding": "absence of durable successor start/READY by late target window is evidence about wake delivery or successor startup, not proof that concurrent execution is impossible",
+  "next_unit": "FINAL_READY_CHECK_AND_CLOSE_EVIDENCE"
+}
