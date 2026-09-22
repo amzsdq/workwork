@@ -1,0 +1,9 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "role": "PRIMARY",
+  "seq": 3,
+  "observed_kst": "2026-09-23T01:22:05+09:00",
+  "elapsed_sec_approx": 287,
+  "workload_subprofile": "REPOSITORY_SEARCH_AND_CONTROL_PLANE_CONSISTENCY_CHECK",
+  "finding": "No indexed legacy final-scheduler terms found in current default-branch search."
+}
