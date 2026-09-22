@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "FINAL_WINDOW_MINIMAL_UNIT",
+  "result": "COMPLETE",
+  "work": "classify handoff sample if successor evidence remains absent near target",
+  "classification_rule": "no READY means no authority transfer; preserve owner evidence and let next invocation classify wake/delivery rather than fabricate handoff",
+  "next_unit": "READY_CHECK"
+}
