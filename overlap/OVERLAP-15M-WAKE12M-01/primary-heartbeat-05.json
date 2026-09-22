@@ -1,0 +1,9 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "role": "PRIMARY",
+  "seq": 5,
+  "observed_kst": "2026-09-23T01:26:00+09:00",
+  "elapsed_sec_approx": 522,
+  "workload_subprofile": "WORKLOAD_MATRIX_CONSISTENCY_REVIEW",
+  "finding": "A legacy stress-matrix paragraph still describes synthetic workload more narrowly than the newer test-load policy; recorded as documentation debt, not changed during overlap probe."
+}
