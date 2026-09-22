@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "OWNER_STATE_AND_READY_CHECK",
+  "result": "NO_SUCCESSOR_READY",
+  "action": "continue bounded substantive work",
+  "next_unit": "ROLLBACK_AND_RECOVERY_POLICY"
+}
