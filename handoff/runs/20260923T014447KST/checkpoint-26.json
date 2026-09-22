@@ -1,0 +1,10 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:50:21+09:00",
+  "elapsed_sec": 334,
+  "unit": "READY_CHECK",
+  "result": "NO_READY_EXPECTED_YET",
+  "successor_wake_due_kst": "2026-09-23T01:56:47+09:00",
+  "next_unit": "HANDOFF_SAMPLE_ACCEPTANCE_CRITERIA"
+}
