@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:47:20+09:00",
+  "elapsed_sec": 153,
+  "unit": "SAMPLE_MEASUREMENT_TEMPLATE",
+  "result": "COMPLETE",
+  "artifact": "handoff/runs/20260923T014447KST/measurement.json",
+  "measurement_status": "IN_PROGRESS",
+  "next_unit": "BOUNDED_CHECKPOINT_SERIALIZATION_STRESS"
+}
