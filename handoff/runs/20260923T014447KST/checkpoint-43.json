@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "SHORT_REASONING_UNIT",
+  "result": "COMPLETE",
+  "finding": "lead optimization should distinguish wake lead from READY lead; scheduler jitter and bootstrap consume part of nominal lead before READY exists",
+  "next_unit": "READY_CHECK"
+}
