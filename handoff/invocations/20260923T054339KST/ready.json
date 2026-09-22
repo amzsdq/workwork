@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T054339KST",
+  "role": "SHADOW_SUCCESSOR",
+  "observed_generation": 4,
+  "observed_active_invocation_id": "20260923T041813KST",
+  "ready_at_kst": "2026-09-23T05:44:20+09:00",
+  "bootstrap_ready_sec": 41,
+  "prepared_next_unit": "Reconcile stale gen4 through fenced recovery only if authority remains unchanged; then establish a fresh owner and collect a live READY-triggered transfer sample.",
+  "authoritative_mutation_performed": false,
+  "scheduler_write_performed": false
+}
