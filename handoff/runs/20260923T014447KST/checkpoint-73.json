@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "MINIMAL_IO_UNIT",
+  "result": "COMPLETE",
+  "generation": 1,
+  "next_unit": "READY_CHECK"
+}
