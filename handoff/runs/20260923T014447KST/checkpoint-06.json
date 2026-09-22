@@ -1,0 +1,12 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "MIXED_IO_EXERCISE",
+  "result": "COMPLETE",
+  "reads": ["handoff-state.json", "handoff/READY_SCHEMA.md"],
+  "writes": ["checkpoint-05a.json", "checkpoint-06.json"],
+  "owner_generation": 1,
+  "duplicate_authoritative_work_count": 0,
+  "scheduler_writer_conflicts": 0,
+  "next_unit": "HANDOFF_TIMING_MODEL_REFINEMENT"
+}
