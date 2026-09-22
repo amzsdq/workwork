@@ -1,0 +1,34 @@
+# Probe Execution Plan
+
+Purpose: convert the 12m+ boundary search from repeated setup/document turns into sustained, auditable substantive work.
+
+## Problem observed
+Recent invocations have mostly ended UNDER_TARGET after short instrumentation edits. Those edits improved the protocol but do not test the runtime boundary. Continuing to create one small document per invocation would optimize documentation rather than answer the research question.
+
+## Execution rule
+At invocation start, capture START_TS immediately. Then work through multiple substantive units in one invocation without voluntarily closing merely because one unit finished.
+
+Eligible units, in order:
+1. Reproducibility audit: reconstruct target, lower bound, evidence counters, and next action from durable state; repair contradictions that would change classification.
+2. Event-ledger audit: parse every timing-related event and produce/update a compact evidence table with class, result, elapsed, useful work, close evidence, wake evidence, and boundary effect.
+3. Failure-case test vectors: create concrete records for clean pass, under-target, duration failure, non-duration failure, ambiguous close loss, scheduler-state mismatch, and missing next wake; verify each has exactly one boundary effect.
+4. Boundary estimator stress cases: test coarse/refinement rules against synthetic *logic cases only* (never count as empirical runtime evidence) to find promotion/refinement errors.
+5. Policy-decision replay framework: define how future observed task/close samples can be replayed through P1-P4 without contaminating Phase-A evidence.
+6. Reproducibility re-audit after changes.
+
+If these units finish before target, identify and execute another genuinely necessary unit within the single research goal. Do not manufacture edits, sleep, spin, or claim elapsed time not directly observed.
+
+## Target crossing
+When directly observed elapsed time reaches the current target while substantive work is still proceeding:
+- finish only the current bounded unit/checkpoint;
+- capture TARGET_CROSS_TS and PRE_CLOSE_TS;
+- persist the timing event/checkpoint;
+- perform the one final scheduler update;
+- record scheduler-write completion from direct observation;
+- classify only after the returned scheduler state is checked.
+
+## Anti-fragmentation rule
+Completing one useful unit is not a reason to hand off before target if another useful unit is available. The experiment specifically requires sustained invocation runtime, so useful units should be chained in the same invocation until target crossing, genuine exhaustion of useful work, or a real blocking/risk condition.
+
+## Evidence integrity
+Synthetic cases validate decision logic only. They must be labeled SIMULATION/LOGIC_TEST and can never raise SAFE_LOWER_BOUND or create a FAILURE_BOUNDARY.
