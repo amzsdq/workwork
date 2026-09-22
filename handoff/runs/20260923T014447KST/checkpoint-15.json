@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "CONTROL_OVERHEAD_ACCOUNTING",
+  "result": "COMPLETE",
+  "artifact": "handoff/CONTROL_OVERHEAD.md",
+  "principle": "zero idle is not sufficient; include shadow usefulness, control cost, and abandoned predecessor capacity",
+  "next_unit": "SUCCESSOR_PREPARATION_WORK_DEFINITION"
+}
