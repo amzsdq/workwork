@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "MINIMAL_REASONING_UNIT",
+  "result": "COMPLETE",
+  "finding": "post-wake no-READY interval is part of successor bootstrap/start jitter and must be measured rather than treated as handoff failure until sufficient observation window passes",
+  "next_unit": "READY_CHECK"
+}
