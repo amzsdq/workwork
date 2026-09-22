@@ -1,0 +1,13 @@
+{
+  "invocation_id": "20260923T073918KST",
+  "role": "SHADOW_SUCCESSOR",
+  "observed_generation": 6,
+  "observed_active_invocation_id": "20260923T062212KST",
+  "scheduled_for_kst": "2026-09-23T07:36:31+09:00",
+  "actual_start_kst": "2026-09-23T07:39:18+09:00",
+  "wake_jitter_sec": 167,
+  "successor_lead_sec": 180,
+  "scheduler_strategy": "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
+  "authority_mutation": false,
+  "scheduler_mutation": false
+}
