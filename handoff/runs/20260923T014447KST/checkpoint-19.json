@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "ADMISSION_POLICY_FOR_HANDOFF_WINDOW",
+  "result": "COMPLETE",
+  "artifact": "handoff/ADMISSION.md",
+  "policy": "normal units outside window; bounded units near wake before READY; no new ordinary unit after READY",
+  "next_unit": "DURABLE_STATE_RECOVERY_TEST"
+}
