@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "SHORT_BOUNDED_CHECKPOINT_UNIT",
+  "result": "COMPLETE",
+  "substantive_test": "verify repeated immutable checkpoint creation remains conflict-free under owner-only writes",
+  "conflict": false,
+  "next_unit": "READY_CHECK"
+}
