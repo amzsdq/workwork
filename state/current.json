@@ -1,0 +1,13 @@
+{
+  "schema_version": 1,
+  "status": "READY",
+  "repo": "amzsdq/workwork",
+  "relay": {
+    "recurring_rrule": "FREQ=HOURLY",
+    "normal_scheduler_mutations_per_turn": 1,
+    "lead_time_class_minutes": 3,
+    "lead_time_status": "experimental_baseline",
+    "append_only_events": true
+  },
+  "updated_at": "2026-09-22T22:28:30+09:00"
+}
