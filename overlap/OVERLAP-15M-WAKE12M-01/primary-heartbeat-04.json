@@ -1,0 +1,9 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "role": "PRIMARY",
+  "seq": 4,
+  "observed_kst": "2026-09-23T01:24:00+09:00",
+  "elapsed_sec_approx": 402,
+  "workload_subprofile": "ROOT_INVENTORY_AND_EXPERIMENT_ARTIFACT_REVIEW",
+  "active_work": true
+}
