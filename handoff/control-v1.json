@@ -1,11 +1,12 @@
 {
-  "generation": 2,
-  "active_invocation_id": "20260923T022947KST",
+  "generation": 3,
+  "active_invocation_id": "20260923T025341KST",
   "status": "ACTIVE_OWNER_TRANSFERRED",
-  "predecessor_invocation_id": "20260923T021630KST",
-  "successor_invocation_id": "20260923T022947KST",
-  "successor_ready_at_kst": "2026-09-23T02:30:20+09:00",
-  "authority_transfer_at_kst": "2026-09-23T02:43:44+09:00",
+  "predecessor_invocation_id": "20260923T022947KST",
+  "successor_invocation_id": "20260923T025341KST",
+  "successor_ready_at_kst": "2026-09-23T02:54:05+09:00",
+  "authority_transfer_at_kst": "2026-09-23T04:03:34+09:00",
   "successor_lead_sec": 180,
-  "transfer_reason": "successor READY durable; predecessor nominal horizon expired without transfer; fenced recovery transfer"
+  "transfer_reason": "durable READY successor present; generation-2 owner stale far beyond nominal horizon; fenced recovery transfer",
+  "transfer_classification": "FENCED_RECOVERY_NOT_CLEAN_NORMAL_HANDOFF"
 }
