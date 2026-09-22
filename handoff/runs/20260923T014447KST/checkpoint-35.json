@@ -1,0 +1,10 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "OWNER_FENCE_REVALIDATION",
+  "result": "PASS",
+  "generation": 1,
+  "active_invocation_id": "20260923T014447KST",
+  "action": "continue bounded work",
+  "next_unit": "HANDOFF_WINDOW_PREPARATION"
+}
