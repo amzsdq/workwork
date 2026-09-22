@@ -1,0 +1,10 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "role": "PRIMARY",
+  "seq": 7,
+  "observed_kst": "2026-09-23T01:29:05+09:00",
+  "elapsed_sec_approx": 707,
+  "workload_subprofile": "ROLLBACK_POLICY_REVIEW",
+  "active_work": true,
+  "note": "Primary still active immediately before scheduled overlap wake at 01:29:18 KST."
+}
