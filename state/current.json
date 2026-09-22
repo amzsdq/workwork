@@ -1,5 +1,5 @@
 {
-  "schema_version": 10,
+  "schema_version": 11,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
@@ -24,16 +24,19 @@
     "evidence_path": "overlap/OVERLAP-15M-WAKE12M-01/"
   },
   "handoff_research": {
-    "status": "SAMPLE_001_ACTIVE_OWNER",
-    "active_invocation_id": "20260923T014447KST",
+    "status": "STALE_OWNER_RECOVERED_SAMPLE_002_ACTIVE_OWNER",
+    "active_invocation_id": "20260923T021630KST",
+    "authority_generation": 1,
+    "predecessor_invocation_id": "20260923T014447KST",
     "nominal_active_runtime_sec": 900,
     "successor_lead_candidates_sec": [180,120,60,240],
     "current_successor_lead_sec": 180,
-    "successor_scheduled_for_kst": "2026-09-23T01:56:47+09:00",
+    "successor_scheduled_for_kst": "2026-09-23T02:28:30+09:00",
     "handoff_policy": "EARLY_READY_HANDOFF",
     "scheduler_strategy": "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
-    "authority_model": "ACTIVE_OWNER_PLUS_SHADOW_SUCCESSOR",
+    "authority_model": "ACTIVE_OWNER_PLUS_SHADOW_SUCCESSOR_WITH_FENCED_RECOVERY",
+    "control_path": "handoff/control-v1.json",
     "append_only_per_invocation": true
   },
-  "updated_at": "2026-09-23T01:45:03+09:00"
+  "updated_at": "2026-09-23T02:17:30+09:00"
 }
