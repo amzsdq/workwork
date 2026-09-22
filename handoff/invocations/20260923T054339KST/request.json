@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T054339KST",
+  "role": "SHADOW_SUCCESSOR",
+  "observed_generation": 4,
+  "observed_active_invocation_id": "20260923T041813KST",
+  "actual_start_kst": "2026-09-23T05:43:39+09:00",
+  "scheduled_for_kst": "2026-09-23T04:44:00+09:00",
+  "wake_jitter_sec": 3579,
+  "scheduler_strategy": "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
+  "note": "Late invocation observed stale gen4 authority; immutable shadow evidence only."
+}
