@@ -1,0 +1,14 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "ACTIVE_LOAD_CHECKPOINT_CHAIN_B",
+  "result": "COMPLETE",
+  "consistency_checks": {
+    "shadow_scheduler_forbidden": true,
+    "early_ready_handoff": true,
+    "authority_generation_required": true,
+    "immutable_evidence_preferred": true,
+    "rollback_defined": true
+  },
+  "next_unit": "READY_CHECK"
+}
