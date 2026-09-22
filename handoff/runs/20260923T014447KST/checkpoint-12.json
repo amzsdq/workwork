@@ -1,0 +1,16 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:47:52+09:00",
+  "elapsed_sec": 185,
+  "unit": "READY_RACE_SCENARIO_REASONING",
+  "result": "COMPLETE",
+  "cases": [
+    "READY arrives before owner boundary: owner completes in-flight unit then transfers",
+    "READY arrives between owner fresh-read and CAS: second fresh-read plus exact SHA prevents stale transfer",
+    "multiple READY files: accept only intended successor for current generation",
+    "late READY after transfer: stale generation cannot acquire authority",
+    "shadow schedule write: classify sample non-clean"
+  ],
+  "next_unit": "CONTINUE_MIXED_LOAD_AND_PERIODIC_READY_CHECK"
+}
