@@ -1,0 +1,12 @@
+{
+  "invocation_id": "20260923T041813KST",
+  "role": "SHADOW_SUCCESSOR",
+  "observed_generation": 3,
+  "observed_active_owner": "20260923T025341KST",
+  "actual_start_kst": "2026-09-23T04:18:13+09:00",
+  "ready_at_kst": "2026-09-23T04:31:04+09:00",
+  "bootstrap_ready_sec": 771,
+  "prepared_next_unit": "fenced stale-owner recovery then re-establish live overlap sample",
+  "authoritative_mutation": false,
+  "note": "READY durable evidence recovered after prior transient persistence block"
+}
