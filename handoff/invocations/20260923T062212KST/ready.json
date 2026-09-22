@@ -1,0 +1,12 @@
+{
+  "invocation_id": "20260923T062212KST",
+  "role": "SHADOW_SUCCESSOR",
+  "for_generation": 5,
+  "predecessor_invocation_id": "20260923T054339KST",
+  "ready_at_kst": "2026-09-23T06:22:20+09:00",
+  "bootstrap_ready_sec": 8,
+  "prepared_next_unit": "On authority acceptance, reconcile accepted/control/state atomically as possible, immediately pre-arm the following successor, then execute bounded handoff measurement work while checking READY only at safe minimum-unit boundaries.",
+  "authority_mutation": false,
+  "scheduler_write": false,
+  "status": "READY"
+}
