@@ -1,15 +1,17 @@
 {
-  "schema_version": 6,
+  "schema_version": 7,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
-  "single_research_goal": "maximum_safe_runtime_and_reproducible_handoff_policy",
+  "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
   "relay": {
     "recurring_rrule": "FREQ=HOURLY",
     "lead_time_minutes": 3,
-    "lead_time_status": "FIXED_CONTROL_BASELINE_FOR_THIS_STUDY",
     "lead_time_source": "prior relay research; currently best available baseline",
-    "vary_lead_time_in_this_program": false,
-    "normal_scheduler_mutations_per_turn": 1
+    "normal_scheduler_mutations_per_turn": 1,
+    "scheduling_mode": "PREARM_AT_TURN_START",
+    "end_of_turn_scheduler_write": false,
+    "initial_planned_gap_minutes": 3,
+    "gap_is_research_variable": true
   },
   "runtime_research": {
     "phase": "BOUNDARY_SEARCH_COARSE_ASCENT",
@@ -60,5 +62,18 @@
     "boundary_effect": "NONE",
     "note": "EVIDENCE_INTEGRITY_NOTE.md"
   },
-  "updated_at": "2026-09-23T00:59:00+09:00"
+  "updated_at": "2026-09-23T01:04:58+09:00",
+  "gap_research": {
+    "phase": "BASELINE_PREARM_3M",
+    "definition": "NEXT_WAKE = TURN_START + target_runtime + planned_gap",
+    "current_planned_gap_minutes": 3,
+    "candidate_gaps_minutes": [
+      3,
+      2,
+      1
+    ],
+    "actual_idle_gap_measured_next_turn": true,
+    "overlap_or_concurrent_wake_must_be_false": true,
+    "promoted_gap_minutes": null
+  }
 }
