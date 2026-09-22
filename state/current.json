@@ -1,12 +1,14 @@
 {
-  "schema_version": 3,
+  "schema_version": 4,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_and_reproducible_handoff_policy",
   "relay": {
     "recurring_rrule": "FREQ=HOURLY",
-    "lead_time_class_minutes": 3,
-    "lead_time_status": "experimental_baseline",
+    "lead_time_minutes": 3,
+    "lead_time_status": "FIXED_CONTROL_BASELINE_FOR_THIS_STUDY",
+    "lead_time_source": "prior relay research; currently best available baseline",
+    "vary_lead_time_in_this_program": false,
     "normal_scheduler_mutations_per_turn": 1
   },
   "runtime_research": {
@@ -35,5 +37,5 @@
     "safety_margin_sec": null,
     "close_overhead_sec": null
   },
-  "updated_at": "2026-09-22T22:35:00+09:00"
+  "updated_at": "2026-09-22T23:23:10+09:00"
 }
