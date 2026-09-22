@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "MINIMAL_REASONING_UNIT",
+  "result": "COMPLETE",
+  "finding": "if this wake is delayed but eventually arrives before predecessor target, 180s lead may still be adequate; classify delivery jitter separately from bootstrap time",
+  "next_unit": "READY_CHECK"
+}
