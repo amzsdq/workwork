@@ -1,8 +1,8 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
-  "single_research_goal": "maximum_safe_runtime_before_handoff",
+  "single_research_goal": "maximum_safe_runtime_and_reproducible_handoff_policy",
   "relay": {
     "recurring_rrule": "FREQ=HOURLY",
     "lead_time_class_minutes": 3,
@@ -10,15 +10,30 @@
     "normal_scheduler_mutations_per_turn": 1
   },
   "runtime_research": {
+    "phase": "BOUNDARY_SEARCH_COARSE_ASCENT",
     "prior_operational_baseline_minutes": 10,
     "baseline_status": "prior_evidence_not_formally_revalidated_here",
-    "phase": "COARSE_ASCENT",
     "next_target_minutes": 12,
-    "step_minutes": 2,
+    "coarse_step_minutes": 2,
+    "refinement_step_minutes": 1,
     "first_failure_boundary_minutes": null,
     "last_clean_target_minutes": 10,
     "promoted_operating_cap_minutes": null,
     "repeated_validation_required": 5
   },
-  "updated_at": "2026-09-22T22:29:51+09:00"
+  "policy_research": {
+    "phase": "PENDING_RUNTIME_BOUNDARY",
+    "variants": [
+      "FIXED_THRESHOLD",
+      "SOFT_CUTOFF_HARD_CAP",
+      "ESTIMATED_NEXT_TASK_ADMISSION",
+      "ADAPTIVE_ADMISSION"
+    ],
+    "promoted_policy": null,
+    "soft_cutoff_minutes": null,
+    "hard_cap_minutes": null,
+    "safety_margin_sec": null,
+    "close_overhead_sec": null
+  },
+  "updated_at": "2026-09-22T22:35:00+09:00"
 }
