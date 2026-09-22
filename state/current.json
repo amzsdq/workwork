@@ -1,5 +1,5 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_and_reproducible_handoff_policy",
@@ -25,17 +25,19 @@
   },
   "policy_research": {
     "phase": "PENDING_RUNTIME_BOUNDARY",
-    "variants": [
-      "FIXED_THRESHOLD",
-      "SOFT_CUTOFF_HARD_CAP",
-      "ESTIMATED_NEXT_TASK_ADMISSION",
-      "ADAPTIVE_ADMISSION"
-    ],
+    "variants": ["FIXED_THRESHOLD", "SOFT_CUTOFF_HARD_CAP", "ESTIMATED_NEXT_TASK_ADMISSION", "ADAPTIVE_ADMISSION"],
     "promoted_policy": null,
     "soft_cutoff_minutes": null,
     "hard_cap_minutes": null,
     "safety_margin_sec": null,
     "close_overhead_sec": null
   },
-  "updated_at": "2026-09-22T23:23:10+09:00"
+  "evidence_integrity": {
+    "suspect_event": "PROBE_WORKLOAD_AND_SCHEMA_ADDED",
+    "suspect_timestamp": "2026-09-22T23:00:00+09:00",
+    "timing_use_allowed": false,
+    "boundary_effect": "NONE",
+    "note": "EVIDENCE_INTEGRITY_NOTE.md"
+  },
+  "updated_at": "2026-09-22T23:45:25+09:00"
 }
