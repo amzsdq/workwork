@@ -1,0 +1,14 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:50:46+09:00",
+  "elapsed_sec": 359,
+  "unit": "ACTIVE_REASONING_LOAD_POLICY_COMPARISON",
+  "result": "COMPLETE",
+  "comparison": {
+    "EARLY_READY_HANDOFF": "minimizes post-ready ownership latency but may abandon predecessor residual capacity",
+    "TARGET_HOLD": "preserves predecessor target runtime but converts useful successor preload into longer concurrent shadow residency"
+  },
+  "current_hypothesis": "EARLY_READY_HANDOFF is preferable when successor READY cost is low and prepared work can start immediately; empirical residual-budget cost must be measured",
+  "next_unit": "PRE_WAKE_BOUNDED_IO"
+}
