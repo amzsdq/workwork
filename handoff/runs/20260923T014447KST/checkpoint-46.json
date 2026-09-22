@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "SHORT_POLICY_VALIDATION",
+  "result": "PASS",
+  "checks": ["no scheduler mutation after initial S1 prearm", "no shadow authority observed", "owner generation stable", "READY-triggered transfer not prematurely executed"],
+  "next_unit": "READY_CHECK"
+}
