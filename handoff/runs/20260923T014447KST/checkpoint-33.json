@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "READY_CHECK_AND_BOUNDED_POLICY_SYNTHESIS",
+  "result": "NO_READY_CONTINUE",
+  "policy_synthesis": "S1 secures wake first; owner works normally before handoff window; successor shadows read/prepare only; READY stops new unit admission; CAS transfer is authority point; successor accepts then immediately prearms its own successor",
+  "next_unit": "CHECKPOINT_RECOVERY_GRAPH"
+}
