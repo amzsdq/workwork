@@ -3,18 +3,20 @@
 Purpose: keep Phase B/C optimization aligned with long-run useful-work utilization rather than raw longest runtime. This is an analytical aid, not empirical runtime evidence.
 
 ## Baseline
-Fixed relay lead/gap control: `G = 3 minutes`.
+Wake scheduling is pre-armed at turn start.
+Initial planned gap: `G_plan = 3 minutes`.
 Prior operating baseline: `T0 = 10 minutes`.
-Idealized no-failure baseline utilization: `U0 = 10/(10+3) = 0.7692`.
+The actual idle gap is not fixed: `G_actual = next_start - prior_close`.
+If close occurs after the target, `G_actual < G_plan`. Therefore optimization must use observed actual idle gap, not only the planned value.
 
 ## Minimal model
-For candidate active duration `T`, clean-close probability `p(T)`, and an illustrative failed-close recovery penalty `R`, use:
+For candidate active duration `T`, observed/expected actual idle gap `G_actual`, clean-close probability `p(T)`, and an illustrative failed-close recovery penalty `R`, use:
 
-`U(T) = p(T)*T / (T + G + (1-p(T))*R)`
+`U(T) = p(T)*T / (T + G_actual + (1-p(T))*R)`
 
 This deliberately penalizes longer turns when clean-close probability falls. It is not a claim that failure always loses all work; actual observed recovery semantics should replace the simplified term when enough evidence exists.
 
-With `G=3m` and illustrative `R=3m`, the approximate minimum clean-close probability needed merely to beat the idealized 10m baseline is:
+The previous fixed-3m table is only a historical comparison. Under pre-arm mode, recompute comparisons from observed `G_actual`; do not treat planned 3m as actual idle time.
 
 | T | p(T) needed to beat 10m baseline |
 |---|---:|
@@ -48,5 +50,15 @@ Therefore the practical rule is:
 
 The model does not set `hard_cap`, `close_overhead`, or `safety_margin`; those must come from direct timing evidence.
 
+## Gap-selection implication
+After the runtime cap is sufficiently characterized, compare planned gaps using:
+- actual idle gap distribution,
+- clean close probability,
+- wake continuation probability,
+- overlap/concurrency rate,
+- long-run useful-work / wall-clock time.
+
+Choose the smallest planned gap that preserves reliability; a smaller planned gap is not better if it creates overlap or close loss.
+
 ## Anti-bias rule
-Do not choose a production cap solely because theoretical `T/(T+3)` improves. Boundary evidence and repeated clean closes dominate the model. Use this model only after empirical timing evidence exists to compare candidate policies/caps.
+Do not choose a production cap or gap solely from theoretical ratios. Boundary evidence, observed actual idle gaps, and repeated clean closes/wakes dominate the model.
