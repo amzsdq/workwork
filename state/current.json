@@ -1,5 +1,5 @@
 {
-  "schema_version": 7,
+  "schema_version": 8,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
@@ -14,7 +14,7 @@
     "gap_is_research_variable": true
   },
   "runtime_research": {
-    "phase": "BOUNDARY_SEARCH_COARSE_ASCENT",
+    "phase": "OVERLAP_PROBE_TEMPORARY",
     "prior_operational_baseline_minutes": 10,
     "baseline_status": "prior_evidence_not_formally_revalidated_here",
     "next_target_minutes": 12,
@@ -62,7 +62,7 @@
     "boundary_effect": "NONE",
     "note": "EVIDENCE_INTEGRITY_NOTE.md"
   },
-  "updated_at": "2026-09-23T01:04:58+09:00",
+  "updated_at": "2026-09-23T01:10:24+09:00",
   "gap_research": {
     "phase": "BASELINE_PREARM_3M",
     "definition": "NEXT_WAKE = TURN_START + target_runtime + planned_gap",
@@ -75,5 +75,16 @@
     "actual_idle_gap_measured_next_turn": true,
     "overlap_or_concurrent_wake_must_be_false": true,
     "promoted_gap_minutes": null
+  },
+  "overlap_probe": {
+    "active": true,
+    "probe_id": "OVERLAP-15M-WAKE12M-01",
+    "phase": "READY_FOR_PRIMARY",
+    "primary_target_minutes": 15,
+    "wake_offset_minutes": 12,
+    "nominal_overlap_minutes": 3,
+    "workload_profile": "TEST_GENERATED_MIXED_LOAD",
+    "evidence_path": "overlap/OVERLAP-15M-WAKE12M-01/",
+    "result": null
   }
 }
