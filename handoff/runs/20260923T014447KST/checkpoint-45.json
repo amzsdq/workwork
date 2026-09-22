@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "BOUNDED_STATE_READ_AND_READY_CHECK",
+  "result": "OWNER_STABLE_NO_READY",
+  "generation": 1,
+  "next_unit": "SHORT_POLICY_VALIDATION"
+}
