@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "HANDOFF_WINDOW_PREPARATION",
+  "result": "COMPLETE",
+  "expected_successor_wake_kst": "2026-09-23T01:56:47+09:00",
+  "handoff_window_behavior": "prefer short bounded substantive units; check READY at natural boundaries; after READY finish in-flight unit then transfer",
+  "next_unit": "SHORT_BOUNDED_REASONING_UNIT"
+}
