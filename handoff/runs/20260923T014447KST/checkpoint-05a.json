@@ -1,0 +1,10 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "OWNER_STATE_REREAD",
+  "result": "COMPLETE",
+  "generation_observed": 1,
+  "active_owner_matches": true,
+  "scheduler_strategy": "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
+  "next_unit": "MIXED_IO_EXERCISE"
+}
