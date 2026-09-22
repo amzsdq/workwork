@@ -1,0 +1,10 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "role": "PRIMARY",
+  "primary_start_kst": "2026-09-23T01:17:18+09:00",
+  "primary_start_utc": "2026-09-22T16:17:18Z",
+  "target_runtime_sec": 900,
+  "overlap_wake_offset_sec": 720,
+  "nominal_overlap_sec": 180,
+  "workload_profile": "TEST_GENERATED_MIXED_LOAD"
+}
