@@ -1,0 +1,11 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "role": "PRIMARY",
+  "seq": 9,
+  "observed_kst": "2026-09-23T01:31:25+09:00",
+  "elapsed_sec_approx": 847,
+  "workload_subprofile": "UTILITY_MODEL_AND_OVERLAP_IMPLICATION_ANALYSIS",
+  "active_work": true,
+  "scheduled_overlap_wake_kst": "2026-09-23T01:29:18+09:00",
+  "finding": "Primary remains active more than two minutes after scheduled overlap wake."
+}
