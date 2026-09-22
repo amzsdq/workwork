@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "PRE_WAKE_BOUNDED_IO",
+  "result": "COMPLETE",
+  "reads": ["handoff/ADMISSION.md", "handoff/TIMING_MODEL.md"],
+  "consistency": "PASS",
+  "next_unit": "TRANSFER_LATENCY_BUDGET_ANALYSIS"
+}
