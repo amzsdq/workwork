@@ -1,0 +1,11 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "role": "PRIMARY",
+  "seq": 8,
+  "observed_kst": "2026-09-23T01:30:05+09:00",
+  "elapsed_sec_approx": 767,
+  "workload_subprofile": "POST_OVERLAP_DUE_EVIDENCE_CHECK",
+  "active_work": true,
+  "scheduled_overlap_wake_kst": "2026-09-23T01:29:18+09:00",
+  "finding": "Primary invocation remained alive after the scheduled overlap due time. No secondary-start artifact was visible on the first post-due directory read."
+}
