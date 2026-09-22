@@ -16,10 +16,10 @@ The optimization target is long-run useful-work utilization, not merely the long
 - Reuse the same automation for normal continuation; no replacement automation.
 - Keep a complete recurring VEVENT containing `RRULE:FREQ=HOURLY`.
 - Do not use DTSTART-only one-shot or `dtstart_offset_json`.
-- Normal clean path performs one final scheduler mutation per turn.
-- Relay lead time is fixed at +3 minutes for this study. Prior relay research currently supports +3m as the best available baseline; this program treats it as a control variable, not a research variable. It is still empirical rather than a platform guarantee.
+- Normal clean path performs one scheduler mutation immediately after TURN_START, before substantive work. This pre-arms the next wake. Do not mutate the scheduler again at turn end.
+- Wake scheduling is now PRE-ARMED at turn start. Compute NEXT_WAKE = TURN_START + target_runtime + planned_gap. Start with planned_gap=3m as the prior best baseline, then test smaller/larger gaps after runtime behavior is characterized.
 - Measure real elapsed runtime and active test work separately. Deliberately generated bounded workload is allowed when it exists to exercise runtime behavior and its profile is recorded. Idle waiting/sleeping only to consume time remains excluded.
-- A run is only a clean timing PASS if substantive work occurred, durable evidence was saved, and the final recurring scheduler write returned the intended DTSTART/RRULE/enabled state.
+- A run is only a clean timing PASS if the next wake was successfully pre-armed at turn start, the target workload was exercised, and durable close evidence was saved. The pre-arm scheduler return must contain the intended DTSTART/RRULE/enabled state.
 - WRITE_OK is not future WAKE_OK.
 - Any platform/tool failure not plausibly caused by turn duration must be classified separately rather than counted as a timeout boundary.
 - Git history and `state/events.log` are recovery evidence.
@@ -85,8 +85,12 @@ Track at minimum:
 - useful_work_sec
 - clean_close
 - checkpoint_saved
-- scheduler_write_ok
-- scheduler_state_ok
+- prearm_scheduler_write_ok
+- prearm_scheduler_state_ok
+- planned_gap_sec
+- planned_wake_offset_sec
+- actual_idle_gap_sec on the next invocation
+- overlap_or_concurrent_wake
 - next_wake_observed on the following invocation
 - forced_stop_or_timeout
 - non_duration_failure
@@ -102,3 +106,21 @@ Track at minimum:
 - `MAX_SAFE_RUNTIME_RESEARCH.md` — experiment/decision protocol.
 
 Never rewrite historical event meaning. Never persist credentials, cookies, session state, private URLs, or secrets.
+
+
+## Pre-armed wake rule
+The relay no longer schedules the next wake at the end of the turn.
+
+At TURN_START:
+1. Capture START_TS.
+2. Select target_runtime and planned_gap.
+3. Compute NEXT_WAKE = START_TS + target_runtime + planned_gap.
+4. Update this same recurring RRULE automation immediately.
+5. Verify the returned DTSTART, RRULE:FREQ=HOURLY, and enabled=true.
+6. Perform the workload.
+7. Save the final checkpoint and close without another scheduler mutation.
+
+The quantity to optimize is the planned_gap that produces the smallest safe actual idle gap without causing overlap, concurrent invocations, missed checkpoints, or wake instability.
+
+Initial planned-gap baseline: 3 minutes.
+Later gap probes: 2m, 1m, and other values only when justified by evidence.
