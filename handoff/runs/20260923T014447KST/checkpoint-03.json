@@ -1,0 +1,9 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "SUCCESSOR_READY_SCHEMA_AND_TRANSFER_CHECKLIST",
+  "result": "COMPLETE",
+  "artifact": "handoff/READY_SCHEMA.md",
+  "design_decision": "READY is not authority; transfer requires fresh owner/generation validation and exact-SHA CAS update. Successor may pre-arm only after ACCEPTED ownership.",
+  "next_unit": "LEAD_TIME_EXPERIMENT_SCORING_MODEL"
+}
