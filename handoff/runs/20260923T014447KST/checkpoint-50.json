@@ -1,0 +1,8 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "unit": "SHORT_REASONING_UNIT",
+  "result": "COMPLETE",
+  "finding": "the optimal successor lead may be shorter than 180s if bootstrap is fast, but no reduction should occur before measured READY and transfer-tail samples exist",
+  "next_unit": "READY_CHECK"
+}
