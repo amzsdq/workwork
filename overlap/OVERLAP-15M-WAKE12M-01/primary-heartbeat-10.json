@@ -1,0 +1,13 @@
+{
+  "probe_id": "OVERLAP-15M-WAKE12M-01",
+  "role": "PRIMARY",
+  "seq": 10,
+  "observed_kst": "2026-09-23T01:32:30+09:00",
+  "elapsed_sec_approx": 912,
+  "workload_subprofile": "TARGET_CROSS_AND_DIRECTORY_RECHECK",
+  "active_work": true,
+  "target_runtime_sec": 900,
+  "target_reached": true,
+  "scheduled_overlap_wake_kst": "2026-09-23T01:29:18+09:00",
+  "finding": "Primary reached 15-minute target and remained alive. No secondary-start artifact was visible through the latest directory read."
+}
