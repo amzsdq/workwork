@@ -1,0 +1,11 @@
+{
+  "invocation_id": "20260923T014447KST",
+  "role": "ACTIVE_OWNER",
+  "checkpoint_kst": "2026-09-23T01:52:33+09:00",
+  "elapsed_sec": 466,
+  "unit": "RECOVERY_REASONING",
+  "result": "COMPLETE_WITH_NON_DURATION_TOOL_BLOCK",
+  "recovery_rule": "derive current authority from handoff-state generation and owner; use immutable evidence for history; derived state cannot override authority",
+  "non_duration_failure": "one documentation write blocked by connector safety check",
+  "next_unit": "CONTINUE_BOUNDED_ACTIVE_LOAD"
+}
