@@ -173,3 +173,57 @@ Final reusable policy should provide:
 - observed handoff_gap distribution
 - overlap/preload utilization
 - rollback rule
+
+
+## Scheduler timing experiment
+The timing of the next scheduler write is itself an experimental variable.
+
+### S1 ACTIVE_OWNER_IMMEDIATE_PREARM
+As soon as an invocation is ACTIVE_OWNER, it pre-arms its successor before bootstrap-heavy or substantive work.
+
+Sequence:
+ACTIVE_OWNER_START -> capture start -> compute successor wake -> scheduler update -> verify -> work.
+
+Hypothesis:
+This maximizes continuation safety because the next wake is secured before the current invocation spends runtime budget.
+
+### S2 POST_BOOTSTRAP_PREARM
+ACTIVE_OWNER first restores context / performs bootstrap, then pre-arms the successor before substantive work.
+
+Hypothesis:
+This may improve wake-time accuracy because the owner has a better estimate of remaining runtime, but risks dying before continuation is secured.
+
+### S3 SHADOW_IMMEDIATE_PREARM
+A SHADOW successor attempts to schedule the next wake immediately upon waking, before authority transfer.
+
+This is a high-risk isolated experiment only.
+Potential benefit:
+- successor chain can be preloaded continuously.
+
+Primary risks:
+- two scheduler writers,
+- predecessor and successor overwriting each other's DTSTART,
+- uncontrolled multi-generation overlap,
+- a shadow that never gains authority still scheduling another wake.
+
+Do NOT use S3 in normal operation unless an isolated test demonstrates that scheduler ownership can be fenced safely.
+
+## Scheduler timing metrics
+Track:
+- scheduler_strategy
+- wake_to_schedule_write_sec
+- schedule_write_ok
+- schedule_conflict
+- overwritten_schedule_detected
+- continuation_secured_before_failure
+- successor_ready_sec
+- actual_handoff_gap_sec
+- generations_overlapped
+- duplicate_scheduler_writer_count
+
+## Initial scheduler-strategy order
+1. S1 ACTIVE_OWNER_IMMEDIATE_PREARM as baseline.
+2. S2 POST_BOOTSTRAP_PREARM for comparison.
+3. S3 SHADOW_IMMEDIATE_PREARM only as an isolated stress test after fencing rules are in place.
+
+The preferred strategy is the earliest scheduler write that does not create writer races or uncontrolled overlap.
