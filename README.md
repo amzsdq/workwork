@@ -18,7 +18,7 @@ The optimization target is long-run useful-work utilization, not merely the long
 - Do not use DTSTART-only one-shot or `dtstart_offset_json`.
 - Normal clean path performs one final scheduler mutation per turn.
 - Relay lead time is fixed at +3 minutes for this study. Prior relay research currently supports +3m as the best available baseline; this program treats it as a control variable, not a research variable. It is still empirical rather than a platform guarantee.
-- Measure real elapsed runtime and useful work separately. Never pad, sleep, or invent busywork just to hit a duration target.
+- Measure real elapsed runtime and active test work separately. Deliberately generated bounded workload is allowed when it exists to exercise runtime behavior and its profile is recorded. Idle waiting/sleeping only to consume time remains excluded.
 - A run is only a clean timing PASS if substantive work occurred, durable evidence was saved, and the final recurring scheduler write returned the intended DTSTART/RRULE/enabled state.
 - WRITE_OK is not future WAKE_OK.
 - Any platform/tool failure not plausibly caused by turn duration must be classified separately rather than counted as a timeout boundary.
