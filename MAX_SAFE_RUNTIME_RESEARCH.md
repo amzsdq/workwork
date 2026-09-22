@@ -3,14 +3,14 @@
 ## Research question
 What is the maximum empirically safe substantive-work duration for one ChatGPT Automation RRULE relay invocation, and what handoff/admission policy most reliably reproduces near that optimum over many turns?
 
-This is one integrated research problem:
+This is one integrated research problem. The +3m relay lead is a fixed control variable:
 1. characterize the runtime failure boundary,
 2. choose a safe operating cap,
 3. derive a repeatable policy that uses as much of that cap as practical.
 
 ## Current operating context
 - Previous operating floor: about 10 minutes of work before handoff.
-- Current promoted relay lead-time baseline: about +3 minutes.
+- Relay lead time: fixed +3 minutes for this study, based on the current best prior relay result. Do not optimize or vary relay lead time inside this program.
 - A simplistic 10m work / 3m gap cycle has idealized duty cycle 76.9% before jitter/failures.
 - Longer turns improve theoretical duty cycle, but a failed final checkpoint/rearm can make expected availability worse.
 
