@@ -92,3 +92,9 @@ Small changes are allowed only when directly improving:
 - reproducibility of the final policy.
 
 Avoid unrelated orchestration expansion.
+
+
+## Cross-profile generalization
+Runtime safety must be tested across heterogeneous real workload shapes defined in `RUNTIME_WORKLOAD_PROFILES.md`.
+
+A single profile may advance an exploratory lower bound, but a final universal operating cap requires replication across representative workload profiles near the candidate boundary. If a realistic profile has materially worse close behavior or a lower failure boundary, the final policy must account for it rather than averaging the risk away.
