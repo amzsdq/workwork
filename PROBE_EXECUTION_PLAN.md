@@ -6,7 +6,7 @@ Purpose: convert the 12m+ boundary search from repeated setup/document turns int
 Recent invocations have mostly ended UNDER_TARGET after short instrumentation edits. Those edits improved the protocol but do not test the runtime boundary. Continuing to create one small document per invocation would optimize documentation rather than answer the research question.
 
 ## Execution rule
-At invocation start, capture START_TS immediately. Then work through multiple substantive units in one invocation without voluntarily closing merely because one unit finished.
+At invocation start, capture START_TS immediately. Before substantive work, pre-arm the next wake using `START_TS + target_runtime + planned_gap` and verify the returned recurring scheduler state. Then work through multiple substantive units without voluntarily closing merely because one unit finished.
 
 Eligible units, in order:
 1. Reproducibility audit: reconstruct target, lower bound, evidence counters, and next action from durable state; repair contradictions that would change classification.
@@ -23,9 +23,9 @@ When directly observed elapsed time reaches the current target while substantive
 - finish only the current bounded unit/checkpoint;
 - capture TARGET_CROSS_TS and PRE_CLOSE_TS;
 - persist the timing event/checkpoint;
-- perform the one final scheduler update;
-- record scheduler-write completion from direct observation;
-- classify only after the returned scheduler state is checked.
+- capture CLOSE_END_TS after durable close;
+- do not mutate the scheduler again; the next wake was already pre-armed at START;
+- classify the run using the already-verified pre-arm state plus close evidence.
 
 ## Anti-fragmentation rule
 Completing one useful unit is not a reason to hand off before target if another useful unit is available. The experiment specifically requires sustained invocation runtime, so useful units should be chained in the same invocation until target crossing, genuine exhaustion of useful work, or a real blocking/risk condition.
