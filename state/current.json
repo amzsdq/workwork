@@ -1,13 +1,24 @@
 {
-  "schema_version": 1,
-  "status": "READY",
+  "schema_version": 2,
+  "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
+  "single_research_goal": "maximum_safe_runtime_before_handoff",
   "relay": {
     "recurring_rrule": "FREQ=HOURLY",
-    "normal_scheduler_mutations_per_turn": 1,
     "lead_time_class_minutes": 3,
     "lead_time_status": "experimental_baseline",
-    "append_only_events": true
+    "normal_scheduler_mutations_per_turn": 1
   },
-  "updated_at": "2026-09-22T22:28:30+09:00"
+  "runtime_research": {
+    "prior_operational_baseline_minutes": 10,
+    "baseline_status": "prior_evidence_not_formally_revalidated_here",
+    "phase": "COARSE_ASCENT",
+    "next_target_minutes": 12,
+    "step_minutes": 2,
+    "first_failure_boundary_minutes": null,
+    "last_clean_target_minutes": 10,
+    "promoted_operating_cap_minutes": null,
+    "repeated_validation_required": 5
+  },
+  "updated_at": "2026-09-22T22:29:51+09:00"
 }
