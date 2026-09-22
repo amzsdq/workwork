@@ -1,0 +1,11 @@
+{
+  "recovery_invocation_id": "20260923T021630KST",
+  "stale_owner": "20260923T014447KST",
+  "stale_owner_last_observed_checkpoint_kst": "2026-09-23T01:47:52+09:00",
+  "ready_successors_observed": ["20260923T020057KST", "20260923T021227KST"],
+  "decision": "FENCE_STALE_OWNER_AND_REBASE",
+  "basis": "old owner exceeded nominal runtime by a wide margin and produced no durable transfer; later successors remained non-authoritative",
+  "duplicate_authoritative_work_count": 0,
+  "scheduler_writer_conflicts": 0,
+  "checkpoint_loss": false
+}
