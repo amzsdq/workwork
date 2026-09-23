@@ -9,6 +9,7 @@ For each timing probe, when directly observable, record:
 - `checkpoint_write_sec` if separately observable
 - `close_overhead_sec = close_end_ts - pre_close_ts`
 - `prearm_overhead_sec` separately from the start-of-turn scheduler mutation
+- `workload_profile`
 
 Do not infer missing timestamps.
 
@@ -20,6 +21,13 @@ Let N be the number of valid direct `close_overhead_sec` observations.
 - N>=5: report median, p80 (nearest-rank), max, and sample count. The policy-stage fixed reserve candidate is `max(p80, median + observed_jitter_allowance)`; max remains diagnostic rather than automatically becoming the reserve.
 
 `observed_jitter_allowance` must come from repeated close observations (for example upper-minus-median spread), not an invented constant.
+
+## Profile handling
+Close cost may depend on workload/close shape. Track samples by workload profile as well as pooled.
+
+- With sparse data, do not pretend profiles are equivalent.
+- If representative profiles show materially different close distributions, use the worst credible operational profile for a UNIVERSAL_CAP/reserve or explicitly adopt a PROFILE_AWARE reserve only when the utilization benefit justifies the added complexity.
+- A W3/mixed-load close sample does not by itself establish W2 write-heavy close overhead.
 
 ## Separation from safety margin
 `close_overhead` and `safety_margin` are different:
