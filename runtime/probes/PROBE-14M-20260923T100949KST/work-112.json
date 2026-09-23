@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":112,
+  "units_completed":8,
+  "research_notes":[
+    "A compact execution policy can later say: pre-arm at start; work while admission inequality fits; stop starting new work at hard cap; checkpoint; handoff.",
+    "The research determines the numerical values and whether estimated-next-task admission is worth using.",
+    "This keeps runtime worker behavior simple even if the evidence base is extensive.",
+    "The current strict test is still discovering the safe envelope for those numbers.",
+    "No values beyond the 12m observed lower bound are promoted yet.",
+    "Final close remains pending."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
