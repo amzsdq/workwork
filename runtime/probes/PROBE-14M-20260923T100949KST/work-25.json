@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":25,
+  "units_completed":10,
+  "analysis":[
+    "A successful 14m sample only raises the exploratory safe lower bound; it does not validate a 14m production cap.",
+    "The next coarse probe at 16m should retain the same +3m planned gap and strict scheduler contract.",
+    "If 16m fails credibly, the initial bracket becomes [14m,16m] and refinement can test ~15m.",
+    "If 16m passes, continue coarse ascent rather than prematurely refining.",
+    "Operating-cap replication should begin only after an upper failure region is characterized or a practical lower-bound stopping decision is made.",
+    "The later handoff-policy comparison should use the validated cap envelope rather than the exploratory maximum.",
+    "This sequencing minimizes confounding between runtime limit, wake gap, and parallelism.",
+    "Current probe remains active until timing close is captured."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
