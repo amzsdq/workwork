@@ -1,0 +1,11 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":27,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"FINAL_BOUNDED_WORK_UNIT",
+  "finding":"All active evidence remains internally consistent; the invocation continues without duration-attributable stop. No new large unit is admitted this close to target. Terminal classification remains pending direct target crossing.",
+  "substantive_unit_count_cumulative":27,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE_TO_TARGET"
+}
