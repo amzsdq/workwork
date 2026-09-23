@@ -1,0 +1,8 @@
+{
+  "probe_id":"PROBE-18M-20260923T133042KST",
+  "checkpoint":3,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "work_units_completed":30,
+  "derived_policy_candidates":{"next_task_admission":"estimated_task_sec + close_reserve_sec <= remaining_budget_sec","close_reserve_sec":60,"on_clean_pass":"await retrospective wake before advancing","on_duration_failure":"bracket against 16m lower bound","on_non_duration_failure":"retry 18m without boundary movement"},
+  "status":"ACTIVE_CONTINUE"
+}
