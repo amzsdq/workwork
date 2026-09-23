@@ -1,0 +1,12 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":6,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":31,
+  "new_finding":"Legacy WAKE_OK records conflate later continuation observation with wake timeliness. The 14m/16m evidence has scheduled wake timestamps and later reconciliation timestamps, but no durable evidence in the audited records proves that those later timestamps were the first actual scheduled wakes.",
+  "repair":"Measurement protocol now separates wake_observed from wake_timeliness/wake_lateness. Evidence table labels legacy WAKE_OK as continuation observed with timeliness unresolved.",
+  "policy_effect":"SAFE_LOWER_BOUND remains 16m under the existing continuation-observed gate, but no low-idle-time claim may be derived from those legacy wake records. Phase B/D must collect direct wake timeliness.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
