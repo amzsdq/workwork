@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "policy":"P3_ESTIMATED_NEXT_TASK_ADMISSION",
+  "rule":"estimated_task_sec + reserve_sec <= remaining_sec",
+  "synthetic_grid_cases":109928,
+  "near_boundary_cases_with_abs_slack_le_1":2183,
+  "reserve_range_sec":[30,120],
+  "remaining_range_sec":[30,180],
+  "task_sec_values":[1,5,10,15,20,30,45,60],
+  "monotonicity_expected":"increasing reserve cannot convert reject back to admit",
+  "empirical_boundary_effect":"NONE",
+  "reserve_promotion_effect":"NONE",
+  "purpose":"decision-rule stress workload and future Phase-C regression"
+}
