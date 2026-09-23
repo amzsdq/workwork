@@ -1,0 +1,11 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":16,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":16,
+  "large_unit":"last admission decision before close reserve",
+  "decision":"STOP_ADMITTING_NEW_LARGE_UNITS_AND_ENTER_CLOSE_ENVELOPE",
+  "reason":"W6 large units are intentionally bounded; terminal close evidence now has higher decision value than admitting another unit near target.",
+  "duration_failure_observed":false,
+  "status":"PRE_CLOSE"
+}
