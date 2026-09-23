@@ -23,6 +23,16 @@ Derived:
 
 Do not claim `useful_work_sec` with stopwatch precision unless it was directly observed. If tool/network waits are not separable, record `useful_window_sec` and mark `useful_work_sec` as an estimate or unknown rather than fabricating precision.
 
+## Productive-window semantics
+The research goal is useful work, not merely wall-clock survival. Distinguish:
+- `goal_directed_window_sec`: wall-clock interval during which the invocation is continuously pursuing necessary research work, including necessary tool I/O latency that cannot be separated from that work.
+- `direct_active_work_sec`: only directly measurable active work time; leave unknown when it cannot be isolated reliably.
+- `substantive_unit_count`: completed useful units, used as a density cross-check rather than as a substitute for time.
+- `productive_ratio`: use `direct_active_work_sec / actual_elapsed_sec` only when direct active time is actually measurable.
+- `goal_directed_ratio`: `goal_directed_window_sec / actual_elapsed_sec` may be reported separately when the invocation remained continuously engaged but internal tool wait cannot be separated.
+
+Never silently count idle/sleep/padding as productive. Never penalize a real W2 workload merely because necessary GitHub write latency is inseparable from task execution; report the metric class explicitly instead.
+
 ## Target interpretation
 `target_runtime_min` is a voluntary handoff target/class, not permission to sleep or pad. Continue substantive bounded work while evidence-producing work remains. If substantive work is exhausted before target, close honestly and classify the run as `UNDER_TARGET_INSUFFICIENT_WORK`, not as a timing PASS for that target class.
 
