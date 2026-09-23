@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":69,
+  "units_completed":8,
+  "research_notes":[
+    "The close record should not claim precise active-work seconds unless measured; an estimate should be labeled as such.",
+    "Elapsed wall time can be exact from captured timestamps.",
+    "Work-unit count is a useful corroborating measure but not a substitute for active-work duration.",
+    "Tool-call latency is operationally real even when it is not model reasoning time.",
+    "For maximum-safe-runtime classification, elapsed wall time remains decisive.",
+    "For throughput optimization, later analysis can decompose elapsed time by activity type if useful."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
