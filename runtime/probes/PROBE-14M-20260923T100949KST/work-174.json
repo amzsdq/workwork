@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":174,
+  "units_completed":8,
+  "research_notes":[
+    "The future parallel probe can reuse the validated cap as PRIMARY_A's hard runtime budget while scheduling B earlier inside it.",
+    "This will let the experiment distinguish parallel throughput gain from simply extending total invocation lifetime.",
+    "It can also quantify coordination cost as a fraction of the known safe budget.",
+    "The earlier inconclusive parallel sample lacked enough A-after-B evidence; that instrumentation lesson remains preserved.",
+    "No need to rerun it before the runtime cap is known.",
+    "Current priority remains strict duration."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
