@@ -11,10 +11,12 @@ Each target runtime class has four counters:
 
 Only `clean_pass` and `duration_fail` affect the runtime boundary. `non_duration_fail` and `under_target` do not move it.
 
+A clean close is initially `CLEAN_PASS_PENDING_WAKE`. Under the current strict protocol, SAFE_LOWER_BOUND and the next coarse target advance only after the following actual invocation retrospectively confirms WAKE_OK for that pass.
+
 ## Coarse ascent
-- A single clean pass at target T is enough to move the *probe target* to T+2m.
+- A single clean pass at target T plus retrospective WAKE_OK is enough to move the *probe target* to T+2m.
 - It is not enough to promote T as a production cap.
-- `SAFE_LOWER_BOUND` may be reported as the highest class with at least one clean timing pass, explicitly marked as a lower-bound observation rather than a validated cap.
+- `SAFE_LOWER_BOUND` may be reported as the highest class with at least one clean timing pass whose next wake was retrospectively observed, explicitly marked as a lower-bound observation rather than a validated cap.
 
 ## Failure handling
 A first credible duration failure at F creates `FAILURE_BOUNDARY_CANDIDATE=F`, not a final boundary.
@@ -24,7 +26,7 @@ A first credible duration failure at F creates `FAILURE_BOUNDARY_CANDIDATE=F`, n
 
 ## Refinement
 Use approximately 1-minute target classes between last clean L and first credible failed F.
-- Clean midpoint raises L.
+- Clean midpoint raises L after retrospective WAKE_OK under the strict protocol.
 - Credible duration failure lowers F.
 - Continue until the bracket is about 1 minute or finer, subject to available evidence.
 
