@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "pre_terminal_projection_requirements":[
+    "replace stale active_probe_id=null with durable start/terminal-derived truth",
+    "replace R9 strict-safe-lower-bound claim with clock-survival-valid/substantive-revalidation-pending unless R10 supersedes",
+    "preserve R9 raw marker and 1322s survival facts",
+    "do not promote 24m until retrospective WAKE_OK"
+  ],
+  "on_R10_clean_pending_wake":{"last_probe_result":"CLEAN_PASS_PENDING_WAKE","strict_lower_bound":"PENDING_WAKE","next_case":"SC-A24-CLOCK+ retrospective wake first"},
+  "on_R10_clean_wake_next_invocation":{"strict_substantive_safe_lower_bound_minutes":24,"next_case":"SC-A26-CLOCK+"},
+  "on_R10_under_target":{"boundary_effect":"NONE","next_case":"SC-A24-CLOCK+"},
+  "on_R10_duration_fail_candidate":{"boundary_effect":"PROFILE_SPECIFIC_CANDIDATE","next_case":"SC-AR-PROFILE_CONTROLLED"},
+  "projection_policy":"immutable terminal/event first; mutable CAS after END"
+}
