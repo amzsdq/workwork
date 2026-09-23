@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":166,
+  "units_completed":8,
+  "research_notes":[
+    "A useful future stopping rule for coarse ascent is the first credible duration-related failure, not a predetermined maximum target.",
+    "If external automation/runtime constraints impose a hard practical ceiling before failure, report the highest clean class as a lower bound and document the ceiling as a test constraint.",
+    "Do not label a test constraint as a runtime failure boundary.",
+    "This distinction keeps conclusions honest.",
+    "No such external ceiling has been established in current durable state.",
+    "The ascent therefore continues on evidence."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
