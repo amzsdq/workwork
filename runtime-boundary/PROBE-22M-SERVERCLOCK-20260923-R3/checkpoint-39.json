@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 39,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "BOUNDARY_SEARCH_EFFICIENCY_AUDIT",
+  "findings": [
+    "Once this migration run is terminal, subsequent +2m coarse probes should not repeat protocol-repair work unless a new inconsistency appears.",
+    "The server-clock protocol allows coarse ascent to focus on workload/profile and completion behavior while keeping elapsed measurement fixed and externally auditable.",
+    "This should increase terminal-decision yield compared with earlier fragmented/start-only attempts."
+  ],
+  "substantive_unit_count_cumulative": 113,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
