@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":100,
+  "units_completed":8,
+  "research_notes":[
+    "The retry has now produced one hundred durable work batches, making workload exhaustion no longer a credible confound for this sample.",
+    "The sample should still close at the target rather than continue simply because work remains.",
+    "This preserves comparability with other target classes.",
+    "A clean close would justify moving exploratory target to 16m while leaving operating cap unpromoted.",
+    "A failure would be classified from its cause and timing according to the decision rule.",
+    "The successor wake remains pre-armed for reconciliation."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
