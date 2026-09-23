@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":157,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual long-run system can treat runtime cap, checkpoint cadence, planned gap, and parallelism as separate control knobs with staged validation.",
+    "Trying to optimize all simultaneously would make failures difficult to attribute.",
+    "The current program's sequencing is therefore not merely conservative; it improves experimental identifiability.",
+    "Once each knob has a validated baseline, combined optimization can proceed with fewer surprises.",
+    "The runtime cap is the foundational knob being studied now.",
+    "No other knob is changed in this sample."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
