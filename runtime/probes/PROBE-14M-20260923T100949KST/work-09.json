@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":9,
+  "units_completed":12,
+  "cross_profile_plan":[
+    "Use W3 mixed I/O during coarse ascent because it exercises reasoning plus durable writes.",
+    "Near the eventual boundary, replicate with a more reasoning-heavy profile.",
+    "Near the eventual boundary, replicate with a more I/O/checkpoint-heavy profile.",
+    "Do not average away a materially lower profile-specific failure boundary.",
+    "Use the worst representative profile when choosing a universal operating cap.",
+    "If profile effects are large, consider profile-conditioned admission while keeping one hard safety ceiling.",
+    "Do not introduce profile-conditioned complexity before evidence demonstrates material benefit.",
+    "Keep scheduler pre-arm invariant while comparing workload profiles so runtime is the main changed variable.",
+    "Record close overhead per profile because checkpoint-heavy tails may dominate reserve requirements.",
+    "Keep generated loads bounded and analytically useful rather than repetitive no-op writes.",
+    "Retain immutable per-probe evidence for later aggregate analysis.",
+    "Resume parallel optimization only after this strict program has a characterized boundary and validated cap."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
