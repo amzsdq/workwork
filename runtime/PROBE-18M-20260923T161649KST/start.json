@@ -1,0 +1,17 @@
+{
+  "probe_id": "PROBE-18M-20260923T161649KST",
+  "started_at_kst": "2026-09-23T16:16:49+09:00",
+  "target_runtime_min": 18,
+  "workload_profile": "W2_WRITE_CHECKPOINT_HEAVY",
+  "load_origin": "TEST_GENERATED",
+  "planned_gap_min": 3,
+  "prearmed_for_kst": "2026-09-23T16:37:49+09:00",
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "scheduler_recurring_rrule": "FREQ=HOURLY",
+  "scheduler_enabled": true,
+  "safe_lower_bound_min_at_start": 16,
+  "failure_boundary_min_at_start": null,
+  "parallel_probe_deferred": true,
+  "status": "ACTIVE"
+}
