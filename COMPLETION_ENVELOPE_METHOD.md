@@ -14,6 +14,12 @@ Therefore the final result should expose both:
 - `PRODUCTIVE_CAP`: a conservative scalar latest-normal-work point useful for simple P1/P2 policies; and
 - `COMPLETION_ENVELOPE`: a task-size-aware frontier used by P3/P4.
 
+## Reliable-close endpoint
+
+`close_end_ts` is after the required terminal-sync writes **and their required consistency re-read/verification**. That verification is part of the close cost because the system is not considered reliably closed until shared state agrees.
+
+If persisting the observed `close_end_ts` itself requires another write, that measurement write is post-close instrumentation and does not recursively move the operational endpoint. Record material post-close measurement overhead separately.
+
 ## Evidence to collect
 
 For each near-cap run when directly observable:
@@ -24,6 +30,7 @@ For each near-cap run when directly observable:
 - `pre_close_ts`
 - `close_end_ts`
 - `close_overhead_sec`
+- `post_close_measurement_overhead_sec` when material
 - `clean_close`
 - `overshoot_sec`
 - `workload_profile`
