@@ -1,0 +1,17 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":3,
+  "units_completed":18,
+  "derived_observations":[
+    "At a 14m target with +3m planned gap, the scheduled successor point is START+17m.",
+    "Pre-arming at START removes normal close-time scheduler mutation from the critical close path.",
+    "The strict test therefore isolates runtime survival plus durable close more cleanly than end-of-turn rearm designs.",
+    "A later wake does not retroactively prove a clean close; both scheduler and close evidence are required.",
+    "The prior under-target run demonstrated workload-generator insufficiency, not a runtime ceiling.",
+    "The expanded 72-unit declaration provides >2x the prior exhausted unit count while preserving boundedness.",
+    "Workload heterogeneity is retained by six unit families rather than one repetitive write loop.",
+    "The next strict class remains 16m only after this 14m retry reaches target and closes durably.",
+    "No production cap can be promoted from this exploratory pass even if successful."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
