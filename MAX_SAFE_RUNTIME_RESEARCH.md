@@ -9,6 +9,29 @@ All new strict runtime measurements use `GITHUB_SERVER_CLOCK_PROTOCOL.md`:
 
 Both timestamps are raw GitHub server values from immutable issue #1 comments. Model/local time strings never classify duration. Invalid marker pair => CLOCK_EVIDENCE_INVALID. Historical pre-protocol timing is supporting only.
 
+## Strict workload-supply invariant
+
+Finite backlog exhaustion is not a valid normal-close trigger during a strict runtime-boundary probe.
+
+Use `runtime/SCALABLE_STRICT_PROBE_WORKLOAD_PROTOCOL.md` and `runtime/RUNTIME_STRESS_WORKLOAD_GENERATOR.py`.
+
+While the timing/admission policy still permits work:
+- process unique decision-relevant units;
+- persist compact batch checkpoints;
+- when one batch finishes, load the next unique batch;
+- reject duplicate case IDs from productive counts;
+- never sleep/idle/no-op merely to consume time.
+
+Normal close begins only because PRE_CLOSE/admission policy says the close window has started, or because a genuine blocking/failure/user-stop condition occurs.
+
+Server-clock productivity intervals are:
+`PREARM_OVERHEAD = WORK_START - START`
+`PRODUCTIVE_WINDOW = PRE_CLOSE - WORK_START`
+`CLOSE_OVERHEAD = END - PRE_CLOSE`
+`WORKED = END - START`
+
+All four timestamps are raw GitHub server `created_at` values.
+
 ## Phase A — boundary search
 1. Purposeful bounded test-generated workload is valid when it advances/validates this research; idle/sleep/no-op padding is excluded.
 2. Create START_MARKER first. Fetch raw server created_at.
