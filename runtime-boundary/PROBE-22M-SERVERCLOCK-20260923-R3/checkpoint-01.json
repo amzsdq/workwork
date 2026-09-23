@@ -1,0 +1,25 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "clock_protocol": "GITHUB_SERVER_MARKER_V1",
+  "clock_issue_number": 1,
+  "start_marker_comment_id": 5795782562,
+  "start_marker_created_at": "2026-09-23T13:32:22Z",
+  "target_runtime_sec": 1320,
+  "planned_gap_sec": 180,
+  "prearmed_wake_server_derived_target": "2026-09-23T13:57:22Z",
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "workload_profile": "W3_MIXED_IO",
+  "checkpoint": 1,
+  "substantive_units": [
+    "fresh canonical-state reconciliation",
+    "server-clock marker raw REST validation",
+    "same-automation prearm validation",
+    "legacy 22m evidence structure audit",
+    "W3 profile applicability audit"
+  ],
+  "substantive_unit_count_cumulative": 5,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
