@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":71,
+  "units_completed":8,
+  "research_notes":[
+    "The experiment should not convert a target-class pass into a claim that the system cannot run longer.",
+    "It only establishes a lower-bound survival observation at that class.",
+    "Likewise a candidate failure boundary is not a deterministic universal timeout until replicated/refined.",
+    "This language matters because runtime behavior can be variable.",
+    "The final user-facing result should distinguish observed lower bound, failure region, and promoted operating cap.",
+    "Current 14m classification remains pending the durable close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
