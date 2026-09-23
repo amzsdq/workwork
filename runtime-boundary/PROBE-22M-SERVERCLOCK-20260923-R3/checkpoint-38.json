@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 38,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "CLOCK_CLASSIFICATION_EDGE_CASE_AUDIT",
+  "findings": [
+    "If END exists but raw END fetch fails transiently, the run is not a duration failure; exact classification waits for recovery or becomes CLOCK_EVIDENCE_INVALID if unrecoverable.",
+    "If END server time proves WORKED<1320 with otherwise normal close, the result is UNDER_TARGET rather than a fabricated PASS.",
+    "If the invocation is forcibly terminated before END, missing END alone is insufficient to claim a duration boundary without corroborating duration-attributable failure evidence."
+  ],
+  "substantive_unit_count_cumulative": 110,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
