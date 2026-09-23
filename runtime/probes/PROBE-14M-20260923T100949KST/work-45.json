@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":45,
+  "units_completed":8,
+  "research_notes":[
+    "A future aggregate should distinguish elapsed wall time from model-active reasoning time because tool latency contributes to invocation lifetime.",
+    "For operational safety, wall-clock elapsed is the controlling quantity even when some time is external I/O latency.",
+    "For utilization optimization, useful-work attribution may separately discount pure waiting while still counting necessary I/O.",
+    "This study therefore records both elapsed and active-work estimates where possible.",
+    "Generated analytical/checkpoint operations are operationally representative because the target relay actually depends on durable I/O.",
+    "The strict target remains a wall-clock runtime class."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
