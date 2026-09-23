@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":159,
+  "units_completed":8,
+  "research_notes":[
+    "The current research has enough methodological conclusions that future workload should increasingly analyze actual accumulated timing data rather than repeat protocol rationale.",
+    "After this probe closes, the successor can start building a compact aggregate of classified samples and close overheads before/during the 16m workload.",
+    "That would produce higher-value test load while preserving the runtime experiment.",
+    "The aggregate should not delay immediate pre-arm at invocation start.",
+    "It should remain append-only or regenerable from raw evidence.",
+    "Current run remains focused on completing the 14m retry."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
