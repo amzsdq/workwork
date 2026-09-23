@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":88,
+  "units_completed":8,
+  "research_notes":[
+    "The final policy should expose its evidence version/date so future workers know which cap assumptions they inherited.",
+    "If runtime behavior changes, a new validation epoch can supersede the old cap without deleting history.",
+    "This is preferable to treating one experimental result as permanent platform truth.",
+    "Rollback can temporarily select a lower previously validated cap while revalidation runs.",
+    "The current study is establishing the first such evidence base.",
+    "No permanent cap has yet been promoted."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
