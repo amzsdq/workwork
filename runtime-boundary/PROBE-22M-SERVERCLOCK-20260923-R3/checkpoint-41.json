@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 41,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "FINAL_STATE_SEMANTICS_REAUDIT",
+  "findings": [
+    "Current state correctly distinguishes legacy last_clean_target_minutes=20 from server_clock_safe_lower_bound_minutes=null.",
+    "The active probe recovery pointer now prevents a duplicate 22m server-clock start.",
+    "At terminal close, last_probe fields must be updated to this server-clock probe while legacy fields remain explicitly labeled rather than silently overwritten as equivalent evidence."
+  ],
+  "substantive_unit_count_cumulative": 119,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
