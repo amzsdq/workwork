@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":177,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual cap validation should probably use normal evidence cadence rather than this diagnostic-density cadence so the promoted cap reflects realistic operational overhead.",
+    "Diagnostic-density samples can still establish conservative supporting evidence and localize failures.",
+    "If normal cadence performs materially better, the difference should be attributed to workload/checkpoint profile rather than silently merged.",
+    "This is another reason to retain workload profile metadata on every sample.",
+    "The current sample remains diagnostic W3 and will be labeled accordingly.",
+    "Cross-profile/cadence validation comes later."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
