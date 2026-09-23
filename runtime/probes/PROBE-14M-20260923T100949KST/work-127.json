@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":127,
+  "units_completed":8,
+  "research_notes":[
+    "A later cleanup can aggregate or archive dense diagnostic batches, but raw evidence should remain available until conclusions are stable.",
+    "The operational worker need not read every batch; it can rely on compact summaries plus targeted evidence when auditing.",
+    "This prevents the research history from bloating every future context window.",
+    "State/current and dedicated research summaries should remain the onboarding path.",
+    "The current run writes detailed evidence because it is an active diagnostic experiment.",
+    "Final close will provide the compact classification pointer."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
