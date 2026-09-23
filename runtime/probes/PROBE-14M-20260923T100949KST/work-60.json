@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":60,
+  "units_completed":8,
+  "research_notes":[
+    "The strict test has now accumulated a large enough evidence stream that final close latency, not workload scarcity, is the relevant remaining measurement.",
+    "No user intervention is needed for classification or continuation.",
+    "The successor invocation is already pre-armed and will reconcile this run.",
+    "A clean close should immediately summarize the pass in state/current without modifying the scheduler.",
+    "A missing close should leave state conservative so the successor can classify from immutable evidence.",
+    "This preserves crash-consistent semantics for the research state."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
