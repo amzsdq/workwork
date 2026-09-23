@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 12,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "LEGACY_CLOSE_MIGRATION_AUDIT",
+  "findings": [
+    "Legacy 22m close.json used model-authored start_ts/target_cross_ts and actual_elapsed_sec=1320; under GITHUB_SERVER_MARKER_V1 these are retained only as historical supporting fields.",
+    "The legacy close correctly left close_end_ts/close_overhead null rather than fabricating connector completion timing.",
+    "New close.json schema for this probe must instead carry both marker comment IDs, raw created_at values, worked_sec, and marker_pair_valid."
+  ],
+  "substantive_unit_count_cumulative": 35,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
