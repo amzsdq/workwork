@@ -9,6 +9,8 @@
   "actual_elapsed_sec":1197,
   "overshoot_sec":117,
   "close_overhead_sec":117,
+  "close_overhead_quality":"CONTAMINATED_HIGH_SIDE",
+  "close_overhead_anomaly":"Terminal sync included one corrective state rewrite to restore an accidentally changed historical overlap evidence path plus extra instrumentation/status work. Therefore 117s is a real observed operational close duration for this run but must not be treated as a representative normal W2 close-reserve sample without replication.",
   "goal_directed_window_sec":1075.783,
   "goal_directed_ratio":0.898733,
   "direct_active_work_sec":null,
@@ -20,5 +22,5 @@
   "failure_boundary_min":null,
   "prearmed_wake_at_kst":"2026-09-23T20:21:17+09:00",
   "remaining_to_prearmed_wake_at_operational_close_sec":63,
-  "interpretation":"18m W2 target was reached with sustained goal-directed work and a verified clean close. Operational close consumed 117s from pre_close through required synchronization and consistency verification. This is the first direct W2 close-overhead sample. SAFE_LOWER_BOUND remains 16m until retrospective continuation observation."
+  "interpretation":"18m W2 target was reached with sustained goal-directed work and a verified clean close. The 117s close observation is valid for this run but high-side contaminated; use it diagnostically, not as the normal reserve estimator input until a clean W2 close sample replicates it. SAFE_LOWER_BOUND remains 16m until retrospective continuation observation."
 }
