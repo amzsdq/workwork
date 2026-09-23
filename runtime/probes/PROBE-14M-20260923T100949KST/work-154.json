@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":154,
+  "units_completed":8,
+  "research_notes":[
+    "If state/current update fails after immutable close, the successor should reconcile but should not count that as a runtime close failure because the decisive checkpoint survived.",
+    "It is instead a summary-state maintenance fault.",
+    "This classification keeps the runtime boundary tied to durable work preservation rather than cache maintenance.",
+    "If immutable close itself fails with explicit repository error, classify non-duration unless evidence indicates elapsed termination caused it.",
+    "If the invocation disappears before attempting close, duration failure becomes more plausible near the boundary.",
+    "These distinctions will matter more at higher target classes."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
