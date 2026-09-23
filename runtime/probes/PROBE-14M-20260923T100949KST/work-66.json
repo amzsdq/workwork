@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":66,
+  "units_completed":8,
+  "research_notes":[
+    "Near a hard cap, the safest default when task duration is unknown is to avoid starting an unbounded unit.",
+    "A queue of small bounded maintenance/analysis units can use residual capacity without risking a large overshoot.",
+    "This is operationally preferable to artificial padding because each unit must have research or production value.",
+    "The current test follows that principle by using bounded analytical units tied to the relay design.",
+    "The future runtime contract can encode a similar fallback admission class.",
+    "Final close remains the next decisive event."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
