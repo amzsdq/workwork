@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "grid_cases":109928,
+  "P3_admissions_with_leq":60242,
+  "exact_zero_slack_admissions":728,
+  "zero_slack_fraction_of_all_grid":0.006622516556291391,
+  "zero_slack_fraction_of_P3_admissions":0.012084592145015106,
+  "finding":"Using <= admits zero-slack estimates. Switching to strict < would reject 728 marginal cases in this grid (~1.21% of P3 admissions), a small synthetic utilization cost for positive slack.",
+  "candidate_for_phase_c":"estimated_task_sec + close_reserve_sec + estimation_margin_sec <= remaining_budget_sec",
+  "promotion_status":"NOT_PROMOTED; estimation error distribution is not yet empirical",
+  "boundary_effect":"NONE"
+}
