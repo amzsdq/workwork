@@ -41,30 +41,45 @@ class Probe:
 
 
 def classify(p: Probe) -> dict:
+    """Pure classifier. It never mutates empirical bounds."""
     if p.legacy or p.clock_protocol != SERVER_CLOCK:
-        return {"result": "LEGACY_SUPPORTING", "boundary_effect": "NONE", "worked_sec": None}
+        return {"result": "LEGACY_SUPPORTING", "boundary_effect": "NONE", "worked_sec": None, "anomalies": list(p.anomalies)}
+
+    # An independently established provider/network/scheduler failure is causal
+    # even if clock evidence is also unavailable. It cannot become a duration fail.
+    if p.non_duration_failure:
+        worked = None
+        anomalies = list(p.anomalies)
+        if p.start_marker_created_at and p.end_marker_created_at:
+            try:
+                worked = worked_sec(p.start_marker_created_at, p.end_marker_created_at)
+            except ValueError as exc:
+                anomalies.append(f"CLOCK_INVALID:{exc}")
+        return {"result": "NON_DURATION_FAIL", "boundary_effect": "NONE", "worked_sec": worked, "anomalies": anomalies}
 
     if not p.start_marker_created_at or not p.end_marker_created_at:
-        return {"result": "CLOCK_EVIDENCE_INVALID", "boundary_effect": "NONE", "worked_sec": None}
+        return {"result": "CLOCK_EVIDENCE_INVALID", "boundary_effect": "NONE", "worked_sec": None, "anomalies": list(p.anomalies)}
 
     try:
         worked = worked_sec(p.start_marker_created_at, p.end_marker_created_at)
     except ValueError as exc:
-        return {"result": "CLOCK_EVIDENCE_INVALID", "boundary_effect": "NONE", "worked_sec": None, "error": str(exc)}
+        return {"result": "CLOCK_EVIDENCE_INVALID", "boundary_effect": "NONE", "worked_sec": None, "error": str(exc), "anomalies": list(p.anomalies)}
 
     anomalies = list(p.anomalies)
     if p.recorded_worked_sec is not None and p.recorded_worked_sec != worked:
         anomalies.append(f"RECORDED_WORKED_MISMATCH:{p.recorded_worked_sec}!={worked}")
 
-    if p.non_duration_failure:
-        result = "NON_DURATION_FAIL"
-    elif worked < p.target_runtime_sec:
+    if worked < p.target_runtime_sec:
         result = "UNDER_TARGET"
-    elif (p.scheduler_write_ok and p.scheduler_state_ok and p.checkpoint_saved and p.clean_close
-          and not p.forced_stop_or_timeout and p.substantive_unit_count > 0):
-        result = "CLEAN_PASS_PENDING_WAKE"
-    elif p.forced_stop_or_timeout and not p.non_duration_failure:
+    elif p.forced_stop_or_timeout:
+        # Forced stop takes precedence over clean-close flags if inconsistent data
+        # contains both; downstream reproduction decides whether to confirm a bound.
         result = "DURATION_FAIL_CANDIDATE"
+        if p.clean_close:
+            anomalies.append("INCONSISTENT_FORCED_STOP_AND_CLEAN_CLOSE")
+    elif (p.scheduler_write_ok and p.scheduler_state_ok and p.checkpoint_saved and p.clean_close
+          and p.substantive_unit_count > 0):
+        result = "CLEAN_PASS_PENDING_WAKE"
     else:
         result = "AMBIGUOUS"
 
