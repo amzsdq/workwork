@@ -8,7 +8,7 @@
 - `last_normal_task_admit_ts`: last observed admission of an ordinary substantive unit when practical.
 - `target_cross_ts`: first observed timestamp at or after target class, if reached.
 - `pre_close_ts`: immediately before durable close/finalization.
-- `close_end_ts`: immediately after final durable close completes.
+- `close_end_ts`: immediately after required terminal-sync writes and required consistency verification complete; optional measurement persistence does not recursively move this endpoint.
 - `next_invocation_start_ts`: next invocation start, used retrospectively.
 
 ## Derived durations
@@ -20,6 +20,7 @@
 - `substantive_unit_count`: completed useful units; density cross-check, not a time substitute.
 - `prearm_overhead_sec = prearm_write_end_ts - prearm_write_start_ts`
 - `close_overhead_sec = close_end_ts - pre_close_ts`
+- `post_close_measurement_overhead_sec`: optional instrumentation persistence after operational close, when material; excluded from close_overhead_sec.
 - `planned_gap_sec = prearm_next_ts - (start_ts + target_runtime_min*60)`
 - `overshoot_sec = max(0, actual_elapsed_sec - target_runtime_min*60)`
 - `actual_idle_gap_sec`: next_invocation_start_ts - prior close_end_ts when both are trustworthy.
