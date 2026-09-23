@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":78,
+  "units_completed":8,
+  "research_notes":[
+    "The target runtime class should remain expressed in minutes for experimental planning but seconds/timestamps for measurement.",
+    "This avoids false precision in planning while retaining exact raw evidence.",
+    "Derived overshoot and close overhead should be calculated from timestamps after durable close.",
+    "A future summary can round for readability without discarding raw values.",
+    "The user-facing report should stay concise while durable evidence carries detail.",
+    "This division keeps interaction overhead low."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
