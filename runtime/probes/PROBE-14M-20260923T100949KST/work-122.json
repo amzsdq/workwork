@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":122,
+  "units_completed":8,
+  "research_notes":[
+    "The final policy can later define a close mode that stops starting new units but permits completion of the current smallest safe unit.",
+    "This matches the earlier handoff principle and avoids mid-unit corruption.",
+    "The hard cap should be set so this tail plus checkpoint reserve fits with high reliability.",
+    "If unit tails are too variable, admission must become more conservative before the cap.",
+    "This links runtime-boundary evidence to task-granularity policy directly.",
+    "Current generated units remain small enough to offer frequent safe boundaries."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
