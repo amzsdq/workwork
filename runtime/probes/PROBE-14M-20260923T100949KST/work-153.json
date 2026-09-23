@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":153,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual close reserve should include the full durable checkpoint transaction, not merely request dispatch time.",
+    "A successful API response is the appropriate end marker for close_end_ts.",
+    "State summary update can be measured separately because immutable close already makes the result recoverable.",
+    "This may allow the critical reserve to focus on the immutable close write rather than all post-close housekeeping.",
+    "The exact distinction should be preserved in future measurements.",
+    "Current close ordering already supports it."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
