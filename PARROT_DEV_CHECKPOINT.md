@@ -1,3 +1,16 @@
+# MISFILED / IGNORE — NOT WORKWORK STATE
+
+This file was accidentally created by a Parrot Chrome-extension development session in the `amzsdq/workwork` repository.
+
+- Do not treat this file as workwork runtime/research state.
+- Do not use its generation, owner session, timing, status, risks, or next-task fields for any workwork decision.
+- The historical text below is retained only as an audit trail of the misfiled write.
+- Related issue: #2 `[MISFILED][IGNORE] [PARROT_WORK_MARKERS]`.
+
+---
+
+## Historical misfiled content
+
 # Parrot durable development checkpoint
 
 Generation: 1
