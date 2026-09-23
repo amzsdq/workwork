@@ -1,0 +1,13 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 15,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "DERIVED_VIEW_ACTIVE_SYNC",
+  "finding": "Updated EVIDENCE_TABLE.md to identify the active server-clock probe and unmatched START marker while preserving SERVER_CLOCK_SAFE_LOWER_BOUND as unresolved.",
+  "decision_value": "Prevents a future invocation from interpreting the table's old 'next run' row as permission to launch a duplicate probe.",
+  "repair_commit": "8139bc5fd349ae88b4b1b860b959e87c03ee81a6",
+  "substantive_unit_count_cumulative": 38,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
