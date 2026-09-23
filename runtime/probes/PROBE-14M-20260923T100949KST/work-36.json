@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":36,
+  "units_completed":8,
+  "research_notes":[
+    "Long-run useful utilization can be modeled as successful useful work divided by wall time including relay gaps and failed-run losses.",
+    "This metric naturally penalizes overly aggressive caps that increase termination risk.",
+    "It also penalizes overly conservative caps that create excessive handoff frequency and idle gaps.",
+    "The optimal operating point is therefore expected below the absolute observed survival maximum.",
+    "Gap optimization and parallelism can later shift that optimum by reducing idle wall time.",
+    "Those later improvements should preserve the runtime safety envelope established first."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
