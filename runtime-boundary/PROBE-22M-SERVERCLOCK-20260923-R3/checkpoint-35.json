@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 35,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "NEXT_CASE_CAUSALITY_AUDIT",
+  "findings": [
+    "SC-A24-CLOCK+ is not admissible merely because legacy 22m appeared clean; it requires this probe's valid server-clock clean close and later WAKE_OK.",
+    "If this probe is UNDER_TARGET or non-duration-invalid, SC-A22-CLOCK-01 remains active and the cause must be addressed before a repeat.",
+    "If a credible duration failure occurs, refinement must establish a server-clock same-profile lower anchor rather than treating legacy 20m as sufficient strict bracket evidence."
+  ],
+  "substantive_unit_count_cumulative": 101,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
