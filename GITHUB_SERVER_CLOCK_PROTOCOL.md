@@ -17,10 +17,12 @@ START_MARKER.created_at
 
 ## Authoritative clock source
 
-Each measured invocation uses two immutable GitHub issue comments in issue #1:
+Each measured invocation uses four immutable GitHub issue comments in issue #1:
 
-- START_MARKER
-- END_MARKER
+- START_MARKER: invocation timing begins
+- WORK_START_MARKER: scheduler/prearm/setup is complete and substantive work begins
+- PRE_CLOSE_MARKER: substantive work stops; durable close begins
+- END_MARKER: durable close checkpoint is complete
 
 The marker comment body identifies the invocation/probe but contains no authoritative time value.
 
@@ -38,18 +40,31 @@ At invocation start:
 
 1. Resolve probe_id / invocation_id.
 2. Create START_MARKER as the first timing action, before scheduler pre-arm and substantive work.
-3. Record its GitHub comment ID.
-4. Fetch the raw comment resource and persist `start_marker_created_at`.
+3. Fetch raw START created_at.
+4. Pre-arm/validate scheduler and finish required setup.
+5. Create WORK_START_MARKER immediately before the first substantive workload unit.
+6. Fetch raw WORK_START created_at.
 
 At normal close:
 
-1. Finish substantive work.
-2. Persist the durable close checkpoint with clock status pending.
-3. Create END_MARKER immediately after that checkpoint.
-4. Record its GitHub comment ID.
-5. Fetch the raw comment resource and persist `end_marker_created_at`.
-6. Compute WORKED only from the two server timestamps.
-7. Write WORKED/marker IDs into the terminal evidence and synchronize `state/events.log`, `state/current.json`, and `EVIDENCE_TABLE.md`.
+1. When the admission/close policy says to stop admitting new work, create PRE_CLOSE_MARKER.
+2. Fetch raw PRE_CLOSE created_at.
+3. Persist the durable close checkpoint with clock status pending.
+4. Create END_MARKER immediately after that checkpoint.
+5. Fetch raw END created_at.
+6. Compute all timing metrics only from raw GitHub server timestamps.
+7. Write marker IDs/metrics into immutable terminal evidence, then reconcile mutable projections using `runtime/TERMINAL_STATE_SYNC_PROTOCOL.md`.
+
+Authoritative formulas:
+
+```
+WORKED = END_MARKER.created_at - START_MARKER.created_at
+PREARM_OVERHEAD = WORK_START_MARKER.created_at - START_MARKER.created_at
+PRODUCTIVE_WINDOW = PRE_CLOSE_MARKER.created_at - WORK_START_MARKER.created_at
+CLOSE_OVERHEAD = END_MARKER.created_at - PRE_CLOSE_MARKER.created_at
+```
+
+WORKED remains the duration-boundary metric. PRODUCTIVE_WINDOW and CLOSE_OVERHEAD are separately server-clock measured; model-authored times never substitute.
 
 The post-END terminal-ledger synchronization is bookkeeping outside WORKED. It must not create a new END time.
 
@@ -65,12 +80,16 @@ Every strict timing probe must persist:
 
 - clock_protocol = GITHUB_SERVER_MARKER_V1
 - clock_issue_number = 1
-- start_marker_comment_id
-- start_marker_created_at
-- end_marker_comment_id
-- end_marker_created_at
+- start_marker_comment_id / start_marker_created_at
+- work_start_marker_comment_id / work_start_marker_created_at
+- pre_close_marker_comment_id / pre_close_marker_created_at
+- end_marker_comment_id / end_marker_created_at
 - worked_sec
+- prearm_overhead_sec
+- productive_window_sec
+- close_overhead_sec
 - marker_pair_valid = true/false
+- productive_marker_pair_valid = true/false
 
 A strict duration PASS requires `marker_pair_valid=true`.
 
@@ -101,6 +120,22 @@ Any new strict boundary/cap promotion must be supported by a valid GitHub server
 START:
 ```
 RUNTIME_START_MARKER
+probe_id=<PROBE_ID>
+case_id=<CASE_ID>
+clock_protocol=GITHUB_SERVER_MARKER_V1
+```
+
+WORK_START:
+```
+RUNTIME_WORK_START_MARKER
+probe_id=<PROBE_ID>
+case_id=<CASE_ID>
+clock_protocol=GITHUB_SERVER_MARKER_V1
+```
+
+PRE_CLOSE:
+```
+RUNTIME_PRE_CLOSE_MARKER
 probe_id=<PROBE_ID>
 case_id=<CASE_ID>
 clock_protocol=GITHUB_SERVER_MARKER_V1
