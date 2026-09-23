@@ -13,6 +13,19 @@ Strict timing authority: raw GitHub START/END created_at. Strict substantive pro
 | R9 | 1322s | 1257s | 57s | clean clock/close + WAKE_OK; posthoc workload-quality taint | 22m02s survival retained; strict substantive promotion revalidation pending |
 | R10 | **1402s** | **1376s** | **14s** | **UNDER_TARGET, Harness V2 valid** | **NONE — admission/close reserve mismatch, not duration failure** |
 | OP-CAP-14M-VALIDATION-01 | **865s** | **829s** | **16s** | **CLEAN_PASS_WAKE_OK, Harness V2 valid** | **14m operational-cap validation clean run 1/5 confirmed** |
+| OP-CAP-14M-VALIDATION-02 | **871s** | **854s** | **12s** | **CLEAN_PASS_PENDING_WAKE, Harness V2 valid** | **14m operational-cap validation clean run 2 pending retrospective wake** |
+
+## OP-CAP-14M-VALIDATION-02 authoritative markers
+- START `2026-09-23T20:39:49Z` (`2026-09-24 05:39:49 KST`)
+- WORK_START `2026-09-23T20:39:54Z` (`2026-09-24 05:39:54 KST`)
+- PRE_CLOSE `2026-09-23T20:54:08Z` (`2026-09-24 05:54:08 KST`)
+- END `2026-09-23T20:54:20Z` (`2026-09-24 05:54:20 KST`)
+- WORKED 871s (14m31s), target 840s
+- productive window 854s (14m14s), close overhead 12s, prearm overhead 5s
+- generated unique units 975,000,000; logical batches 1,354,179; duplicate units rejected 0
+- scheduler WRITE_OK/STATE_OK; durable clean close; forced stop/timeout false
+- retrospective successor wake: pending confirmation
+- operational-cap validation progress: **1/5 clean confirmed + run 2 pending wake**
 
 ## OP-CAP-14M-VALIDATION-01 authoritative markers
 - START `2026-09-23T19:45:09Z` (`2026-09-24 04:45:09 KST`)
@@ -38,4 +51,4 @@ Strict timing authority: raw GitHub START/END created_at. Strict substantive pro
 
 R10 shows the corrected harness can sustain semantically useful work, but the provisional 60s close reserve caused normal close too early because actual close overhead was only 14s. This does **not** establish a runtime failure boundary.
 
-Current-protocol close samples: R9=57s (workload-quality tainted for substantive promotion but close interval clock-valid), R10=14s (Harness V2 valid), OP-CAP-14M-VALIDATION-01=16s (Harness V2 valid). Reserve remains unpromoted.
+Current-protocol close samples: R9=57s (workload-quality tainted for substantive promotion but close interval clock-valid), R10=14s (Harness V2 valid), OP-CAP-14M-VALIDATION-01=16s, OP-CAP-14M-VALIDATION-02=12s (Harness V2 valid). Reserve remains unpromoted.
