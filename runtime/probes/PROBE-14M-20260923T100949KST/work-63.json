@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":63,
+  "units_completed":8,
+  "research_notes":[
+    "A cold-start successor should be able to determine whether the predecessor closed cleanly by inspecting immutable close evidence first.",
+    "If close evidence is absent, it should inspect the latest incremental batch and known scheduler state without fabricating a clean pass.",
+    "This conservative recovery path is compatible with disposable workers.",
+    "It also avoids requiring the predecessor to remain alive for acknowledgment.",
+    "The same durability principle will later simplify handoff fencing.",
+    "No current strict result is asserted before close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
