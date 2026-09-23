@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":6,
+  "units_completed":12,
+  "useful_analysis":[
+    "Candidate final policy should minimize critical-path writes near hard cap.",
+    "Pre-arm at start makes scheduler continuity independent of late-turn scheduler availability.",
+    "A soft cutoff should eventually be based on observed unit-duration distribution rather than a fixed intuition.",
+    "Close reserve should use an upper-tail statistic once enough samples exist; median alone under-protects noisy closes.",
+    "Rollback should trigger on increased duration-failure rate or unresolved failure at/below cap.",
+    "Universal cap claims require representative workload profiles near the candidate boundary.",
+    "An I/O-heavy profile may expose lower practical limits than reasoning-heavy work because checkpoint latency sits on the close path.",
+    "Conversely, a reasoning-heavy unit can create admission overshoot if it is not interruptible at a safe boundary.",
+    "P2 may be the best complexity baseline because it bounds late-unit size without requiring accurate per-unit prediction.",
+    "P3 becomes attractive only if unit-duration estimates are calibrated enough to recover capacity without increasing close failures.",
+    "P4 should be rejected if its adaptation overhead or instability offsets small utilization gains.",
+    "These policy hypotheses are provisional and do not affect the current Phase-A boundary classification."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
