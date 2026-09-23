@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":107,
+  "units_completed":8,
+  "research_notes":[
+    "The safe lower bound is intentionally monotonic only with strict clean passes; ambiguous or excluded samples do not lower it automatically.",
+    "The failure-boundary candidate can move downward during refinement when credible failures occur.",
+    "Operating cap can move downward later via rollback even if historical lower-bound passes remain true observations.",
+    "This distinction separates historical capability evidence from current operational policy.",
+    "It will be important if provider behavior changes over time.",
+    "Current safe lower bound remains 12m until close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
