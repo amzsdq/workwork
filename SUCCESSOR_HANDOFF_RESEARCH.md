@@ -1,229 +1,93 @@
 # Successor Shadow Handoff Research
 
 ## Objective
-Turn intentional overlap into a controlled zero/near-zero-idle handoff.
-
-The successor wakes before the current active invocation is expected to finish, restores context in SHADOW mode, prepares the next work, publishes READY, and waits for authority. The predecessor finishes its current smallest safe unit and hands off immediately after observing a ready successor, even if nominal runtime remains.
-
-This study also optimizes how early the successor should wake.
+Turn intentional overlap into controlled zero/near-zero-idle handoff after runtime boundary/cap validation.
 
 ## Proven prerequisite
-OVERLAP-15M-WAKE12M-01 proved that the same recurring automation can execute concurrently. Therefore the protocol MUST assume concurrent invocations are possible and MUST fence authoritative writes.
+Historical overlap testing showed same-automation concurrent execution is possible. Treat that as supporting concurrency evidence; exact future lead/gap optimization must use authoritative server-side timing.
 
-## Roles per invocation
-Each invocation has a unique invocation_id based on its actual start timestamp.
+## Roles
+Exactly one ACTIVE_OWNER. At most one intended SHADOW_SUCCESSOR.
 
-Exactly one invocation may be ACTIVE_OWNER.
-At most one intended immediate successor should be SHADOW_SUCCESSOR.
+SHADOW may read durable state/checkpoints, restore context, prepare the next non-duplicating unit, and publish immutable READY evidence. SHADOW may not execute owner-only side effects, publish authoritative shared transitions, overwrite predecessor evidence, or mutate scheduler before ownership.
 
-SHADOW may:
-- read durable state and latest checkpoints,
-- inspect predecessor progress,
-- reconstruct context,
-- analyze the next bounded unit,
-- prepare a handoff plan,
-- write its own immutable request/ready evidence.
+## Authoritative owner record
+The existing canonical owner record is **`handoff-state.json`** at repository root. Do not refer to nonexistent `handoff/control.json` unless a deliberate migration is performed later.
 
-SHADOW may NOT:
-- execute the predecessor's active unit,
-- publish authoritative shared-state transitions,
-- perform external side effects reserved for ACTIVE_OWNER,
-- overwrite predecessor evidence,
-- act as scheduler writer before it becomes ACTIVE_OWNER.
-
-## Handoff state machine
-1. ACTIVE_OWNER works in bounded units.
-2. Pre-armed wake starts SHADOW_SUCCESSOR before expected owner close.
-3. SHADOW creates REQUEST and begins self-onboarding/preparation.
-4. When preparation is sufficient, SHADOW creates READY with:
-   - successor invocation_id
-   - predecessor invocation_id if known
-   - ready timestamp
-   - restore/prep duration
-   - proposed next unit
-   - files/state read
-5. ACTIVE_OWNER checks for READY at each safe unit boundary.
-6. If valid READY exists, ACTIVE_OWNER does NOT start another normal unit merely to consume remaining target time.
-7. ACTIVE_OWNER persists its unit result/checkpoint and performs authority transfer.
-8. SUCCESSOR observes authority transfer, records ACCEPTED, becomes ACTIVE_OWNER, and immediately starts prepared work.
-9. Only after becoming ACTIVE_OWNER does the successor pre-arm the next successor wake.
-
-## Authority control
-Use handoff/control.json as the authoritative CAS-style owner record.
-
-Minimum fields:
+Minimum owner fields:
 - generation
 - active_invocation_id
 - status
 - predecessor_invocation_id
 - successor_invocation_id
-- updated_at
+
+Model-authored `updated_at` fields are metadata only and are not empirical timing evidence.
 
 Authority transfer:
-- predecessor fresh-reads handoff/control.json,
-- predecessor updates using the exact current blob SHA,
-- generation increments by 1,
-- active_invocation_id changes to successor,
-- stale SHA/update failure means transfer is NOT successful.
+- predecessor fresh-reads `handoff-state.json`;
+- update using exact current blob SHA;
+- generation increments by 1;
+- active_invocation_id changes to successor;
+- stale SHA/update failure means transfer did not succeed;
+- predecessor performs no further authoritative writes after successful transfer.
 
-After transfer, any older generation is stale and must not perform authoritative writes.
+Unique immutable evidence lives under `handoff/runs/<invocation_id>/` and `handoff/transfers/` when live testing resumes.
 
-Unique immutable evidence lives under handoff/runs/<invocation_id>/ and handoff/transfers/.
+## State machine
+1. ACTIVE_OWNER works in bounded units.
+2. Prearmed wake starts SHADOW_SUCCESSOR.
+3. SHADOW restores state and prepares a concrete next unit.
+4. SHADOW publishes READY with identity/generation/source evidence; timing fields count quantitatively only when authoritative.
+5. ACTIVE_OWNER validates READY at a safe unit boundary.
+6. After READY, start no new ordinary unit; finish/checkpoint current safe unit.
+7. ACTIVE_OWNER CAS-transfers generation/owner in `handoff-state.json`.
+8. SUCCESSOR fresh-reads transferred generation, records ACCEPTED, becomes ACTIVE_OWNER, starts prepared unit.
+9. Only the new ACTIVE_OWNER prearms the next successor.
 
 ## Scheduler rule
-Only ACTIVE_OWNER may schedule the next successor.
+Only ACTIVE_OWNER may schedule. Baseline remains S1 ACTIVE_OWNER_IMMEDIATE_PREARM. SHADOW scheduler writes remain prohibited until a stronger scheduler-generation reservation mechanism is experimentally proven.
 
-When an invocation becomes ACTIVE_OWNER:
-- estimate its nominal active-work horizon,
-- choose successor_lead_sec,
-- PREARM_NEXT = owner_active_start + nominal_active_horizon - successor_lead_sec,
-- update the SAME recurring automation once,
-- keep RRULE:FREQ=HOURLY, exact_schedule, enabled=true.
+## Timing authority
+Future empirical metrics such as successor wake lateness, bootstrap-ready time, transfer tail, overlap, and handoff gap require authoritative server-side timing endpoints. Model-authored timestamps in JSON/Markdown are non-authoritative and must be marked unresolved for quantitative timing if no server clock exists.
 
-A SHADOW_SUCCESSOR must not reschedule until it owns authority.
-
-This prevents scheduler-writer races and prevents a delayed handoff from creating uncontrolled 3-way overlap.
-
-## Predecessor early-handoff rule
-Once a valid successor READY has been observed:
-- finish the current smallest safe in-flight unit,
-- checkpoint,
-- transfer authority,
-- stop starting new authoritative work,
-even if the predecessor still has nominal runtime remaining.
-
-This rule is an experimental variable and its effect on useful-work utilization must be measured.
+The initial 3m lead remains a candidate baseline, not an empirically promoted optimum under the final clock discipline.
 
 ## Optimization variables
+- SUCCESSOR_LEAD: start with 3m candidate; later compare shorter/longer leads using authoritative timing.
+- READY_HANDOFF_POLICY: EARLY_READY_HANDOFF vs TARGET_HOLD.
+- NEXT_UNIT_ADMISSION: before READY continue bounded work; after READY finish only current safe unit and transfer.
+- SCHEDULER_STRATEGY: S1 baseline, S2 comparison, S3 isolated only after stronger fencing.
 
-### V1 SUCCESSOR_LEAD
-How early before expected active-work completion should the successor wake?
+## Safety metrics
+- duplicate authoritative work count
+- stale write rejection
+- scheduler writer conflict
+- checkpoint loss
+- clean handoff
+- next wake success
 
-Initial candidate values:
-- 3m baseline
-- 2m
-- 1m
-- 4m if 3m is insufficient or if prep variance is large
+## Quantitative timing metrics
+Only when authoritative endpoints exist:
+- successor wake lateness
+- bootstrap-ready duration
+- predecessor unit tail after READY
+- authority transfer latency
+- handoff gap
+- overlap
+- residual budget abandoned
 
-Do not assume smaller is always better. Too short may leave successor unready; too long wastes concurrent capacity and increases control/race exposure.
+## Promotion
+Require repeated clean handoffs, initially >=5, with zero duplicate authoritative side effects and zero scheduler-writer collision. Quantitative lead/gap claims additionally require authoritative timing evidence.
 
-### V2 READY_HANDOFF_POLICY
-Compare:
-- EARLY_READY_HANDOFF: once successor READY exists, predecessor hands off at the next safe unit boundary even if time remains.
-- TARGET_HOLD: predecessor continues toward its nominal target unless the remaining unit-admission budget is unsafe.
-
-Primary hypothesis: EARLY_READY_HANDOFF can reduce idle/boot cost by moving successor preparation inside predecessor active time, but may waste predecessor residual capacity if successor wakes too early.
-
-### V3 NEXT-UNIT ADMISSION
-Before successor is READY, predecessor continues normal bounded work.
-After READY, predecessor starts no new normal unit; it closes the smallest current unit and transfers.
-
-## Metrics
-Per handoff:
-- predecessor_start
-- predecessor_target_runtime_sec
-- successor_scheduled_for
-- successor_actual_start
-- successor_lead_sec
-- successor_bootstrap_ready_sec
-- successor_ready_at
-- predecessor_ready_observed_at
-- predecessor_unit_tail_sec_after_ready
-- authority_transfer_at
-- successor_accept_at
-- handoff_gap_sec = successor_authoritative_work_start - predecessor_authoritative_work_end
-- overlap_sec
-- predecessor_residual_budget_sec_at_ready
-- predecessor_residual_budget_abandoned_sec
-- successor_shadow_useful_sec
-- duplicate_authoritative_work_count
-- stale_write_rejections
-- scheduler_writer_conflicts
-- checkpoint_loss
-- clean_handoff
-- next_wake_success
-
-## Lead-time optimization
-The target is not minimum overlap. The target is maximum long-run authoritative useful-work utilization with reliable clean handoff.
-
-A useful derived quantity:
-required_lead ~= successor_bootstrap_ready_time + predecessor_unit_tail_after_ready + safety_margin.
-
-Use observed distributions rather than a single sample. Start at 3m because overlap at ~3m is already proven technically feasible.
-
-Initial research sequence:
-1. 3m lead, EARLY_READY_HANDOFF, repeated samples.
-2. If successor is consistently READY with excessive residual overlap, test 2m.
-3. If 2m remains comfortably ready, test 1m.
-4. If successor is not reliably READY or handoff tail exceeds lead, test/increase to 4m.
-5. Around the best region, use intermediate/adaptive lead if evidence warrants.
-
-Candidate promotion should require repeated clean handoffs, initially >=5, with zero duplicate authoritative side effects and no scheduler-writer collision.
-
-## Generalization target
-Final reusable policy should provide:
+## Final reusable policy target
 - nominal active runtime / operating cap
-- successor_lead
-- successor READY criteria
-- predecessor safe-unit boundary rule
-- authority-transfer CAS rule
+- successor lead
+- READY criteria
+- safe-unit boundary rule
+- CAS transfer rule on `handoff-state.json`
 - scheduler-writer rule
 - stale-owner fence
-- handoff timeout/fallback
-- observed handoff_gap distribution
+- timeout/fallback
+- authoritative handoff-gap distribution when measurable
 - overlap/preload utilization
 - rollback rule
-
-
-## Scheduler timing experiment
-The timing of the next scheduler write is itself an experimental variable.
-
-### S1 ACTIVE_OWNER_IMMEDIATE_PREARM
-As soon as an invocation is ACTIVE_OWNER, it pre-arms its successor before bootstrap-heavy or substantive work.
-
-Sequence:
-ACTIVE_OWNER_START -> capture start -> compute successor wake -> scheduler update -> verify -> work.
-
-Hypothesis:
-This maximizes continuation safety because the next wake is secured before the current invocation spends runtime budget.
-
-### S2 POST_BOOTSTRAP_PREARM
-ACTIVE_OWNER first restores context / performs bootstrap, then pre-arms the successor before substantive work.
-
-Hypothesis:
-This may improve wake-time accuracy because the owner has a better estimate of remaining runtime, but risks dying before continuation is secured.
-
-### S3 SHADOW_IMMEDIATE_PREARM
-A SHADOW successor attempts to schedule the next wake immediately upon waking, before authority transfer.
-
-This is a high-risk isolated experiment only.
-Potential benefit:
-- successor chain can be preloaded continuously.
-
-Primary risks:
-- two scheduler writers,
-- predecessor and successor overwriting each other's DTSTART,
-- uncontrolled multi-generation overlap,
-- a shadow that never gains authority still scheduling another wake.
-
-Do NOT use S3 in normal operation unless an isolated test demonstrates that scheduler ownership can be fenced safely.
-
-## Scheduler timing metrics
-Track:
-- scheduler_strategy
-- wake_to_schedule_write_sec
-- schedule_write_ok
-- schedule_conflict
-- overwritten_schedule_detected
-- continuation_secured_before_failure
-- successor_ready_sec
-- actual_handoff_gap_sec
-- generations_overlapped
-- duplicate_scheduler_writer_count
-
-## Initial scheduler-strategy order
-1. S1 ACTIVE_OWNER_IMMEDIATE_PREARM as baseline.
-2. S2 POST_BOOTSTRAP_PREARM for comparison.
-3. S3 SHADOW_IMMEDIATE_PREARM only as an isolated stress test after fencing rules are in place.
-
-The preferred strategy is the earliest scheduler write that does not create writer races or uncontrolled overlap.
