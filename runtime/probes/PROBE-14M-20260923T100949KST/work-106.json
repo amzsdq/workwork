@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":106,
+  "units_completed":8,
+  "research_notes":[
+    "A future strict-probe implementation can reduce token overhead by using structured calculation/checkpoint tasks rather than verbose prose for every unit.",
+    "The current dense run prioritizes empirical continuity and methodological repair over efficiency.",
+    "Once the 14m retry is classified, its workload-generation lesson can be distilled into a compact template.",
+    "That template should preserve usefulness and heterogeneity while using fewer durable files.",
+    "This will improve long-run research throughput at 16m+ targets.",
+    "No methodological shortcut should weaken strict pass criteria."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
