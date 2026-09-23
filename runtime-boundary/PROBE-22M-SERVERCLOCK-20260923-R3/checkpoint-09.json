@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 9,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "CLOCK_LANE_INTEGRITY_AUDIT",
+  "findings": [
+    "Raw issue-comment collection shows the clock-lane validation comment and this probe START marker with immutable server created_at values.",
+    "No END marker for this probe exists yet, so premature duration classification is impossible under the protocol.",
+    "This validates the anti-self-reporting property: elapsed claims cannot be produced from the model alone because a second server event is required."
+  ],
+  "substantive_unit_count_cumulative": 28,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
