@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":123,
+  "units_completed":8,
+  "research_notes":[
+    "A useful later metric is residual budget abandoned at handoff, because it quantifies conservatism directly.",
+    "P1 may abandon more residual budget than P2/P3 when task sizes vary.",
+    "P3 may recover more budget if estimates are accurate, but estimation errors can increase overshoot risk.",
+    "The final comparison should measure both effects rather than assuming adaptive admission is superior.",
+    "The current boundary phase provides the hard budget against which residuals will be measured.",
+    "No policy promotion occurs now."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
