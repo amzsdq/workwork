@@ -14,21 +14,34 @@ These are deterministic implementation tests, not empirical runtime evidence.
 | T08 | marker-valid WORKED=1320, clean close, scheduler verified, substantive units >0 | CLEAN_PASS_PENDING_WAKE |
 | T09 | T08 + retrospective wake | CLEAN_PASS_WAKE_OK; lower-bound promotion eligible |
 | T10 | WORKED>=target, forced stop, no independent cause | DURATION_FAIL_CANDIDATE |
-| T11 | provider/network failure independently established, markers may be absent | NON_DURATION_FAIL; clock validity may be secondary; no boundary effect |
+| T11 | provider/network failure independently established, markers may be absent | NON_DURATION_FAIL; no boundary effect |
 | T12 | WORKED>=target but no durable close and no forced-stop attribution | AMBIGUOUS |
 | T13 | model elapsed claims 1400 but markers prove 1000 | WORKED=1000; UNDER_TARGET |
 | T14 | local/model timestamp present but END marker missing, no independent cause | CLOCK_EVIDENCE_INVALID |
-| T15 | zero substantive units at/over target | not clean productive PASS; AMBIGUOUS/weak survival only |
-| T16 | forced_stop=true and clean_close=true at/over target | DURATION_FAIL_CANDIDATE + inconsistency anomaly; never clean pass |
-| T17 | provider failure=true plus malformed/reversed markers | NON_DURATION_FAIL + clock anomaly; never duration fail |
+| T15 | zero substantive units at/over target | AMBIGUOUS/weak survival only |
+| T16 | forced_stop=true and clean_close=true at/over target | DURATION_FAIL_CANDIDATE + inconsistency anomaly |
+| T17 | provider failure=true plus malformed/reversed markers | NON_DURATION_FAIL + clock anomaly |
+| T18 | timestamp pair exists but START marker ID missing | CLOCK_EVIDENCE_INVALID + MARKER_ID_PAIR_INCOMPLETE |
+| T19 | productive_ratio set but direct active_work_sec null | classification preserved + PRODUCTIVE_RATIO_WITHOUT_DIRECT_ACTIVE_WORK anomaly |
+| T20 | active_work_sec > WORKED | classification preserved + ACTIVE_WORK_EXCEEDS_WORKED anomaly |
+| T21 | exact duplicate normalized probe records | idempotently collapse to one |
+| T22 | conflicting duplicate normalized probe records | reject with CONFLICTING_DUPLICATE_PROBE; never merge fields |
+| T23 | R7 raw pair 15:50:42Z -> 15:54:53Z | WORKED=251, UNDER_TARGET |
+| T24 | CLEAN_PASS_PENDING_WAKE with wake_observed=false | remains pending, no bound effect |
+| T25 | CLEAN_PASS_PENDING_WAKE with wake_observed=true | CLEAN_PASS_WAKE_OK, promotion eligible |
+| T26 | DURATION_FAIL_CANDIDATE in pure aggregation | candidate count increments, confirmed failure boundary remains null |
 
 ## Current corpus reconciliation
-- R3 expected 652: reference arithmetic 13:43:14 - 13:32:22 = 10m52s = 652s.
-- R4 expected 736: 14:10:49 - 13:58:33 = 12m16s = 736s.
-- R6 expected 975: 15:40:08 - 15:23:53 = 16m15s = 975s.
-- R5 expected primary result NON_DURATION_FAIL because the provider block is independently established; missing clock evidence remains a secondary annotation.
+- R3 = 652s UNDER_TARGET.
+- R4 = 736s UNDER_TARGET.
+- R6 = 975s UNDER_TARGET.
+- R7 = 251s UNDER_TARGET.
+- R5 = NON_DURATION_FAIL because provider block is independently established; missing clock evidence is secondary.
 - All marker-valid completed probes remain UNDER_TARGET for target=1320s.
 - No current server-clock record establishes SAFE_LOWER_BOUND or FAILURE_BOUNDARY.
 
+## Integrity acceptance
+Raw-fetch adapter must additionally verify returned marker IDs and marker bodies match the requested probe/role. The pure classifier consumes only normalized records after that trust-boundary check.
+
 ## Design finding
-The reference classifier deliberately does not infer a hard failure from a missing close alone. Duration attribution requires an observed forced-stop/timeout or equivalent near-boundary evidence without an independent cause. Explicit independent non-duration cause has causal precedence. This preserves the anti-false-boundary rule.
+The processor does not infer a hard failure from a missing close alone. Duration attribution requires observed forced-stop/timeout or equivalent near-boundary evidence without an independent cause. Explicit independent non-duration cause has causal precedence. Conflicting duplicate evidence fails closed instead of being merged into a stronger-looking synthetic record.
