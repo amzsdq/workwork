@@ -4,9 +4,9 @@
   "immutable_terminal_path": "runtime-boundary/OP-CAP-14M-VALIDATION-02/terminal.json",
   "immutable_event_path": "state/events/OP-CAP-14M-VALIDATION-02.json",
   "terminal_result": "CLEAN_PASS_PENDING_WAKE",
-  "projection_updates_completed": ["state/current.json"],
-  "projection_updates_required": ["state/events.log", "EVIDENCE_TABLE.md"],
-  "projection_conflict_observed": "state/events.log CAS conflict while reconciling VALIDATION-01; do not blind overwrite",
+  "projection_updates_completed": ["state/current.json", "EVIDENCE_TABLE.md"],
+  "projection_updates_required": ["state/events.log"],
+  "projection_conflict_observed": "state/events.log previously experienced CAS conflict; do not blind overwrite",
   "do_not_rerun_completed_probe": true,
-  "next_action": "Confirm retrospective wake, persist wake event, then reconcile projections and advance to VALIDATION-03"
+  "next_action": "Confirm retrospective wake from next invocation, persist wake event, reconcile state/events.log, then advance to VALIDATION-03"
 }
