@@ -23,6 +23,7 @@ Each measured invocation uses four immutable GitHub issue comments in issue #1:
 - WORK_START_MARKER: scheduler/prearm/setup is complete and substantive work begins
 - PRE_CLOSE_MARKER: substantive work stops; durable close begins
 - END_MARKER: durable close checkpoint is complete
+- PROGRESS_MARKER: optional authoritative server-clock sample used only for admission/close control
 
 The marker comment body identifies the invocation/probe but contains no authoritative time value.
 
@@ -45,9 +46,16 @@ At invocation start:
 5. Create WORK_START_MARKER immediately before the first substantive workload unit.
 6. Fetch raw WORK_START created_at.
 
+During substantive work:
+
+- periodically create a PROGRESS_MARKER after a completed unique batch or batch group when a close/admission decision is needed;
+- raw-fetch its GitHub server `created_at`;
+- compute authoritative elapsed-for-control from `PROGRESS_MARKER.created_at - START_MARKER.created_at`;
+- model/local clocks may be used only as non-authoritative hints for when to request a sample, never to declare target reached.
+
 At normal close:
 
-1. When the admission/close policy says to stop admitting new work, create PRE_CLOSE_MARKER.
+1. When authoritative progress/admission policy says to stop admitting new work, create PRE_CLOSE_MARKER.
 2. Fetch raw PRE_CLOSE created_at.
 3. Persist the durable close checkpoint with clock status pending.
 4. Create END_MARKER immediately after that checkpoint.
@@ -138,6 +146,15 @@ PRE_CLOSE:
 RUNTIME_PRE_CLOSE_MARKER
 probe_id=<PROBE_ID>
 case_id=<CASE_ID>
+clock_protocol=GITHUB_SERVER_MARKER_V1
+```
+
+PROGRESS:
+```
+RUNTIME_PROGRESS_MARKER
+probe_id=<PROBE_ID>
+case_id=<CASE_ID>
+batch_end_ordinal=<ORDINAL>
 clock_protocol=GITHUB_SERVER_MARKER_V1
 ```
 
