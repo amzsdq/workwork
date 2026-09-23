@@ -240,10 +240,10 @@ Every new strict case should record:
 ## 6. Current execution pointer
 
 CURRENT_CASE_ID = SC-A22-CLOCK-01
-ACTIVE_PROBE_ID = PROBE-22M-SERVERCLOCK-20260923-R3
+ACTIVE_PROBE_ID = PROBE-22M-SERVERCLOCK-20260923-R4
 
 Immediate objective:
-Continue the active 22m W3 server-clock probe. Do not start a duplicate. Its START marker is issue comment 5795782562 with raw server `created_at=2026-09-23T13:32:22Z`. Close only after sustained useful work and a durable close checkpoint; then create END_MARKER and classify exclusively from the two server timestamps.
+Continue R4 22m W3 server-clock revalidation. START marker is issue comment 5796189180 with raw server `created_at=2026-09-23T13:58:33Z`. Scheduler was pre-armed for 2026-09-23T14:23:33Z (+22m target +3m planned gap). R3 is terminal UNDER_TARGET and must not be treated as active. R4 must continue useful bounded W3 work through the target class, persist a durable close checkpoint, then create END_MARKER and classify only from the two server timestamps.
 
 ## 7. Final program completion gate
 
