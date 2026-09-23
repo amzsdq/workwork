@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 3,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "PROTOCOL_CONSISTENCY_AUDIT",
+  "findings": [
+    "Canonical server-clock protocol and master plan agree that model-authored elapsed values cannot classify duration.",
+    "MAX_SAFE_RUNTIME_RESEARCH contains stale wording saying END_MARKER after durable close synchronization; the final clock protocol is more specific and authoritative: substantive work -> durable close checkpoint -> END_MARKER -> terminal-ledger synchronization.",
+    "This wording discrepancy does not affect this probe because GITHUB_SERVER_CLOCK_PROTOCOL.md is explicitly the final invariant and source of truth.",
+    "A later documentation repair should align the stale sentence, but it is not a duration failure and must not terminate the probe."
+  ],
+  "substantive_unit_count_cumulative": 14,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
