@@ -1,0 +1,18 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":7,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"FINITE_CLOSE_MEASUREMENT_PLAN",
+  "close_measurement_contract":{
+    "last_normal_task_admit_ts":"capture when normal work admission stops",
+    "pre_close_ts":"capture immediately before required terminal-sync transaction",
+    "operational_close_end":"completion/commit time of final required terminal-sync write",
+    "post_close_measurement":"may persist retrospectively and must not redefine operational close_end",
+    "optional_measurement_writes":"excluded from close_overhead"
+  },
+  "finding":"This avoids recursive measurement overhead and permits a directly useful W3 completion-envelope sample if target is reached.",
+  "substantive_unit_count_cumulative":7,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
