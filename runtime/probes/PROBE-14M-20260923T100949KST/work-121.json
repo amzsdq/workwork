@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":121,
+  "units_completed":8,
+  "research_notes":[
+    "The operating cap should be chosen with enough margin that ordinary close variance does not frequently consume the entire reserve.",
+    "A max-observed close overhead is conservative but may be noisy; upper-tail plus explicit safety margin may be more stable after enough samples.",
+    "Until enough observations exist, err toward a wider reserve rather than false precision.",
+    "The current coarse search is not yet the stage to set that number.",
+    "Its purpose is locating the viable runtime region.",
+    "No reserve value is promoted from this single sample."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
