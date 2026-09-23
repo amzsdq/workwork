@@ -1,0 +1,17 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":3,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":17,
+  "completed_repairs":[
+    "Defined goal-directed versus directly measured active-work semantics to avoid fabricated productive ratios.",
+    "Aligned W7 close-heavy profile with the prearm-only scheduler contract; removed contradictory normal-close RRULE rewrite.",
+    "Aligned boundary decision rule with strict retrospective WAKE_OK before SAFE_LOWER_BOUND/next-target advancement.",
+    "Aligned MAX_SAFE_RUNTIME_RESEARCH with the same strict wake gate and three-axis objective.",
+    "Corrected policy utility model so useful work W(T), clean-close reliability, and wake reliability dominate raw runtime T."
+  ],
+  "decision_value":"These repairs remove control-policy contradictions that could invalidate future completion-envelope and productive-window measurements.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
