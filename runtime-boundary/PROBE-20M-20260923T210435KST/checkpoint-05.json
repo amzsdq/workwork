@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":5,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":5,
+  "large_unit":"construct rollback/admission decision table for later policy phase from current boundary evidence",
+  "decision_table":[
+    {"condition":"duration failure before 20m with non-duration causes excluded","action":"bracket [18m,20m] and refine near 19m"},
+    {"condition":"20m clean close + retrospective wake","action":"advance exploratory lower bound to 20m; next coarse target 22m with rotated profile"},
+    {"condition":"20m clean close but wake anomaly","action":"keep duration close evidence separate; diagnose wake layer before strict promotion"},
+    {"condition":"tool/provider/GitHub failure","action":"NON_DURATION_FAIL; do not move boundary"},
+    {"condition":"next task estimate + reserve exceeds remaining hard budget","action":"reject new task and close/handoff"}
+  ],
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
