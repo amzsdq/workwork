@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-18M-20260923T153346KST",
+  "checkpoint": 3,
+  "workload_profile": "W2_WRITE_CHECKPOINT_HEAVY",
+  "purpose": "validate final-policy derivation constraints under write-heavy workload",
+  "policy_constraints": [
+    "production cap must remain below credible failure boundary with meaningful margin",
+    "candidate cap requires repeated clean runs rather than max observed success",
+    "heterogeneous workload replication is required near candidate boundary",
+    "policy comparison occurs only after boundary and cap are sufficiently characterized",
+    "prefer simplest policy statistically/practically indistinguishable from complex alternatives",
+    "planned gap optimization follows runtime-cap characterization"
+  ],
+  "result": "PASS"
+}
