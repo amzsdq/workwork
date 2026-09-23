@@ -33,7 +33,8 @@ W6 LARGE_UNIT
 
 W7 CLOSE_HEAVY
 - normal substantive work followed by realistic necessary close work
-- checkpoint, state update, evidence validation, final RRULE write
+- checkpoint, state/evidence update, derived-view validation, and verification that the start-of-turn prearmed scheduler state remains valid
+- no normal-close scheduler mutation; the same automation was already prearmed at invocation start
 
 ## Rules
 - Choose a profile before each empirical probe and record workload_profile.
