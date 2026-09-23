@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":87,
+  "units_completed":8,
+  "research_notes":[
+    "A future aggregate can calculate strict clean counts per target and identify the current bracket automatically.",
+    "It should treat under-target and non-duration failures as non-boundary evidence exactly as the decision rule specifies.",
+    "It should keep supporting parallel evidence in a separate channel.",
+    "This will reduce manual state drift as the number of probes grows.",
+    "The summary state can then be regenerated from immutable evidence if needed.",
+    "Such tooling is supporting development and remains subordinate to the runtime study."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
