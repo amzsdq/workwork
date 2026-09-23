@@ -1,0 +1,21 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":1,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":1,
+  "large_unit":"derive completion-safe admission envelope from existing 18m evidence and 20m protocol",
+  "findings":{
+    "safe_lower_bound_min":18,
+    "current_target_min":20,
+    "existing_direct_close_overhead_sample_sec":32,
+    "configured_close_reserve_sec":60,
+    "reserve_margin_over_sample_sec":28,
+    "candidate_admission_inequality":"estimated_next_task_sec + close_reserve_sec <= remaining_budget_sec",
+    "candidate_latest_normal_admission_elapsed_sec_if_reserve_only":1140,
+    "candidate_latest_normal_admission_note":"19m is arithmetic ceiling only, not promoted soft cutoff; task duration and variance must also fit",
+    "hard_cap_status":"UNRESOLVED_UNTIL_20M_TERMINAL_EVIDENCE",
+    "productive_cap_status":"UNRESOLVED"
+  },
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
