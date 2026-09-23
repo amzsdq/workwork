@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 31,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "LONG_RUN_UTILIZATION_RELEVANCE_AUDIT",
+  "findings": [
+    "Server-clock WORKED will improve the denominator accuracy for later long-run useful-work utilization calculations.",
+    "Useful-work numerator still requires separate defensible instrumentation; this run intentionally does not equate durable unit count with active seconds.",
+    "This separation is necessary before comparing overlap handoff policies, because reduced idle time is valuable only if useful-work utilization actually rises without reliability loss."
+  ],
+  "substantive_unit_count_cumulative": 87,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
