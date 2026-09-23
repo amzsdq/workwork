@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":170,
+  "units_completed":8,
+  "research_notes":[
+    "The strict runtime probe should be considered a controlled experiment even though the generated workload itself produces reusable research conclusions.",
+    "The independent variable is target runtime class; scheduler strategy/gap and broad workload profile remain controlled.",
+    "The outcome is clean close/failure plus timing metrics.",
+    "This framing prevents accidental policy changes from contaminating the boundary search.",
+    "The current retry preserves the same 14m target and +3m gap as intended.",
+    "Final close will supply the outcome."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
