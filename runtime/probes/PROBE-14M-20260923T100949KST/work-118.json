@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":118,
+  "units_completed":8,
+  "research_notes":[
+    "The final result should include workload-profile coverage because a cap validated only on W3 cannot automatically claim universal safety.",
+    "At minimum representative reasoning-heavy and I/O-heavy profiles should be sampled near the candidate cap.",
+    "If all converge, a universal cap is justified more strongly.",
+    "If not, choose the lower safe envelope or document conditional policy.",
+    "This cross-profile step belongs before final policy promotion.",
+    "Current 14m W3 sample is one component of that evidence base."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
