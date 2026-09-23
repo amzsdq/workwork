@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":96,
+  "units_completed":8,
+  "research_notes":[
+    "The current run has already generated far more useful work than the prior 33-unit sample, so workload exhaustion has been decisively mitigated as a design issue.",
+    "Future retries should not need this extreme checkpoint density; the lesson can be carried forward as a scalable backlog requirement.",
+    "The remaining experiment is about runtime and close behavior, not proving the ability to invent more units.",
+    "At the target boundary, close promptly rather than continuing merely because backlog exists.",
+    "That preserves the intended target-class semantics.",
+    "No change to scheduler is required."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
