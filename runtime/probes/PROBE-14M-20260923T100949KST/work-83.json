@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":83,
+  "units_completed":8,
+  "research_notes":[
+    "A later failure classifier should distinguish application/tool rejection from infrastructure unavailability and elapsed-runtime termination.",
+    "Only the latter category is directly relevant to the runtime boundary unless the application rejection prevents required close evidence.",
+    "Even then, the cause should be documented rather than mislabeled as timeout.",
+    "This sample demonstrates why explicit failure taxonomy matters in long tool-heavy turns.",
+    "The strict boundary remains unresolved until a credible duration-related failure occurs.",
+    "The current target remains 14m pending close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
