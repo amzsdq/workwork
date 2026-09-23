@@ -1,0 +1,8 @@
+{
+  "probe_id":"PROBE-18M-20260923T133042KST",
+  "checkpoint":2,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "work_units_completed":20,
+  "checks":{"admission_rule":true,"close_reserve":true,"failure_classification":true,"profile_rotation":true,"durable_close_required":true,"parallel_evidence_separated":true},
+  "status":"ACTIVE_CONTINUE"
+}
