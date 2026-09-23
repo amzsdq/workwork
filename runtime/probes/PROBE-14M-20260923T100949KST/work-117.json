@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":117,
+  "units_completed":8,
+  "research_notes":[
+    "The future compact backlog should prioritize work that advances analysis even when the probe passes, so stress testing produces reusable knowledge rather than disposable load.",
+    "Examples include aggregating timing distributions, checking evidence consistency, replaying admission policies, and deriving rollback thresholds from actual samples.",
+    "This makes longer probes productive research turns in their own right.",
+    "The current run has followed that principle with methodological and policy synthesis.",
+    "The target close should still stop the sample once the class is demonstrated.",
+    "No intentional extension beyond target is needed."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
