@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 46,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "FINAL_BOUNDARY_EFFECT_PRECHECK",
+  "findings": [
+    "Current boundary effect remains NONE_ACTIVE because no END marker exists yet.",
+    "The first terminal boundary effect, if clean, must be NONE_PENDING_RETROSPECTIVE_WAKE rather than immediate promotion.",
+    "SERVER_CLOCK_FAILURE_BOUNDARY remains unresolved with zero credible duration failures observed under the new clock protocol."
+  ],
+  "substantive_unit_count_cumulative": 134,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
