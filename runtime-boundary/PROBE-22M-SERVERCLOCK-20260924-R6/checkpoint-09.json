@@ -1,0 +1,11 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260924-R6",
+  "case_id": "SC-A22-CLOCK-01",
+  "workload_profile": "W3_MIXED_IO",
+  "substantive_units_completed_total": 54,
+  "additional_units": [
+    "stress workload matrix W7 close semantic repair",
+    "runtime workload profiles W7 close semantic repair"
+  ],
+  "status": "ACTIVE_CONTINUE"
+}
