@@ -1,0 +1,15 @@
+{
+  "probe_id":"PROBE-22M-SERVERCLOCK-20260924-R9",
+  "audit_type":"POSTHOC_HARNESS_SEMANTIC_UNIQUENESS",
+  "clock_evidence":"VALID_UNCHANGED",
+  "worked_sec":1322,
+  "survival_observation":"22m02s invocation survived and closed cleanly by server clock",
+  "finding":"Generator v1 guaranteed unique case IDs but repeated the same 720 semantic Cartesian scenarios across epochs. Therefore the recorded >=2048 ID-unique count is not equivalent to >=2048 decision-unique units.",
+  "semantic_unique_generator_cases_max_before_repeat":720,
+  "risk":"SUSTAINED_SUBSTANTIVE_WORK criterion is weaker than terminal record implied; repeated deterministic cases may constitute low-decision-value padding after the first semantic cycle.",
+  "strict_promotion_status":"REQUIRES_REVALIDATION_OR_SUPERSEDING_VALID_PROBE",
+  "duration_failure_boundary_effect":"NONE",
+  "clock_survival_evidence_retained":true,
+  "fix":"Generator V2 commit 3a7fefadfdb4f7f98c2435cf55251943184e6e80 adds semantic epoch perturbations and validator.",
+  "policy":"Do not use ID uniqueness alone as productive-unit evidence in future promotions."
+}
