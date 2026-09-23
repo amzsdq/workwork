@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":109,
+  "units_completed":8,
+  "research_notes":[
+    "A final rollback rule could use repeated unexplained failures at/below cap as a trigger, while independent outages are excluded.",
+    "Exact thresholds should be chosen after validation data exists rather than invented now.",
+    "Promotion should remain slower than rollback to avoid oscillation.",
+    "Revalidation can later restore a higher cap when clean evidence accumulates.",
+    "This operational lifecycle is downstream of boundary discovery.",
+    "Current probe continues to gather that foundational evidence."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
