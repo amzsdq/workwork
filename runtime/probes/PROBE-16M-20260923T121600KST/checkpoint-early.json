@@ -1,0 +1,11 @@
+{
+  "probe_id": "PROBE-16M-20260923T121600KST",
+  "checkpoint": "EARLY_ACTIVE",
+  "target_runtime_sec": 960,
+  "workload_profile": "W4_REASONING_HEAVY",
+  "units_persisted": 5,
+  "scheduler_prearmed": true,
+  "scheduler_state_validated": true,
+  "close_reserve_sec": 60,
+  "status": "CONTINUE_USEFUL_WORK_TO_TARGET"
+}
