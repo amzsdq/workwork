@@ -1,40 +1,23 @@
 # Runtime Evidence Layout
 
-Purpose: stop the namespace fragmentation seen in the historical 18m probes and make crash recovery/classification cheap.
+Purpose: keep strict probe recovery/classification cheap and prevent namespace fragmentation.
 
-## Canonical path for new runtime probes
-
-For all new strict runtime probes, use one directory:
-
+## Canonical path
+All new strict probes use:
 `runtime-boundary/<PROBE_ID>/`
 
 Preferred files:
-- `start.json` — immutable start/prearm facts.
-- `checkpoint-NN.json` — useful durable checkpoints only; do not checkpoint every tiny unit.
-- `close.json` — terminal timing/classification evidence.
+- `start.json` — immutable identity, START marker comment ID/raw server created_at, target/profile, verified prearm facts;
+- `checkpoint-NN.json` — materially useful checkpoints only;
+- `close-pending.json` or equivalent durable close checkpoint before END when needed;
+- `close.json` — terminal marker IDs/server timestamps, WORKED, classification, productive/completion evidence.
 
-Do not create new strict runtime evidence under the historical namespaces `runtime/`, `runtime/probes/`, `runtime-probes/`, or `runtime-evidence/`. Those remain read-only legacy evidence.
+The actual START/END clock source remains immutable GitHub issue #1 comments and their raw REST resources. Repository JSON merely references those authoritative markers.
+
+Historical namespaces remain read-only legacy evidence.
 
 ## Mutable pointer
+`state/current.json.active_probe_id` is recovery metadata, not empirical proof. At terminal close clear/terminalize it, set last probe/result, append canonical event, update evidence table, and re-read agreement before advancing.
 
-`state/current.json` should carry an `active_probe_id` while a probe is running. This is a recovery pointer, not empirical proof. Raw per-probe evidence remains authoritative.
-
-At terminal close:
-- clear or terminalize the active pointer,
-- set last probe/result fields,
-- append canonical event,
-- update derived evidence table,
-- re-read and verify agreement before advancing the case.
-
-## Why
-
-Historical 18m evidence is spread across five namespaces and at least 18 prior probe IDs. That makes terminal-close discovery expensive and contributed to repeated start/checkpoint-only attempts. A single canonical path improves:
-- crash recovery,
-- terminal-decision yield,
-- evidence audits,
-- duplicate-probe prevention,
-- state reconciliation.
-
-## Anti-overhead rule
-
-Do not turn the layout into extra bureaucracy. A normal clean probe should need only start, a small number of materially useful checkpoints, and close. The layout exists to reduce repeated work, not increase write count.
+## Anti-overhead
+Do not turn the layout into bureaucracy. Checkpoint only when it preserves material progress/recovery or decision evidence. The layout exists to reduce repeated work, not inflate duration.
