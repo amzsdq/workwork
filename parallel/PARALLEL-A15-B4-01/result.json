@@ -1,0 +1,19 @@
+{
+  "probe_id": "PARALLEL-A15-B4-01",
+  "observed_at_kst": "2026-09-23T09:01:02+09:00",
+  "primary_start_kst": "2026-09-23T08:44:14+09:00",
+  "parallel_b_start_kst": "2026-09-23T08:45:55+09:00",
+  "parallel_b_end_kst": "2026-09-23T08:49:20+09:00",
+  "primary_end_evidence": false,
+  "a_units_observed": 3,
+  "b_units_completed": 8,
+  "b_elapsed_sec": 205,
+  "duplicate_unit_count": 0,
+  "write_conflict_count": 0,
+  "scheduler_conflict_count": 0,
+  "confirmed_useful_overlap_sec": 0,
+  "parallelism_factor": null,
+  "classification": "INCONCLUSIVE",
+  "reason": "B completed useful disjoint work, but no A evidence exists after B_START and no primary-end evidence exists. Therefore concurrent execution is known from invocation timing, but concurrent useful work for this sample is not empirically established.",
+  "next_recommendation": "Repeat with PRIMARY_A emitting immutable heartbeat/work-unit evidence throughout its active window, especially after B_START; B should not reschedule until that evidence exists or A target horizon has elapsed."
+}
