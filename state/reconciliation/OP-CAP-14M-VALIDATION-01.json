@@ -6,13 +6,14 @@
   "retrospective_wake_event_path": "state/events/OP-CAP-14M-VALIDATION-01-WAKE.json",
   "terminal_result": "CLEAN_PASS_WAKE_OK",
   "wake_ok": true,
-  "projection_updates_completed": ["EVIDENCE_TABLE.md"],
-  "projection_updates_required": ["state/current.json", "state/events.log"],
+  "projection_updates_completed": ["EVIDENCE_TABLE.md", "state/current.json"],
+  "projection_updates_required": ["state/events.log"],
   "required_current_state_effect": {
     "operational_cap_clean_runs_current": 1,
     "completed_probe_id": "OP-CAP-14M-VALIDATION-01",
     "active_study_case_id": "OP-CAP-14M-VALIDATION-02"
   },
+  "current_state_commit": "cc88dc6d599575d807f3b38cb63a4a03813c9f69",
   "do_not_rerun_completed_probe": true,
   "next_probe_id_after_reconcile": "OP-CAP-14M-VALIDATION-02"
 }
