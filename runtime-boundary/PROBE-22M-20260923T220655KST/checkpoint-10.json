@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":10,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"PRODUCTIVE_CAP_VS_SOFT_CUTOFF_SEMANTICS_AUDIT",
+  "finding":"PRODUCTIVE_CAP must remain an empirical completion envelope, whereas SOFT_CUTOFF is a control-policy choice. Under P3/P4 the latest admissible task start is task-size-dependent: hard_cap - reserve - estimated_task_duration. A scalar SOFT_CUTOFF should be retained only as a conservative fallback/simple-policy comparator.",
+  "decision_value":"Prevents Phase A survival results from prematurely hard-coding a fixed latest-start threshold and preserves a fair Phase C comparison between P1/P2 and P3/P4.",
+  "substantive_unit_count_cumulative":10,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
