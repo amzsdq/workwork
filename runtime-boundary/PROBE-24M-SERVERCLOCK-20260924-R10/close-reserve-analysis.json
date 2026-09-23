@@ -1,0 +1,11 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "current_config_close_reserve_sec":60,
+  "current_protocol_prior_samples_sec":[57],
+  "sample_count_before_R10_close":1,
+  "margin_over_max_observed_sec":3,
+  "assessment":"60s is a provisional experimental reserve, not a promoted safe reserve; with N=1 its margin over observed close overhead is only 3s.",
+  "candidate_reserves_for_later_validation":{"plus_5s":62,"plus_10s":67,"plus_15s":72,"plus_20s":77,"plus_30s":87},
+  "policy":"Do not change the in-flight R10 causal configuration. Record R10 PRE_CLOSE->END as the second current-protocol sample, then reassess reserve after terminal evidence.",
+  "boundary_effect":"NONE"
+}
