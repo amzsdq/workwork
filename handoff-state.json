@@ -1,6 +1,6 @@
 {
   "generation": 1,
-  "status": "ACTIVE",
+  "status": "DEFERRED_LEGACY_DESIGN_STATE",
   "active_invocation_id": "20260923T014447KST",
   "predecessor_invocation_id": null,
   "successor_invocation_id": null,
@@ -8,5 +8,7 @@
   "nominal_active_runtime_sec": 900,
   "handoff_policy": "EARLY_READY_HANDOFF",
   "scheduler_strategy": "S1_ACTIVE_OWNER_IMMEDIATE_PREARM",
-  "updated_at": "2026-09-23T01:44:47+09:00"
+  "timing_authority": "LEGACY_MODEL_METADATA_NOT_EMPIRICAL_CLOCK",
+  "updated_at": "2026-09-23T01:44:47+09:00",
+  "note": "Handoff live research is deferred during strict runtime Phase A/B. This owner record is the canonical future control path, but the legacy invocation/timestamp fields do not represent the current runtime researcher and must not be used as empirical timing evidence. Reinitialize deliberately when Phase C live testing resumes."
 }
