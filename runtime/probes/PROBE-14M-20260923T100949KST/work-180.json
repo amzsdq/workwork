@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":180,
+  "units_completed":8,
+  "research_notes":[
+    "The current run's result should be reported concisely even though the durable evidence is extensive: target, actual, profile, classification, lower bound/boundary, next target.",
+    "Detailed anomalies only need expansion if they affect classification.",
+    "This keeps user-facing relay logs readable while preserving audit depth in GitHub.",
+    "The one blocked write attempt did not affect classification and need not dominate the report.",
+    "A clean close would make the headline simply 14m PASS and next 16m.",
+    "No result is emitted before close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
