@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":183,
+  "units_completed":8,
+  "research_notes":[
+    "The successor can use this probe's close result to seed a 16m workload with actual prior timing rather than only methodology prose.",
+    "For example it can calculate wake jitter, actual idle gap, close overhead, and update class counters while exercising useful mixed I/O.",
+    "This naturally creates substantive load early in the next probe.",
+    "Additional policy replay can use the growing timing dataset later in the turn.",
+    "This should reduce repetitive protocol restatement at longer targets.",
+    "Current close must happen first."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
