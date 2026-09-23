@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":43,
+  "units_completed":8,
+  "research_notes":[
+    "The later operating policy can use the smallest-safe-unit concept to avoid starting a long task near hard cap.",
+    "This is compatible with both fixed soft cutoff and estimated-next-task admission.",
+    "The policy should checkpoint before authority transfer rather than relying on successor reconstruction from conversational context.",
+    "Durable state remains the correct handoff substrate for disposable invocations.",
+    "The current runtime study is therefore directly informing the later relay control policy, not merely measuring a timeout.",
+    "Parallelism remains an orthogonal throughput enhancement to revisit after this control envelope is known."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
