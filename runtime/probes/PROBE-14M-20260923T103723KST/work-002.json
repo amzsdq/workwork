@@ -1,0 +1,6 @@
+{
+  "unit": 2,
+  "profile": "W3_MIXED_IO_CLOSE_RESERVE",
+  "finding": "Use bounded work units before the reserved close interval; preserve one scheduler write at invocation start; keep parallel research deferred.",
+  "useful": true
+}
