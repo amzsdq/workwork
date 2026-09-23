@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":161,
+  "units_completed":8,
+  "research_notes":[
+    "The next strict target should not be scheduled by changing the current pre-armed wake at close; the successor invocation itself will pre-arm its own continuation after reconciling state.",
+    "This preserves the one-scheduler-write-per-invocation strict protocol.",
+    "The current wake therefore remains tied to this probe's target+gap, not the next probe's eventual target.",
+    "At successor start, fresh state will select 16m only if this close is clean.",
+    "This avoids scheduler races and keeps ownership of scheduling local to the new active invocation.",
+    "No close-time scheduler mutation is allowed."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
