@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":124,
+  "units_completed":8,
+  "research_notes":[
+    "The later shadow-successor lead optimization should include successor bootstrap variance plus predecessor unit-tail plus safety margin.",
+    "A validated predecessor hard cap will make residual-budget calculations meaningful.",
+    "Without that cap, early READY handoff can waste unknown safe capacity or arrive too late.",
+    "Thus the runtime study is prerequisite evidence for the handoff optimization as well as the single-worker policy.",
+    "This further supports keeping parallel/handoff research deferred for now.",
+    "Current target remains 14m pending close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
