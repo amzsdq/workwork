@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":4,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":4,
+  "large_unit":"derive conservative close-reserve update rule without overfitting one 32s sample",
+  "observations":{"direct_close_samples_sec":[32],"sample_count":1,"configured_reserve_sec":60},
+  "rule_candidate":"Until >=5 comparable clean close samples exist, do not reduce the 60s provisional reserve. Once >=5 exist, estimate a high observed quantile plus explicit safety margin; if any clean-close loss occurs at/below candidate, increase reserve and roll back cap.",
+  "reason":"One sample is insufficient to estimate variance; reducing reserve now would optimize on noise.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
