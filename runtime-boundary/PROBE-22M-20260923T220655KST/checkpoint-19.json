@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":19,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"DERIVED_VIEW_ISOLATION_AUDIT",
+  "finding":"EVIDENCE_TABLE.md correctly remains at the last terminal result (20m) while 22m is active. Updating the derived table before a terminal 22m classification would violate evidence authority and risk false boundary promotion.",
+  "action":"Defer EVIDENCE_TABLE update until the 22m terminal sync transaction.",
+  "substantive_unit_count_cumulative":19,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
