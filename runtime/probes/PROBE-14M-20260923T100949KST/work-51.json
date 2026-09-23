@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":51,
+  "units_completed":8,
+  "research_notes":[
+    "If the platform's effective limit is probabilistic, a single failure class may not form a sharp deterministic boundary.",
+    "The current bracket method still provides a practical region, while cap validation measures reliability inside it.",
+    "Repeated samples near candidate cap are therefore more important than chasing exact timeout precision.",
+    "A safety margin can absorb both close variance and probabilistic runtime variance.",
+    "Rollback handles drift after deployment.",
+    "This layered approach is more robust than treating max observed success as a hard constant."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
