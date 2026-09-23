@@ -25,6 +25,23 @@ Evidence authority remains:
 
 A derived summary must never override raw/canonical evidence.
 
+## 1A. Final work-duration clock invariant
+
+For every new strict timing probe, `GITHUB_SERVER_CLOCK_PROTOCOL.md` is mandatory.
+
+```
+WORK_DURATION Source of Truth = GitHub server timestamp
+WORKED = END_MARKER.created_at - START_MARKER.created_at
+```
+
+Model-authored START/END/time/elapsed strings are non-authoritative and must never be used to classify runtime duration.
+
+Strict timing evidence requires a valid START_MARKER/END_MARKER pair written as immutable comments to GitHub issue #1, followed by raw REST reads of each comment's server `created_at`.
+
+If the marker pair is invalid or unavailable, classify exact-duration evidence as `CLOCK_EVIDENCE_INVALID`. Do not advance SAFE_LOWER_BOUND and do not create a duration failure boundary.
+
+Pre-protocol timing results remain `LEGACY_SUPPORTING_EVIDENCE`; they are preserved but cannot by themselves support a new strict promotion.
+
 ## 2. Anti-drift rule
 
 Every invocation must answer exactly three questions before doing work:
@@ -114,9 +131,10 @@ During Phase A, collect all three axes on the same probes whenever possible so l
 ### Phase A — runtime boundary search
 
 Current state:
-- SAFE_LOWER_BOUND = 20m
+- LEGACY_EXPLORATORY_LOWER_BOUND = 20m
+- SERVER_CLOCK_SAFE_LOWER_BOUND = unresolved until first GITHUB_SERVER_MARKER_V1 pass
 - FAILURE_BOUNDARY = unresolved
-- active target = 22m
+- active target = 22m server-clock revalidation
 - planned_gap = +3m
 - current profile = W3 MIXED_IO
 
@@ -319,10 +337,10 @@ Every study case should record:
 
 ## 6. Current execution pointer
 
-CURRENT_CASE_ID = SC-A22-01
+CURRENT_CASE_ID = SC-A22-CLOCK-01
 
 Immediate objective:
-Continue profile-rotated coarse ascent at 22m while collecting survival, productive-window, and completion-envelope evidence. Handoff/overlap live testing remains deferred so it does not contaminate boundary inference.
+Re-run the 22m W3 class under GITHUB_SERVER_MARKER_V1. Create START_MARKER before scheduler pre-arm/substantive work, create END_MARKER only after durable close synchronization, and compute WORKED exclusively from the raw GitHub server created_at values. Existing pre-protocol 22m evidence is supporting-only. Handoff/overlap live testing remains deferred so it does not contaminate boundary inference.
 
 ## 7. Final program completion gate
 
