@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":14,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"CROSS_CHECK_CURRENT_FINDINGS",
+  "cross_checks":[
+    "Checkpoint-01 canonical-state reconstruction remains consistent with fresh current.json.",
+    "Checkpoint-06 wake-jitter interpretation remains consistent with durable overlap evidence and does not alter runtime boundary.",
+    "No checkpoint in this probe claims a synthetic replay result as empirical survival evidence.",
+    "No duration-attributable failure has been observed so far in the active 22m W3 invocation."
+  ],
+  "substantive_unit_count_cumulative":14,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
