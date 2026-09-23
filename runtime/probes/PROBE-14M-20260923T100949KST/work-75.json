@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":75,
+  "units_completed":8,
+  "research_notes":[
+    "The future safety margin should account for both close-overhead upper tail and task-tail uncertainty.",
+    "A soft cutoff can absorb task-tail uncertainty while hard-cap reserve protects the final checkpoint.",
+    "If unit-duration estimates become accurate, P3 may reduce the task-tail component of the margin.",
+    "If estimates are poor, P2's bounded-unit rule is more robust.",
+    "These are empirical tradeoffs rather than reasons to choose the most sophisticated policy by default.",
+    "The current boundary data will constrain all of them."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
