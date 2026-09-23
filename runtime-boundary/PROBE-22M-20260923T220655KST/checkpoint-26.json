@@ -1,0 +1,11 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":26,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"FINAL_CLOSE_RESERVE_CONSISTENCY_CHECK",
+  "finding":"No new representative close-overhead sample exists before terminal close, so the current 60s reserve remains provisional and must not be used to stop this Phase-A probe early. The direct W3 close measurement from this run, if obtainable, will be added only after target crossing.",
+  "substantive_unit_count_cumulative":26,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE_TO_TARGET"
+}
