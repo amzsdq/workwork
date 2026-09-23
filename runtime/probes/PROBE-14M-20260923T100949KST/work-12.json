@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":12,
+  "units_completed":12,
+  "handoff_policy_design":[
+    "P1 fixed cutoff provides the lowest control overhead and is the baseline.",
+    "P2 soft cutoff plus hard cap can admit only short units late in the turn.",
+    "P3 estimated-next-task admission explicitly budgets unit estimate plus close reserve plus safety margin.",
+    "P4 adapts reserve/margin from recent observations but risks overfitting and control overhead.",
+    "Compare policies on long-run useful_work/wall_clock, not only per-turn active seconds.",
+    "Track overshoot and unnecessary early handoff separately because both reduce policy quality.",
+    "Track estimate error for P3/P4 to determine whether prediction actually improves admission.",
+    "A complex policy that gains negligible utilization over P2 should be rejected.",
+    "Hard cap remains a safety invariant even under adaptive admission.",
+    "Late-turn units should be bounded/interruptible enough to preserve durable close.",
+    "Authority transfer and parallel successor optimization are downstream from establishing this safe admission envelope.",
+    "The final reusable contract should expose soft cutoff, hard cap, reserve, margin, and rollback rule explicitly."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
