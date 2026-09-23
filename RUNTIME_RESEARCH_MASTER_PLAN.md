@@ -1,0 +1,250 @@
+# Runtime Research Master Plan
+
+Status: CANONICAL EXECUTION ROADMAP
+Repo: amzsdq/workwork
+
+## 1. Research objective
+
+Answer two questions with empirical evidence:
+
+1. What is the maximum empirically safe substantive-work duration for one automation invocation?
+2. What is the simplest reproducible handoff/admission policy that operates near that limit with high long-run useful-work utilization without materially increasing forced-stop/run-out risk?
+
+This document is the execution map. Detailed protocols remain in:
+- `MAX_SAFE_RUNTIME_RESEARCH.md`
+- `RUNTIME_BOUNDARY_DECISION_RULE.md`
+- `RUNTIME_WORKLOAD_PROFILES.md`
+- `RUNTIME_STRESS_WORKLOAD_MATRIX.md`
+- `PROBE_EXECUTION_PLAN.md`
+
+Evidence authority remains:
+1. raw per-probe evidence,
+2. `state/events.log`,
+3. `state/current.json` as the mutable current pointer,
+4. derived summaries such as `EVIDENCE_TABLE.md`.
+
+A derived summary must never override raw/canonical evidence.
+
+## 2. Anti-drift rule
+
+Every invocation must answer exactly three questions before doing work:
+
+1. What study case is active?
+2. What observation will make that case terminal?
+3. What exact next case follows each possible terminal result?
+
+Do not repeat a target merely because `next_strict_target_minutes` is unchanged.
+
+If an earlier probe for the active study case has START/checkpoint evidence but no terminal close classification, first classify that incomplete probe from durable evidence as one of:
+- CLEAN_PASS_PENDING_WAKE
+- UNDER_TARGET
+- DURATION_FAIL_CANDIDATE
+- NON_DURATION_FAIL
+- AMBIGUOUS
+
+Only then decide whether a repeat is justified.
+
+A new probe must add decision value. Start-only repetition is not decision value.
+
+## 3. Phase gates
+
+### Phase A — runtime boundary search
+
+Current state:
+- SAFE_LOWER_BOUND = 16m
+- FAILURE_BOUNDARY = unresolved
+- active target = 18m
+- planned_gap = +3m
+- current profile = W2 WRITE_CHECKPOINT_HEAVY
+
+Coarse ascent:
+- 18m: W2 WRITE_CHECKPOINT_HEAVY
+- 20m: W6 LARGE_UNIT
+- then +2m while clean, rotating profiles per workload protocol.
+
+Exit from coarse ascent:
+- first credible duration-related failure creates a boundary candidate F,
+- last lower clean class is L,
+- move to refinement.
+
+Refinement:
+- test approximately 1m classes inside [L,F],
+- continue until bracket is about 1m or finer,
+- ambiguous failure at F must be repeated once before narrowing.
+
+Boundary-search stop condition:
+- either a credible refined failure boundary exists,
+- or no boundary is found and the program reports only a safe lower bound while continuing ascent.
+
+### Phase B — operating-cap validation
+
+Do not equate max observed success with the operating cap.
+
+Choose a candidate cap below the credible failure boundary using:
+- observed close overhead,
+- elapsed/overshoot variance,
+- safety margin,
+- worst credible representative workload profile.
+
+Promotion gate:
+- at least 5 clean runs at/near the candidate,
+- no unresolved duration failure at or below candidate,
+- scheduler WRITE_OK/STATE_OK,
+- durable close checkpoint,
+- retrospective WAKE_OK where observable,
+- representative profile coverage.
+
+Minimum profile coverage near candidate:
+- W3 MIXED_IO
+- W5 MICRO_UNIT_CHAIN
+- at least one of W4 REASONING_HEAVY or W6 LARGE_UNIT
+- W7 CLOSE_HEAVY for close-reserve characterization
+
+### Phase C — handoff/admission policy comparison
+
+Compare in increasing complexity:
+- P1 FIXED_THRESHOLD
+- P2 SOFT_CUTOFF_PLUS_HARD_CAP
+- P3 ESTIMATED_NEXT_TASK_ADMISSION
+- P4 ADAPTIVE_ADMISSION
+
+First use replay/simulation over observed task-duration and close-overhead samples. Then live-test only policies that plausibly improve the objective.
+
+Promotion rule:
+prefer the simplest policy whose observed utilization and continuation reliability are practically indistinguishable from more complex alternatives.
+
+Required outputs:
+- SOFT_CUTOFF
+- HARD_CAP
+- CLOSE_OVERHEAD
+- SAFETY_MARGIN
+- NEXT_TASK_ADMISSION rule
+- rollback rule
+
+### Phase D — planned-gap optimization
+
+Only after runtime cap/policy are stable enough.
+
+Hold runtime policy approximately fixed and test:
+- +3m baseline
+- +2m
+- +1m if stable
+- intermediate/larger gap only when evidence warrants
+
+Choose the smallest planned gap that preserves clean close + stable next wake without materially higher overlap/miss/failure risk.
+
+### Phase E — deferred cooperative parallel research
+
+Only after Phase A boundary characterization and Phase B operating-cap validation are sufficiently complete.
+
+Resume `PARALLEL-A14-B4-02` as supporting/cooperative-utilization research.
+Parallel survival evidence must never be promoted into strict runtime PASS evidence.
+
+## 4. Study-case queue
+
+### SC-A18-01 — close the 18m decision
+Purpose:
+Produce one terminal empirical classification for the 18m W2 class.
+
+Before starting a new 18m probe:
+- inspect all existing 18m probe evidence,
+- classify any incomplete prior 18m probe,
+- do not create another start-only probe if the previous one can already be classified.
+
+PASS:
+- target reached,
+- substantive W2 workload,
+- durable close checkpoint,
+- scheduler WRITE_OK/STATE_OK,
+- no duration-related forced stop.
+
+Then:
+- SAFE_LOWER_BOUND -> 18m after retrospective WAKE_OK,
+- NEXT_CASE -> SC-A20-01.
+
+NON_DURATION_FAIL:
+- boundary unchanged,
+- repeat 18m only after recording the independent cause.
+
+UNDER_TARGET:
+- boundary unchanged,
+- diagnose why the invocation ended before target,
+- repeat only after correcting the execution cause.
+
+DURATION_FAIL_CANDIDATE:
+- if credible, bracket [16m,18m],
+- NEXT_CASE -> refinement around 17m.
+
+### SC-A20-01 — 20m coarse ascent
+Profile: W6 LARGE_UNIT.
+Entry condition: SC-A18-01 strict clean PASS + WAKE_OK.
+Terminal handling follows the same decision rule.
+
+### SC-A22+ — generated coarse ascent
+Entry condition: prior coarse target strict clean PASS.
+Target: prior target +2m.
+Rotate workload profile.
+Continue until first credible duration failure.
+
+### SC-AR-* — 1m refinement
+Generated after first credible duration failure.
+Maintain [L,F].
+Each terminal result must shrink or confirm the bracket.
+
+### SC-B-CAP-* — candidate-cap validation
+Run at least 5 clean validations, deliberately covering representative workload profiles.
+Do not advance to Phase C until the promotion gate is satisfied.
+
+### SC-C-POLICY-* — policy comparison
+Replay first, live test second.
+Stop increasing complexity when a simpler policy is practically equivalent.
+
+### SC-D-GAP-* — planned-gap optimization
+3m -> 2m -> 1m subject to continuation stability.
+
+### SC-E-PARALLEL-01
+Resume deferred `PARALLEL-A14-B4-02` only after Phase A/B gate.
+
+## 5. Per-case record
+
+Every study case should record:
+
+- case_id
+- phase
+- hypothesis/question
+- target_runtime_min
+- workload_profile
+- controlled variables
+- probe_id(s)
+- required evidence
+- terminal classification
+- boundary/cap effect
+- next_case_id
+- anomaly/non-duration cause
+- decision timestamp
+
+## 6. Current execution pointer
+
+CURRENT_CASE_ID = SC-A18-01
+
+Immediate objective:
+Close the 18m W2 class with a terminal classification. The next useful action is not another generic 18m start; it is to resolve existing 18m evidence and obtain a valid close/terminal result.
+
+## 7. Final program completion gate
+
+The program is complete only when it can report:
+
+- SAFE_LOWER_BOUND
+- FAILURE_BOUNDARY or unresolved
+- OPERATING_CAP
+- SOFT_CUTOFF
+- HARD_CAP
+- CLOSE_OVERHEAD
+- SAFETY_MARGIN
+- NEXT_TASK_ADMISSION rule
+- validation confidence/count
+- workload-profile coverage
+- rollback rule
+- selected planned gap
+
+and each value is traceable to durable evidence.
