@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":116,
+  "units_completed":8,
+  "research_notes":[
+    "If a later target repeatedly fails ambiguously, the experiment may need a diagnostic profile with more frequent timestamped checkpoints to localize the stop.",
+    "The present dense W3 retry already demonstrates such a diagnostic mode.",
+    "Normal probes can use lower evidence density for efficiency once methodology is stable.",
+    "This distinction between diagnostic and normal evidence cadence can itself be documented in the workload template.",
+    "No extra orchestration service is required for it.",
+    "Current sample remains diagnostic-density W3."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
