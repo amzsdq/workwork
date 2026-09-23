@@ -1,0 +1,12 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":4,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":22,
+  "new_finding":"Coarse ascent rotated workload profiles, so an 18m W2 failure against a 16m W4 pass would confound duration with workload shape.",
+  "repair":"Master plan and boundary rule now require first refinement to hold the failure-producing profile fixed and obtain a same-profile lower anchor when needed before calling the bracket profile-specific.",
+  "implication_for_current_case":"If SC-A18-01 fails credibly, SC-AR-17M must use W2; the prior 16m W4 pass alone is not a causally clean W2 lower anchor.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
