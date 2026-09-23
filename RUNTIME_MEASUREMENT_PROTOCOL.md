@@ -10,7 +10,7 @@ For each invocation record:
 - `work_start_ts`: immediately after successful pre-arm, before active workload.
 - `target_cross_ts`: first observed timestamp at/after the target class, if reached.
 - `pre_close_ts`: immediately before durable close/finalization begins.
-- `close_end_ts`: completion time of the last **required operational terminal-sync write**, not of optional post-close measurement/audit work.
+- `close_end_ts`: immediately after the **required terminal-sync verification** confirms the operational close, before optional post-close measurement persistence.
 - `next_invocation_start_ts`: next invocation start, used retrospectively.
 
 Derived:
@@ -27,16 +27,17 @@ Do not claim `useful_work_sec` with stopwatch precision unless it was directly o
 ## Close-end measurement without recursive writes
 A naive scheme can recurse forever: write `close_end_ts`, then that write itself moves the close end, requiring another write.
 
-Avoid this by defining the operational close endpoint as the completion/commit time of the final required terminal-sync write among raw terminal evidence, `state/events.log`, `state/current.json`, and `EVIDENCE_TABLE.md`.
+The operational close includes both required terminal-sync writes and the required re-read/consistency verification from the terminal-sync invariant. Therefore the endpoint is **after verification**, not merely after the last write.
 
-Preferred evidence order:
+Preferred sequence:
 1. capture `pre_close_ts` before terminal-sync work;
-2. perform the required terminal-sync writes;
-3. use the final required write's trustworthy commit/completion timestamp as `close_end_ts` when available;
-4. if that timestamp is only available retrospectively, persist/derive it on the next invocation as measurement evidence without redefining the already-finished operational close;
-5. optional post-close measurement writes are excluded from `close_overhead_sec` but should be reported separately if they materially extend wall time.
+2. perform required raw terminal evidence + `state/events.log` + `state/current.json` + `EVIDENCE_TABLE.md` synchronization;
+3. perform the required re-read/consistency verification;
+4. immediately observe `close_end_ts` after verification;
+5. if persisting `close_end_ts` requires another measurement write, classify that write as `post_close_measurement_overhead`, excluded from operational `close_overhead_sec`;
+6. alternatively persist/derive the observed close endpoint retrospectively on the next invocation without redefining the already-finished operational close.
 
-This gives a finite, reproducible completion envelope and prevents instrumentation from moving the endpoint it is trying to measure.
+This makes the completion envelope finite while still counting the verification needed to call the close reliable. Optional measurement persistence must never recursively move the operational endpoint.
 
 ## Productive-window semantics
 The research goal is useful work, not merely wall-clock survival. Distinguish:
