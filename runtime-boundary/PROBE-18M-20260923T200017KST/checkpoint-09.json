@@ -1,0 +1,22 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":9,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":44,
+  "close_reserve_analysis":{
+    "direct_samples_sec":[32],
+    "n":1,
+    "median_sec":32,
+    "mad_sec":0,
+    "tail_proxy_sec":32,
+    "estimator_min_margin_sec":10,
+    "estimator_candidate_reserve_sec":42,
+    "confidence":"LOW_CONFIDENCE",
+    "current_config_reserve_sec":60,
+    "promotion":"NONE"
+  },
+  "interpretation":"Under the repository estimator the sole 32s sample mechanically yields 42s, but N=1 is too sparse to promote. The current 60s reserve remains a conservative provisional configuration until this and later probes add direct close samples.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
