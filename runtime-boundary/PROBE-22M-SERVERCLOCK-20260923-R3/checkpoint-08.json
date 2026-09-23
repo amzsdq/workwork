@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 8,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "HANDOFF_CLOCK_COMPATIBILITY_AUDIT",
+  "findings": [
+    "Deferred overlap candidate anchors cycles to OWNER_ACTIVATED_AT, while strict runtime duration now anchors to GitHub server START_MARKER.created_at.",
+    "These clocks serve different semantics: owner activation controls handoff scheduling; START/END markers classify strict invocation WORKED.",
+    "Future live overlap tests should server-instrument OWNER_ACTIVATED_AT/transfer events if they are used for quantitative handoff timing, rather than reuse model-authored timestamps.",
+    "No live overlap test is started in this phase; candidate remains KEEP/TEST/NOT_PROMOTED."
+  ],
+  "substantive_unit_count_cumulative": 25,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
