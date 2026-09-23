@@ -1,45 +1,51 @@
 # Runtime Probe Workload
 
-Purpose: provide real, bounded research work that can sustain timing probes without padding or fake waiting.
+Purpose: provide genuine bounded research work that can sustain timing probes without padding.
 
 ## Work units
-Each probe invocation should consume as many still-useful units as needed while collecting actual elapsed/useful-work evidence.
+A probe may chain still-useful units until target, genuine exhaustion, or a real block/risk.
 
 1. Evidence integrity audit
-- Reconcile README, research protocol, decision rule, state/current, and event tail.
-- Identify contradictions that could corrupt runtime classification.
-- Fix only contradictions that affect this study.
+- Reconcile server-clock protocol, master plan, decision rule, current state, event ledger, and evidence table.
+- Repair only contradictions that can change classification/recovery.
 
-2. Measurement schema hardening
-- Define exact event fields and allowed nullability for timing probes.
-- Define START, pre-arm-write start/end, workload start, target-cross, pre-close, close-end, and next-wake timestamps.
-- Keep event records compact enough for repeated use.
+2. Clock-schema hardening
+- Ensure every strict timing schema uses START/END raw GitHub server markers for WORKED.
+- Find and remove accidental reliance on model/local timestamps.
+- Preserve secondary completion/control instrumentation without letting it override WORKED.
 
-3. Failure-classification cases
-- Enumerate duration failure, under-target, non-duration failure, malformed scheduler return, missing wake, and ambiguous close-loss cases.
-- Verify each maps to exactly one boundary effect.
+3. Failure-classification regression
+- Validate clean pass, under-target, duration failure, non-duration failure, ambiguous close loss, scheduler mismatch, missing wake, and CLOCK_EVIDENCE_INVALID.
+- Ensure each has exactly one boundary effect.
 
 4. Boundary estimator review
-- Check whether +2m ascent / +1m refinement can bias the recommended cap.
-- Define what evidence changes lower bound, candidate upper bound, and production cap.
+- Check coarse/refinement rules for target/profile confounding and false promotion.
+- Verify only marker-valid clean/duration-fail evidence moves strict bounds.
 
-5. Close-reserve and pre-arm estimator
-- Define rolling summary fields for close overhead and start-of-turn pre-arm overhead separately.
-- Track planned gap versus actual idle gap on the following wake.
-- Keep the estimator usable with sparse observations and explicit uncertainty.
+5. Completion-envelope audit
+- Separate durable close checkpoint, END marker, and post-END ledger synchronization.
+- Track close/control overhead only when directly observable and clock-compatible.
+- Keep legacy close samples labeled legacy/supporting.
 
-6. Handoff policy simulation logic
-- Derive decision records for P1-P4 using observed task-duration and close-overhead samples.
-- Compare avoidable early handoff versus overshoot risk without claiming empirical runtime evidence from simulation.
+6. Policy replay logic
+- Prepare P1-P4 replay using observed samples without contaminating Phase A.
+- Compare early-handoff waste vs overshoot/close risk only with available evidence.
 
-7. Rollback policy
-- Define when a promoted cap/policy must be reduced after later duration failures or wake-loss evidence.
+7. Handoff control-path audit
+- Verify one canonical owner record, generation fencing, READY acceptance, scheduler-writer rule, and rollback.
+- Future quantitative handoff timing must use authoritative server-side endpoints; model file timestamps do not qualify.
 
-8. Reproducibility audit
-- Check that another relay worker can reconstruct the current target and evidence state using only durable files.
+8. Rollback policy audit
+- Ensure runtime-cap rollback, wake-layer rollback, productivity diagnosis, and gap rollback remain causally separated.
 
-## Probe discipline
-- Never sleep or spin merely to reach target time.
-- If useful units are exhausted before target, classify UNDER_TARGET and create further genuinely useful study work only when justified.
-- If the target is crossed while useful work is in progress, close at the next safe checkpoint; record overshoot.
-- Do not count document-editing time as useful merely because it consumes time; the edit must materially improve measurement, classification, continuation safety, or policy reproducibility.
+9. Reproducibility audit
+- Verify another worker can reconstruct current case, target, clock invariant, and exact next action from durable state only.
+
+10. Legacy contamination audit
+- Locate pre-server-clock artifacts that could be mistaken for current strict evidence and label/qualify them without rewriting historical raw events.
+
+## Discipline
+- Never sleep/spin or create meaningless reads/writes to consume time.
+- Document edits count only when they materially improve measurement, classification, continuation safety, control correctness, or reproducibility.
+- If genuine units exhaust before target, close honestly as UNDER_TARGET.
+- Strict target crossing is determined only after END_MARKER by server-clock WORKED; model/local clocks do not declare it.
