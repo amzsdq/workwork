@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":135,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual user-facing recommendation should include confidence qualifiers tied to evidence count rather than generic certainty language.",
+    "For example, observed lower bound, candidate boundary, validated cap with N clean runs, and profile coverage are independently reportable.",
+    "This makes future updates straightforward as new evidence arrives.",
+    "It also prevents one successful stress run from being overgeneralized.",
+    "The current 14m retry can at most contribute one strict clean observation if it closes successfully.",
+    "Production promotion remains later."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
