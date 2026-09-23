@@ -1,0 +1,11 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":29,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"PRETERMINAL_INVARIANT_CHECK",
+  "verified":["scheduler unchanged since start prearm","boundary not advanced while active","derived evidence table not prematurely changed","parallel/overlap experiments not mixed into strict probe","unknown direct active time remains unclaimed"],
+  "substantive_unit_count_cumulative":29,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE_TO_TARGET"
+}
