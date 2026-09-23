@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":56,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual soft cutoff can be earlier than hard cap by reserve plus a task-size guard band.",
+    "After soft cutoff, only bounded short units should be admitted under P2.",
+    "P3 can replace the coarse guard band with explicit estimated unit duration if estimates are reliable.",
+    "The hard cap should stop new work regardless of optimistic estimates.",
+    "A final checkpoint should follow the smallest safe unit boundary.",
+    "These mechanics are consistent with the user's goal of maximizing work time without sacrificing continuation."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
