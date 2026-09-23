@@ -1,5 +1,5 @@
 {
-  "schema_version": 15,
+  "schema_version": 16,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
@@ -18,10 +18,14 @@
     "strict_pass_requires_duration_protocol": true,
     "parallel_probe_runtime_counts_as": "SUPPORTING_SURVIVAL_EVIDENCE_ONLY",
     "mode": "STRICT_DURATION",
-    "last_probe_id": "PROBE-14M-20260923T095323KST",
-    "last_probe_result": "UNDER_TARGET_INSUFFICIENT_WORK",
+    "last_probe_id": "PROBE-14M-20260923T100949KST",
+    "last_probe_result": "INCOMPLETE_CLOSE_NOT_STRICT_PASS",
     "last_probe_boundary_effect": "NONE",
-    "next_probe_requirement": "RETRY_14M_WITH_LARGER_PREDECLARED_W3_BACKLOG"
+    "last_probe_durable_work_batches": 181,
+    "last_probe_scheduler_write_ok": true,
+    "last_probe_scheduler_state_ok": true,
+    "next_probe_requirement": "RETRY_14M_WITH_CLOSE_RESERVE_AND_BOUNDED_BATCH_CADENCE",
+    "close_reserve_sec": 60
   },
   "overlap_probe": {
     "active": false,
@@ -69,5 +73,5 @@
     "priority_2": "COOPERATIVE_PARALLEL_UTILIZATION_AFTER_DURATION_BOUNDARY",
     "sequencing": "Finish strict duration boundary search and operating-cap validation first; resume deferred parallel probes afterward."
   },
-  "updated_at": "2026-09-23T09:53:23+09:00"
+  "updated_at": "2026-09-23T10:35:21+09:00"
 }
