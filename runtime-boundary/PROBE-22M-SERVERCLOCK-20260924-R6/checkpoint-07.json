@@ -1,0 +1,12 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260924-R6",
+  "case_id": "SC-A22-CLOCK-01",
+  "workload_profile": "W3_MIXED_IO",
+  "substantive_units_completed_total": 49,
+  "additional_units": [
+    "cap rollback current-protocol eligibility repair",
+    "policy utility authoritative-timing repair",
+    "post-repair cross-check of master/state/evidence pointers"
+  ],
+  "status": "ACTIVE_CONTINUE"
+}
