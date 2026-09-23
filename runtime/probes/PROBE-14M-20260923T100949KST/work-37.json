@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":37,
+  "units_completed":8,
+  "research_notes":[
+    "The start pre-arm design is already a strong structural improvement because it removes scheduler mutation from the late critical path.",
+    "The remaining late critical path is chiefly completion of the smallest safe work unit plus durable close checkpoint.",
+    "Future soft-cutoff design should therefore protect this close path rather than reserve time for scheduler writes that already happened.",
+    "This can permit a smaller reserve than older end-of-turn scheduling designs if close measurements support it.",
+    "However the reserve must still account for GitHub/checkpoint latency and runtime variance.",
+    "These hypotheses will be tested only after sufficient close-overhead samples are collected."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
