@@ -1,6 +1,6 @@
 {
   "schema_version": 33,
-  "status": "PAUSED_BY_USER",
+  "status": "ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
   "relay": {
@@ -80,7 +80,11 @@
     ],
     "productive_metrics_authority": "GITHUB_SERVER_RAW_CREATED_AT",
     "terminal_event_authority": "IMMUTABLE_PER_PROBE_EVENT",
-    "shared_projection_conflict_policy": "CAS_REFETCH_RECONCILE_RETRY_X3_THEN_PENDING_RECONCILIATION"
+    "shared_projection_conflict_policy": "CAS_REFETCH_RECONCILE_RETRY_X3_THEN_PENDING_RECONCILIATION",
+    "status": "ACTIVE",
+    "paused_by_user": false,
+    "resume_requested_at_kst": "2026-09-24T02:42:00+09:00",
+    "resume_note": "User explicitly resumed relay after harness-v2 corrections."
   },
   "overlap_probe": {
     "active": false,
