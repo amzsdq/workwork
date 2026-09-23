@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":1,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"REPRODUCIBILITY_AND_COMPLETION_ENVELOPE_AUDIT",
+  "findings":[
+    "Fresh canonical state and master plan agree: SAFE_LOWER_BOUND=20m, FAILURE_BOUNDARY unresolved, active case SC-A22-01, target=22m, profile=W3_MIXED_IO.",
+    "18m and 20m clean passes correctly avoid fabricating direct active_work_sec/productive_ratio where instrumentation cannot separate tool I/O.",
+    "Only one direct close-overhead sample (32s) is currently promoted in state; 18m close_end and 20m connector completion latency remain unclaimed, so 60s close reserve must remain provisional.",
+    "Candidate admission rule estimated_next_task_sec + close_reserve_sec <= remaining_budget_sec is logically consistent with the completion-envelope objective but remains unpromoted until Phase C replay/live evidence."
+  ],
+  "substantive_unit_count_cumulative":1,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
