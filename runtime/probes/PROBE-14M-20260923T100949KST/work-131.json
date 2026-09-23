@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":131,
+  "units_completed":8,
+  "research_notes":[
+    "The current probe's workload has become intentionally broad enough to keep producing useful bounded analysis, but classification must remain independent of how much text/work was generated.",
+    "Only elapsed wall time plus clean durable close establishes the target-class pass.",
+    "This guards against confusing high throughput with long runtime survival.",
+    "Conversely low throughput does not imply runtime failure if the invocation remains healthy.",
+    "These dimensions should remain separate in later optimization.",
+    "Final close remains pending."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
