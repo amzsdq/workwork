@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":93,
+  "units_completed":8,
+  "research_notes":[
+    "The successor invocation should treat the scheduled wake as a continuation opportunity, not assume the predecessor necessarily closed exactly at target.",
+    "It should read close evidence to compute actual idle gap and wake jitter.",
+    "If predecessor close is missing, it should not launch a higher target until classification is resolved.",
+    "This prevents cascading false advancement after an abrupt tail failure.",
+    "The current pre-arm design makes that recovery possible without a separate replacement automation.",
+    "No additional scheduler mutation is needed now."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
