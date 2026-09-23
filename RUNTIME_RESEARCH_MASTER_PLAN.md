@@ -78,8 +78,9 @@ How much of the invocation is spent on genuine goal-directed work.
 
 Measure at minimum:
 - actual_elapsed_sec
-- active_work_sec
-- productive_ratio = active_work_sec / actual_elapsed_sec
+- active_work_sec when directly supportable
+- productive_ratio only when active_work_sec is directly supportable
+- goal_directed_window_sec / goal_directed_ratio when necessary tool I/O cannot be separated
 - substantive_unit_count
 - workload_profile
 
@@ -131,11 +132,18 @@ Exit from coarse ascent:
 
 Refinement:
 - test approximately 1m classes inside [L,F],
-- continue until bracket is about 1m or finer,
+- keep the failure-producing workload profile fixed during the first refinement sequence so duration is not confounded with workload shape,
+- if the lower clean anchor L was established under a different profile, obtain a same-profile lower-anchor run when needed before claiming a profile-specific bracket,
+- continue until the same-profile bracket is about 1m or finer,
 - ambiguous failure at F must be repeated once before narrowing.
 
+Interpretation of a failure discovered while profiles are rotating:
+- initially treat it as a failure for that target/profile pair, not automatically a universal duration boundary,
+- refine with the same profile to determine whether duration is the driver,
+- cross-profile replication near the candidate cap determines whether the final cap can be universal.
+
 Boundary-search stop condition:
-- either a credible refined failure boundary exists,
+- either a credible refined failure boundary exists for at least one realistic profile and its implication for the operating cap is characterized,
 - or no boundary is found and the program reports only a safe lower bound while continuing ascent.
 
 ### Phase B — operating-cap validation
@@ -216,15 +224,15 @@ Before starting a new 18m probe:
 PASS:
 - target reached,
 - substantive W2 workload sustained through the probe rather than a short setup burst,
-- active_work_sec and productive_ratio recorded when directly observable,
+- active_work_sec and productive_ratio recorded when directly observable; otherwise use explicitly labeled goal-directed window metrics,
 - durable close checkpoint,
 - scheduler WRITE_OK/STATE_OK,
 - no duration-related forced stop,
 - completion-envelope timestamps recorded when practical.
 
 Interpretation:
-- A clean 18m pass advances SURVIVAL_BOUNDARY evidence.
-- Its productive_ratio and close-overhead evidence feed PRODUCTIVE_WINDOW / COMPLETION_ENVELOPE characterization.
+- A clean 18m pass advances SURVIVAL_BOUNDARY evidence after retrospective WAKE_OK.
+- Its productive/goal-directed evidence and close-overhead evidence feed PRODUCTIVE_WINDOW / COMPLETION_ENVELOPE characterization.
 - Do not treat a low-work survival pass as sufficient evidence for the final operating cap.
 
 Then:
@@ -241,24 +249,24 @@ UNDER_TARGET:
 - repeat only after correcting the execution cause.
 
 DURATION_FAIL_CANDIDATE:
-- if credible, bracket [16m,18m],
-- NEXT_CASE -> refinement around 17m.
+- if credible for W2, candidate interval is [16m,18m] but the 16m anchor was W4,
+- NEXT_CASE -> refinement around 17m using W2; obtain a same-profile lower anchor if needed before calling the bracket profile-specific.
 
 ### SC-A20-01 — 20m coarse ascent
 Profile: W6 LARGE_UNIT.
 Entry condition: SC-A18-01 strict clean PASS + WAKE_OK.
-Terminal handling follows the same decision rule.
+Terminal handling follows the same decision rule, with same-profile refinement if a credible failure appears.
 
 ### SC-A22+ — generated coarse ascent
-Entry condition: prior coarse target strict clean PASS.
+Entry condition: prior coarse target strict clean PASS + WAKE_OK.
 Target: prior target +2m.
 Rotate workload profile.
-Continue until first credible duration failure.
+Continue until first credible duration failure, then refine while controlling profile.
 
 ### SC-AR-* — 1m refinement
 Generated after first credible duration failure.
-Maintain [L,F].
-Each terminal result must shrink or confirm the bracket.
+Maintain a profile-controlled [L,F] bracket.
+Each terminal result must shrink or confirm the bracket rather than mix workload-profile changes into the duration inference.
 
 ### SC-B-CAP-* — candidate-cap validation
 Run at least 5 clean validations, deliberately covering representative workload profiles.
@@ -291,13 +299,20 @@ Every study case should record:
 - next_case_id
 - anomaly/non-duration cause
 - decision timestamp
+- active_work_sec / productive_ratio when directly supportable
+- goal_directed_window_sec / goal_directed_ratio when used instead
+- substantive_unit_count
+- last_normal_task_admit_ts when observable
+- pre_close_ts
+- close_end_ts
+- close_overhead_sec
 
 ## 6. Current execution pointer
 
 CURRENT_CASE_ID = SC-A18-01
 
 Immediate objective:
-Close the 18m W2 class with a terminal classification. The next useful action is not another generic 18m start; it is to resolve existing 18m evidence and obtain a valid close/terminal result.
+Close the 18m W2 class with a terminal classification. The next useful action is not another generic 18m start; it is to obtain a sustained useful-work 18m W2 run with a valid close/terminal result.
 
 ## 7. Final program completion gate
 
@@ -306,6 +321,7 @@ The program is complete only when it can report:
 - SAFE_LOWER_BOUND
 - FAILURE_BOUNDARY or unresolved
 - OPERATING_CAP
+- PRODUCTIVE_CAP
 - SOFT_CUTOFF
 - HARD_CAP
 - CLOSE_OVERHEAD
