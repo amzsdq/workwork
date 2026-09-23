@@ -1,0 +1,20 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-03-R5",
+  "reason": "IMMUTABLE_WAKE_CONFIRMED_PROJECTION_ADVANCE_REQUIRED",
+  "authoritative_event": "state/events/OP-CAP-14M-VALIDATION-03-R5-WAKE.json",
+  "projection_status": "PENDING_RECONCILIATION",
+  "required_current_json_changes": {
+    "last_probe_id": "OP-CAP-14M-VALIDATION-03-R5",
+    "last_probe_result": "CLEAN_PASS_WAKE_OK",
+    "last_probe_boundary_effect": "NONE",
+    "last_probe_worked_sec": 910,
+    "last_probe_productive_window_sec": 885,
+    "last_probe_close_overhead_sec": 5,
+    "last_probe_generated_unique_units_minimum": 794791564,
+    "operational_cap_clean_runs_current": 3,
+    "active_study_case_id": "OP-CAP-14M-VALIDATION-04",
+    "next_probe_requirement": "RUN_OP-CAP-14M-VALIDATION-04",
+    "research_program.current_case_id": "OP-CAP-14M-VALIDATION-04"
+  },
+  "do_not_reexecute": "OP-CAP-14M-VALIDATION-03-R5"
+}
