@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":144,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual strict-probe summary can include a monotonically increasing evidence generation or probe timestamp to simplify reconciliation.",
+    "State/current can store last_probe_id and classification as a cache of immutable evidence.",
+    "This cache must be rebuildable if inconsistent.",
+    "That design keeps mutable state small and recoverable.",
+    "The current state already uses last_probe_id/result fields in this spirit.",
+    "A clean close will update them only after the immutable close file succeeds."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
