@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":33,
+  "units_completed":8,
+  "research_notes":[
+    "A reliable pre-arm plus incremental checkpoints creates graceful degradation even if the final tail is lost.",
+    "Graceful degradation is not equivalent to a clean pass, preserving conservative boundary classification.",
+    "The experimental design therefore separates continuation robustness from strict runtime success.",
+    "This distinction will matter when optimizing long-run utilization after the boundary is known.",
+    "The current retry has removed workload exhaustion as the dominant known confound.",
+    "The remaining decisive observation is whether the invocation reaches and durably closes beyond 14 minutes."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
