@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":164,
+  "units_completed":8,
+  "research_notes":[
+    "The current sample has intentionally not attempted to maximize raw token generation; useful units are bounded around concrete research decisions and evidence design.",
+    "This satisfies the test-load rule while avoiding no-op padding.",
+    "The workload remains mixed because each unit combines reasoning with durable I/O/checkpointing.",
+    "The eventual runtime boundary may differ for pure model reasoning, which cross-profile tests will examine.",
+    "Current result should be labeled with its profile accordingly.",
+    "Final close will preserve that label."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
