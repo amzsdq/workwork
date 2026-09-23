@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":160,
+  "units_completed":8,
+  "research_notes":[
+    "A compact aggregate should explicitly list the prior 14m under-target sample so it is not lost when a retry passes.",
+    "This preserves evidence of workload-generation failure and prevents survivorship bias.",
+    "It should also list any content/tool anomalies separately from runtime outcomes.",
+    "The current run had one blocked write attempt followed by immediate successful replacement; this is not a duration failure.",
+    "Such details can improve later failure taxonomy without moving the boundary.",
+    "Final close still determines this probe's strict outcome."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
