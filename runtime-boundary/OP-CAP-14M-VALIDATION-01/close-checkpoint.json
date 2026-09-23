@@ -1,0 +1,20 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-01",
+  "case_id": "OP-CAP-14M-VALIDATION-01",
+  "target_sec": 840,
+  "harness_version": "STRICT_RUNTIME_HARNESS_V2",
+  "workload_profile": "ROTATED_STRICT_PROFILE",
+  "generated_unique_units_minimum": 750000000,
+  "duplicate_units_rejected": 0,
+  "stress_chunks_completed": 19,
+  "close_trigger": "TARGET_REACHED_BY_AUTHORITATIVE_PROGRESS",
+  "start_marker_id": 5801741700,
+  "start_marker_created_at": "2026-09-23T19:45:09Z",
+  "work_start_marker_id": 5801748387,
+  "work_start_marker_created_at": "2026-09-23T19:45:29Z",
+  "pre_close_marker_id": 5801982594,
+  "pre_close_marker_created_at": "2026-09-23T19:59:18Z",
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "clock_authority": "GITHUB_SERVER_RAW_CREATED_AT"
+}
