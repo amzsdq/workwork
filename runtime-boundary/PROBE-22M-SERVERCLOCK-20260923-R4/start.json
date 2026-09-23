@@ -1,0 +1,29 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R4",
+  "case_id": "SC-A22-CLOCK-01",
+  "target_runtime_sec": 1320,
+  "planned_gap_sec": 180,
+  "workload_profile": "W3_MIXED_IO",
+  "clock_protocol": "GITHUB_SERVER_MARKER_V1",
+  "clock_issue_number": 1,
+  "start_marker_comment_id": 5796189180,
+  "start_marker_created_at": "2026-09-23T13:58:33Z",
+  "marker_pair_valid": null,
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "prearmed_wake_target": "2026-09-23T14:23:33Z",
+  "prior_under_target_diagnosis": "R3 exhausted protocol-repair workload and voluntarily closed at 652s; R4 uses sparse checkpoints and a predeclared bounded W3 decision-work queue.",
+  "work_plan": [
+    "audit clock/master/state consistency",
+    "audit prior R3 terminal evidence consistency",
+    "reconcile runtime workload/profile semantics against current master plan",
+    "inspect evidence ledger for stale pre-server-clock claims",
+    "derive server-clock migration consistency checks",
+    "stress-test completion-envelope/admission definitions analytically",
+    "audit overlap candidate interactions without running live overlap",
+    "perform bounded repository read/write/reconciliation units until target class",
+    "persist sparse midpoint checkpoint only when decision-relevant",
+    "durable close checkpoint then END_MARKER"
+  ],
+  "status": "ACTIVE"
+}
