@@ -1,0 +1,34 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":12,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"TERMINAL_READINESS_AND_FINAL_OUTPUT_DELTA",
+  "readiness":{
+    "target_elapsed_required_sec":1320,
+    "target_cross_kst":"2026-09-23T22:28:55+09:00",
+    "scheduler_write_ok":true,
+    "scheduler_state_ok":true,
+    "next_wake_prearmed":true,
+    "clean_close_required":true,
+    "checkpoint_saved":true,
+    "forced_stop_or_timeout_observed":false,
+    "non_duration_failure_observed":false
+  },
+  "current_program_outputs":{
+    "SAFE_LOWER_BOUND":"20m exploratory",
+    "FAILURE_BOUNDARY":"unresolved",
+    "OPERATING_CAP":null,
+    "PRODUCTIVE_CAP":null,
+    "SOFT_CUTOFF":null,
+    "HARD_CAP":null,
+    "CLOSE_OVERHEAD":"32s normal direct sample plus 117s contaminated high-side diagnostic sample",
+    "SAFETY_MARGIN":null,
+    "NEXT_TASK_ADMISSION":"candidate task-size-aware rule, not promoted",
+    "selected_planned_gap":"+3m Phase-A control baseline, not final"
+  },
+  "close_plan":"At/after 22:28:55 KST, stop normal task admission, capture pre_close, execute required terminal-sync transaction, and classify CLEAN_PASS_PENDING_WAKE if no duration failure occurs.",
+  "substantive_unit_count_cumulative":12,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
