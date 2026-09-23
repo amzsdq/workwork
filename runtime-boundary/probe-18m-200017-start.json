@@ -1,0 +1,1 @@
+{"case_id":"SC-A18-01","probe_id":"PROBE-18M-20260923T200017KST","started_at_kst":"2026-09-23T20:00:17+09:00","target_runtime_min":18,"planned_gap_min":3,"prearmed_wake_at_kst":"2026-09-23T20:21:17+09:00","workload_profile":"W2_WRITE_CHECKPOINT_HEAVY","scheduler_write_ok":true,"scheduler_state_ok":true,"status":"ACTIVE"}
