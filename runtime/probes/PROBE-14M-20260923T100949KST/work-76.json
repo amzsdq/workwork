@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":76,
+  "units_completed":8,
+  "research_notes":[
+    "A production relay can later use recent runtime-health evidence to temporarily lower cap during degraded conditions.",
+    "This is a rollback mechanism, not necessarily a continuously adaptive cap.",
+    "Keeping normal cap changes infrequent reduces instability and makes failures easier to diagnose.",
+    "Only repeated evidence should promote a higher cap again after rollback.",
+    "This asymmetry—fast safety rollback, slower promotion—is appropriate for continuation-critical work.",
+    "Current Phase A only discovers the candidate envelope."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
