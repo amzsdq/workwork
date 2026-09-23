@@ -1,0 +1,31 @@
+{
+  "probe_id": "PROBE-18M-20260923T143552KST",
+  "checkpoint": 1,
+  "workload_profile": "W2_WRITE_CHECKPOINT_HEAVY",
+  "purpose": "exercise repeated durable serialization/write/checkpoint path under strict duration load",
+  "test_units": [
+    {"id":1,"payload_class":"nested_state","validation":"canonical-key-order+field-presence","result":"PASS"},
+    {"id":2,"payload_class":"measurement_vector","validation":"required-runtime-fields","result":"PASS"},
+    {"id":3,"payload_class":"handoff_record","validation":"scheduler/write-state separation","result":"PASS"},
+    {"id":4,"payload_class":"failure_taxonomy","validation":"duration-vs-nonduration classification","result":"PASS"},
+    {"id":5,"payload_class":"boundary_record","validation":"lower-bound monotonicity","result":"PASS"},
+    {"id":6,"payload_class":"checkpoint_chain","validation":"probe-id continuity","result":"PASS"},
+    {"id":7,"payload_class":"admission_sample","validation":"reserve-aware decision fields","result":"PASS"},
+    {"id":8,"payload_class":"close_record","validation":"clean-close prerequisites","result":"PASS"},
+    {"id":9,"payload_class":"wake_record","validation":"retrospective-only wake semantics","result":"PASS"},
+    {"id":10,"payload_class":"workload_rotation","validation":"profile identity retained","result":"PASS"},
+    {"id":11,"payload_class":"scheduler_snapshot","validation":"same-automation invariant","result":"PASS"},
+    {"id":12,"payload_class":"measurement_vector","validation":"overshoot derivability","result":"PASS"},
+    {"id":13,"payload_class":"boundary_record","validation":"failure-boundary nullable","result":"PASS"},
+    {"id":14,"payload_class":"checkpoint_chain","validation":"append-only evidence naming","result":"PASS"},
+    {"id":15,"payload_class":"failure_taxonomy","validation":"provider-failure isolation","result":"PASS"},
+    {"id":16,"payload_class":"handoff_record","validation":"planned-gap fixed 180s","result":"PASS"},
+    {"id":17,"payload_class":"measurement_vector","validation":"target=1080s","result":"PASS"},
+    {"id":18,"payload_class":"close_record","validation":"reserve=60s","result":"PASS"},
+    {"id":19,"payload_class":"scheduler_snapshot","validation":"recurring RRULE invariant","result":"PASS"},
+    {"id":20,"payload_class":"boundary_record","validation":"next ascent only after wake-ok","result":"PASS"}
+  ],
+  "passed": 20,
+  "failed": 0,
+  "duration_failure_observed": false
+}
