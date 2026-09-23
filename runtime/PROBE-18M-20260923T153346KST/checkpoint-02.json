@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-18M-20260923T153346KST",
+  "checkpoint": 2,
+  "workload_profile": "W2_WRITE_CHECKPOINT_HEAVY",
+  "purpose": "stress append-only evidence production and boundary decision consistency",
+  "derived_checks": {
+    "safe_lower_bound_before_probe_min": 16,
+    "failure_boundary_before_probe": null,
+    "candidate_effect_if_clean_pass_and_wake_ok": "SAFE_LOWER_BOUND_ADVANCES_TO_18M",
+    "next_coarse_target_if_confirmed_min": 20,
+    "operating_cap_promotion_allowed_from_single_pass": false,
+    "minimum_candidate_validation_runs": 5,
+    "close_reserve_sec": 60
+  },
+  "result": "PASS"
+}
