@@ -1,0 +1,8 @@
+{
+  "status":"PENDING_PROJECTION_RECONCILE",
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "reason":"state/current.json still projected active_probe_id=null after R10 START; durable start.json now records active probe.",
+  "canonical_active_record":"runtime-boundary/PROBE-24M-SERVERCLOCK-20260924-R10/start.json",
+  "safety_rule":"If start.json exists without terminal.json, do not infer no active probe from stale current.json.",
+  "reconcile_at":"terminal projection sync or earlier CAS-safe update"
+}
