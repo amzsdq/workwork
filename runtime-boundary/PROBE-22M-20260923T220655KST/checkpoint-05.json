@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":5,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"PROFILE_AWARE_CLOSE_RESERVE_AUDIT",
+  "findings":[
+    "Earlier evidence already established that the single 32s mixed-load close sample cannot establish W2 write-heavy close cost.",
+    "The 117s W2 observation is high-side contaminated, so it also cannot establish a representative W2 reserve.",
+    "Consequently pooled close-reserve estimation is currently underidentified by profile; final UNIVERSAL_CAP versus PROFILE_AWARE_CAP remains open.",
+    "The current W3 probe should prioritize a directly timestamped uncontaminated close path at target to add a profile-relevant sample if the invocation survives to target."
+  ],
+  "substantive_unit_count_cumulative":5,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
