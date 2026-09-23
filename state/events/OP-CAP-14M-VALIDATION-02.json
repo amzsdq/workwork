@@ -1,0 +1,21 @@
+{
+  "event": "OPERATIONAL_CAP_PROBE_TERMINAL",
+  "probe_id": "OP-CAP-14M-VALIDATION-02",
+  "result": "CLEAN_PASS_PENDING_WAKE",
+  "target_sec": 840,
+  "worked_sec": 871,
+  "productive_window_sec": 854,
+  "close_overhead_sec": 12,
+  "generated_unique_units": 975000000,
+  "batches_completed": 1354179,
+  "duplicate_units_rejected": 0,
+  "marker_pair_valid": true,
+  "harness_valid": true,
+  "clean_close": true,
+  "checkpoint_saved": true,
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "wake_ok": null,
+  "boundary_effect": "OPERATIONAL_CAP_14M_VALIDATION_CLEAN_RUN_2_PENDING_WAKE",
+  "immutable_terminal_path": "runtime-boundary/OP-CAP-14M-VALIDATION-02/terminal.json"
+}
