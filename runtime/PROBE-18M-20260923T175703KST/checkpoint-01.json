@@ -1,0 +1,21 @@
+{
+  "probe_id": "PROBE-18M-20260923T175703KST",
+  "checkpoint": 1,
+  "workload_profile": "W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_work": {
+    "type": "runtime-contract-and-evidence-integrity-validation",
+    "checks": [
+      {"id":"C01","claim":"coarse ascent target follows durable state","input":{"last_clean":16,"next_target":18},"result":"PASS"},
+      {"id":"C02","claim":"prearm time equals START+target+gap","input":{"start":"17:57:03","target_min":18,"gap_min":3},"expected":"18:18:03","result":"PASS"},
+      {"id":"C03","claim":"scheduler is recurring rather than one-shot","observed":"RRULE:FREQ=HOURLY","result":"PASS"},
+      {"id":"C04","claim":"scheduler remained enabled","observed":true,"result":"PASS"},
+      {"id":"C05","claim":"parallel probe remains deferred","observed":"DEFERRED_UNTIL_RUNTIME_BOUNDARY_CHARACTERIZED","result":"PASS"},
+      {"id":"C06","claim":"single coarse success cannot promote operating cap","source":"MAX_SAFE_RUNTIME_RESEARCH Phase B","result":"PASS"},
+      {"id":"C07","claim":"duration failure boundary remains unresolved before this probe closes","observed":null,"result":"PASS"},
+      {"id":"C08","claim":"W2 exercises durable write/checkpoint path","observed":"GitHub create_file start + checkpoint","result":"PASS"}
+    ]
+  },
+  "checkpoint_saved": true,
+  "duration_failure_observed": false,
+  "status": "ACTIVE"
+}
