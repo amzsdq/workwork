@@ -2,29 +2,32 @@
 
 Probe: PROBE-24M-SERVERCLOCK-20260924-R10 / SC-A24-CLOCK+
 
-This is an in-flight work checkpoint, not terminal duration evidence.
+In-flight work checkpoint, not terminal duration evidence.
 
-## Defects found and repaired
+## Defects found/repaired
+1. classifier dropped `target_runtime_sec`, breaking clean bound derivation;
+2. reversed productive markers could raise instead of failing derived interval closed;
+3. “immutable” terminal protocol incorrectly allowed update; now create-only/idempotent-identical;
+4. generator V1 changed IDs while repeating 720 semantic scenarios; R10 count corrected and R9 audited;
+5. reserve perturbation step 13 mod 91 covered only 7 values; coprime step 17 now covers 30..120;
+6. broad stress outcome imbalance; balanced six-family stratification added;
+7. Harness V2 clean pass lacked semantic-quality gate; now explicit harness validity + semantic units required;
+8. stale `current.json active_probe_id=null` could permit duplicate probe; durable unterminated start now outranks stale null;
+9. raw marker role validator used substring matching, allowing WORK_START to masquerade as START; fixed exact first-token matching;
+10. raw probe/case identity validator used substring matching, allowing P to match P10; fixed exact key/value metadata matching;
+11. master/evidence/acceptance/pipeline/anomaly/boundary/Phase-B docs drifted from sync/harness V2; reconciled or queued.
 
-1. **Bound derivation target-loss defect.** Classifier output discarded `target_runtime_sec`, so `derive_bounds` could see a clean result but still derive no lower bound. Target identity is now preserved.
-2. **Productive marker ordering crash path.** Reversed WORK_START/PRE_CLOSE could raise through interval calculation. Derived productive interval now fails closed with anomaly while START/END classification remains available.
-3. **Terminal “immutability” contradiction.** Protocol said immutable terminal file could be create/update. Replaced with create-only + compare-identical retry; conflicting existing content is never overwritten.
-4. **Generator ID-only pseudo-uniqueness.** V1 repeated 720 semantic Cartesian scenarios across epochs while changing IDs. Prior R10 productive count corrected fail-closed; R9 audited posthoc. Generator V2 varies target delta, marker skew, close reserve and validates semantic uniqueness.
-5. **Reserve perturbation coverage bug.** Step 13 modulo 91 covered only 7 reserve values. Replaced with coprime step 17, covering every integer 30..120 before repeat.
-6. **Outcome imbalance.** Broad Cartesian stress heavily weighted NON_DURATION_FAIL/CLOCK_INVALID. Added stratified evaluator quota across six result families.
-7. **Harness-quality promotion gap.** Harness V2 clean-pass classifier previously required only `substantive_unit_count>0`; now it also requires explicit harness validity and positive semantic-unique evidence.
-8. **Active-probe projection weakness.** `current.json` can lag with active_probe_id=null after START. Durable `start.json` without terminal now outranks stale null projection for duplicate-probe prevention.
-9. **Protocol/document drift.** Master plan, evidence table, acceptance, pipeline, anomaly and boundary-derivation docs were stale relative to immutable sync V2 / R9. Reconciled or queued explicit reconciliation.
+## Workload/evidence produced
+- semantic generator V2B: 100,000 identity-unique + semantic-unique cases, 0 observed collisions, full 30..120 reserve and -60..60 skew coverage;
+- conservative credited logical batches: 391 at batch size 256;
+- classifier stress evaluator + balanced outcome selection;
+- raw marker lifecycle validator + regressions;
+- Harness V2 quality-gate tests;
+- terminal evidence builder;
+- 109,928-case admission grid plus 1,867,502 estimation-error expanded cases;
+- strict execution checklist, preclose readiness, projection plan, close-control plan.
 
-## Supporting implementations added
-- semantic stress generator V2 + tests
-- classifier stress evaluator + balanced stratification
-- raw marker lifecycle validator + tests
-- Harness V2 quality-gate tests
-- 109,928-case admission-rule sensitivity grid
-- strict probe execution checklist
+## Empirical cautions
+R9 retains valid clean 1322s server-clock survival/close evidence, but its >=2048 ID-unique count overstated semantic decision uniqueness. Strict substantive lower-bound promotion is being revalidated/superseded by R10 rather than silently trusting it.
 
-## Current empirical caution
-R9 still proves a clean 1322s server-clock survival/close observation, but its >=2048 ID-unique workload count overstated semantic decision uniqueness. Strict substantive-work lower-bound promotion is therefore being revalidated/superseded by this R10 semantic-V2 probe rather than silently trusting the old count.
-
-R10 close reserve remains 60s for causal consistency. Prior current-protocol close sample is 57s (N=1), so reserve promotion is not justified yet.
+R10 reserve remains 60s for causal consistency; prior current-protocol close sample is 57s (N=1), so reserve is not promoted. No duration-attributable failure has been observed in R10 so far.
