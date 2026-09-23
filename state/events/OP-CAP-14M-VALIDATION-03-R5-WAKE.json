@@ -1,0 +1,19 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-03-R5",
+  "case_id": "OP-CAP-14M-VALIDATION-03",
+  "event_type": "RETROSPECTIVE_WAKE_CONFIRMATION",
+  "classification": "CLEAN_PASS_WAKE_OK",
+  "prior_terminal_classification": "CLEAN_PASS_PENDING_WAKE",
+  "boundary_effect": "NONE",
+  "worked_sec": 910,
+  "productive_window_sec": 885,
+  "close_overhead_sec": 5,
+  "clock_validity": "VALID",
+  "harness_validity": "VALID_STRICT_RUNTIME_HARNESS_V2",
+  "clean_close": true,
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "operational_cap_clean_runs_after_confirmation": 3,
+  "operational_cap_required_clean_runs": 5,
+  "next_case": "OP-CAP-14M-VALIDATION-04"
+}
