@@ -1,5 +1,5 @@
 {
-  "schema_version": 35,
+  "schema_version": 36,
   "status": "PAUSED_BY_USER",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
@@ -37,9 +37,9 @@
     "last_probe_duplicate_units_rejected": 0,
     "active_probe_id": null,
     "active_probe_status": "READY",
-    "active_probe_target_minutes": 24,
+    "active_probe_target_minutes": 14,
     "active_probe_workload_profile": "ROTATED_STRICT_PROFILE",
-    "next_probe_requirement": "RUN_SC-A24-CLOCK+_WITH_STRICT_RUNTIME_HARNESS_V2; PREARM SAME AUTOMATION; CONTINUE UNIQUE WORKLOAD UNTIL TIMING_ADMISSION_CLOSE; SERVER MARKERS ONLY",
+    "next_probe_requirement": "RUN_14M_STRICT_SERVER_CLOCK_VALIDATION_WITH_SEMANTICALLY_SUBSTANTIVE_WORK; DO_NOT TREAT 14M AS PROVEN SAFE UNTIL VALIDATION GATE",
     "next_probe_workload_profile": "ROTATED_STRICT_PROFILE",
     "close_reserve_sec": 60,
     "close_reserve_status": "PROVISIONAL_CONFIG_NOT_PROMOTED",
@@ -47,7 +47,7 @@
     "legacy_close_overhead_samples_sec": [
       32
     ],
-    "active_study_case_id": "SC-A24-CLOCK+",
+    "active_study_case_id": "OP-CAP-14M-VALIDATION-01",
     "next_case_on_clean_pass": "SC-A26-CLOCK+",
     "next_case_on_duration_fail_candidate": "SC-AR-PROFILE_CONTROLLED",
     "three_axis_objective": true,
@@ -75,7 +75,18 @@
     "terminal_event_authority": "IMMUTABLE_PER_PROBE_EVENT",
     "shared_projection_conflict_policy": "CAS_REFETCH_RECONCILE_RETRY_X3_THEN_PENDING_RECONCILIATION",
     "status": "PAUSED_BY_USER",
-    "paused_by_user": true
+    "paused_by_user": true,
+    "current_priority": "CONSERVATIVE_OPERATIONAL_CAP_VALIDATION",
+    "operational_cap_candidate_minutes": 14,
+    "operational_cap_status": "UNPROMOTED_REQUIRES_REPEATED_STRICT_VALIDATION",
+    "operational_cap_required_clean_runs": 5,
+    "operational_cap_clean_runs_current": 0,
+    "fixed_predecessor_duration_minutes": null,
+    "operational_normal_stop_gates": [
+      "PROGRAM_COMPLETE",
+      "HANDOFF_COMPLETE"
+    ],
+    "hard_runtime_boundary_research_status": "PRESERVED_SEPARATE_PROGRAM"
   },
   "overlap_probe": {
     "active": false,
@@ -113,7 +124,14 @@
       ],
       "scope": "HANDOFF_PHASE_C_AND_FUTURE_OPERATIONAL_RELAY_NOT_STRICT_RUNTIME_PROBE_CLOSE",
       "source": "skills://plugins/workaholic/continuous-relay"
-    }
+    },
+    "operational_policy_path": "OPERATIONAL_RELAY_POLICY.md",
+    "fixed_predecessor_duration": "NONE",
+    "normal_stop_gates": [
+      "PROGRAM_COMPLETE",
+      "HANDOFF_COMPLETE"
+    ],
+    "wake_lead_status": "EMPIRICAL_TUNABLE_NOT_FIXED"
   },
   "parallel_research": {
     "status": "DEFERRED_UNTIL_RUNTIME_BOUNDARY_CHARACTERIZED",
@@ -124,10 +142,12 @@
     "priority_1": "MAX_SAFE_RUNTIME_AND_REPRODUCIBLE_HANDOFF_POLICY",
     "priority_2": "COOPERATIVE_PARALLEL_UTILIZATION_AFTER_DURATION_BOUNDARY",
     "master_plan_path": "RUNTIME_RESEARCH_MASTER_PLAN.md",
-    "current_case_id": "SC-A24-CLOCK+",
+    "current_case_id": "OP-CAP-14M-VALIDATION-01",
     "clock_protocol_path": "GITHUB_SERVER_CLOCK_PROTOCOL.md",
     "harness_version": "STRICT_RUNTIME_HARNESS_V2",
-    "resume_policy": "PAUSED_BY_USER"
+    "resume_policy": "PAUSED_BY_USER",
+    "current_priority": "CONSERVATIVE_OPERATIONAL_CAP_VALIDATION",
+    "operational_policy_path": "OPERATIONAL_RELAY_POLICY.md"
   },
   "clock_protocol": {
     "version": "GITHUB_SERVER_MARKER_V1",
