@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":68,
+  "units_completed":8,
+  "research_notes":[
+    "The next 16m sample, if reached, should preserve the same voluntary-close rule: first safe boundary at/after target.",
+    "This keeps target-class semantics consistent across ascent.",
+    "If the invocation is forcibly terminated before that voluntary close, the absence of close evidence becomes part of failure classification.",
+    "Incremental checkpoints help distinguish early independent faults from late duration-related termination.",
+    "A single ambiguous absence should not be overinterpreted.",
+    "Repeat or bracket according to the decision rule."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
