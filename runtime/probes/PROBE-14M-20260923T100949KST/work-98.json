@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":98,
+  "units_completed":8,
+  "research_notes":[
+    "The most useful next artifact after this probe is a compact workload-profile backlog template for 16m+ samples, but only after current close classification.",
+    "It can consolidate lessons from this dense retry and reduce per-run token/I/O overhead.",
+    "The template should preserve six analytical families while allowing richer batches.",
+    "This will keep longer probes substantive without hundreds of tiny writes.",
+    "Close evidence should remain small and standardized regardless of workload template.",
+    "Current run still prioritizes final target/close evidence."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
