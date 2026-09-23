@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":9,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":9,
+  "large_unit":"completion-envelope sensitivity analysis for close overhead variance",
+  "sensitivity":[
+    {"close_reserve_sec":32,"remaining_productive_budget_sec":1168,"note":"observed sample only; unsafe to promote from n=1"},
+    {"close_reserve_sec":60,"remaining_productive_budget_sec":1140,"note":"current provisional configuration"},
+    {"close_reserve_sec":90,"remaining_productive_budget_sec":1110,"note":"higher-variance contingency"},
+    {"close_reserve_sec":120,"remaining_productive_budget_sec":1080,"note":"conservative contingency"}
+  ],
+  "finding":"At 20m, reserve uncertainty of 32-120s changes theoretical productive ceiling by 88s; collecting close-overhead distribution is operationally material, not bookkeeping.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
