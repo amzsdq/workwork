@@ -1,0 +1,11 @@
+{
+  "probe_id": "PROBE-16M-20260923T121600KST",
+  "unit": 4,
+  "kind": "OPERATING_CAP_COUNTERFACTUAL",
+  "analysis": [
+    "If 16m passes once, production cap remains unset because >=5 clean near-cap runs are required.",
+    "If 16m credibly fails while 14m remains clean, the first bracket becomes [14m,16m] and refinement should test ~15m.",
+    "If 16m is under-target or independently fails, keep 14m lower bound and repeat 16m without narrowing."
+  ],
+  "complexity_rule": "Do not introduce adaptive admission until a fixed reserve policy has enough close-overhead evidence to evaluate."
+}
