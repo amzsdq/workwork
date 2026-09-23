@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-16M-20260923T121600KST",
+  "checkpoint_observed_at_kst": "2026-09-23T12:32:36+09:00",
+  "target_runtime_min": 16,
+  "elapsed_from_recorded_start_sec": 996,
+  "workload_profile": "W4_REASONING_HEAVY",
+  "load_origin": "TEST_GENERATED",
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "target_time_crossed": true,
+  "clean_close": false,
+  "checkpoint_saved": true,
+  "forced_stop_or_timeout": false,
+  "classification": "TARGET_CROSSED_CLOSE_PENDING",
+  "note": "Fresh state recorded start 12:16:00 KST. This checkpoint is durable evidence that the invocation state survived beyond the 16m target; strict PASS still requires durable close and retrospective WAKE_OK."
+}
