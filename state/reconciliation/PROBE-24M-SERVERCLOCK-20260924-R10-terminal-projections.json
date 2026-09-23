@@ -1,0 +1,11 @@
+{
+  "status":"PENDING_PROJECTION_RECONCILE",
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "immutable_terminal":"runtime-boundary/PROBE-24M-SERVERCLOCK-20260924-R10/terminal.json",
+  "immutable_event":"state/events/PROBE-24M-SERVERCLOCK-20260924-R10.json",
+  "already_reconciled":["EVIDENCE_TABLE.md","RUNTIME_RESEARCH_MASTER_PLAN.md"],
+  "pending":["state/current.json","state/events.log"],
+  "desired_current":{"last_probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10","last_probe_result":"UNDER_TARGET","last_probe_worked_sec":1402,"last_probe_productive_window_sec":1376,"last_probe_close_overhead_sec":14,"last_probe_marker_pair_valid":true,"active_probe_id":null,"active_probe_status":"READY_AFTER_CLOSE_ADMISSION_FIX","current_case_id":"SC-A24-CLOCK+","server_clock_failure_boundary_minutes":null,"next_action":"FIX_CLOSE_ADMISSION_THEN_REPEAT_24M"},
+  "boundary_effect":"NONE",
+  "reason":"Immutable truth is durable; remaining shared projections are explicitly queued rather than risking a blind overwrite late in close bookkeeping."
+}
