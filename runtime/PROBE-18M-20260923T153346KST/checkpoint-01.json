@@ -1,0 +1,19 @@
+{
+  "probe_id": "PROBE-18M-20260923T153346KST",
+  "checkpoint": 1,
+  "workload_profile": "W2_WRITE_CHECKPOINT_HEAVY",
+  "purpose": "exercise repeated durable write/checkpoint path while validating runtime evidence invariants",
+  "validations": [
+    "strict target is sourced from fresh state rather than stale prompt",
+    "same automation prearmed before substantive workload",
+    "returned schedule retains complete recurring RRULE",
+    "returned scheduler state remains enabled",
+    "planned wake equals invocation start plus target plus three-minute gap",
+    "parallel probe remains deferred",
+    "supporting survival evidence is not promoted to strict duration pass",
+    "duration failure attribution remains separate from scheduler/provider/tool failures",
+    "clean close requires target reached and durable checkpoint",
+    "retrospective WAKE_OK is deferred to next invocation"
+  ],
+  "result": "PASS"
+}
