@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 22,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "ADMISSION_POLICY_SEPARATION_AUDIT",
+  "findings": [
+    "Candidate admission formula remains analytically plausible but is not used to stop this Phase-A probe early.",
+    "This probe's purpose is empirical server-clock survival/productivity/close evidence at 22m, not Phase-C policy optimization.",
+    "Keeping admission-policy experimentation out of this run avoids changing the workload/control variable while revalidating the duration class."
+  ],
+  "substantive_unit_count_cumulative": 60,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
