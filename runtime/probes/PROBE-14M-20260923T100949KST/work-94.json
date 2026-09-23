@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":94,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual system can use a two-level policy: a validated hard runtime cap plus a task-admission rule that decides whether residual budget is usable.",
+    "This is cleaner than embedding every workload detail into the scheduler itself.",
+    "Scheduler responsibility remains simply securing continuation early.",
+    "Work-admission responsibility remains local to the active invocation.",
+    "Separating those concerns reduces control coupling and scheduler race risk.",
+    "The current experiment already uses that separation structurally."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
