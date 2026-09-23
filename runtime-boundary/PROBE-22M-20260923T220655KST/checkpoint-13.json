@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":13,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"HANDOFF_POLICY_ISOLATION_AUDIT",
+  "finding":"The accepted 15m/12m overlap-handoff baseline remains deliberately excluded from this 22m strict duration probe. Mixing shadow-successor ownership transfer into Phase A would confound invocation-duration evidence with concurrency/scheduler-fencing behavior.",
+  "decision":"Keep overlap candidate durable but live-deferred until boundary/cap validation unless explicitly reprioritized. This probe remains single-owner immediate-prearm with +3m planned gap.",
+  "substantive_unit_count_cumulative":13,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
