@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":111,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual final contract should be short enough to inject into workers without consuming excessive context.",
+    "Raw research rationale can remain in durable documents while runtime workers receive only target/cutoff/reserve/admission/rollback essentials.",
+    "This reduces context overhead and aligns with the user's preference for minimal operational rules.",
+    "The present research can be verbose because it is producing evidence, but deployment should not be.",
+    "A validated policy should therefore include both detailed evidence and a compact execution form.",
+    "Current Phase A contributes to the evidence layer."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
