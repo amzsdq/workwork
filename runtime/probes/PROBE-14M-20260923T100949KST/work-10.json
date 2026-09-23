@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":10,
+  "units_completed":12,
+  "continuation_analysis":[
+    "Start-of-turn pre-arm protects continuation if late-turn execution is cut off after the scheduler write.",
+    "It does not protect the latest checkpoint, so durable incremental evidence remains useful during long probes.",
+    "The next invocation should first reconcile the previous probe close and scheduled wake before launching the next target.",
+    "A missing close with a successful next wake is still not a clean pass; it may be duration failure evidence.",
+    "A clean close with a delayed wake remains a runtime pass but a relay-utilization anomaly.",
+    "This separation allows runtime cap and gap optimization to be tuned independently.",
+    "The +3m planned gap is intentionally held fixed during boundary search to avoid confounding variables.",
+    "After cap validation, planned gap can descend 3m->2m->1m while measuring overlap and missed wake risk.",
+    "Parallel overlap is conceptually different from accidental overlap during gap optimization and needs separate fencing.",
+    "Final policy should prefer the simplest admission rule statistically/practically indistinguishable from more complex alternatives.",
+    "A cap rollback mechanism is mandatory because provider/runtime behavior may drift over time.",
+    "Recent repeated evidence should outweigh a stale historical maximum when safety degrades."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
