@@ -1,0 +1,10 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-03-R5",
+  "status": "PENDING_PROJECTION_RECONCILE",
+  "immutable_terminal": "runtime-boundary/OP-CAP-14M-VALIDATION-03-R5/terminal.json",
+  "immutable_event": "state/events/OP-CAP-14M-VALIDATION-03-R5.json",
+  "projections_pending": ["state/current.json", "state/events.log", "EVIDENCE_TABLE.md"],
+  "authoritative_classification": "CLEAN_PASS_PENDING_WAKE",
+  "operational_cap_clean_runs_confirmed_before_retrospective_wake": 2,
+  "next_action": "RETROSPECTIVE_WAKE_CONFIRM_THEN_RECONCILE; IF_WAKE_OK PROMOTE_COUNT_TO_3_AND_ADVANCE_TO_OP-CAP-14M-VALIDATION-04"
+}
