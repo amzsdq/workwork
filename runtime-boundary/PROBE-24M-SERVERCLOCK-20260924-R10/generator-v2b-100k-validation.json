@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "generator_version":"SEMANTIC_EPOCH_V2_RESERVE_COPRIME",
+  "validation_cases":100000,
+  "identity_unique":100000,
+  "semantic_unique":100000,
+  "identity_collisions":0,
+  "semantic_collisions":0,
+  "close_reserve_coverage":{"distinct":91,"min":30,"max":120,"full_integer_range":true},
+  "marker_skew_coverage":{"distinct":121,"min":-60,"max":60,"full_integer_range":true},
+  "result":"PASS",
+  "boundary_effect":"NONE",
+  "purpose":"large deterministic semantic-workload scalability and perturbation coverage validation"
+}
