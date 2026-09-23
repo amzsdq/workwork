@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":19,
+  "units_completed":12,
+  "operating_contract_synthesis":[
+    "SAFE_LOWER_BOUND remains evidence-driven and distinct from OPERATING_CAP.",
+    "FAILURE_BOUNDARY remains unresolved until a credible duration failure is observed.",
+    "OPERATING_CAP requires repeated clean validation below boundary with safety margin.",
+    "SOFT_CUTOFF is a policy-stage admission threshold, not a Phase-A target.",
+    "HARD_CAP must preserve enough close reserve for durable checkpointing.",
+    "CLOSE_OVERHEAD should use empirical distribution across profiles/runs.",
+    "SAFETY_MARGIN should widen under noisy close/runtime behavior.",
+    "NEXT_TASK_ADMISSION should start simple and gain prediction only if measured benefit justifies it.",
+    "VALIDATION_CONFIDENCE must include count and workload-profile coverage.",
+    "ROLLBACK should respond to recent unexplained failures at/below cap.",
+    "Planned-gap optimization is downstream and separately measured.",
+    "Cooperative parallelism is downstream of strict cap validation and remains deferred."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
