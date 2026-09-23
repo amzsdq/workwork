@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":92,
+  "units_completed":8,
+  "research_notes":[
+    "The current sample's dense evidence stream provides a useful stress profile for GitHub-backed durable state.",
+    "If the system handles longer runtime under this profile, lighter profiles may have more margin, but that must still be tested rather than assumed.",
+    "If this profile fails earlier, the result may legitimately constrain a universal cap because durable I/O is a real workload component.",
+    "Cross-profile evidence determines whether one cap or profile-specific policy is warranted.",
+    "The research therefore treats workload shape as an explicit variable.",
+    "Current sample remains W3_MIXED_IO_EXPANDED_BACKLOG."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
