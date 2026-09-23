@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":150,
+  "units_completed":8,
+  "research_notes":[
+    "The experiment's next safe action after target is deliberately small: capture timing, write close, update state.",
+    "This minimizes close critical-path complexity and improves reproducibility.",
+    "Any additional summary synthesis can be deferred to the successor after the strict close is durable.",
+    "This separation protects the measurement from user-report formatting overhead.",
+    "The final user report can therefore remain concise.",
+    "Current run is prepared for that transition."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
