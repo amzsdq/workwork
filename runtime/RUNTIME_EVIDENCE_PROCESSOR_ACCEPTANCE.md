@@ -1,56 +1,44 @@
 # Runtime Evidence Processor — Acceptance and Promotion Gates
 
-Status: implementation candidate; deterministic audit layer only, never empirical authority by itself.
+Status: deterministic audit layer; never empirical clock authority by itself.
 
 ## A. Clock integrity
-Raw marker resolver validates immutable comment ID, START/END role, probe ID, case ID, protocol, raw GitHub server `created_at`, and monotonic pair. Cached repository timestamps are comparison copies only.
+Raw marker resolver verifies immutable IDs, roles, probe/case identity, protocol, raw GitHub `created_at`, and monotonic START/END. Productive marker ordering is validated separately and fails closed without crashing main duration classification.
 
-## B. Classification determinism
-Recomputed WORKED always overrides cached/model/local elapsed values. Fixed normalized input produces identical result, anomalies and boundary effect.
+## B. Classification determinism and schema preservation
+Recomputed WORKED overrides cached/model/local elapsed. Fixed input is deterministic. `target_runtime_sec` MUST survive every normalization/classification path; dropping it makes bound derivation silently unable to recover a clean target.
 
 ## C. Causal precedence
-Independent provider/network/GitHub/scheduler failure cannot create a duration boundary. Forced-stop/timeout at/after target without independent cause outranks contradictory clean-close flags and becomes DURATION_FAIL_CANDIDATE.
+Independent provider/network/GitHub/scheduler cause cannot create a duration boundary. Forced-stop at/after target outranks contradictory clean-close flags.
 
-## D. Duplicate safety
-Identical duplicate records are idempotent. Conflicting duplicates fail closed. Field-wise merging is prohibited because it can fabricate a complete marker pair, clean close, or scheduler verification from incompatible records.
+## D. Duplicate/immutability safety
+Identical normalized duplicates are idempotent; conflicting duplicates fail closed. Immutable terminal/event files are create-only. Retry accepts identical existing content; differing existing content is never overwritten or field-wise merged.
 
 ## E. Boundary safety
-Only CLEAN_PASS_WAKE_OK can make a target eligible for coarse server-clock safe-lower-bound advancement. A failure candidate is not a confirmed failure boundary until profile-controlled reproduction/bracketing. Legacy, synthetic, UNDER_TARGET, NON_DURATION_FAIL, CLOCK_EVIDENCE_INVALID and AMBIGUOUS records cannot move strict bounds.
+CLEAN_PASS_WAKE_OK is eligible for strict lower-bound advancement only when clock, scheduler/close, and sustained substantive-work quality gates all pass. A duration-failure candidate is not a confirmed boundary until controlled reproduction/bracketing.
 
 ## F. Productive evidence
-`productive_ratio` is accepted only with defensible direct `active_work_sec`. Goal-directed wall-clock windows remain separately named. Zero substantive units cannot satisfy productive clean PASS.
+Direct productive_ratio requires defensible active_work_sec. Server-clock WORK_START→PRE_CLOSE is separately labeled productive_window_sec. **ID uniqueness alone is not sufficient substantive evidence.** Generator workloads must be semantically/decision unique or have a persisted rationale for independent repeat evidence.
 
 ## G. Completion envelope
-Pre-END close reserve samples require compatible trustworthy endpoints. Post-END synchronization is control overhead, not WORKED. Legacy close samples cannot increase current-protocol reserve sample N.
+Current-protocol PRE_CLOSE→END samples only. Post-END projection sync is outside WORKED. Legacy samples do not increase current-protocol reserve N.
 
-## H. Terminal synchronization
-Raw terminal evidence -> events.log -> current.json -> EVIDENCE_TABLE.md is a logical transaction implemented with optimistic concurrency. SHA conflict => fresh read + reconcile, never blind overwrite. Promotion is blocked until re-read shows all four surfaces agree.
+## H. Terminal synchronization V2
+Raw markers -> immutable terminal -> immutable per-probe event establish durable empirical truth. current.json/events.log/EVIDENCE_TABLE are mutable CAS projections. Projection conflict cannot erase or reclassify valid terminal evidence.
 
 ## I. Regression corpus
-Processor must reproduce:
-- R3 = 652 UNDER_TARGET
-- R4 = 736 UNDER_TARGET
-- R5 = NON_DURATION_FAIL, clock-invalid secondary
-- R6 = 975 UNDER_TARGET
-- R7 = 251 UNDER_TARGET
+Must reproduce R3=652 UNDER_TARGET, R4=736 UNDER_TARGET, R5=NON_DURATION_FAIL, R6=975 UNDER_TARGET, R7=251 UNDER_TARGET, and R9 raw intervals (WORKED 1322, prearm 8, productive 1257, close 57) plus wake transition. R9's later generator-v1 semantic-repeat audit must remain visible: its clock survival is valid, but strict sustained-substantive promotion requires revalidation/supersession.
 
-Before R8 terminal evidence the expected derived strict state remains:
-- SERVER_CLOCK_SAFE_LOWER_BOUND = unresolved
-- SERVER_CLOCK_FAILURE_BOUNDARY = unresolved
-- duration failure candidates = 0
-
-Synthetic edge tests include exact-target pass, duration-fail candidate, reversed timestamps, recorded-WORKED mismatch, zero-substantive-work, provider failure, missing marker identity, productive-ratio misuse, active-work overflow, exact/conflicting duplicates, pending-wake behavior and non-promotion of failure candidates.
+Synthetic tests include exact target, forced-stop precedence, reversed/missing markers, recorded mismatch, provider precedence, productive-marker reversal, duplicate conflict, pending wake, target-field preservation, and semantic generator uniqueness/coverage.
 
 ## J. Current implementation status
-- Pure classifier: implemented and hardened with marker identity and productive-evidence anomalies.
-- Duplicate reconciliation: implemented conservatively.
-- Regression dataset: schema v2 with marker IDs and R7.
-- Test matrix: expanded to T01-T26.
-- Raw-pair algorithm/trust boundary: specified.
-- Raw-pair manual verification: completed previously for R3/R4/R6; R7 is represented in the corpus.
-- End-to-end pipeline and concurrency-safe terminal sync: specified in `runtime/RUNTIME_EVIDENCE_PROCESSOR_PIPELINE.md`.
-- Automated connector/REST fetch integration inside repository code: intentionally not present; connector execution is external to the pure module.
-- Scheduler mutation: intentionally absent.
+- target-preserving pure classifier implemented;
+- productive-marker invalid ordering now fails closed rather than raising through classification;
+- regression dataset schema v3 includes R9;
+- semantic generator V2 varies target delta, marker skew, close reserve and validates semantic uniqueness;
+- close-reserve perturbation covers all integer values 30..120 before repeat;
+- semantic stress evaluator and admission sensitivity grid implemented;
+- terminal sync protocol upgraded to create-only immutable truth + CAS projections.
 
 ## K. Promotion gate
-The processor may be the preferred deterministic audit layer once the above checks pass, but raw GitHub marker resources remain empirical Source of Truth. The processor cannot autonomously promote production OPERATING_CAP; Phase-B repeated marker-valid evidence and workload-profile coverage remain mandatory.
+Processor can be the preferred deterministic audit layer, but raw GitHub resources remain clock Source of Truth. No processor output alone promotes OPERATING_CAP; Phase-B repeated clean evidence and profile coverage remain mandatory.
