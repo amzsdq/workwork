@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":89,
+  "units_completed":8,
+  "research_notes":[
+    "The present sample is write-heavy enough that its eventual close overhead may include repository variability not seen in reasoning-heavy work.",
+    "That is acceptable for W3, but cross-profile validation should avoid assuming this overhead distribution is universal.",
+    "The hard cap may ultimately use a conservative reserve derived from the slowest representative profile.",
+    "Alternatively profile-conditioned reserve can be considered only if the complexity buys material utilization.",
+    "The same simplicity criterion applies to reserve selection as to task admission.",
+    "Current Phase A records evidence without deciding that policy yet."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
