@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":81,
+  "units_completed":8,
+  "research_notes":[
+    "The final relay policy should specify how to behave when durable-state writes slow down: reserve more close budget or hand off earlier rather than silently risking loss.",
+    "Observed write latency distribution can inform this once enough samples exist.",
+    "The current mixed profile naturally samples repository write availability across the turn.",
+    "No explicit write outage has occurred in successful batches.",
+    "One safety-blocked content attempt was immediately replaced and is not evidence of GitHub/runtime failure.",
+    "That distinction should remain outside duration-failure counts."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
