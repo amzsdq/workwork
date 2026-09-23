@@ -21,7 +21,11 @@
   "scheduler_state_ok":true,
   "forced_stop_or_timeout":false,
   "non_duration_failure":false,
-  "result":"CLEAN_PASS_PENDING_WAKE",
-  "boundary_effect":"NONE_UNTIL_RETROSPECTIVE_WAKE_OK",
+  "retrospective_wake_ok":true,
+  "wake_observed_at_kst":"2026-09-23T21:30:23+09:00",
+  "wake_lateness_sec":168,
+  "wake_timeliness_note":"Wake occurred after the prearmed 21:27:35 target. Observation is sufficient for continuation/Wake_OK; lateness is tracked separately and is not a duration failure.",
+  "result":"CLEAN_PASS_WAKE_OK",
+  "boundary_effect":"SAFE_LOWER_BOUND_ADVANCED_TO_20M",
   "completion_envelope_note":"Terminal close began at target. Connector commit completion latency is not represented by the nominal timestamp and must not be treated as a zero-second close-overhead sample."
 }
