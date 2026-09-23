@@ -1,0 +1,12 @@
+{
+  "event_type": "STRICT_PROBE_TERMINAL",
+  "probe_id": "OP-CAP-14M-VALIDATION-01",
+  "result": "CLEAN_PASS_PENDING_WAKE",
+  "target_sec": 840,
+  "worked_sec": 865,
+  "productive_window_sec": 829,
+  "close_overhead_sec": 16,
+  "clock_validity": "VALID",
+  "harness_validity": "VALID",
+  "terminal_path": "runtime-boundary/OP-CAP-14M-VALIDATION-01/terminal.json"
+}
