@@ -1,11 +1,11 @@
 # Cooperative Parallel Probe 02
 
-probe_id: PARALLEL-A15-B4-02
+probe_id: PARALLEL-A14-B4-02
 
 Goal: repeat the cooperative parallel test with stronger instrumentation so true simultaneous useful work can be proven.
 
 Parameters:
-- PRIMARY_A nominal runtime: 15m
+- PRIMARY_A nominal runtime: 14m
 - PARALLEL_B wake offset: A_START +4m
 - B target active work: ~8m
 - disjoint immutable namespaces: A/* and B/*
@@ -17,7 +17,7 @@ PRIMARY_A instrumentation:
 3. Perform disjoint A work continuously.
 4. Persist an immutable A heartbeat/work-unit at least once every ~60-90s while useful work is continuing.
 5. Critically, after B has started, A must persist at least TWO new A evidence files timestamped after B_START before A can count as concurrent-useful.
-6. Persist primary-end.json near/after 15m.
+6. Persist primary-end.json near/after 14m.
 7. A never mutates scheduler again after spawning B.
 
 PARALLEL_B:
@@ -25,7 +25,7 @@ PARALLEL_B:
 2. Perform only disjoint B work and persist immutable B work units.
 3. Do not mutate shared state/authority or A files.
 4. Persist parallel-b-end.json.
-5. After B finishes, schedule observer no earlier than max(now+3m, A_START+16m).
+5. After B finishes, schedule observer no earlier than max(now+3m, A_START+15m).
 
 Observer PASS requires:
 - B_START < A_END,
@@ -42,3 +42,8 @@ A/B units, conflicts, throughput-gain estimate.
 
 Classification:
 PARALLEL_USEFUL / PARALLEL_CONCURRENT_BUT_LOW_GAIN / CONFLICTED / NOT_CONCURRENT / INCONCLUSIVE.
+
+
+## Relationship to strict runtime-boundary research
+This probe may provide SUPPORTING_RUNTIME_SURVIVAL evidence for a 14-minute active invocation, but it MUST NOT be counted as a strict Phase-A duration PASS because the scheduler is deliberately used to wake PARALLEL_B at A_START+4m rather than the strict duration protocol's target+planned-gap pre-arm.
+After this isolated parallel probe is classified, return to strict runtime-boundary testing at NEXT_STRICT_TARGET=14m under MAX_SAFE_RUNTIME_RESEARCH.md before advancing to 16m.
