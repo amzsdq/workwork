@@ -1,0 +1,17 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":3,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"HISTORICAL_CLOSE_AND_OVERSHOOT_AUDIT",
+  "observations":[
+    {"target_min":14,"profile":"W3_MIXED_IO_CLOSE_RESERVE","actual_elapsed_sec":928,"overshoot_sec":88,"clean_close":true,"interpretation":"survival/close evidence; sparse productive-work density"},
+    {"target_min":16,"profile":"W4_REASONING_HEAVY","actual_elapsed_sec_lower_bound":996,"overshoot_sec_lower_bound":36,"clean_close":true,"interpretation":"lower-bound elapsed; not a direct close-overhead sample"},
+    {"target_min":18,"profile":"W2_WRITE_CHECKPOINT_HEAVY","actual_elapsed_sec":1197,"overshoot_sec":117,"close_overhead_sec":117,"clean_close":true,"interpretation":"direct but contaminated high-side close sample"},
+    {"target_min":20,"profile":"W6_LARGE_UNIT","actual_elapsed_sec":1200,"overshoot_sec":0,"close_overhead_sec":null,"clean_close":true,"interpretation":"connector completion latency uninstrumented; zero cannot be claimed as close overhead"}
+  ],
+  "finding":"Observed post-target/close behavior is heterogeneous enough that max observed success cannot define PRODUCTIVE_CAP. Completion-envelope instrumentation remains necessary at 22m and later W7 validation.",
+  "substantive_unit_count_cumulative":3,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
