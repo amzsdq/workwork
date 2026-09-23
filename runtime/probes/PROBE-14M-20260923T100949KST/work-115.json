@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":115,
+  "units_completed":8,
+  "research_notes":[
+    "The current target is deliberately modestly above the prior 12m pass so coarse ascent can detect the failure region without huge jumps.",
+    "Two-minute steps balance search speed and bracket resolution at this stage.",
+    "One-minute refinement only becomes useful after an upper failed class exists.",
+    "Testing every minute from the start would waste samples without improving the current decision.",
+    "This search strategy remains efficient under limited automation turns.",
+    "A clean 14m close therefore justifies the planned 16m next probe."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
