@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":50,
+  "units_completed":8,
+  "research_notes":[
+    "A safe relay should prefer losing a small amount of residual capacity over risking an incomplete final checkpoint.",
+    "The purpose of boundary search is to quantify how much reserve is actually needed rather than assume a large fixed buffer.",
+    "Start pre-arm already removes one major source of reserve demand.",
+    "Observed close overhead will determine the remaining checkpoint reserve.",
+    "Task-duration admission can then recover some otherwise abandoned tail capacity.",
+    "This is the core path from runtime measurement to a reusable handoff policy."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
