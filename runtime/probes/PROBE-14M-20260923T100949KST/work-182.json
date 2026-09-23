@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":182,
+  "units_completed":8,
+  "research_notes":[
+    "A compact workload template for future probes should include evidence consistency, timing aggregation, failure classification, policy replay, checkpoint integrity, and metric derivation as reusable families.",
+    "Each family can consume actual accumulated evidence so the workload remains novel/useful as the study grows.",
+    "Bounded extensions can be allowed only while new evidence/questions remain.",
+    "This solves the prior exhaustion problem without permitting idle padding.",
+    "The current retry effectively prototyped this approach manually.",
+    "It can be formalized after close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
