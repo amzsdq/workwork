@@ -1,0 +1,13 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 5,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "PROBE_EXECUTION_CLOCK_REPAIR",
+  "finding": "PROBE_EXECUTION_PLAN.md still treated model/local START_TS and directly observed elapsed as authoritative. Repaired it to anchor prearm and classification to raw GitHub START/END marker created_at values only.",
+  "decision_value": "Prevents future probes from silently violating the final clock invariant through an older execution-plan path.",
+  "repair_commit": "7a0c165fb5fe3b23118d3ec72554c33f87118a8c",
+  "substantive_unit_count_cumulative": 16,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
