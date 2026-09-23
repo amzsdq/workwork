@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 27,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "TERMINAL_SYNC_TRANSACTION_PRECHECK",
+  "findings": [
+    "Raw probe path, event ledger, current state, evidence table, and master plan all identify the same active case/probe and unresolved server-clock lower bound.",
+    "No terminal classification has yet been written, so there is no premature state advancement to reconcile.",
+    "At END, all four terminal views must be synchronized before the case can advance."
+  ],
+  "substantive_unit_count_cumulative": 75,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
