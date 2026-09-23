@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":172,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual Phase D should compare planned gap against actual idle gap and missed/overlap outcomes, not simply assume smaller is always better.",
+    "Close overshoot can consume part of planned gap, so a nominal +1m may already yield near-zero actual idle time.",
+    "Wake jitter can push the other direction and create longer gaps.",
+    "These empirical effects require a stable runtime policy first.",
+    "The current sample will contribute a predecessor close timestamp for future actual-gap calculation.",
+    "Successor actual start will complete that measurement retrospectively."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
