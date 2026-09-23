@@ -1,0 +1,27 @@
+{
+  "probe_id":"PROBE-22M-SERVERCLOCK-20260923-R4",
+  "case_id":"SC-A22-CLOCK-01",
+  "clock_protocol":"GITHUB_SERVER_MARKER_V1",
+  "start_marker_comment_id":5796189180,
+  "start_marker_created_at":"2026-09-23T13:58:33Z",
+  "workload_profile":"W3_MIXED_IO",
+  "checkpoint_kind":"SPARSE_DECISION_RELEVANT",
+  "substantive_units_completed":8,
+  "units":[
+    "fresh state/current.json resolved SC-A22-CLOCK-01 and R3 UNDER_TARGET cause",
+    "master plan audited: server-clock evidence hierarchy and 22m PASS prerequisites consistent",
+    "workload profile audited: W3 mixed I/O remains correct profile for revalidation",
+    "evidence table audited: R3 652s classified UNDER_TARGET with no boundary effect",
+    "decision rule audited: under_target and clock-invalid correctly excluded from boundary movement",
+    "events ledger audited: R3 terminal record agrees with state/evidence table",
+    "overlap candidate audited without live execution; remains deferred and does not contaminate Phase A",
+    "MAX_SAFE_RUNTIME_RESEARCH audited: marker order and retrospective WAKE_OK gate consistent"
+  ],
+  "findings":[
+    "Master plan CURRENT EXECUTION POINTER is stale: it still names R3 ACTIVE even though canonical state/events classify R3 terminal UNDER_TARGET. This is a documentation-pointer inconsistency, not runtime evidence.",
+    "R4 scheduler pre-arm returned intended recurring RRULE DTSTART 23:23:33 KST and enabled=true.",
+    "No duration-attributable failure observed at this checkpoint."
+  ],
+  "boundary_effect":"NONE_ACTIVE",
+  "status":"ACTIVE_CONTINUE_TO_SERVER_TARGET"
+}
