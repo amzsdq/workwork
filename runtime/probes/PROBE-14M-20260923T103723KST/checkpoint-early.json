@@ -1,0 +1,9 @@
+{
+  "probe_id": "PROBE-14M-20260923T103723KST",
+  "stage": "EARLY_ACTIVE",
+  "scheduler_prearm_verified": true,
+  "work_units_completed": 2,
+  "close_reserve_sec": 60,
+  "checkpoint_saved": true,
+  "result": "IN_PROGRESS"
+}
