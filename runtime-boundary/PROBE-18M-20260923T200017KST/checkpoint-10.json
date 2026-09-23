@@ -1,0 +1,19 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":10,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":50,
+  "cross_document_consistency_audit":{
+    "prearm_only_scheduler_contract":"CONSISTENT_AFTER_REPAIR",
+    "strict_clean_close_plus_retrospective_wake_gate":"CONSISTENT_AFTER_REPAIR",
+    "wake_observation_vs_timeliness":"SEPARATED",
+    "profile_control_during_refinement":"CONSISTENT_AFTER_REPAIR",
+    "productive_window_metrics":"DIRECT_ACTIVE_ONLY_WHEN_SUPPORTABLE; GOAL_DIRECTED_WINDOW OTHERWISE",
+    "close_reserve_60s":"PROVISIONAL_NOT_PROMOTED",
+    "parallel_probe":"DEFERRED"
+  },
+  "decision_value":"Future runs now receive materially less contradictory guidance, reducing the chance that another 18m attempt terminates as setup/checkpoint-only work or rewrites the scheduler at close.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
