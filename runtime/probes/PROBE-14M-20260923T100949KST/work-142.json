@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":142,
+  "units_completed":8,
+  "research_notes":[
+    "The close path should write immutable close evidence before mutating state/current so a crash cannot leave an unsupported advanced summary.",
+    "If state update fails after close evidence succeeds, the successor can reconcile state from the durable close.",
+    "This is the correct transaction ordering for crash consistency.",
+    "If close evidence itself fails, state should remain conservative.",
+    "The successor wake is already secured independently.",
+    "This ordering will be used at close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
