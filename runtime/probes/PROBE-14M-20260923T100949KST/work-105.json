@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":105,
+  "units_completed":8,
+  "research_notes":[
+    "The runtime boundary experiment should not be confused with the automation's hourly recurrence interval because DTSTART shifting controls the next occurrence under the current recurring schedule.",
+    "The empirical object is actual invocation lifetime under the relay configuration, not the nominal RRULE period alone.",
+    "Start pre-arm validation confirms the intended continuation state for this sample.",
+    "The scheduler remains enabled.",
+    "The current target and planned gap are durably recorded in start evidence.",
+    "Final close remains the only missing strict-pass component."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
