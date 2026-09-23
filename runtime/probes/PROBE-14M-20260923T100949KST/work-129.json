@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":129,
+  "units_completed":8,
+  "research_notes":[
+    "Bootstrap overhead should eventually be measured separately because it reduces available useful-work budget even when runtime cap is fixed from invocation start.",
+    "A compact summary and predictable evidence schema can reduce that overhead.",
+    "The S1 immediate pre-arm strategy intentionally secures continuation before bootstrap-heavy analysis.",
+    "This is compatible with later optimizing bootstrap cost without weakening continuity.",
+    "The current strict run already pre-armed before the extended workload.",
+    "No additional scheduling is needed."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
