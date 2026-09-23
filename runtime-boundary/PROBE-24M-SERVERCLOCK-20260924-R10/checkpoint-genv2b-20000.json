@@ -1,0 +1,15 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "generator_version":"SEMANTIC_EPOCH_V2_RESERVE_COPRIME",
+  "seed":"SC-A24-CLOCK:R10:GENV2B",
+  "generated_units":20000,
+  "identity_unique":20000,
+  "semantic_unique":20000,
+  "duplicates":0,
+  "epochs_crossed":28,
+  "distinct_close_reserve_values_seen":28,
+  "close_reserve_min_seen":30,
+  "close_reserve_max_seen":120,
+  "full_cycle_design":"91 epochs covers all integer reserves 30..120 because step 17 is coprime to 91",
+  "status":"SUBSTANTIVE_CONTINUATION_VALID"
+}
