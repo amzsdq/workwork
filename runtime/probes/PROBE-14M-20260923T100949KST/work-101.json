@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":101,
+  "units_completed":8,
+  "research_notes":[
+    "The current dense workload also demonstrates that a single invocation can perform many independent durable operations without needing a new worker per unit.",
+    "This supports keeping orchestration minimal until actual runtime or workload granularity requires delegation.",
+    "Parallelism should be introduced for measured throughput benefit, not as default complexity.",
+    "The deferred parallel probe remains valuable after the runtime cap is known.",
+    "The present result should therefore not be interpreted as rejecting parallelism, only sequencing it later.",
+    "Strict runtime classification remains the immediate objective."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
