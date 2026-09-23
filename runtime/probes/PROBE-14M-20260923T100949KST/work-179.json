@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":179,
+  "units_completed":8,
+  "research_notes":[
+    "A useful future validation matrix could include representative normal workload plus W3 mixed I/O stress and a reasoning-heavy profile near the candidate cap.",
+    "Five clean validations need not all be identical if the goal is a universal cap, but profile coverage should be explicit.",
+    "If the cap is profile-specific, each profile needs its own sufficient evidence instead.",
+    "The simpler universal cap should be preferred unless capacity loss is material.",
+    "These choices remain downstream.",
+    "Current sample is one W3 exploratory observation."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
