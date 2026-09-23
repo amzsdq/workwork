@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":49,
+  "units_completed":8,
+  "research_notes":[
+    "The final close should occur at the first safe unit boundary after the target rather than intentionally overshooting to consume budget.",
+    "Overshoot is measured, not optimized for.",
+    "This prevents the experiment from turning into idle timeout chasing.",
+    "If a unit crosses the target naturally, its bounded tail is legitimate substantive work.",
+    "The close overhead then begins at pre_close_ts after that unit finishes.",
+    "This definition supports later soft-cutoff admission analysis."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
