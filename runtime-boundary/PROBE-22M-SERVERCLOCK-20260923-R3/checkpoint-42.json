@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 42,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "FINAL_SCHEDULER_CONTRACT_AUDIT",
+  "findings": [
+    "The same automation was prearmed with a complete recurring VEVENT containing RRULE:FREQ=HOURLY and remained enabled.",
+    "No replacement automation, DTSTART-only one-shot, or dtstart_offset_json was used.",
+    "Normal close will not mutate scheduler state again, satisfying the strict duration contract."
+  ],
+  "substantive_unit_count_cumulative": 122,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
