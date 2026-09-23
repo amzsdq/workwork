@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260924-R6",
+  "case_id": "SC-A22-CLOCK-01",
+  "workload_profile": "W3_MIXED_IO",
+  "substantive_units_completed_total": 35,
+  "additional_units": [
+    "README strict-clock repair",
+    "legacy 12m result qualification",
+    "runtime workload corpus refresh",
+    "historical overlap protocol qualification",
+    "parallel probe 01 timing qualification",
+    "parallel probe 02 timing qualification",
+    "handoff-state legacy timestamp contamination check"
+  ],
+  "status": "ACTIVE_CONTINUE"
+}
