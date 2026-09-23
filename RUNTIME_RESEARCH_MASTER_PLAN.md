@@ -66,6 +66,48 @@ If any of these disagree, the case is not considered fully closed and the next s
 
 A tool/provider failure that prevents this synchronization is NON_DURATION_FAIL and must not alter the runtime boundary.
 
+## 2A. Three-axis runtime objective
+
+A runtime target is not useful merely because the invocation survives until that timestamp. Every empirical probe must characterize three distinct axes:
+
+### A. SURVIVAL_BOUNDARY
+How long the invocation can remain active without a duration-attributable forced stop or timeout.
+
+### B. PRODUCTIVE_WINDOW
+How much of the invocation is spent on genuine goal-directed work.
+
+Measure at minimum:
+- actual_elapsed_sec
+- active_work_sec
+- productive_ratio = active_work_sec / actual_elapsed_sec
+- substantive_unit_count
+- workload_profile
+
+Do not manufacture work to inflate active time. The workload must contribute to the runtime research goal or directly validate its control/evidence logic.
+
+### C. COMPLETION_ENVELOPE
+How late useful work can continue while still preserving enough time for a reliable durable close.
+
+Measure:
+- last_normal_task_admit_ts when observable
+- pre_close_ts
+- close_end_ts
+- close_overhead_sec
+- overshoot_sec
+- clean_close
+- checkpoint_saved
+
+The purpose is to identify:
+- HARD_CAP = the empirically safe outer wall-clock limit,
+- SOFT_CUTOFF = the latest region where normal work should still be admitted,
+- CLOSE_RESERVE = realistic close overhead plus safety margin,
+- PRODUCTIVE_CAP = the useful-work operating window before close reserve begins.
+
+A probe that reaches the duration target with very low productive work is survival evidence but weak operating-policy evidence.
+A probe with high productive work but no clean close is not an acceptable operating point.
+
+During Phase A, collect all three axes on the same probes whenever possible so later Phase B/C does not need to repeat avoidable experiments.
+
 ## 3. Phase gates
 
 ### Phase A — runtime boundary search
@@ -173,10 +215,17 @@ Before starting a new 18m probe:
 
 PASS:
 - target reached,
-- substantive W2 workload,
+- substantive W2 workload sustained through the probe rather than a short setup burst,
+- active_work_sec and productive_ratio recorded when directly observable,
 - durable close checkpoint,
 - scheduler WRITE_OK/STATE_OK,
-- no duration-related forced stop.
+- no duration-related forced stop,
+- completion-envelope timestamps recorded when practical.
+
+Interpretation:
+- A clean 18m pass advances SURVIVAL_BOUNDARY evidence.
+- Its productive_ratio and close-overhead evidence feed PRODUCTIVE_WINDOW / COMPLETION_ENVELOPE characterization.
+- Do not treat a low-work survival pass as sufficient evidence for the final operating cap.
 
 Then:
 - SAFE_LOWER_BOUND -> 18m after retrospective WAKE_OK,
