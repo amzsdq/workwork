@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":61,
+  "units_completed":8,
+  "research_notes":[
+    "State/current should never claim 16m next target unless 14m close evidence is already durable.",
+    "This ordering prevents a crash between summary update and evidence write from creating a false advancement.",
+    "Likewise final close evidence should contain the classification basis so it remains intelligible without state/current.",
+    "Append-only experimental evidence plus mutable summary is the correct durability pattern here.",
+    "The same pattern can later support authority-transfer logs and parallel-worker evidence.",
+    "Current run continues under that pattern."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
