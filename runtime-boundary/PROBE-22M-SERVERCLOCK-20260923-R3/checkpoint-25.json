@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 25,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "SERVER_CLOCK_REPRODUCIBILITY_AUDIT",
+  "findings": [
+    "A third party can reconstruct strict WORKED without trusting this model: fetch issue comment 5795782562 and the eventual END comment, then subtract raw GitHub created_at timestamps.",
+    "The prearm target is independently derivable from START +1320s target +180s gap.",
+    "All current strict-boundary promotion fields remain unresolved until the END marker and later WAKE_OK exist."
+  ],
+  "substantive_unit_count_cumulative": 69,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
