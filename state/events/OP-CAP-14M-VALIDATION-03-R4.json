@@ -1,0 +1,14 @@
+{
+  "probe_id":"OP-CAP-14M-VALIDATION-03-R4",
+  "case_id":"OP-CAP-14M-VALIDATION-03",
+  "result":"HARNESS_UNDER_TARGET",
+  "boundary_effect":"NONE",
+  "worked_sec":75,
+  "productive_window_sec":57,
+  "close_overhead_sec":7,
+  "clock_validity":"VALID",
+  "harness_validity":"REPAIRED_DURING_RUN_NOT_VALID_FOR_CAP",
+  "terminal_path":"runtime-boundary/OP-CAP-14M-VALIDATION-03-R4/terminal.json",
+  "harness_fix_commit":"8846dd68a3e49331d2821ef81a2b5ae733e1ff3e",
+  "next_case":"OP-CAP-14M-VALIDATION-03"
+}
