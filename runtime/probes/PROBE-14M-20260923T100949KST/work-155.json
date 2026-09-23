@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":155,
+  "units_completed":8,
+  "research_notes":[
+    "The research should eventually quantify how much checkpoint cadence affects useful throughput, because this retry's dense writes are deliberately expensive.",
+    "However reducing cadence before boundary confidence would trade away diagnostic quality prematurely.",
+    "A later optimization can compare coarse checkpoint intervals under the validated cap while measuring expected lost-tail work.",
+    "This is secondary to the current primary goal.",
+    "The dense profile remains valid experimental work rather than padding because every batch advances analysis or evidence.",
+    "Final close remains the strict gate."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
