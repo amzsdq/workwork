@@ -17,7 +17,8 @@ Only raw GitHub server `created_at` values from marker comments in issue #1 are 
 | 18m | PROBE-18M-20260923T200017KST | LEGACY_PRE_SERVER_CLOCK | prior CLEAN_PASS_WAKE_OK | prior elapsed/goal window retained historically | W2_WRITE_CHECKPOINT_HEAVY | supporting only |
 | 20m | PROBE-20M-20260923T210435KST | LEGACY_PRE_SERVER_CLOCK | prior CLEAN_PASS_WAKE_OK | prior 1200s claim is not current clock authority | W6_LARGE_UNIT | legacy exploratory lower bound only |
 | 22m | PROBE-22M-20260923T220655KST | LEGACY_PRE_SERVER_CLOCK | prior CLEAN_PASS_PENDING_WAKE | pre-protocol target timing is not current clock authority | W3_MIXED_IO | supporting only |
-| 22m | PROBE-22M-SERVERCLOCK-20260923-R3 | GITHUB_SERVER_MARKER_V1 | UNDER_TARGET | START 13:32:22Z / END 13:43:14Z / WORKED=652s / valid marker pair | W3_MIXED_IO | NONE |
+| 22m | PROBE-22M-SERVERCLOCK-20260923-R3 | GITHUB_SERVER_MARKER_V1 | UNDER_TARGET | WORKED=652s / valid marker pair | W3_MIXED_IO | NONE |
+| 22m | PROBE-22M-SERVERCLOCK-20260923-R4 | GITHUB_SERVER_MARKER_V1 | UNDER_TARGET | START 13:58:33Z / END 14:10:49Z / WORKED=736s / valid marker pair | W3_MIXED_IO | NONE |
 
 ## Current empirical conclusion
 
@@ -26,9 +27,10 @@ Only raw GitHub server `created_at` values from marker comments in issue #1 are 
 - SERVER_CLOCK_FAILURE_BOUNDARY: **unresolved**.
 - Credible duration failures under the new server-clock protocol: **0**.
 - Current strict case remains **SC-A22-CLOCK-01**.
-- First server-clock 22m attempt is terminal **UNDER_TARGET**, not a duration failure: the valid marker pair proves only **652s** of WORKED against a 1320s target.
-- Cause: this migration run voluntarily entered close after exhausting protocol-repair/audit work. It produced 137 decision-relevant W3 units but still closed too early in server time. This is an execution/workload-planning defect.
-- Next repeat must prepare enough bounded W3 work, use materially sparser checkpoints, and must not voluntarily close before the server-clock target. Instrumentation must not become the workload.
+- R3: **652s UNDER_TARGET** due voluntary close after migration/audit queue exhaustion.
+- R4: **736s UNDER_TARGET**. It corrected R3's stopping logic and produced substantial W3 work, but genuinely decision-relevant methodological work saturated before the 1320s target. The non-padding guard correctly prevented manufacturing redundant validation/prose solely to consume time.
+- R4 therefore exposes a second experimental-design problem: protocol-analysis work alone is not a sufficiently large genuine workload corpus for a 22m probe.
+- Next repeat must be started only with a predeclared larger, genuinely useful W3 workload/task corpus that can naturally sustain the target class. Redundant heartbeat/checkpoint/protocol prose is not acceptable workload.
 - Direct active-work seconds/productive_ratio remain uninstrumented and were not fabricated.
 - Production OPERATING_CAP, PRODUCTIVE_CAP, SOFT_CUTOFF, HARD_CAP, CLOSE_RESERVE, and SAFETY_MARGIN remain **not promoted**.
 
@@ -36,9 +38,10 @@ Only raw GitHub server `created_at` values from marker comments in issue #1 are 
 
 - Protocol: `GITHUB_SERVER_CLOCK_PROTOCOL.md`
 - Clock lane: GitHub issue #1
-- Probe START: comment `5795782562`, `created_at=2026-09-23T13:32:22Z`
-- Probe END: comment `5795950677`, `created_at=2026-09-23T13:43:14Z`
-- WORKED: **652s**
-- Raw close evidence: `runtime-boundary/PROBE-22M-SERVERCLOCK-20260923-R3/close.json`
+- R3 START/END: `5795782562` / `5795950677`; WORKED=652s
+- R4 START: comment `5796189180`, `created_at=2026-09-23T13:58:33Z`
+- R4 END: comment `5796383833`, `created_at=2026-09-23T14:10:49Z`
+- R4 WORKED: **736s**
+- R4 raw close: `runtime-boundary/PROBE-22M-SERVERCLOCK-20260923-R4/close.json`
 
 This table is derived. Raw marker REST resources, raw per-probe evidence, `state/events.log`, and fresh `state/current.json` govern strict classification.
