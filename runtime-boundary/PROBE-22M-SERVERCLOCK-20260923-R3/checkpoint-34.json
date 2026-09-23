@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 34,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "CLOCK_PROTOCOL_MIGRATION_RESULT_AUDIT",
+  "findings": [
+    "The migration has removed three false-authority paths: model START_TS in probe execution, model elapsed in strict boundary decisions, and ambiguous END-after-ledger wording.",
+    "Current strict timing now has one reproducible authority path: raw GitHub issue-comment created_at pair.",
+    "This materially improves decision integrity for subsequent coarse ascent and cap validation."
+  ],
+  "substantive_unit_count_cumulative": 98,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
