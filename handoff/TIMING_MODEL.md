@@ -1,11 +1,11 @@
 # Handoff timing model
 
-The successor wake lead must cover two different intervals: successor preparation and the predecessor's remaining safe-unit tail after READY is noticed.
+Successor lead must cover successor preparation plus predecessor safe-unit tail after READY. A quickly prepared successor can still wait on a long indivisible predecessor unit.
 
-Measure both separately. A successor that becomes READY quickly can still experience a late authority transfer when the predecessor is inside a long indivisible unit.
+Operational implication: optimize unit granularity together with lead. Near handoff, prefer bounded substantive units whose expected tail is compatible with remaining lead, without replacing real work with padding.
 
-Operational implication: optimize unit granularity together with successor lead. Near the expected handoff window, ACTIVE_OWNER should prefer bounded units whose expected tail is small enough to preserve the intended transfer latency, without replacing substantive work with no-op padding.
+EARLY_READY_HANDOFF remains: after valid READY, admit no new ordinary unit; finish current safe unit, checkpoint, transfer.
 
-EARLY_READY_HANDOFF rule remains: after READY is observed, do not admit another ordinary unit. Finish the in-flight safe unit, checkpoint, transfer.
+Quantitative preparation time, unit-tail duration, transfer latency, overlap, and handoff gap require authoritative server-side timing endpoints. Model-authored READY/start/transfer timestamps are not empirical timing. Without authoritative endpoints, only qualitative ordering/control correctness is established.
 
-A lead reduction is justified only when repeated observations show preparation plus unit-tail comfortably fits the smaller lead and handoff remains clean.
+Reduce lead only after repeated clean authoritative observations show preparation + tail fits the smaller lead with margin.
