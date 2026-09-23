@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":158,
+  "units_completed":8,
+  "research_notes":[
+    "The strict protocol's use of the same automation ID ensures the measured continuation behavior applies to the actual relay mechanism rather than a synthetic replacement task.",
+    "This matters because replacement automation creation could have different latency/limits and consume scarce slots.",
+    "Reusing one recurring automation is therefore part of the experimental environment.",
+    "The current sample has preserved that invariant.",
+    "No new automation was created.",
+    "Final close will not change that."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
