@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 32,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "WAKE_JITTER_SEPARATION_AUDIT",
+  "findings": [
+    "Retrospective wake timeliness remains separate from current invocation WORKED: wake jitter cannot change the START/END marker difference.",
+    "A late next wake may affect relay utilization and planned-gap optimization but is not a duration failure for the current probe unless evidence shows a causal runtime/control failure.",
+    "This preserves the prior distinction between survival boundary and scheduler/wake quality under the new clock protocol."
+  ],
+  "substantive_unit_count_cumulative": 90,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
