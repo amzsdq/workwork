@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 20,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "PRE_CLOSE_INVARIANT_REAUDIT",
+  "findings": [
+    "START marker remains the sole authoritative opening timestamp and is durably referenced in start.json/current state/event ledger/evidence table.",
+    "Scheduler was prearmed once from the START marker and has not been mutated again during substantive work.",
+    "No duration-attributable forced stop, provider failure, or scheduler-state anomaly has been observed so far.",
+    "Direct active_work_sec remains null by design; 49 prior cumulative decision-relevant units plus this audit support sustained W3 activity without claiming fabricated productive seconds."
+  ],
+  "substantive_unit_count_cumulative": 53,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
