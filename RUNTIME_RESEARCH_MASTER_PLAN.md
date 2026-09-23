@@ -3,96 +3,62 @@
 Status: CANONICAL EXECUTION ROADMAP
 Repo: amzsdq/workwork
 
-## 1. Research objective
-Answer empirically:
-1. maximum safe substantive-work duration per invocation;
-2. simplest reproducible handoff/admission policy near that limit with high long-run useful-work utilization and no material increase in forced-stop/run-out risk.
+## Objective
+Empirically find maximum safe substantive-work duration and simplest reproducible handoff/admission policy near it with high long-run useful utilization.
 
-Evidence authority:
-1. raw GitHub START/END marker REST resources for strict WORKED;
-2. raw per-probe evidence;
-3. state/events.log;
-4. state/current.json;
-5. derived summaries.
+Evidence authority: raw GitHub START/END marker REST resources -> raw per-probe evidence -> event ledger -> current state -> derived summaries.
 
 ## Final clock invariant
-`WORKED = END_MARKER.created_at - START_MARKER.created_at`
-
-Only raw GitHub server marker `created_at` values are strict duration evidence. Model/local time strings are non-authoritative. Invalid marker pair => CLOCK_EVIDENCE_INVALID, no boundary effect. Pre-protocol timing is legacy supporting only.
-
-## Anti-drift / terminal sync
-Resolve fresh active case and incomplete evidence before work. Every repeat must add decision value. Terminal classification synchronizes raw terminal evidence + event ledger + current state + evidence table and then re-reads agreement. Provider/sync failure is NON_DURATION_FAIL.
-
-No padding. A probe needs a predeclared genuinely useful workload corpus large enough for the class.
+`WORKED = END_MARKER.created_at - START_MARKER.created_at` from raw GitHub server timestamps only. Model/local times are non-authoritative. Invalid pair => CLOCK_EVIDENCE_INVALID. Pre-protocol timing is legacy supporting only.
 
 ## Three axes
-A. SURVIVAL_BOUNDARY — strict WORKED + causal termination/close outcome.
-B. PRODUCTIVE_WINDOW — direct active seconds only when defensible; otherwise labeled goal-directed/substantive evidence.
-C. COMPLETION_ENVELOPE — derive cap/cutoff/reserve/admission from direct evidence.
+SURVIVAL_BOUNDARY, PRODUCTIVE_WINDOW, COMPLETION_ENVELOPE. No padding; every repeat needs a genuinely useful workload corpus large enough for target.
 
 ## Phase A — boundary search
 - LEGACY_EXPLORATORY_LOWER_BOUND = 20m
 - SERVER_CLOCK_SAFE_LOWER_BOUND = unresolved
 - FAILURE_BOUNDARY = unresolved
 - active target = 22m
-- planned_gap = +3m
+- planned gap = +3m
 - profile = W3 MIXED_IO
 
 Server-clock attempts:
-- R3 = 652s UNDER_TARGET: useful migration/audit queue exhausted.
-- R4 = 736s UNDER_TARGET: stopping defect corrected, but protocol-analysis workload saturated.
-- R5 = CLOCK_EVIDENCE_INVALID / NON_DURATION_FAIL: mandatory START_MARKER creation was provider-blocked; no boundary effect.
-- R6 = ACTIVE: START marker succeeded at raw server `created_at=2026-09-23T15:23:53Z`, scheduler prearm verified for START+22m+3m, and a materially larger W3 corpus is executing. The corpus includes cross-document clock semantics, classification regression, completion-envelope reconciliation, handoff control-path integrity, legacy contamination, reproducibility, and terminal reconciliation.
+- R3: 652s UNDER_TARGET, useful queue exhausted.
+- R4: 736s UNDER_TARGET, larger protocol-analysis work saturated.
+- R5: CLOCK_EVIDENCE_INVALID / NON_DURATION_FAIL, START marker provider-blocked.
+- R6: **975s UNDER_TARGET**, valid START/END pair, 59 decision-relevant W3 units, clean durable close, verified prearm, no duration failure. R6 materially expanded the corpus and repaired clock semantics, completion-envelope semantics, classification coverage, handoff control path, legacy contamination, rollback/policy schemas, and reproducibility. Repository-protocol/control-document audit work then naturally saturated before 1320s.
 
-R6 has already produced decision-relevant repairs including server-clock schema alignment and discovery/repair of a nonexistent `handoff/control.json` assumption; canonical future handoff authority is root `handoff-state.json`. These are genuine research/control tasks, not padding.
+R6 proves the prior workload-source defect was reduced but not eliminated. Another repository-protocol audit repeat would now be redundant churn and is forbidden. The next 22m repeat requires a genuinely larger **implementation/data-processing task source** directly relevant to runtime/control research that can naturally sustain >=1320s.
 
-After strict 22m clean PASS + retrospective WAKE_OK, continue +2m coarse ascent with rotated profiles. First credible duration failure creates profile-specific F; refine to about 1m.
+After strict 22m clean PASS + retrospective WAKE_OK, continue +2m coarse ascent with rotated profiles. First credible duration failure creates profile-specific F; refine ~1m.
 
-## Phase B — operating-cap validation
-Require at least 5 clean marker-valid runs at/near candidate, no unresolved duration failure at/below candidate, scheduler verification, durable close, continuation observation where measurable, and representative W3/W5/(W4 or W6)/W7 coverage.
+## Phase B
+At least 5 clean marker-valid runs near candidate with representative W3/W5/(W4 or W6)/W7 coverage and explicit safety margin. Current-protocol close samples are required; legacy 32s sample is supporting only.
 
-## Phase C — handoff/admission
-Compare P1-P4, simplest practically equivalent wins. Overlap candidate remains KEEP/TEST/NOT_PROMOTED. Future exact handoff lead/gap metrics require authoritative server-side timing; legacy model/file timestamps are supporting-only.
+## Phase C
+Compare P1-P4; simplest practically equivalent wins. Controlled overlap remains KEEP/TEST/NOT_PROMOTED and deferred. Future exact handoff timing requires authoritative server-side endpoints. Canonical future owner record is root `handoff-state.json`.
 
-## Phase D — planned-gap optimization
-After runtime/cap stabilizes: +3m -> +2m -> +1m if reliable.
+## Phase D
+Gap optimization +3m -> +2m -> +1m after cap stabilizes.
 
-## Phase E — deferred parallel
-PARALLEL-A14-B4-02 remains deferred/supporting-only until Phase A/B gate.
+## Phase E
+Parallel probe remains deferred/supporting-only until Phase A/B gate.
 
-## Study cases
-### SC-A22-CLOCK-01
-PASS: valid marker pair, WORKED >=1320s, sustained substantive W3 work, durable close checkpoint, scheduler WRITE_OK/STATE_OK, no duration-attributable forced stop. Then CLEAN_PASS_PENDING_WAKE; retrospective WAKE_OK advances SERVER_CLOCK_SAFE_LOWER_BOUND=22m and next case.
+## Study case SC-A22-CLOCK-01
+PASS: valid marker pair, WORKED>=1320s, sustained substantive W3 work, durable close checkpoint, scheduler WRITE_OK/STATE_OK, no duration-attributable forced stop. Then CLEAN_PASS_PENDING_WAKE; retrospective wake advances lower bound.
 
-UNDER_TARGET: valid marker pair, WORKED <1320s, boundary unchanged; repeat only after correcting cause.
+UNDER_TARGET: valid pair, WORKED<1320s, boundary unchanged; repeat only after correcting workload cause.
 CLOCK_EVIDENCE_INVALID/NON_DURATION_FAIL: no boundary effect.
-DURATION_FAIL_CANDIDATE: profile-controlled bracket/refinement.
-
-### SC-A24-CLOCK+
-Prior 22m server-clock clean pass + wake; target +2m, rotated profile.
-
-### SC-AR-*
-~1m profile-controlled refinement after first credible duration failure.
-
-### SC-B-CAP-*
-Repeated representative validation.
-
-### SC-C-POLICY-*
-Replay then live.
-
-### SC-D-GAP-*
-3m -> 2m -> 1m.
-
-### SC-E-PARALLEL-01
-Deferred until Phase A/B gate.
+DURATION_FAIL_CANDIDATE: profile-controlled refinement.
 
 ## Current execution pointer
 CURRENT_CASE_ID = SC-A22-CLOCK-01
-ACTIVE_PROBE_ID = PROBE-22M-SERVERCLOCK-20260924-R6
-LATEST_TERMINAL_PROBE = PROBE-22M-SERVERCLOCK-20260923-R5
-LATEST_TERMINAL_RESULT = CLOCK_EVIDENCE_INVALID / NON_DURATION_FAIL
+ACTIVE_PROBE_ID = none
+LATEST_TERMINAL_PROBE = PROBE-22M-SERVERCLOCK-20260924-R6
+LATEST_TERMINAL_RESULT = UNDER_TARGET
+LATEST_WORKED = 975s
 
-Immediate objective: continue R6's predeclared genuine W3 corpus. Do not start a duplicate probe. At close, persist durable close checkpoint, create END_MARKER, fetch raw server created_at, compute strict WORKED, then terminal-sync all views.
+Immediate objective: source/construct a genuinely larger implementation or data-processing W3 task directly useful to runtime/control research before another 22m strict probe. Do not repeat protocol-document audit work merely to consume time.
 
-## Final completion gate
-Program completes only when server-clock safe lower bound, failure boundary or unresolved status, operating/productive caps, cutoff/hard cap, close overhead, safety margin, next-task admission, validation confidence/count, workload coverage, rollback, and selected planned gap are traceable to durable evidence.
+## Completion gate
+Final outputs remain server-clock lower/failure bounds, operating/productive caps, cutoff/hard cap, current-protocol close overhead, safety margin, next-task admission, validation confidence/count, workload coverage, rollback, selected gap.
