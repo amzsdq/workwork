@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":18,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"EVENT_LEDGER_CONSISTENCY_VERIFICATION",
+  "finding":"Canonical event ledger ends with the 20m CLEAN_PASS_WAKE_OK transition to SC-A22-01 and contains no premature 22m terminal event. This is correct while the active 22m probe is still running; active progress belongs in raw probe checkpoints/current recovery pointer until terminal classification.",
+  "boundary_state":"SAFE_LOWER_BOUND=20m; FAILURE_BOUNDARY unresolved",
+  "substantive_unit_count_cumulative":18,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
