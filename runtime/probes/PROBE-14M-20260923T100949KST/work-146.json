@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":146,
+  "units_completed":8,
+  "research_notes":[
+    "The successor should not mistake the prior under-target probe and this retry as one combined sample; each probe ID is an independent experimental run.",
+    "The target-class counter after a clean close would therefore be at least one clean pass plus one under-target at 14m.",
+    "Only the clean pass moves the exploratory lower bound.",
+    "The under-target sample remains useful evidence about workload-generator design.",
+    "This preserves the decision rule exactly.",
+    "No classification is changed until close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
