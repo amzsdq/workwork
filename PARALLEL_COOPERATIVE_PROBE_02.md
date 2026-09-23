@@ -1,49 +1,24 @@
 # Cooperative Parallel Probe 02
 
 probe_id: PARALLEL-A14-B4-02
+status: DEFERRED_UNTIL_RUNTIME_BOUNDARY_AND_CAP_VALIDATION
 
-Goal: repeat the cooperative parallel test with stronger instrumentation so true simultaneous useful work can be proven.
+Goal: test simultaneous disjoint useful work with stronger instrumentation. It is never a strict Phase-A duration PASS because its scheduler pattern intentionally differs from the strict runtime protocol.
 
-Parameters:
-- PRIMARY_A nominal runtime: 14m
-- PARALLEL_B wake offset: A_START +4m
-- B target active work: ~8m
-- disjoint immutable namespaces: A/* and B/*
-- same recurring automation
+## Safety/control requirements
+- disjoint immutable A/* and B/* namespaces;
+- no shared state/authority mutation by B;
+- no duplicate work;
+- no shared-write or scheduler collision;
+- exact scheduler-writer ownership defined before live execution.
 
-PRIMARY_A instrumentation:
-1. Persist primary-start.json.
-2. Immediately pre-arm same automation for A_START+4m, recurring RRULE, enabled=true.
-3. Perform disjoint A work continuously.
-4. Persist an immutable A heartbeat/work-unit at least once every ~60-90s while useful work is continuing.
-5. Critically, after B has started, A must persist at least TWO new A evidence files timestamped after B_START before A can count as concurrent-useful.
-6. Persist primary-end.json near/after 14m.
-7. A never mutates scheduler again after spawning B.
+## Final-clock requirement
+Future exact timing claims (A/B start/end, overlap seconds, wake jitter, active-worker seconds, parallelism factor) require authoritative server-side timestamps for every timing endpoint used. Model-authored timestamp strings in evidence files do not qualify.
 
-PARALLEL_B:
-1. Persist parallel-b-start.json.
-2. Perform only disjoint B work and persist immutable B work units.
-3. Do not mutate shared state/authority or A files.
-4. Persist parallel-b-end.json.
-5. After B finishes, schedule observer no earlier than max(now+3m, A_START+15m).
+Durable ordering may still support qualitative concurrency/control findings, but without authoritative endpoints exact timing metrics remain unresolved.
 
-Observer PASS requires:
-- B_START < A_END,
-- >=2 A evidence timestamps after B_START,
-- >=1 B useful work timestamp before A_END,
-- no duplicate work,
-- no shared-write collision,
-- no scheduler collision.
-
-Measure:
-A_active_work_sec, B_active_work_sec, overlap_useful_sec, combined_active_worker_sec,
-parallelism_factor=combined_active_worker_sec / wall_clock_probe_sec,
-A/B units, conflicts, throughput-gain estimate.
-
-Classification:
+## Classification
 PARALLEL_USEFUL / PARALLEL_CONCURRENT_BUT_LOW_GAIN / CONFLICTED / NOT_CONCURRENT / INCONCLUSIVE.
 
-
-## Relationship to strict runtime-boundary research
-This probe may provide SUPPORTING_RUNTIME_SURVIVAL evidence for a 14-minute active invocation, but it MUST NOT be counted as a strict Phase-A duration PASS because the scheduler is deliberately used to wake PARALLEL_B at A_START+4m rather than the strict duration protocol's target+planned-gap pre-arm.
-After this isolated parallel probe is classified, return to strict runtime-boundary testing at NEXT_STRICT_TARGET=14m under MAX_SAFE_RUNTIME_RESEARCH.md before advancing to 16m.
+## Relationship to strict runtime research
+Supporting-only. It cannot advance SERVER_CLOCK_SAFE_LOWER_BOUND or establish FAILURE_BOUNDARY. Resume only after Phase A/B gate unless explicitly reprioritized by the user.
