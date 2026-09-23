@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":44,
+  "units_completed":8,
+  "research_notes":[
+    "The current probe has maintained useful work across a long sequence of durable I/O operations without an observed independent failure.",
+    "This makes any eventual abrupt stop more informative than the prior workload-exhausted sample, though still subject to careful classification.",
+    "The next safe-boundary action at/after target is to write close evidence promptly rather than start another large unit.",
+    "No scheduler action is needed at close because continuation was pre-armed.",
+    "This minimizes the final critical section to timing capture plus durable close/state summary.",
+    "That critical-section size is itself relevant to the future safety-margin estimate."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
