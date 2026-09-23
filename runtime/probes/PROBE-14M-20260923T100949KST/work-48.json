@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":48,
+  "units_completed":8,
+  "research_notes":[
+    "For future 16m+ probes, the evidence cadence can be reduced to richer batches while still proving continued work across time.",
+    "A cadence target such as one durable batch per bounded unit group is preferable to one write per trivial micro-step.",
+    "The current sample's dense cadence intentionally stress-tests I/O/checkpoint behavior.",
+    "If dense I/O lowers the observed boundary, that may be operationally relevant because real relay work also checkpoints.",
+    "Cross-profile replication will determine whether the boundary is specific to this write-heavy mixed profile.",
+    "The universal cap should respect the worst representative profile rather than averaging it away."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
