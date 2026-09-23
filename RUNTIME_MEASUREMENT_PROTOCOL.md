@@ -11,7 +11,7 @@ For each invocation record:
 - `target_cross_ts`: first observed timestamp at/after the target class, if reached.
 - `pre_close_ts`: immediately before durable close/finalization begins.
 - `close_end_ts`: immediately after the final durable checkpoint/evidence is complete.
-- `next_invocation_start_ts`: next actual wake start, when observable.
+- `next_invocation_start_ts`: next invocation start, used retrospectively.
 
 Derived:
 - `actual_elapsed_sec = close_end_ts - run_start_ts`
@@ -19,6 +19,7 @@ Derived:
 - `close_overhead_sec = close_end_ts - pre_close_ts`
 - `planned_gap_sec = PREARM_NEXT - (run_start_ts + target_runtime)`
 - `actual_idle_gap_sec = next_invocation_start_ts - close_end_ts`
+- `wake_lateness_sec = next_invocation_start_ts - PREARM_NEXT`
 - `active_window_sec = pre_close_ts - work_start_ts`
 
 Do not claim `useful_work_sec` with stopwatch precision unless it was directly observed. If tool/network waits are not separable, record `useful_window_sec` and mark `useful_work_sec` as an estimate or unknown rather than fabricating precision.
@@ -46,7 +47,15 @@ Count a failure as a credible duration-boundary signal only when one or more occ
 GitHub/API/network/provider errors with explicit independent evidence are `NON_DURATION_FAILURE`.
 
 ## Retrospective wake evidence
-At the next invocation, compare prior `PREARM_NEXT`, prior `close_end_ts`, and actual new invocation start when observable. Record `next_wake_observed=true`, `actual_idle_gap_sec`, and wake lateness. Pre-arm write success alone is not WAKE_OK.
+At the next invocation, compare prior `PREARM_NEXT`, prior `close_end_ts`, and actual new invocation start when observable.
+
+Keep two concepts separate:
+- `wake_observed`: a later invocation can be durably tied to the prearmed continuation path.
+- `wake_timeliness`: how close that invocation start was to PREARM_NEXT, measured by `wake_lateness_sec` and `actual_idle_gap_sec`.
+
+Legacy `WAKE_OK` used for strict Phase-A continuation means the continuation was retrospectively observed; it does not by itself prove low idle time or acceptable wake jitter. Phase B/D utilization claims require timeliness evidence as well.
+
+Pre-arm write success alone is neither wake observation nor wake-timeliness evidence. If an intervening wake may have occurred but is not durably evidenced, do not infer a large idle gap from a later reconciliation timestamp; mark timeliness unresolved.
 
 ## Boundary confidence
-One clean run advances the coarse probe but does not establish a production cap. One ambiguous failure does not establish a hard boundary. Reproduce ambiguous boundary failures where practical.
+One clean run plus retrospective wake observation can advance the coarse search under the strict protocol, but it does not establish a production cap or acceptable idle-time behavior. One ambiguous failure does not establish a hard boundary. Reproduce ambiguous boundary failures where practical.
