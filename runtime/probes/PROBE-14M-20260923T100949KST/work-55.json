@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":55,
+  "units_completed":8,
+  "research_notes":[
+    "A practical hard cap should be expressed as a runtime budget from actual invocation start, not from first substantive unit after bootstrap.",
+    "Bootstrap/pre-arm overhead consumes invocation wall time and therefore belongs in the operational budget even if reported separately.",
+    "This makes the cap robust to varying bootstrap complexity.",
+    "Task admission should use elapsed-from-start plus estimated next unit plus reserve/margin.",
+    "That formulation directly matches the eventual P3 contract.",
+    "Current Phase A target likewise uses invocation wall time from captured start."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
