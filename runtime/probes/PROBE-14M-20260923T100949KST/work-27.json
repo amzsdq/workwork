@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":27,
+  "units_completed":10,
+  "diagnostics":[
+    "Repeated successful repository writes provide no evidence of an independent GitHub failure in this sample.",
+    "The high checkpoint count means an abrupt termination would leave a narrow evidence-loss tail.",
+    "This diagnostic checkpoint density is not necessarily the future production optimum.",
+    "The strict criterion still requires the final durable close rather than inferring survival from the latest batch.",
+    "The pre-armed wake remains the continuation fallback if the invocation terminates unexpectedly.",
+    "The next run must reconcile this probe before advancing the target."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
