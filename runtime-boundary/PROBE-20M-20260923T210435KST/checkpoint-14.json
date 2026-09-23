@@ -1,0 +1,9 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":14,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":14,
+  "large_unit":"final active-work checkpoint before terminal close window",
+  "findings":["20m target remains active with no observed duration-attributable failure","W6 evidence supports task-size-aware admission over naive fixed latest-start rule","60s close reserve must remain provisional until close distribution has >=5 comparable samples","direct active work remains unobservable; goal-directed window will be reported separately"],
+  "status":"ACTIVE_CONTINUE"
+}
