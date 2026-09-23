@@ -1,148 +1,54 @@
 # Maximum Safe Runtime + Reproducible Handoff Policy Research
 
 ## Research question
-What is the maximum empirically safe substantive-work duration for one ChatGPT Automation RRULE relay invocation, and what handoff/admission policy most reliably reproduces near that optimum over many turns?
-
-This is one integrated research problem. Wake scheduling is pre-armed at turn start; planned gap is now an experimental variable:
-1. characterize the runtime failure boundary,
-2. characterize the productive work window and reliable completion envelope,
-3. choose a safe operating cap,
-4. derive a repeatable policy that uses as much of that cap as practical.
+What is the maximum empirically safe substantive-work duration for one automation invocation, and what handoff/admission policy reliably reproduces near that optimum over many turns?
 
 ## Final clock invariant
+All new strict runtime measurements use `GITHUB_SERVER_CLOCK_PROTOCOL.md`:
+`WORKED = END_MARKER.created_at - START_MARKER.created_at`
 
-All new strict runtime measurements use `GITHUB_SERVER_CLOCK_PROTOCOL.md`.
-
-```
-WORKED = END_MARKER.created_at - START_MARKER.created_at
-```
-
-The two values must be raw GitHub server `created_at` timestamps from immutable marker comments in issue #1. Model-written time strings are never used for runtime classification.
-
-A missing/invalid marker pair makes the run `CLOCK_EVIDENCE_INVALID` for exact-duration inference.
-
-Historical pre-protocol timing data remains supporting evidence only for future strict promotions.
-
-## Current operating context
-- Previous operating floor: about 10 minutes of work before handoff.
-- Wake rule: immediately after TURN_START, pre-arm NEXT_WAKE = START_TS + target_runtime + planned_gap. Use planned_gap=3m as the initial baseline because prior relay research found +3m best among tested end-of-turn leads. Do not wait until turn end to schedule the next wake.
-- A simplistic 10m work / 3m gap cycle has idealized duty cycle 76.9% before jitter/failures.
-- Longer turns improve theoretical duty cycle, but a failed final checkpoint/rearm can make expected availability worse.
+Both timestamps are raw GitHub server values from immutable issue #1 comments. Model/local time strings never classify duration. Invalid marker pair => CLOCK_EVIDENCE_INVALID. Historical pre-protocol timing is supporting only.
 
 ## Phase A — boundary search
-1. Test-generated workload is valid substantive experimental work when it is deliberately used to exercise runtime behavior and the workload profile is recorded. Idle waiting/sleeping only to consume time remains excluded.
-2. Create a GitHub START_MARKER as the first timing action. At close, finish substantive work, persist the durable close checkpoint, then create END_MARKER; terminal-ledger/state/table synchronization follows END and is bookkeeping outside WORKED. Compute actual WORKED only from the raw server created_at values. Record useful/goal-directed work evidence separately.
-3. Coarse ascent from prior 10m baseline in about +2m classes.
-4. Clean PASS requires a valid GitHub server START/END marker pair whose WORKED reaches the target, plus a successful same-automation RRULE pre-arm at TURN_START + active target workload + durable close checkpoint. The pre-arm return must contain the intended DTSTART/RRULE/enabled state; no scheduler mutation is performed at normal turn end.
-5. A clean close is initially CLEAN_PASS_PENDING_WAKE. The next actual invocation provides retrospective WAKE_OK evidence; under the strict protocol, only then may SAFE_LOWER_BOUND and the next coarse target advance.
-6. Separate duration-related failures from unrelated tool/network/provider failures.
-7. First credible duration-related failure brackets the upper boundary.
-8. Refine the bracket at ~1m resolution.
-9. If no boundary is observed, report only a lower bound and keep ascending.
-10. Apply `RUNTIME_BOUNDARY_DECISION_RULE.md` for evidence classification, failure bracketing, refinement, and cap promotion. A single coarse clean close never promotes a production cap, and it does not advance strict coarse state until retrospective WAKE_OK.
+1. Purposeful bounded test-generated workload is valid when it advances/validates this research; idle/sleep/no-op padding is excluded.
+2. Create START_MARKER first. Fetch raw server created_at.
+3. Immediately prearm the same recurring automation for `START_MARKER.created_at + target_runtime + planned_gap`; Phase-A baseline planned gap is +3m. Verify returned DTSTART/RRULE/enabled state.
+4. Perform sustained substantive work across the declared workload profile.
+5. At close: finish substantive work, persist durable close checkpoint, create END_MARKER, fetch raw server created_at, compute strict WORKED. Terminal ledger/state/table synchronization follows END and is outside WORKED.
+6. Clean PASS requires marker-valid WORKED >= target, verified prearm, sustained substantive work, durable close checkpoint, and no duration-attributable forced stop.
+7. Clean close is CLEAN_PASS_PENDING_WAKE until retrospective continuation observation; only then may server-clock lower bound and next coarse target advance.
+8. Separate duration failures from provider/tool/network/scheduler failures.
+9. First credible duration failure creates a profile-specific upper candidate; refine at about 1m with profile fixed.
+10. If no boundary appears, report only a lower bound and keep ascending.
 
 ## Phase B — operating-cap validation
-The production cap is not max_observed_success.
+Production cap is not max observed success. Require repeated marker-valid evidence, initially >=5 clean runs at/near candidate, representative profiles, durable close, continuation observation where measurable, and explicit safety margin below credible failure region.
 
-Promote a candidate only after repeated evidence, initially at least 5 clean runs at the candidate class, with a meaningful margin below the first credible failure boundary.
-
-Track variance. If close overhead or runtime behavior is noisy, increase safety margin.
+Current-protocol close-reserve evidence is distinct from legacy samples. Pre-END close/checkpoint overhead and post-END terminal-sync overhead are separate quantities.
 
 ## Phase C — policy generalization
-Once the boundary/cap is stable enough, experimentally compare control policies.
+Compare:
+- P1 FIXED_THRESHOLD
+- P2 SOFT_CUTOFF_PLUS_HARD_CAP
+- P3 ESTIMATED_NEXT_TASK_ADMISSION
+- P4 ADAPTIVE_ADMISSION
 
-### P1 Fixed threshold
-Continue normal work while elapsed < cutoff. Once cutoff is crossed, stop starting new work and hand off.
+P3/P4 may use an in-flight control elapsed estimate, but that estimate is not strict WORKED. Final empirical policy outcome is reconciled after END_MARKER against authoritative server evidence.
 
-### P2 Soft cutoff + hard cap
-Before soft cutoff, start normal bounded work. After soft cutoff, admit only short bounded units. At hard cap, start nothing new and close.
-
-### P3 Estimated-next-task admission
-Before starting each next unit, estimate its duration.
-
-Continue only if:
-`elapsed + estimated_next_task + close_overhead + safety_margin < hard_cap`
-
-Otherwise hand off.
-
-### P4 Adaptive admission
-Use P3 but derive close_overhead and safety_margin from recent observed runs rather than fixed constants.
-
-## Policy comparison metrics
-- long-run useful_work / wall-clock time
-- goal-directed window / wall-clock time when direct active time is not separable
-- clean-close rate
-- successful next-wake rate
-- overshoot beyond intended cap
-- lost/incomplete finalization
-- unnecessary early handoff
-- control/measurement overhead
-- estimate error for next-task duration
-- robustness across different task-size distributions
-
-## Promotion rule for final policy
-Prefer the simplest policy whose observed long-run utilization and continuation reliability are statistically/practically indistinguishable from more complex alternatives.
-
-Do not promote complexity for theoretical elegance alone.
-
-## Final output schema
-The final reusable operating contract must include:
-- observed safe lower bound
-- first credible failure boundary or unresolved status
-- promoted operating cap
-- productive cap/window
-- soft cutoff
-- hard cap
-- close-overhead estimate
-- safety margin
-- next-task admission rule
-- required evidence count / confidence
-- rollback rule when failure rate rises
-
-## Permitted supporting development
-Small changes are allowed only when directly improving:
-- timing measurement,
-- close-overhead measurement,
-- timeout-vs-non-timeout classification,
-- task-duration estimation,
-- continuation reliability,
-- reproducibility of the final policy.
-
-Avoid unrelated orchestration expansion.
+Prefer the simplest policy practically equivalent on useful-work utilization, clean-close preservation, continuation, overshoot/lost-finalization, early-handoff waste, and robustness.
 
 ## Cross-profile generalization
-Runtime safety must be tested across heterogeneous real workload shapes defined in `RUNTIME_WORKLOAD_PROFILES.md`.
+A single profile may advance exploratory lower bound after strict wake confirmation, but final universal cap requires representative profile replication near candidate. If one realistic profile is materially worse, use worst credible risk or profile-aware admission only when justified.
 
-A single profile may advance an exploratory lower bound after strict wake confirmation, but a final universal operating cap requires replication across representative workload profiles near the candidate boundary. If a realistic profile has materially worse close behavior or a lower failure boundary, the final policy must account for it rather than averaging the risk away.
+## Phase D — prearmed gap optimization
+After runtime/cap policy stabilizes, hold it approximately fixed and test planned gap from +3m toward +2m/+1m.
 
-## Test-load interpretation
-For this study, deliberately generated reasoning/I-O/checkpoint workload is part of the experiment, not padding, when it is bounded, measured, and assigned a workload profile. Older wording that broadly rejects artificial/generated load should be interpreted narrowly as rejecting idle/no-op time consumption, not rejecting purposeful stress workload.
+Definition uses authoritative start:
+`planned_gap = PREARM_NEXT - (START_MARKER.created_at + target_runtime)`.
 
-## Phase D — pre-armed gap optimization
-After the runtime boundary/operating cap is sufficiently characterized, hold runtime policy approximately fixed and test planned wake gaps.
+Actual idle gap/wake lateness count quantitatively only when both endpoints are trustworthy server-side observations. Model-authored timestamps do not qualify.
 
-Definition:
-- planned_gap = NEXT_WAKE - (START_TS + target_runtime)
-- actual_idle_gap = NEXT_INVOCATION_START - CURRENT_INVOCATION_CLOSE
+Choose the smallest gap that preserves clean close and stable continuation without materially higher overlap/missed-wake risk.
 
-The planned gap is not the actual idle gap because close overhead and runtime overshoot consume part of it.
-
-Initial sequence:
-- baseline planned_gap=3m
-- then 2m
-- then 1m if continuation remains stable
-- consider intermediate or larger values when evidence warrants
-
-Measure:
-- prearm_scheduler_write_ok/state_ok
-- actual_elapsed_sec
-- close_overhead_sec
-- actual_idle_gap_sec
-- wake jitter
-- overlap/concurrent invocation
-- missed wake
-- incomplete close/checkpoint
-- long-run useful-work duty cycle
-
-Promotion rule:
-Choose the smallest planned gap that repeatedly preserves clean close + stable next wake without overlap/concurrency or materially higher failure risk. Do not minimize gap independently of runtime safety.
+## Final output
+SERVER_CLOCK_SAFE_LOWER_BOUND, FAILURE_BOUNDARY or unresolved, OPERATING_CAP, PRODUCTIVE_CAP, SOFT_CUTOFF, HARD_CAP, current-protocol CLOSE_OVERHEAD, SAFETY_MARGIN, NEXT_TASK_ADMISSION, validation confidence/count, workload coverage, rollback, selected planned gap.
