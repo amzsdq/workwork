@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":34,
+  "units_completed":8,
+  "research_notes":[
+    "If the target succeeds, the 16m probe should use a similarly non-exhausting but bounded mixed workload.",
+    "The workload generator should scale with target so under-target exhaustion does not recur at longer classes.",
+    "A simple rule is to predeclare a generous bounded analytical backlog and permit bounded extensions only while novel research work remains.",
+    "This avoids both artificial waiting and accidental early exhaustion.",
+    "Near the failure boundary, checkpoint cadence should remain sufficient to localize termination timing.",
+    "After boundary characterization, checkpoint overhead itself can be optimized if it materially reduces useful throughput."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
