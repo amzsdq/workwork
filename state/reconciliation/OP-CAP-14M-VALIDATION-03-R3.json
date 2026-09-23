@@ -1,0 +1,13 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-03-R3",
+  "case_id": "OP-CAP-14M-VALIDATION-03",
+  "status": "PENDING_PROJECTION_RECONCILE",
+  "immutable_terminal": "runtime-boundary/OP-CAP-14M-VALIDATION-03-R3/terminal.json",
+  "immutable_event": "state/events/OP-CAP-14M-VALIDATION-03-R3.json",
+  "terminal_result": "HARNESS_UNDER_TARGET",
+  "boundary_effect": "NONE",
+  "operational_cap_clean_runs_current": 2,
+  "next_case": "OP-CAP-14M-VALIDATION-03",
+  "pending_projections": ["state/current.json", "state/events.log", "EVIDENCE_TABLE.md"],
+  "reason": "Immutable truth persisted first; defer mutable projection reconciliation rather than risk stale/shared overwrite."
+}
