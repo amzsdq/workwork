@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":70,
+  "units_completed":8,
+  "research_notes":[
+    "The current evidence architecture can support automated later aggregation without changing the core experiment.",
+    "A summary index could list probe IDs, target classes, classifications, close overhead, and wake outcomes.",
+    "Such aggregation is useful only if it does not become a runtime bottleneck during the critical tail.",
+    "Therefore raw append-only writes take precedence over maintaining a complex live dashboard.",
+    "State/current remains intentionally compact.",
+    "This prioritizes relay reliability over observability polish."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
