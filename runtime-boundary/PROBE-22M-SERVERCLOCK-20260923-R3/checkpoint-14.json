@@ -1,0 +1,13 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 14,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "CANONICAL_EVENT_RECOVERY_SYNC",
+  "finding": "Appended the active server-clock probe START event to state/events.log with marker ID/server timestamp, target, planned gap, verified scheduler state, profile, and no-boundary-effect ACTIVE classification.",
+  "decision_value": "Makes the active probe recoverable from both current-state pointer and canonical event ledger without relying on model conversation context.",
+  "repair_commit": "cc71e2ef9b90fc2cda043baf802288f88e64f7bd",
+  "substantive_unit_count_cumulative": 37,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
