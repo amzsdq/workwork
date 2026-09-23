@@ -1,0 +1,13 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":16,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"TERMINAL_SCHEMA_PREVALIDATION",
+  "required_close_fields":["case_id","probe_id","target_runtime_min","start_ts","target_cross_ts","last_normal_task_admit_ts","pre_close_ts","close_end_ts","actual_elapsed_sec","direct_active_work_sec","productive_ratio","goal_directed_window_sec","goal_directed_ratio","substantive_unit_count","workload_profile","close_overhead_sec","overshoot_sec","clean_close","checkpoint_saved","scheduler_write_ok","scheduler_state_ok","forced_stop_or_timeout","non_duration_failure","terminal_result","boundary_effect"],
+  "measurement_policy":"Unknown direct active time or connector completion timing must remain null rather than be fabricated.",
+  "schema_valid":true,
+  "substantive_unit_count_cumulative":16,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
