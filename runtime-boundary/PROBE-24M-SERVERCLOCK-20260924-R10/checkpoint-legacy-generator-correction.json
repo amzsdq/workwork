@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "correction_type":"PRODUCTIVITY_COUNT_CORRECTION",
+  "reason":"Generator v1 changed case_id by epoch but repeated the same 720 semantic Cartesian scenarios. ID uniqueness alone is insufficient for decision-value uniqueness.",
+  "prior_id_unique_claim":10240,
+  "generator_v1_semantically_unique_max":720,
+  "corrected_productive_unique_units_before_v2":720,
+  "boundary_effect":"NONE",
+  "duration_clock_effect":"NONE",
+  "fix_commit":"3a7fefadfdb4f7f98c2435cf55251943184e6e80",
+  "generator_v2_change":"each epoch now varies target_delta_sec, marker_skew_sec, and close_reserve_sec; semantic uniqueness validator added",
+  "next_workload_seed":"SC-A24-CLOCK:R10:GENV2",
+  "status":"CORRECTED_FAIL_CLOSED"
+}
