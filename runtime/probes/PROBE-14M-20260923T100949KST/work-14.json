@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":14,
+  "units_completed":12,
+  "evidence_quality_audit":[
+    "Every claimed pass must have immutable start evidence and durable close evidence.",
+    "Scheduler state should be captured from the update return, not assumed from requested parameters.",
+    "Probe IDs should encode target and start to avoid evidence mixing.",
+    "State/current is a summary pointer and must not substitute for immutable probe evidence.",
+    "Retrospective wake evidence should identify which prior probe it validates.",
+    "Boundary counters should not include supporting parallel-survival samples.",
+    "Under-target samples are useful for improving workload generation but must not affect the bracket.",
+    "Independent provider/tool failures need explicit evidence before exclusion from duration failure.",
+    "Ambiguous termination should remain ambiguous rather than being optimistically classified.",
+    "Operating-cap validation should be auditable from individual counted runs.",
+    "Final policy metrics should preserve raw timing fields so derived values can be recomputed.",
+    "Append-only probe directories reduce accidental rewriting of experimental history."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
