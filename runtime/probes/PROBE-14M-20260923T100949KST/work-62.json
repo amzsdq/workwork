@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":62,
+  "units_completed":8,
+  "research_notes":[
+    "The final operating contract should be executable from cold start using only durable state and evidence, not conversational memory.",
+    "Therefore target, cutoff, reserve, margin, and admission rule must be explicit fields rather than implicit prose assumptions.",
+    "Rollback state should likewise be durable and inspectable.",
+    "This runtime study's structured probe records are a precursor to that machine-readable contract.",
+    "A future aggregation can derive confidence and profile coverage automatically.",
+    "Current strict classification remains pending final close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
