@@ -1,0 +1,18 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":15,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"NEXT_CASE_BRANCH_VERIFICATION",
+  "branches":{
+    "clean_pass_pending_wake":"Remain SC-A22-01 until retrospective WAKE_OK; SAFE_LOWER_BOUND remains 20m.",
+    "clean_pass_wake_ok":"Advance exploratory SAFE_LOWER_BOUND to 22m and generate SC-A24+ with rotated profile.",
+    "duration_fail_candidate":"Do not claim universal 22m boundary; enter SC-AR-PROFILE_CONTROLLED with W3 fixed and obtain/refine same-profile lower anchor as required.",
+    "non_duration_fail":"Boundary unchanged; repeat only after recording independent cause.",
+    "under_target":"Boundary unchanged; diagnose execution cause before justified repeat."
+  },
+  "finding":"All terminal branches are deterministic under the master plan and decision rule; no case advance is allowed before terminal sync agreement.",
+  "substantive_unit_count_cumulative":15,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
