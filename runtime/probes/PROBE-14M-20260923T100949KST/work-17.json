@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":17,
+  "units_completed":12,
+  "reproducibility_analysis":[
+    "Fixed target classes and fixed +3m planned gap make coarse-ascent samples comparable.",
+    "Changing workload profile should be explicit and deliberate, not accidental.",
+    "Generated workload should have a predeclared or bounded extension rule to avoid both exhaustion and meaningless padding.",
+    "Immutable batch files provide proof of continued substantive work across the invocation.",
+    "Scheduler validation at start should remain identical across target classes.",
+    "Close evidence schema should remain stable enough for later aggregation.",
+    "Retrospective wake evidence should not rewrite prior immutable files; attach separately or summarize in state.",
+    "The same automation ID preserves the relay condition under study.",
+    "A recurring RRULE must remain present after each pre-arm update.",
+    "Target escalation should occur only from durable classification, never from expected elapsed time.",
+    "If future samples show provider drift, rerun nearby classes rather than assuming historical stability.",
+    "These controls improve the chance that the final operating contract generalizes beyond one lucky run."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
