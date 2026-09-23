@@ -1,0 +1,15 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":8,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":41,
+  "completed_units":[
+    "Audited 18 prior unique 18m probe IDs across five historical evidence namespaces.",
+    "Established historical strict terminal-decision yield of 0/18 for 18m boundary promotion purposes.",
+    "Defined one canonical future evidence directory runtime-boundary/<PROBE_ID>/.",
+    "Added active_probe_id recovery pointer and marked 60s close reserve as provisional rather than promoted."
+  ],
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
