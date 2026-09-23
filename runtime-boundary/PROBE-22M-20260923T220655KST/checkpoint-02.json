@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":2,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"CLOSE_RESERVE_SENSITIVITY_AND_EVIDENCE_RECONCILIATION",
+  "findings":[
+    "18m post-close measurement directly observed 117s operational close duration, but it is explicitly contaminated high-side by corrective rewrite and extra instrumentation; it is diagnostic and cannot be used as a representative normal reserve estimator without replication.",
+    "The 32s direct sample remains the only normal promoted close-overhead sample in current state.",
+    "Therefore a 60s provisional reserve is plausible but weakly supported; a future W7 CLOSE_HEAVY replication is required before promotion.",
+    "For admission logic, a 60s reserve would leave normal-task admission frontiers at remaining_budget > estimated_task+60s; using 117s as a conservative anomaly bound would shift the frontier 57s earlier. This difference is large enough that close-reserve uncertainty materially affects PRODUCTIVE_CAP and must be measured rather than assumed."
+  ],
+  "substantive_unit_count_cumulative":2,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
