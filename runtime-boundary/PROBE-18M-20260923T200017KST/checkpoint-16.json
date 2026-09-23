@@ -1,0 +1,12 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":16,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":74,
+  "new_finding":"Persisting close_end_ts can create recursive measurement overhead because the write that records the endpoint itself moves the endpoint.",
+  "repair":"Operational close_end is now defined as the completion/commit time of the final required terminal-sync write. If only available retrospectively, derive/persist it next invocation without redefining the completed close. Optional measurement writes are excluded from close overhead and reported separately.",
+  "impact":"This makes COMPLETION_ENVELOPE finite and reproducible and prevents instrumentation from artificially inflating the reserve it measures.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
