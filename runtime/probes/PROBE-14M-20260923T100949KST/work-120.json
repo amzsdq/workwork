@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":120,
+  "units_completed":8,
+  "research_notes":[
+    "A future long-run utilization estimate should include the probability-weighted cost of failed turns, not simply average successful duration.",
+    "Even rare failures can dominate if they lose large uncheckpointed tails or break continuation.",
+    "Incremental checkpointing and pre-arm reduce those costs, which may permit a higher safe operational target.",
+    "The optimal checkpoint cadence is therefore coupled to failure cost but can be studied after the runtime envelope.",
+    "Current dense checkpoints intentionally minimize diagnostic uncertainty.",
+    "Final close remains the classification gate."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
