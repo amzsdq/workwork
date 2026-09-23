@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":80,
+  "units_completed":8,
+  "research_notes":[
+    "A useful later aggregate field is evidence_quality: strict, supporting, ambiguous, or excluded.",
+    "Strict evidence satisfies the scheduler/runtime protocol.",
+    "Supporting evidence, such as parallel survival, can inform hypotheses but not move strict counters.",
+    "Ambiguous evidence remains visible without forcing a classification.",
+    "Excluded evidence has a documented independent confound.",
+    "This taxonomy reduces accidental mixing of experiments with different control conditions."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
