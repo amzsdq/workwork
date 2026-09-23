@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":102,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual runtime contract can define a minimum useful-unit granularity so late-turn work remains checkpointable.",
+    "Too-large units reduce ability to stop near hard cap; too-small units can create excessive control/I/O overhead.",
+    "Policy comparison should therefore use realistic unit-size distributions rather than only microtasks.",
+    "The current mixed profile is checkpoint-heavy and bounded, suitable for safety exploration but not sufficient alone for final generalization.",
+    "Cross-profile replication remains required near the candidate boundary.",
+    "No current evidence changes that requirement."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
