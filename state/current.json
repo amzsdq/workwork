@@ -1,5 +1,5 @@
 {
-  "schema_version": 16,
+  "schema_version": 17,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
@@ -18,13 +18,17 @@
     "strict_pass_requires_duration_protocol": true,
     "parallel_probe_runtime_counts_as": "SUPPORTING_SURVIVAL_EVIDENCE_ONLY",
     "mode": "STRICT_DURATION",
-    "last_probe_id": "PROBE-14M-20260923T100949KST",
-    "last_probe_result": "INCOMPLETE_CLOSE_NOT_STRICT_PASS",
-    "last_probe_boundary_effect": "NONE",
-    "last_probe_durable_work_batches": 181,
+    "last_probe_id": "PROBE-14M-20260923T103723KST",
+    "last_probe_result": "CLEAN_PASS_PENDING_RETROSPECTIVE_WAKE_OK",
+    "last_probe_boundary_effect": "PENDING_WAKE_CONFIRMATION",
     "last_probe_scheduler_write_ok": true,
     "last_probe_scheduler_state_ok": true,
-    "next_probe_requirement": "RETRY_14M_WITH_CLOSE_RESERVE_AND_BOUNDED_BATCH_CADENCE",
+    "last_probe_target_reached": true,
+    "last_probe_actual_elapsed_sec": 928,
+    "last_probe_overshoot_sec": 88,
+    "last_probe_clean_close": true,
+    "last_probe_checkpoint_saved": true,
+    "next_probe_requirement": "ON_NEXT_WAKE_CONFIRM_WAKE_OK_THEN_PROMOTE_14M_AND_START_16M",
     "close_reserve_sec": 60
   },
   "overlap_probe": {
@@ -73,5 +77,5 @@
     "priority_2": "COOPERATIVE_PARALLEL_UTILIZATION_AFTER_DURATION_BOUNDARY",
     "sequencing": "Finish strict duration boundary search and operating-cap validation first; resume deferred parallel probes afterward."
   },
-  "updated_at": "2026-09-23T10:35:21+09:00"
+  "updated_at": "2026-09-23T10:52:51+09:00"
 }
