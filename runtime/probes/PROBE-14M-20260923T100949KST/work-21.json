@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":21,
+  "units_completed":12,
+  "final_bounded_units":[
+    "Recheck strict-pass eligibility conditions before close.",
+    "Preserve target class at 14m until actual target evidence exists.",
+    "Keep wake schedule unchanged from verified pre-arm.",
+    "Keep parallel research deferred.",
+    "Prepare next-target transition to 16m only conditional on clean close.",
+    "Prepare retry-at-14m transition for non-duration/under-target outcome.",
+    "Prepare [12m,14m] candidate bracket only for credible duration failure.",
+    "Persist raw timing and classification in close evidence."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
