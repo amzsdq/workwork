@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":95,
+  "units_completed":8,
+  "research_notes":[
+    "A validated runtime cap can later serve as the predecessor target in controlled shadow-handoff experiments.",
+    "Successor lead can then be optimized relative to a known safe owner budget rather than an arbitrary nominal runtime.",
+    "This should improve interpretability of residual-budget abandonment and READY timing.",
+    "Likewise cooperative parallel tests can be bounded by the same hard cap.",
+    "Thus finishing the runtime study first directly strengthens the deferred experiments.",
+    "Current target remains 14m until clean close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
