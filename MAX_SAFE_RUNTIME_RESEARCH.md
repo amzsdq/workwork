@@ -31,7 +31,7 @@ Historical pre-protocol timing data remains supporting evidence only for future 
 
 ## Phase A — boundary search
 1. Test-generated workload is valid substantive experimental work when it is deliberately used to exercise runtime behavior and the workload profile is recorded. Idle waiting/sleeping only to consume time remains excluded.
-2. Create a GitHub START_MARKER as the first timing action and an END_MARKER after durable close synchronization. Compute actual WORKED only from the raw server created_at values. Record useful/goal-directed work evidence separately.
+2. Create a GitHub START_MARKER as the first timing action. At close, finish substantive work, persist the durable close checkpoint, then create END_MARKER; terminal-ledger/state/table synchronization follows END and is bookkeeping outside WORKED. Compute actual WORKED only from the raw server created_at values. Record useful/goal-directed work evidence separately.
 3. Coarse ascent from prior 10m baseline in about +2m classes.
 4. Clean PASS requires a valid GitHub server START/END marker pair whose WORKED reaches the target, plus a successful same-automation RRULE pre-arm at TURN_START + active target workload + durable close checkpoint. The pre-arm return must contain the intended DTSTART/RRULE/enabled state; no scheduler mutation is performed at normal turn end.
 5. A clean close is initially CLEAN_PASS_PENDING_WAKE. The next actual invocation provides retrospective WAKE_OK evidence; under the strict protocol, only then may SAFE_LOWER_BOUND and the next coarse target advance.
