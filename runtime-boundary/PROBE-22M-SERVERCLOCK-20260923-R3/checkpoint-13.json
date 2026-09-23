@@ -1,0 +1,12 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 13,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "PRODUCTIVITY_EVIDENCE_BOUNDARY",
+  "finding": "Durable commits and 35 cumulative decision-relevant units demonstrate sustained goal-directed activity, but direct active_work_sec remains uninstrumented. Therefore productive_ratio will not be fabricated; the terminal record will report direct active work as null and use substantive_unit_count plus goal-directed evidence qualitatively.",
+  "decision_value": "Keeps the new server-clock wall-duration precision from creating false precision in productive-time measurement.",
+  "substantive_unit_count_cumulative": 36,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
