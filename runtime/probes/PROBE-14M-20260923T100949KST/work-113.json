@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":113,
+  "units_completed":8,
+  "research_notes":[
+    "The admission inequality from the research document is structurally sound: elapsed + estimated_next + close_reserve + safety_margin < hard_cap.",
+    "Its usefulness depends on calibration of estimated_next and reserve, which Phase C must measure.",
+    "Until then P2 soft cutoff plus bounded units is a strong low-complexity baseline.",
+    "A fixed threshold P1 remains necessary as the simplest comparison.",
+    "P4 adaptive admission should face the highest burden of proof because it adds state and feedback dynamics.",
+    "None of these policy choices alter the current 14m boundary test."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
