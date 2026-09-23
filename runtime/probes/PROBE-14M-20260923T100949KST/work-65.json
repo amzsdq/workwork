@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":65,
+  "units_completed":8,
+  "research_notes":[
+    "The experimental program now has a clear promotion ladder: exploratory pass -> failure bracket -> refinement -> repeated cap validation -> policy comparison -> gap optimization -> deferred parallel optimization.",
+    "Each stage changes a limited set of variables, reducing confounding.",
+    "A stage should not be skipped merely because a later optimization appears promising.",
+    "The user's priority decision correctly keeps the runtime envelope first.",
+    "This ordering also gives parallel research a safer hard-cap/fencing context later.",
+    "Current sample remains within the first stage."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
