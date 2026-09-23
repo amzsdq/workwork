@@ -1,0 +1,17 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260924-R6",
+  "case_id": "SC-A22-CLOCK-01",
+  "workload_profile": "W3_MIXED_IO",
+  "substantive_units_completed_total": 28,
+  "additional_units": [
+    "scheduler strategy timing-authority repair",
+    "handoff rollback audit",
+    "shadow preparation audit",
+    "handoff authority-record existence check",
+    "discovered nonexistent handoff/control.json reference",
+    "SUCCESSOR_HANDOFF_RESEARCH canonical control-path repair",
+    "READY_SCHEMA canonical control-path repair"
+  ],
+  "decision_relevant_finding": "Several handoff documents assumed handoff/control.json while the actual durable owner record is root handoff-state.json. Repaired before future Phase C live testing.",
+  "status": "ACTIVE_CONTINUE"
+}
