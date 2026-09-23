@@ -1,0 +1,10 @@
+{
+  "event_type": "RETROSPECTIVE_WAKE_OBSERVED",
+  "probe_id": "OP-CAP-14M-VALIDATION-01",
+  "prior_terminal_result": "CLEAN_PASS_PENDING_WAKE",
+  "result": "CLEAN_PASS_WAKE_OK",
+  "wake_ok": true,
+  "evidence_basis": "scheduled successor invocation executed after the prior probe's clean terminal close",
+  "boundary_effect": "OPERATIONAL_CAP_14M_VALIDATION_CLEAN_RUN_1_CONFIRMED",
+  "next_probe_id": "OP-CAP-14M-VALIDATION-02"
+}
