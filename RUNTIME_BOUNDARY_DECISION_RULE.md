@@ -2,12 +2,29 @@
 
 Purpose: prevent false promotion of a runtime limit from sparse or misclassified evidence while keeping Phase A efficient.
 
+## Clock validity gate
+
+Before runtime-boundary classification, validate the GitHub server marker pair defined in `GITHUB_SERVER_CLOCK_PROTOCOL.md`.
+
+Required:
+- START_MARKER comment ID
+- raw START_MARKER.created_at
+- END_MARKER comment ID
+- raw END_MARKER.created_at
+- `WORKED = END_MARKER.created_at - START_MARKER.created_at`
+- `marker_pair_valid=true`
+
+Model-authored or inferred time strings are ignored for duration judgment.
+
+If this gate fails, classify the exact-duration evidence as `CLOCK_EVIDENCE_INVALID`. It affects neither lower bound nor failure boundary.
+
 ## Evidence states per target/profile class
 Treat target runtime and workload profile as a pair during causal interpretation. Each target/profile class has four counters:
-- `clean_pass`: pre-arm scheduler state was verified at START, the run reached the class, and durable close completed normally.
+- `clean_pass`: a valid GitHub server marker pair proves WORKED reached the class, pre-arm scheduler state was verified, and durable close completed normally.
 - `duration_fail`: credible near/after-target close-loss or forced termination without independent non-duration cause.
 - `non_duration_fail`: explicit independent GitHub/network/tool/provider failure.
-- `under_target`: substantive work ended before the class; informative for workload generation but not boundary evidence.
+- `under_target`: a valid GitHub server marker pair proves WORKED ended before the class; informative for workload generation but not boundary evidence.
+- `clock_evidence_invalid`: exact duration cannot be established from a valid server marker pair; no boundary effect.
 
 Only `clean_pass` and `duration_fail` affect runtime-boundary inference. `non_duration_fail` and `under_target` do not move it.
 
