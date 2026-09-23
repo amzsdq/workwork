@@ -1,0 +1,31 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260924-R6",
+  "case_id": "SC-A22-CLOCK-01",
+  "clock_protocol": "GITHUB_SERVER_MARKER_V1",
+  "start_marker_comment_id": 5797598302,
+  "start_marker_created_at": "2026-09-23T15:23:53Z",
+  "workload_profile": "W3_MIXED_IO",
+  "substantive_units_completed": 12,
+  "completed": [
+    "fresh strict-state reconstruction",
+    "server START marker creation and raw REST validation",
+    "same-automation +3m prearm and returned-state validation",
+    "canonical start evidence persistence",
+    "stress workload matrix audit",
+    "classification vector audit",
+    "successor handoff dependency audit",
+    "master-plan consistency audit",
+    "max-safe-runtime policy audit",
+    "policy replay dependency audit",
+    "completion-envelope semantic audit",
+    "boundary decision rule audit"
+  ],
+  "repairs_committed": [
+    "RUNTIME_MEASUREMENT_PROTOCOL server-clock alignment",
+    "COMPLETION_ENVELOPE_METHOD two-endpoint semantics",
+    "RUNTIME_CLASSIFICATION_TEST_VECTORS V13 clock-invalid case",
+    "TIMING_EVENT_SCHEMA server-marker authority"
+  ],
+  "decision_relevant_findings_path": "runtime-boundary/PROBE-22M-SERVERCLOCK-20260924-R6/audit-findings.md",
+  "status": "ACTIVE_CONTINUE"
+}
