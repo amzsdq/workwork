@@ -4,6 +4,7 @@ Generation: 1
 Owner session: `PARROT-20260923T1740Z-G1`
 Latest artifact: `parrot_extension_v0.7.1.zip`
 Status: CONTINUE
+Server-observed work duration: `43 seconds` (`2026-09-23T17:40:25Z` → `2026-09-23T17:41:08Z`)
 
 ## Completed change
 
