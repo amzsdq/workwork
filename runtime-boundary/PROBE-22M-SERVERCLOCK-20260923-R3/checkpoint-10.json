@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 10,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "DURABLE_ACTIVITY_AUDIT",
+  "findings": [
+    "GitHub commit history for this probe confirms a chain of durable W3 work units rather than a start-only probe.",
+    "The work includes canonical protocol repairs, decision-rule audit/repair, clock-lane validation, handoff-clock compatibility analysis, and checkpoint persistence.",
+    "Commit timestamps are not used to compute WORKED; they only corroborate sustained durable activity."
+  ],
+  "substantive_unit_count_cumulative": 31,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
