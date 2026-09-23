@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":64,
+  "units_completed":8,
+  "research_notes":[
+    "A useful final metric for policy comparison is recovered useful seconds per wall-clock hour, including relay gaps and failed-tail loss.",
+    "This makes the cost of both conservative handoffs and aggressive failures visible in one operational measure.",
+    "Secondary metrics remain necessary to diagnose why two policies differ.",
+    "The cap validation phase should establish reliability before optimizing this aggregate metric.",
+    "Parallel workers may later raise the numerator during overlap but also add coordination overhead and conflict risk.",
+    "Those effects remain outside the present strict runtime sample."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
