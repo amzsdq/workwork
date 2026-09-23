@@ -1,0 +1,12 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-03-R5",
+  "case_id": "OP-CAP-14M-VALIDATION-03",
+  "mode": "STRICT_DURATION",
+  "target_minutes": 14,
+  "workload_profile": "ROTATED_STRICT_PROFILE",
+  "generator_version": "RUNTIME_STRESS_WORKLOAD_GENERATOR_V2_O1_POSITIONING",
+  "start_marker_comment_id": 5803888347,
+  "start_marker_created_at": "2026-09-23T22:18:07Z",
+  "scheduler_prearm": "WRITE_OK_STATE_OK",
+  "status": "ACTIVE_INCOMPLETE"
+}
