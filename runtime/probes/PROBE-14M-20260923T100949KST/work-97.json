@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":97,
+  "units_completed":8,
+  "research_notes":[
+    "A future strict-probe helper document could predefine a richer backlog template per workload profile to reduce setup overhead.",
+    "That template should contain genuinely useful analysis/checkpoint tasks rather than repetitive filler.",
+    "It should scale expected unit count with target class and preserve bounded extensions.",
+    "This is permitted supporting development because it improves reproducibility of runtime measurement.",
+    "It should not become a new orchestration subsystem.",
+    "The current run already demonstrates the need and basic pattern."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
