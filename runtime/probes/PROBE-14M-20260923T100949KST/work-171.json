@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":171,
+  "units_completed":8,
+  "research_notes":[
+    "If target escalation eventually reaches very long turns, the planned +3m gap may cause successor wake after a large interval but remains methodologically valid during boundary search.",
+    "The user may later prefer lower idle time, which Phase D explicitly addresses after cap validation.",
+    "Premature gap reduction could create overlap and complicate duration-failure attribution.",
+    "The current ordering therefore trades temporary experimental inefficiency for cleaner evidence.",
+    "Once the cap is known, gap optimization can directly target idle-time reduction.",
+    "Current 14m sample keeps +3m unchanged."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
