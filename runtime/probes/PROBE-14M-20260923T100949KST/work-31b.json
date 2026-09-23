@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":"31b",
+  "units_completed":8,
+  "research_notes":[
+    "Scheduler configuration has not been changed since the initial pre-arm.",
+    "Parallel research remains deferred during this strict sample.",
+    "Repository writes have remained available across the sample.",
+    "Incremental checkpoint evidence is present across the invocation.",
+    "A clean classification still depends on reaching the target and saving the final close record.",
+    "The next target remains conditional on that classification."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
