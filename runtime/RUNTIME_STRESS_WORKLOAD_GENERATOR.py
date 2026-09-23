@@ -1,7 +1,7 @@
 from __future__ import annotations
 from dataclasses import dataclass, asdict
 from hashlib import sha256
-from itertools import product
+from itertools import product, islice
 from math import gcd
 from typing import Iterator, Iterable
 import json
@@ -13,6 +13,7 @@ CLOSE_STATES=("clean","checkpoint_missing","forced_stop")
 PROVIDER_STATES=("ok","non_duration_fail")
 WAKE_STATES=("observed","missing")
 WORKLOAD_SHAPES=("mixed_io","micro_chain","large_unit","close_heavy")
+UNITS_PER_EPOCH=(len(MARKER_STATES)*len(SCHEDULER_STATES)*len(CLOSE_STATES)*len(PROVIDER_STATES)*len(WAKE_STATES)*len(WORKLOAD_SHAPES))
 
 @dataclass(frozen=True)
 class WorkUnit:
@@ -31,14 +32,19 @@ def epoch_parameters(epoch:int)->tuple[int,int,int]:
 def _stable_id(seed:str,ordinal:int,epoch:int,values:tuple[str,...],numeric:tuple[int,int,int])->str:
     return sha256("|".join((seed,str(ordinal),str(epoch),*values,*(str(x) for x in numeric))).encode()).hexdigest()[:20]
 
-def iter_units(seed:str="SC-A22-CLOCK")->Iterator[WorkUnit]:
-    ordinal=0;epoch=0
+def iter_units(seed:str="SC-A22-CLOCK",start_ordinal:int=0)->Iterator[WorkUnit]:
+    """Yield from start_ordinal in O(1) positioning time, not O(start_ordinal)."""
+    if start_ordinal < 0: raise ValueError("start_ordinal must be >= 0")
+    ordinal=start_ordinal
+    epoch, offset=divmod(start_ordinal,UNITS_PER_EPOCH)
     while True:
         numeric=epoch_parameters(epoch)
-        for values in product(MARKER_STATES,SCHEDULER_STATES,CLOSE_STATES,PROVIDER_STATES,WAKE_STATES,WORKLOAD_SHAPES):
+        values_iter=product(MARKER_STATES,SCHEDULER_STATES,CLOSE_STATES,PROVIDER_STATES,WAKE_STATES,WORKLOAD_SHAPES)
+        for values in islice(values_iter,offset,None):
             marker,scheduler,close,provider,wake,shape=values
-            yield WorkUnit(ordinal,_stable_id(seed,ordinal,epoch,values,numeric),epoch,marker,scheduler,close,provider,wake,shape,*numeric);ordinal+=1
-        epoch+=1
+            yield WorkUnit(ordinal,_stable_id(seed,ordinal,epoch,values,numeric),epoch,marker,scheduler,close,provider,wake,shape,*numeric)
+            ordinal+=1
+        epoch+=1;offset=0
 
 def expected_invariants(unit:WorkUnit)->list[str]:
     checks=["server_clock_only","no_model_time_authority","duplicate_case_id_forbidden","terminal_classification_deterministic","epoch_semantics_not_id_only"]
@@ -53,10 +59,9 @@ def expected_invariants(unit:WorkUnit)->list[str]:
     return checks
 
 def batch(seed:str,start_ordinal:int,count:int)->list[dict]:
+    if count < 0: raise ValueError("count must be >= 0")
     out=[]
-    for unit in iter_units(seed):
-        if unit.ordinal<start_ordinal:continue
-        if len(out)>=count:break
+    for unit in islice(iter_units(seed,start_ordinal),count):
         row=unit.payload();row["expected_invariants"]=expected_invariants(unit);out.append(row)
     return out
 
@@ -71,9 +76,13 @@ def validate_semantic_uniqueness(rows:Iterable[dict])->bool:
     return True
 
 if __name__=="__main__":
-    assert gcd(17,91)==1 and gcd(17,121)==1
+    assert gcd(17,91)==1 and gcd(17,121)==1 and UNITS_PER_EPOCH==720
     rows=batch("SC-A22-CLOCK",0,50000)
     assert len({r["case_id"] for r in rows})==len(rows) and validate_semantic_uniqueness(rows)
+    # Regression: high-offset batch must preserve ordinal continuity without replaying the prefix.
+    high=batch("scale-regression",10**9,3)
+    assert [r["ordinal"] for r in high]==[10**9,10**9+1,10**9+2]
+    assert len({r["case_id"] for r in high})==3
     reserves={r["close_reserve_sec"] for r in batch("coverage",0,91*720)}
     assert len(reserves)==91 and min(reserves)==30 and max(reserves)==120
-    print(json.dumps({"count":len(rows),"fingerprint":fingerprint(rows),"semantic_unique":True,"reserve_coverage":len(reserves)},indent=2))
+    print(json.dumps({"count":len(rows),"fingerprint":fingerprint(rows),"semantic_unique":True,"reserve_coverage":len(reserves),"high_offset_random_access":True},indent=2))
