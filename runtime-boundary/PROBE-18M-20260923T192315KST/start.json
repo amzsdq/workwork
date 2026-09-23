@@ -1,0 +1,17 @@
+{
+  "case_id": "SC-A18-01",
+  "probe_id": "PROBE-18M-20260923T192315KST",
+  "started_at_kst": "2026-09-23T19:23:15+09:00",
+  "target_runtime_min": 18,
+  "planned_gap_min": 3,
+  "prearmed_wake_at_kst": "2026-09-23T19:44:15+09:00",
+  "workload_profile": "W2_WRITE_CHECKPOINT_HEAVY",
+  "load_origin": "TEST_GENERATED",
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "prior_safe_lower_bound_min": 16,
+  "failure_boundary_min": null,
+  "terminal_sync_invariant": true,
+  "status": "ACTIVE",
+  "objective": "Produce terminal 18m classification with durable close; avoid another start-only probe."
+}
