@@ -1,0 +1,11 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":28,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"TARGET_BOUNDARY_GUARD",
+  "finding":"Do not infer target reached from checkpoint count or tool activity. The only valid target crossing is wall-clock elapsed from immutable start 22:06:55 KST to 22:28:55 KST. Continue bounded verification until that boundary.",
+  "substantive_unit_count_cumulative":28,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE_TO_TARGET"
+}
