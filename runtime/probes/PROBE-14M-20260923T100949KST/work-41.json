@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":41,
+  "units_completed":8,
+  "research_notes":[
+    "No current evidence suggests scheduler pre-arm itself is the limiting factor in this strict sample.",
+    "The experimental question remains how long useful work can continue while preserving normal durable close.",
+    "Because the wake is already secured, a late failure primarily risks the newest work/checkpoint rather than total relay continuity.",
+    "That architecture may support a more aggressive operating cap than a design that rearms only at the end, but validation is still required.",
+    "A clean 14m close would be the next incremental lower-bound observation, not the final answer.",
+    "The next invocation should not skip retrospective wake reconciliation before launching 16m."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
