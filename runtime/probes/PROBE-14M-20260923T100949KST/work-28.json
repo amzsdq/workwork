@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":28,
+  "units_completed":10,
+  "research_units":[
+    "A future aggregation script/file should compute per-class pass/fail counts from immutable evidence rather than manually maintained claims.",
+    "The state summary should carry only current pointers and boundary conclusions, keeping raw experiment history append-only.",
+    "Once enough close-overhead samples exist, report median plus upper-tail/max to choose reserve.",
+    "A practical stopping criterion may be needed if no runtime failure is observed at increasingly long classes; until then report a lower bound only.",
+    "Provider behavior may impose a soft/variable ceiling rather than deterministic timeout, so repeated validation near the candidate cap is essential.",
+    "The final relay policy should optimize expected useful throughput, not chase the largest one-off successful duration."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
