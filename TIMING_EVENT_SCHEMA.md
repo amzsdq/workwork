@@ -1,34 +1,43 @@
 # Timing Event Schema
 
-## Required clock points
-- `start_ts`: actual invocation start reference.
-- `prearm_write_start_ts`: immediately before start-of-turn scheduler mutation.
-- `prearm_write_end_ts`: immediately after pre-arm mutation returns.
-- `work_start_ts`: immediately after verified pre-arm.
-- `last_normal_task_admit_ts`: last observed admission of an ordinary substantive unit when practical.
-- `target_cross_ts`: first observed timestamp at or after target class, if reached.
-- `pre_close_ts`: immediately before durable close/finalization.
-- `close_end_ts`: immediately after required terminal-sync writes and required consistency verification complete; optional measurement persistence does not recursively move this endpoint.
-- `next_invocation_start_ts`: next invocation start, used retrospectively.
+## Authoritative strict clock fields
+Every new strict runtime probe records:
+- `clock_protocol = GITHUB_SERVER_MARKER_V1`
+- `clock_issue_number = 1`
+- `start_marker_comment_id`
+- `start_marker_created_at` — raw GitHub server value
+- `end_marker_comment_id`
+- `end_marker_created_at` — raw GitHub server value
+- `marker_pair_valid`
+- `worked_sec = end_marker_created_at - start_marker_created_at`
 
-## Derived durations
-- `actual_elapsed_sec = close_end_ts - start_ts`
-- `active_work_sec`: sum of bounded active test-work intervals when separately observable; otherwise null.
-- `productive_ratio = active_work_sec / actual_elapsed_sec` only when active_work_sec is directly supportable; otherwise null.
-- `goal_directed_window_sec`: continuously goal-directed work window including inseparable necessary tool I/O; report separately from active_work_sec.
-- `goal_directed_ratio = goal_directed_window_sec / actual_elapsed_sec` when its endpoints are trustworthy.
-- `substantive_unit_count`: completed useful units; density cross-check, not a time substitute.
-- `prearm_overhead_sec = prearm_write_end_ts - prearm_write_start_ts`
-- `close_overhead_sec = close_end_ts - pre_close_ts`
-- `post_close_measurement_overhead_sec`: optional instrumentation persistence after operational close, when material; excluded from close_overhead_sec.
-- `planned_gap_sec = prearm_next_ts - (start_ts + target_runtime_min*60)`
-- `overshoot_sec = max(0, actual_elapsed_sec - target_runtime_min*60)`
-- `actual_idle_gap_sec`: next_invocation_start_ts - prior close_end_ts when both are trustworthy.
-- `wake_lateness_sec = next_invocation_start_ts - prearm_next_ts` when both are trustworthy.
+`worked_sec` is the only authoritative strict duration. Model/local timestamps never replace it.
+
+## Secondary instrumentation
+When directly observable:
+- `prearm_write_start_ts` / `prearm_write_end_ts`
+- `work_start_ts`
+- `last_normal_task_admit_ts`
+- `pre_close_ts`
+- `operational_sync_end_ts` after post-END terminal synchronization and verification
+- `next_invocation_start_ts` retrospectively
+
+Secondary derived fields:
+- `active_work_sec` when directly measurable, otherwise null
+- `productive_ratio = active_work_sec / worked_sec` only when defensible
+- `goal_directed_window_sec` and separately labeled `goal_directed_ratio`
+- `substantive_unit_count`
+- `prearm_overhead_sec`
+- `post_end_sync_overhead_sec` when compatible timestamps exist
+- `planned_gap_sec`
+- `overshoot_sec = max(0, worked_sec - target_runtime_sec)`
+- `actual_idle_gap_sec` / `wake_lateness_sec` only from trustworthy wake evidence
+
+Do not derive strict WORKED from `operational_sync_end_ts`, model-authored start/end strings, scheduler metadata, or legacy `actual_elapsed_sec`.
 
 ## Classification fields
-- `target_runtime_min`
-- `result`: CLEAN_PASS_PENDING_WAKE | CLEAN_PASS_WAKE_OK | UNDER_TARGET | DURATION_FAIL_CANDIDATE | NON_DURATION_FAIL | AMBIGUOUS
+- `target_runtime_sec`
+- `result`: CLEAN_PASS_PENDING_WAKE | CLEAN_PASS_WAKE_OK | UNDER_TARGET | DURATION_FAIL_CANDIDATE | NON_DURATION_FAIL | CLOCK_EVIDENCE_INVALID | AMBIGUOUS
 - `workload_profile`
 - `load_origin`: TEST_GENERATED | NATURAL
 - `clean_close`
@@ -37,8 +46,6 @@
 - `planned_gap_sec`
 - `prearm_scheduler_write_ok`
 - `prearm_scheduler_state_ok`
-- `actual_idle_gap_sec`
-- `wake_lateness_sec`
 - `wake_layer_anomaly`
 - `productive_evidence_quality`: DIRECT | GOAL_DIRECTED_WINDOW_ONLY | WEAK | UNKNOWN
 - `overlap_or_concurrent_wake`
@@ -47,9 +54,5 @@
 - `prior_next_wake_observed`
 - `policy_variant` (Phase C only)
 
-A first credible duration-related close loss is recorded as `DURATION_FAIL_CANDIDATE`; confirmation/refinement is represented by the boundary state and subsequent evidence rather than by silently rewriting the original event.
-
 ## Evidence rule
-A value that was not directly observed must be null, not estimated after the fact. Deliberately generated bounded workload is valid empirical test work when its profile is recorded. Estimated next-task duration is permitted only as an explicit estimate field during Phase C and must not replace actual duration evidence.
-
-Necessary tool/network latency that cannot be separated from goal-directed execution may be included only in `goal_directed_window_sec`, never silently relabeled as direct `active_work_sec`.
+Unobserved values are null. Purposeful bounded generated workload is valid empirical work when it contributes to the research goal and its profile is recorded. Synthetic classifier/policy cases are logic-only and never move runtime boundaries. Necessary tool latency may appear only in an explicitly labeled goal-directed window, not direct active time.
