@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":152,
+  "units_completed":8,
+  "research_notes":[
+    "The dense W3 retry also provides evidence that GitHub commit latency is variable but generally sub-few-second across many writes in this turn.",
+    "Exact latency statistics were not captured per call, so this should remain qualitative rather than converted into a reserve value.",
+    "Future close-overhead measurement uses explicit timestamps and is the correct basis for reserve selection.",
+    "Do not infer a numeric safety margin from subjective tool-call speed.",
+    "This maintains measurement discipline.",
+    "Current target classification remains pending."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
