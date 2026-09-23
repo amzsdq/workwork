@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":145,
+  "units_completed":8,
+  "research_notes":[
+    "The current retry is now methodologically stronger than the prior attempt in three ways: larger useful backlog, dense durable evidence, and explicit start pre-arm validation.",
+    "These improvements target the prior confound without changing the target runtime or planned gap.",
+    "Therefore a clean close will be directly interpretable as a strict 14m pass under the current protocol.",
+    "A failure will also be more diagnosable because many incremental checkpoints survive.",
+    "This is the intended purpose of the retry.",
+    "Final close remains the last required step."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
