@@ -1,0 +1,25 @@
+{
+  "probe_id": "PROBE-18M-20260923T163454KST",
+  "checkpoint": 1,
+  "workload_profile": "W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_work": [
+    "fresh source-of-truth reconciliation",
+    "strict target derivation from durable state",
+    "same-automation pre-arm and returned-state validation",
+    "measurement-schema integrity check",
+    "duration-vs-nonduration attribution invariant check",
+    "boundary transition rule verification",
+    "parallel-defer invariant verification",
+    "durable evidence write/read path exercise"
+  ],
+  "invariants": {
+    "strict_target_min": 18,
+    "safe_lower_bound_min": 16,
+    "parallel_probe_deferred": true,
+    "parallel_survival_not_strict_pass": true,
+    "first_credible_duration_failure_brackets_boundary": true,
+    "coarse_ascent_increment_min": 2,
+    "close_reserve_sec": 60
+  },
+  "checkpoint_saved": true
+}
