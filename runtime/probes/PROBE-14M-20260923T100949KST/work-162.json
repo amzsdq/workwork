@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":162,
+  "units_completed":8,
+  "research_notes":[
+    "The strict protocol is therefore self-similar across turns: reconcile prior -> capture start -> pre-arm own successor -> work -> close -> summarize.",
+    "Only target and workload profile change according to durable research state.",
+    "This simplicity is desirable for reproducibility and eventual production use.",
+    "Handoff/parallel modes can later add controlled branches without changing the core durability pattern.",
+    "The current sample follows the strict branch only.",
+    "Final close remains next once target boundary is reached."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
