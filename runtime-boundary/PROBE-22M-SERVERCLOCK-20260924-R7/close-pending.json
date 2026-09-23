@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-22M-SERVERCLOCK-20260924-R7",
+  "case_id":"SC-A22-CLOCK-01",
+  "clock_protocol":"GITHUB_SERVER_MARKER_V1",
+  "status":"CLOSE_CHECKPOINT_CLOCK_PENDING",
+  "start_marker_comment_id":5798028706,
+  "start_marker_created_at":"2026-09-23T15:50:42Z",
+  "target_runtime_sec":1320,
+  "workload_profile":"W3_MIXED_IO",
+  "substantive_unit_count":47,
+  "active_work_sec":null,
+  "productive_ratio":null,
+  "scheduler_write_ok":true,
+  "scheduler_state_ok":true,
+  "checkpoint_saved":true,
+  "forced_stop_or_timeout":false,
+  "non_duration_failure":false,
+  "work_summary":"Implemented deterministic runtime evidence processor specification/reference classifier/dataset/tests/boundary aggregation/raw-pair verification design/acceptance and anomaly policies; manually verified all completed current server-clock raw marker pairs; repaired two classifier precedence defects; added Phase-B bridge.",
+  "clock_note":"END marker not yet created. This file cannot establish WORKED or target crossing."
+}
