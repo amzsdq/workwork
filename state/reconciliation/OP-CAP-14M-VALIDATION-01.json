@@ -3,12 +3,16 @@
   "status": "PENDING_PROJECTION_RECONCILE",
   "immutable_terminal_path": "runtime-boundary/OP-CAP-14M-VALIDATION-01/terminal.json",
   "immutable_event_path": "state/events/OP-CAP-14M-VALIDATION-01.json",
-  "terminal_result": "CLEAN_PASS_PENDING_WAKE",
-  "projection_updates_required": ["state/current.json", "state/events.log", "EVIDENCE_TABLE.md"],
+  "retrospective_wake_event_path": "state/events/OP-CAP-14M-VALIDATION-01-WAKE.json",
+  "terminal_result": "CLEAN_PASS_WAKE_OK",
+  "wake_ok": true,
+  "projection_updates_completed": ["EVIDENCE_TABLE.md"],
+  "projection_updates_required": ["state/current.json", "state/events.log"],
   "required_current_state_effect": {
-    "operational_cap_clean_runs_current_pending_wake": 1,
+    "operational_cap_clean_runs_current": 1,
     "completed_probe_id": "OP-CAP-14M-VALIDATION-01",
-    "next_probe_id_after_wake_ok": "OP-CAP-14M-VALIDATION-02"
+    "active_study_case_id": "OP-CAP-14M-VALIDATION-02"
   },
-  "do_not_rerun_completed_probe": true
+  "do_not_rerun_completed_probe": true,
+  "next_probe_id_after_reconcile": "OP-CAP-14M-VALIDATION-02"
 }
