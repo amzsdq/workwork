@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":85,
+  "units_completed":8,
+  "research_notes":[
+    "The target-class experiment is deliberately not using artificial sleep, so elapsed time arises from actual reasoning and tool work.",
+    "This makes the survival evidence operationally meaningful for the intended agent workload.",
+    "The downside is variable work throughput, which is why elapsed timestamps rather than unit count determine target attainment.",
+    "The expanded workload ensures useful tasks remain available across that variable throughput.",
+    "This resolves the methodological defect identified in the prior 14m attempt.",
+    "Final close remains required for classification."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
