@@ -1,0 +1,19 @@
+{
+  "probe_id":"PROBE-18M-20260923T131016KST",
+  "batch":2,
+  "profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "purpose":"Validate promotion/failure decision inputs under write-heavy checkpointing.",
+  "units":[
+    {"id":"w011","decision":"single current probe cannot promote before target+close+wake","result":"PASS"},
+    {"id":"w012","decision":"non-duration tool failure must not bracket runtime boundary","result":"PASS"},
+    {"id":"w013","decision":"missing close would classify incomplete not automatic duration failure","result":"PASS"},
+    {"id":"w014","decision":"forced termination near target would require attribution review","result":"PASS"},
+    {"id":"w015","decision":"18m success advances exploratory lower bound only after WAKE_OK","result":"PASS"},
+    {"id":"w016","decision":"next coarse target after clean 18m is 20m","result":"PASS"},
+    {"id":"w017","decision":"operating cap remains null during coarse ascent","result":"PASS"},
+    {"id":"w018","decision":"profile coverage must rotate across W2/W3/W4 near boundary","result":"PASS"},
+    {"id":"w019","decision":"scheduler must not be rewritten at normal close","result":"PASS"},
+    {"id":"w020","decision":"parallel probe remains supporting-only and deferred","result":"PASS"}
+  ],
+  "status":"ACTIVE"
+}
