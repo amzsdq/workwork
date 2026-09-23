@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":40,
+  "units_completed":8,
+  "research_notes":[
+    "A robust final relay contract should specify what happens when the next task estimate is missing: default to conservative bounded-unit admission near cutoff.",
+    "It should also specify what happens when close-overhead history is sparse: use a wider fixed reserve rather than adaptive guessing.",
+    "When workload is unusually large/non-interruptible, handoff should occur before starting it if the hard-cap budget cannot safely contain it.",
+    "When workload units are very small, a soft-cutoff policy can continue productive work closer to hard cap.",
+    "These rules align the eventual policy with actual task granularity rather than a rigid one-size threshold.",
+    "The current boundary phase supplies the hard envelope needed before those decisions can be tuned."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
