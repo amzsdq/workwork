@@ -1,0 +1,15 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":7,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":36,
+  "completed_units":[
+    "Added logic-only runtime classification regression vectors.",
+    "Added policy replay schema that prevents future-sample leakage and keeps simulation out of empirical counters.",
+    "Added external admission-control case-study notes mapping graceful degradation/deadline slack to P2/P3.",
+    "Reconciled README with three-axis objective, strict wake gate, profile-controlled refinement, and prearm-only close path."
+  ],
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
