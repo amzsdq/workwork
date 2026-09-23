@@ -4,8 +4,10 @@ S1 ACTIVE_OWNER_IMMEDIATE_PREARM secures continuation earliest and keeps one sch
 
 S2 POST_BOOTSTRAP_PREARM can use a better-informed runtime estimate, but continuation remains unsecured during bootstrap and the scheduler write consumes later runtime budget.
 
-For a controlled-overlap relay, S1 is the default unless measured early-estimate error causes materially worse handoff timing than S2.
+For controlled overlap, S1 remains the default unless measured evidence shows materially worse handoff behavior than S2.
 
-S3 SHADOW_IMMEDIATE_PREARM should not be promoted merely because concurrent execution exists. Without a scheduler-specific ownership/fencing mechanism, it permits two invocations to overwrite the same automation schedule. Test S3 only in isolation after a durable scheduler generation/owner rule exists.
+S3 SHADOW_IMMEDIATE_PREARM must not be promoted merely because concurrent execution exists. Without scheduler-specific ownership/fencing it permits two invocations to overwrite one automation schedule. Test only in isolation after a durable scheduler generation/owner rule exists.
 
-Primary comparison metrics are wake-to-scheduler-write latency, wake timing error relative to desired handoff window, writer collisions, missed continuation, and resulting handoff gap.
+Safety comparison metrics: writer collisions, missed continuation, duplicate generations, stale-owner behavior.
+
+Timing comparison metrics such as wake-to-write latency, wake timing error, and handoff gap count quantitatively only when their endpoints have authoritative server-side timing evidence. Model-authored timestamps are not empirical timing evidence.
