@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":25,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"TARGET_CROSSING_READINESS",
+  "target_cross_kst":"2026-09-23T22:28:55+09:00",
+  "finding":"The active pointer remains coherent and the probe has sustained mixed read/write/reconciliation work through the target-approach window. No independent failure cause or duration stop is present. Next action is terminal close at direct target crossing.",
+  "substantive_unit_count_cumulative":25,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE_TO_TARGET"
+}
