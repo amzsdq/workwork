@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":108,
+  "units_completed":8,
+  "research_notes":[
+    "A final operating cap should be a policy value that can be lower than the highest historical clean class.",
+    "That is expected, not a contradiction, because the cap includes reliability margin.",
+    "Likewise soft cutoff can be lower than hard cap to account for task granularity.",
+    "The user-facing final result should show these separately to avoid conflating maximum observed survival with recommended operation.",
+    "The current coarse search only informs the first component.",
+    "No cap is promoted yet."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
