@@ -2,33 +2,36 @@
 
 Purpose: prevent false promotion of a runtime limit from sparse or misclassified evidence while keeping Phase A efficient.
 
-## Evidence states per target class
-Each target runtime class has four counters:
+## Evidence states per target/profile class
+Treat target runtime and workload profile as a pair during causal interpretation. Each target/profile class has four counters:
 - `clean_pass`: pre-arm scheduler state was verified at START, the run reached the class, and durable close completed normally.
 - `duration_fail`: credible near/after-target close-loss or forced termination without independent non-duration cause.
 - `non_duration_fail`: explicit independent GitHub/network/tool/provider failure.
 - `under_target`: substantive work ended before the class; informative for workload generation but not boundary evidence.
 
-Only `clean_pass` and `duration_fail` affect the runtime boundary. `non_duration_fail` and `under_target` do not move it.
+Only `clean_pass` and `duration_fail` affect runtime-boundary inference. `non_duration_fail` and `under_target` do not move it.
 
 A clean close is initially `CLEAN_PASS_PENDING_WAKE`. Under the current strict protocol, SAFE_LOWER_BOUND and the next coarse target advance only after the following actual invocation retrospectively confirms WAKE_OK for that pass.
 
 ## Coarse ascent
-- A single clean pass at target T plus retrospective WAKE_OK is enough to move the *probe target* to T+2m.
+- A single clean pass at target T plus retrospective WAKE_OK is enough to move the exploratory probe target to T+2m.
 - It is not enough to promote T as a production cap.
-- `SAFE_LOWER_BOUND` may be reported as the highest class with at least one clean timing pass whose next wake was retrospectively observed, explicitly marked as a lower-bound observation rather than a validated cap.
+- `SAFE_LOWER_BOUND` may be reported as the highest class with at least one clean timing pass whose next wake was retrospectively observed, explicitly marked as a lower-bound observation rather than a validated universal cap.
+- Rotating profiles during coarse ascent broadens exploration but means adjacent target classes are not automatically a causally clean duration bracket.
 
 ## Failure handling
-A first credible duration failure at F creates `FAILURE_BOUNDARY_CANDIDATE=F`, not a final boundary.
-- If the immediately lower tested class L has a clean pass, refine inside [L,F].
-- If the failure is ambiguous, repeat F once before narrowing.
+A first credible duration failure at F under profile P creates `FAILURE_BOUNDARY_CANDIDATE=(F,P)`, not a final universal boundary.
+- If the immediately lower tested class L used the same profile P and has a clean pass, refine inside [L,F] with P fixed.
+- If L used a different profile, run the first refinement with P fixed and obtain a same-profile lower anchor when needed before claiming a profile-specific bracket.
+- If the failure is ambiguous, repeat F with P fixed once before narrowing.
 - If an independent failure cause is found, reclassify as `non_duration_fail` and continue the prior search.
 
 ## Refinement
-Use approximately 1-minute target classes between last clean L and first credible failed F.
-- Clean midpoint raises L after retrospective WAKE_OK under the strict protocol.
-- Credible duration failure lowers F.
-- Continue until the bracket is about 1 minute or finer, subject to available evidence.
+Use approximately 1-minute target classes while holding the failure-producing profile fixed.
+- Clean midpoint raises the same-profile lower anchor after retrospective WAKE_OK under the strict protocol.
+- Credible duration failure lowers the same-profile upper anchor.
+- Continue until the profile-controlled bracket is about 1 minute or finer, subject to available evidence.
+- Cross-profile validation near the eventual candidate cap determines whether the final rule can be UNIVERSAL_CAP or must account for profile-dependent risk.
 
 ## Operating-cap promotion
 `max_observed_success` is never automatically the operating cap.
@@ -38,7 +41,8 @@ A candidate operating cap C requires initially:
 - no unresolved duration failure at or below C,
 - preserved start-of-turn pre-arm RRULE state and final durable checkpoint on each counted pass,
 - observed next wake for the prior run where measurable,
-- explicit safety margin below the credible failure boundary.
+- explicit safety margin below the credible failure boundary,
+- representative workload-profile coverage sufficient to distinguish a universal cap from profile-specific risk.
 
 If variance in close overhead or elapsed runtime is large, widen the safety margin rather than increasing policy complexity first.
 
