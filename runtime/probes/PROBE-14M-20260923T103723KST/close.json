@@ -1,0 +1,20 @@
+{
+  "probe_id": "PROBE-14M-20260923T103723KST",
+  "started_at": "2026-09-23T10:37:23+09:00",
+  "target_runtime_sec": 840,
+  "target_reached_at": "2026-09-23T10:51:23+09:00",
+  "closed_at": "2026-09-23T10:52:51+09:00",
+  "actual_elapsed_sec": 928,
+  "target_reached": true,
+  "workload_profile": "W3_MIXED_IO_CLOSE_RESERVE",
+  "load_origin": "TEST_GENERATED_MIXED_LOAD",
+  "clean_close": true,
+  "checkpoint_saved": true,
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "forced_stop_or_timeout": false,
+  "non_duration_failure": false,
+  "overshoot_sec": 88,
+  "classification": "CLEAN_PASS_PENDING_RETROSPECTIVE_WAKE_OK",
+  "note": "Target 14m elapsed before this invocation. Durable close checkpoint written before the pre-armed 10:54:23 KST wake; retrospective WAKE_OK remains required by strict protocol. Work evidence is sparse, so this establishes target survival/clean close but active-work density should be treated conservatively."
+}
