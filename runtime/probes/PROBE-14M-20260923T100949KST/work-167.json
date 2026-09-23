@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":167,
+  "units_completed":8,
+  "research_notes":[
+    "The final contract should specify whether elapsed time includes bootstrap; operationally it should, because invocation lifetime starts before substantive work.",
+    "Separate bootstrap timing can still be optimized later.",
+    "This prevents a worker from accidentally consuming the hard cap during a long bootstrap and then assuming a full work budget remains.",
+    "The current probe start timestamp was captured before substantive workload and scheduler pre-arm.",
+    "Thus its target semantics already follow the operational definition.",
+    "Final elapsed will use that start."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
