@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":58,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual scheduler-gap study should hold the promoted runtime policy fixed while reducing planned gap.",
+    "Actual idle gap, not planned gap, is the operational outcome because close overhead and jitter alter it.",
+    "If planned gap becomes too small, accidental overlap/concurrency may appear and must be classified separately.",
+    "Intentional overlap research can then build on that evidence with explicit authority fencing.",
+    "This staged approach preserves causal interpretability across runtime, gap, and parallelism variables.",
+    "The present sample changes only runtime target relative to the prior strict baseline."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
