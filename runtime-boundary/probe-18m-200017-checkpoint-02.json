@@ -1,0 +1,20 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":2,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":12,
+  "analysis":"close-reserve evidence audit",
+  "direct_close_overhead_samples_sec":[32],
+  "direct_close_overhead_n":1,
+  "provisional_close_overhead_reference_sec":32,
+  "confidence":"LOW_CONFIDENCE",
+  "findings":[
+    "Canonical events.log contains one direct close_overhead_sec observation: 32s on the 12m mixed-load pass.",
+    "14m and 16m clean closes provide overshoot but not isolated pre_close-to-close_end timing, so they cannot be added as close-overhead samples.",
+    "The state close_reserve_sec=60 is conservative configuration, not yet an empirically promoted reserve under the sparse-sample estimator.",
+    "This 18m probe should capture a second direct close-overhead sample if it reaches clean close."
+  ],
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
