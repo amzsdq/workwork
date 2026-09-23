@@ -1,0 +1,10 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":12,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":12,
+  "large_unit":"terminal-readiness checkpoint before target boundary",
+  "readiness":{"target_elapsed_required_sec":1200,"clean_close_required":true,"scheduler_write_ok":true,"scheduler_state_ok":true,"checkpoint_saved":true,"forced_stop_or_timeout_observed":false,"non_duration_failure_observed":false,"next_wake_prearmed":true},
+  "close_plan":"At/after target, persist close evidence with pre_close/close_end/goal-directed window and classify CLEAN_PASS_PENDING_WAKE if no duration failure occurs.",
+  "status":"ACTIVE_CONTINUE"
+}
