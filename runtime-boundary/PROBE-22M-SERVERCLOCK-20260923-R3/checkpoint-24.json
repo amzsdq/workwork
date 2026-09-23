@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 24,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "CLOSE_RESERVE_INTERPRETATION_AUDIT",
+  "findings": [
+    "The existing 60s close reserve remains provisional and cannot be promoted from one legacy 32s sample.",
+    "This probe's END marker will include the durable close checkpoint inside WORKED but terminal ledger synchronization outside WORKED, making the measured boundary reproducible.",
+    "A future server-side pre-close marker would be needed for equally authoritative close-overhead timing; until then close-overhead precision remains lower than WORKED precision."
+  ],
+  "substantive_unit_count_cumulative": 66,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
