@@ -1,0 +1,18 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":18,
+  "units_completed":12,
+  "pre_close_audit":[
+    "Start evidence exists durably.",
+    "Start scheduler pre-arm was reported successful with intended recurring state.",
+    "Expanded W3 work produced multiple immutable batches well beyond prior exhausted workload.",
+    "No intentional idle/sleep/no-op padding was used.",
+    "No parallel probe was advanced.",
+    "No second scheduler mutation has been performed.",
+    "No independent GitHub/tool failure has been observed in completed durable writes.",
+    "Boundary remains unchanged until elapsed target and close are durably established.",
+    "If this run closes cleanly after target, 14m becomes exploratory safe lower bound.",
+    "If it does not, next invocation must classify from surviving evidence rather than assuming pass."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
