@@ -1,0 +1,11 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":6,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":6,
+  "large_unit":"validate that W6 large-unit behavior changes admission timing even when the survival target is unchanged",
+  "finding":"For a 20m hard budget with provisional 60s close reserve, admission deadline is task-size-dependent: estimated 180s unit latest start=16m; 120s unit=17m; 60s unit=18m; 30s unit=18m30s. Therefore PRODUCTIVE_CAP should not be represented solely by one fixed timestamp unless policy intentionally chooses P1/P2 simplicity over utilization.",
+  "candidate_latest_starts_sec":{"180s_task":960,"120s_task":1020,"60s_task":1080,"30s_task":1110},
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
