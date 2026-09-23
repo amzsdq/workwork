@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":104,
+  "units_completed":8,
+  "research_notes":[
+    "The current sample's scheduler was armed for target+3m, so a normal close near target should leave roughly three minutes planned before wake, less any overshoot/jitter effects.",
+    "That gap is intentionally not optimized during this phase.",
+    "The next invocation can measure actual idle gap once predecessor close and successor actual start are both known.",
+    "This measurement will later inform gap optimization without changing the current runtime conclusion.",
+    "If actual wake occurs early enough to overlap unexpectedly, record it as a scheduler/control anomaly.",
+    "No intentional overlap is part of this strict sample."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
