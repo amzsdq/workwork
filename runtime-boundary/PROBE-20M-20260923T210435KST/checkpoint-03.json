@@ -1,0 +1,17 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":3,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":3,
+  "large_unit":"separate survival, productive-window, and completion-envelope decision predicates for terminal classification",
+  "terminal_predicates":{
+    "survival_pass":"elapsed>=1200 AND no duration-attributable forced stop",
+    "productive_evidence":"goal-directed W6 work sustained across invocation with unit/timestamp evidence",
+    "completion_pass":"durable close saved after target and scheduler prearm remained valid",
+    "strict_case_state":"CLEAN_PASS_PENDING_WAKE only if all three are satisfied; next wake promotes SAFE_LOWER_BOUND",
+    "duration_fail_candidate":"credible forced stop before clean target close with non-duration causes excluded"
+  },
+  "policy_implication":"Do not promote HARD_CAP=20m or PRODUCTIVE_CAP from survival alone; 20m must close and wake cleanly first, then later replication determines operating cap.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
