@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":23,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"CLOSE_TRANSACTION_STAGING",
+  "terminal_sync_order":["write raw close.json","append state/events.log","terminalize state/current.json","update EVIDENCE_TABLE.md","re-read shared views and verify agreement"],
+  "important":"The scheduler must not be mutated during this close; it was prearmed at invocation start.",
+  "substantive_unit_count_cumulative":23,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE_TO_TARGET"
+}
