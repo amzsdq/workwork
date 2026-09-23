@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":1,
+  "profile":"W3_MIXED_IO_EXPANDED_BACKLOG",
+  "units_completed":18,
+  "families":{"evidence_consistency":3,"timing_reconstruction":3,"failure_classification":3,"checkpoint_integrity":3,"policy_replay":3,"metric_derivation":3},
+  "findings":[
+    "Previous 14m sample is correctly excluded from boundary evidence as under_target.",
+    "12m remains the highest strict clean class in current durable state.",
+    "Parallel-probe survival remains supporting-only and cannot satisfy strict scheduler contract.",
+    "A strict 14m pass must retain verified start pre-arm and durable close; wake observation is retrospective.",
+    "Expanded backlog prevents recurrence of the prior 33-unit exhaustion without idle padding.",
+    "Failure classification remains orthogonal to wake jitter and independent GitHub/tool faults."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
