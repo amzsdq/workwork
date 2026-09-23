@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 47,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "LAST_NORMAL_SUBSTANTIVE_UNIT",
+  "findings": [
+    "Completed final normal bounded W3 audit before close preparation.",
+    "No new normal research unit will be admitted after this checkpoint; remaining operations are durable close checkpoint, END marker, marker fetch/calculation, and terminal synchronization.",
+    "This creates a defensible qualitative completion-envelope transition without claiming an authoritative model timestamp."
+  ],
+  "substantive_unit_count_cumulative": 137,
+  "duration_failure_observed": false,
+  "status": "PRE_CLOSE"
+}
