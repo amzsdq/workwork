@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":16,
+  "units_completed":12,
+  "close_path_preparation":[
+    "At target, capture pre_close_ts before final durable classification write.",
+    "Capture close_end_ts after durable close evidence succeeds.",
+    "Compute close_overhead_sec from those timestamps when both are available.",
+    "Do not alter the already pre-armed scheduler at close.",
+    "Record checkpoint_saved only after GitHub confirms the close file write.",
+    "Record scheduler_write_ok/state_ok from start evidence.",
+    "If close write fails due explicit GitHub fault, classify non-duration failure rather than duration failure.",
+    "If invocation ends before close with no independent fault, leave evidence for next run to classify cautiously.",
+    "If target is reached and close succeeds, mark clean pass and advance next strict target to 16m.",
+    "State/current update follows durable close evidence and summarizes, rather than creates, the experimental fact.",
+    "Next invocation should attach WAKE_OK/jitter evidence for this probe before starting 16m.",
+    "No parallel work should be resumed during this boundary-search sequence."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
