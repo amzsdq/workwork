@@ -1,0 +1,17 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 33,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "FINAL_CLOSE_READINESS_AUDIT",
+  "findings": [
+    "Canonical start evidence exists and is raw-server verified.",
+    "Scheduler prearm state was verified and has not been rewritten during normal work.",
+    "Durable W3 checkpoints demonstrate sustained useful research/control work.",
+    "State/event/table/master-plan recovery pointers are aligned on this active probe.",
+    "No current failure class applies. The remaining strict terminal action is durable close checkpoint -> END_MARKER -> raw END fetch -> WORKED calculation -> terminal sync."
+  ],
+  "substantive_unit_count_cumulative": 95,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
