@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 23,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "BOUNDARY_PROMOTION_GUARD_AUDIT",
+  "findings": [
+    "Even if this probe closes with WORKED>=1320, SERVER_CLOCK_SAFE_LOWER_BOUND must remain unchanged until the following actual invocation confirms retrospective WAKE_OK.",
+    "The prearmed wake at server-derived +25m is therefore part of continuation evidence, not part of the current WORKED calculation.",
+    "A clean close alone will be recorded as CLEAN_PASS_PENDING_WAKE with no immediate lower-bound promotion."
+  ],
+  "substantive_unit_count_cumulative": 63,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
