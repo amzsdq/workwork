@@ -46,6 +46,26 @@ Only then decide whether a repeat is justified.
 
 A new probe must add decision value. Start-only repetition is not decision value.
 
+### Terminal-classification write invariant
+
+Whenever a study case reaches a terminal classification or a retrospective WAKE_OK changes its boundary effect, update the following as one logical transaction before advancing the case:
+
+1. raw per-probe terminal evidence,
+2. `state/events.log`,
+3. `state/current.json`,
+4. `EVIDENCE_TABLE.md` as the derived audit view.
+
+After the writes, re-read all three shared-state views and verify that they agree on:
+- latest terminal probe/result,
+- SAFE_LOWER_BOUND,
+- FAILURE_BOUNDARY,
+- current/next target,
+- current_case_id / next_case_id.
+
+If any of these disagree, the case is not considered fully closed and the next study case must not start until reconciliation is complete.
+
+A tool/provider failure that prevents this synchronization is NON_DURATION_FAIL and must not alter the runtime boundary.
+
 ## 3. Phase gates
 
 ### Phase A — runtime boundary search
