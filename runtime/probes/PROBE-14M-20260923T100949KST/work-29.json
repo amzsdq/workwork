@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":29,
+  "units_completed":8,
+  "classification_prep":[
+    "If close occurs at or after 10:23:49 KST with durable evidence and no independent fault, target-reached condition is satisfied.",
+    "Scheduler pre-arm target is 10:26:49 KST and must remain unchanged.",
+    "Clean-pass classification additionally requires normal close and durable checkpoint.",
+    "Successful classification will set next_strict_target_minutes=16 while leaving promoted_operating_cap_minutes null.",
+    "Failure-boundary field remains null on clean pass.",
+    "Parallel research remains deferred after a 14m pass because boundary characterization is not complete."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
