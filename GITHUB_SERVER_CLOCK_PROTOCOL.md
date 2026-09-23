@@ -43,11 +43,15 @@ At invocation start:
 
 At normal close:
 
-1. Finish substantive work and required durable close/state synchronization.
-2. Create END_MARKER.
-3. Record its GitHub comment ID.
-4. Fetch the raw comment resource and persist `end_marker_created_at`.
-5. Compute WORKED only from the two server timestamps.
+1. Finish substantive work.
+2. Persist the durable close checkpoint with clock status pending.
+3. Create END_MARKER immediately after that checkpoint.
+4. Record its GitHub comment ID.
+5. Fetch the raw comment resource and persist `end_marker_created_at`.
+6. Compute WORKED only from the two server timestamps.
+7. Write WORKED/marker IDs into the terminal evidence and synchronize `state/events.log`, `state/current.json`, and `EVIDENCE_TABLE.md`.
+
+The post-END terminal-ledger synchronization is bookkeeping outside WORKED. It must not create a new END time.
 
 ## Required calculation
 
