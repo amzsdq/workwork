@@ -1,0 +1,25 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":1,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count":8,
+  "work_units":[
+    "read fresh canonical state and resolve SC-A18-01",
+    "verify 16m safe lower bound and unresolved failure boundary",
+    "prearm same automation for target+3m and verify enabled recurring state",
+    "persist new probe start evidence",
+    "audit close-reserve estimator requirements",
+    "audit runtime measurement protocol against three-axis objective",
+    "inspect prior 14m clean-close evidence",
+    "inspect prior 16m clean-close evidence"
+  ],
+  "findings":[
+    "Prior 14m evidence reports 88s target overshoot but does not isolate pre_close_ts to close_end_ts, so it is not a direct close_overhead sample.",
+    "Prior 16m evidence reports at least 36s overshoot but likewise does not isolate close overhead.",
+    "Therefore the numeric close reserve is not empirically promotable from those two legacy closes; this probe should capture direct pre_close_ts and close_end_ts.",
+    "active_work_sec/productive_ratio must not be fabricated when tool/network waits are inseparable; use directly observable useful window and unit counts otherwise."
+  ],
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
