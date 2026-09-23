@@ -1,0 +1,11 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":13,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":63,
+  "schema_repair":"Terminal result is now separated from orthogonal wake/productivity annotations. The timing schema uses DURATION_FAIL_CANDIDATE consistently with the master-plan boundary semantics; wake-layer anomaly and productive-evidence quality are separate fields.",
+  "why_it_matters":"Without this separation, a clean survival close with poor productivity or missing wake evidence could be misclassified as a new terminal state and corrupt boundary counters.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
