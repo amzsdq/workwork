@@ -1,0 +1,19 @@
+{
+  "probe_id":"PROBE-18M-20260923T131016KST",
+  "batch":1,
+  "profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "purpose":"Exercise repeated durable write/checkpoint path while validating evidence invariants.",
+  "units":[
+    {"id":"w001","check":"start evidence immutable","result":"PASS"},
+    {"id":"w002","check":"scheduler prearm precedes workload","result":"PASS"},
+    {"id":"w003","check":"target derived from fresh state","result":"PASS"},
+    {"id":"w004","check":"parallel research remains deferred","result":"PASS"},
+    {"id":"w005","check":"close reserve configured","result":"PASS"},
+    {"id":"w006","check":"append-only probe namespace","result":"PASS"},
+    {"id":"w007","check":"failure boundary remains unresolved","result":"PASS"},
+    {"id":"w008","check":"safe lower bound input is 16m","result":"PASS"},
+    {"id":"w009","check":"load is purposeful not idle padding","result":"PASS"},
+    {"id":"w010","check":"wake target equals start+21m","result":"PASS"}
+  ],
+  "status":"ACTIVE"
+}
