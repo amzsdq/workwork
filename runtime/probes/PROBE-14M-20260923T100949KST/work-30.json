@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":30,
+  "units_completed":8,
+  "terminal_analysis":[
+    "The previous 14m attempt's sole defect was insufficient workload, which this retry has materially corrected.",
+    "This retry has exercised repeated GitHub I/O plus reasoning/checkpoint work throughout the turn.",
+    "The workload profile is therefore materially closer to a realistic mixed relay turn than a pure compute/no-op timer.",
+    "The experiment intentionally accepts checkpoint overhead because durable-state reliability is part of the target system.",
+    "Later performance tuning may reduce checkpoint frequency after runtime safety is known.",
+    "No current evidence warrants changing the +3m planned gap during Phase A."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
