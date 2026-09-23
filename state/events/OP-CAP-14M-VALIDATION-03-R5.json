@@ -1,0 +1,16 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-03-R5",
+  "terminal_path": "runtime-boundary/OP-CAP-14M-VALIDATION-03-R5/terminal.json",
+  "classification": "CLEAN_PASS_PENDING_WAKE",
+  "boundary_effect": "NONE",
+  "worked_sec": 910,
+  "productive_window_sec": 885,
+  "close_overhead_sec": 5,
+  "target_minutes": 14,
+  "target_reached": true,
+  "clock_validity": "VALID",
+  "harness_validity": "VALID_STRICT_RUNTIME_HARNESS_V2",
+  "semantic_unique_units_minimum": 794791564,
+  "clean_close": true,
+  "wake_status": "PENDING_RETROSPECTIVE_CONFIRMATION"
+}
