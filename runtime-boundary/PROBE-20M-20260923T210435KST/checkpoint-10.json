@@ -1,0 +1,11 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":10,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":10,
+  "large_unit":"evaluate utilization penalty of provisional reserve and planned gap",
+  "calculations":{"target_sec":1200,"planned_gap_sec":180,"reserve_sec":60,"idealized_target_duty_cycle":0.869565,"productive_ceiling_if_full_reserve_sec":1140,"productive_ceiling_over_start_to_next_wake":0.826087},
+  "interpretation":"Even if 20m survives, reserve and wake gap jointly determine long-run utilization. Boundary search alone cannot select final policy; later gap optimization remains necessary.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
