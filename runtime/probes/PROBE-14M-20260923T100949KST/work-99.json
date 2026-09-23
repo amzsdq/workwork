@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":99,
+  "units_completed":8,
+  "research_notes":[
+    "A dense checkpoint profile may slightly reduce pure reasoning throughput but directly tests durable-state overhead that the production relay cannot entirely avoid.",
+    "The later workload-profile comparison can quantify that tradeoff.",
+    "If a lighter checkpoint profile materially raises safe duration, the final policy can optimize checkpoint cadence while preserving acceptable recovery loss.",
+    "That becomes a separate supporting optimization only after the primary boundary is understood.",
+    "For now, conservative observability is appropriate.",
+    "The target close remains the decisive strict result."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
