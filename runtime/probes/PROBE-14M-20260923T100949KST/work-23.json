@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":23,
+  "units_completed":10,
+  "tail_evidence":[
+    "The expanded workload has now generated hundreds of bounded analytical/checkpoint units rather than exhausting at 33.",
+    "This remedies the previous sample's known confound without introducing idle waiting.",
+    "GitHub writes continue to succeed, so no independent I/O failure is presently indicated.",
+    "Incremental evidence density is intentionally high for this diagnostic retry and may be reduced after the boundary is characterized.",
+    "The final close remains the decisive strict-pass checkpoint.",
+    "A next-run wake observation remains required for continuation evidence but not for current close timing itself.",
+    "The boundary decision rule remains unchanged during the sample.",
+    "The current probe should not be classified until the close timestamp is captured."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
