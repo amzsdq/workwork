@@ -4,135 +4,95 @@ Status: CANONICAL EXECUTION ROADMAP
 Repo: amzsdq/workwork
 
 ## 1. Research objective
-
-Answer two questions with empirical evidence:
-
-1. What is the maximum empirically safe substantive-work duration for one automation invocation?
-2. What is the simplest reproducible handoff/admission policy that operates near that limit with high long-run useful-work utilization without materially increasing forced-stop/run-out risk?
-
-Detailed protocols:
-- `GITHUB_SERVER_CLOCK_PROTOCOL.md`
-- `MAX_SAFE_RUNTIME_RESEARCH.md`
-- `RUNTIME_BOUNDARY_DECISION_RULE.md`
-- `RUNTIME_WORKLOAD_PROFILES.md`
-- `RUNTIME_STRESS_WORKLOAD_MATRIX.md`
-- `PROBE_EXECUTION_PLAN.md`
+Answer empirically:
+1. maximum safe substantive-work duration per invocation;
+2. simplest reproducible handoff/admission policy near that limit with high long-run useful-work utilization and no material increase in forced-stop/run-out risk.
 
 Evidence authority:
-1. raw GitHub START/END marker REST resources for strict WORKED,
-2. raw per-probe evidence,
-3. `state/events.log`,
-4. `state/current.json`,
-5. derived summaries such as `EVIDENCE_TABLE.md`.
+1. raw GitHub START/END marker REST resources for strict WORKED;
+2. raw per-probe evidence;
+3. state/events.log;
+4. state/current.json;
+5. derived summaries.
 
-## 1A. Final work-duration clock invariant
+## Final clock invariant
+`WORKED = END_MARKER.created_at - START_MARKER.created_at`
 
-```
-WORK_DURATION Source of Truth = GitHub server timestamp
-WORKED = END_MARKER.created_at - START_MARKER.created_at
-```
+Only raw GitHub server marker `created_at` values are strict duration evidence. Model/local time strings are non-authoritative. Invalid marker pair => CLOCK_EVIDENCE_INVALID, no boundary effect. Pre-protocol timing is legacy supporting only.
 
-Model-authored START/END/time/elapsed strings are non-authoritative. Strict timing requires immutable issue #1 START/END comments and raw REST `created_at`. Invalid marker pair => CLOCK_EVIDENCE_INVALID, no boundary effect. Pre-protocol timing remains legacy supporting evidence only.
+## Anti-drift / terminal sync
+Resolve fresh active case and incomplete evidence before work. Every repeat must add decision value. Terminal classification synchronizes raw terminal evidence + event ledger + current state + evidence table and then re-reads agreement. Provider/sync failure is NON_DURATION_FAIL.
 
-## 2. Anti-drift and terminal sync
+No padding. A probe needs a predeclared genuinely useful workload corpus large enough for the class.
 
-Before work: resolve active case, terminal observation, and exact next branch. Classify/continue incomplete probes before replacements. Every repeat must add decision value.
-
-Terminal classification synchronizes raw terminal evidence + `state/events.log` + `state/current.json` + `EVIDENCE_TABLE.md`, followed by re-read verification. Sync/provider failure is NON_DURATION_FAIL.
-
-Do not manufacture work to inflate duration. A runtime probe must have a predeclared genuinely useful workload corpus large enough for the target class. Redundant heartbeat writes, duplicate protocol prose, and repetitive validation solely to consume time are forbidden.
-
-## 2A. Three-axis objective
-
+## Three axes
 A. SURVIVAL_BOUNDARY — strict WORKED + causal termination/close outcome.
+B. PRODUCTIVE_WINDOW — direct active seconds only when defensible; otherwise labeled goal-directed/substantive evidence.
+C. COMPLETION_ENVELOPE — derive cap/cutoff/reserve/admission from direct evidence.
 
-B. PRODUCTIVE_WINDOW — direct active seconds only when defensible; otherwise substantive-unit and goal-directed evidence without fabrication.
-
-C. COMPLETION_ENVELOPE — late-work admission and close reliability; derive HARD_CAP, SOFT_CUTOFF, CLOSE_RESERVE, PRODUCTIVE_CAP from evidence.
-
-## 3. Phase gates
-
-### Phase A — runtime boundary search
-
+## Phase A — boundary search
 - LEGACY_EXPLORATORY_LOWER_BOUND = 20m
 - SERVER_CLOCK_SAFE_LOWER_BOUND = unresolved
 - FAILURE_BOUNDARY = unresolved
-- active target = 22m server-clock revalidation
+- active target = 22m
 - planned_gap = +3m
-- current profile = W3 MIXED_IO
+- profile = W3 MIXED_IO
 
-Two server-clock 22m attempts are terminal UNDER_TARGET:
-- R3 = 652s, migration/audit queue exhausted.
-- R4 = 736s, R3 stopping defect corrected, but genuinely decision-relevant methodological work saturated before target; non-padding guard stopped synthetic churn.
+Server-clock attempts:
+- R3 = 652s UNDER_TARGET: useful migration/audit queue exhausted.
+- R4 = 736s UNDER_TARGET: stopping defect corrected, but protocol-analysis workload saturated.
+- R5 = CLOCK_EVIDENCE_INVALID / NON_DURATION_FAIL: mandatory START_MARKER creation was provider-blocked; no boundary effect.
+- R6 = ACTIVE: START marker succeeded at raw server `created_at=2026-09-23T15:23:53Z`, scheduler prearm verified for START+22m+3m, and a materially larger W3 corpus is executing. The corpus includes cross-document clock semantics, classification regression, completion-envelope reconciliation, handoff control-path integrity, legacy contamination, reproducibility, and terminal reconciliation.
 
-These are experimental-workload-design failures, not duration failures. The next 22m repeat is allowed only after preparing a larger genuinely useful W3 workload/task corpus that can naturally sustain the target class. Do not start another protocol-analysis-only probe.
+R6 has already produced decision-relevant repairs including server-clock schema alignment and discovery/repair of a nonexistent `handoff/control.json` assumption; canonical future handoff authority is root `handoff-state.json`. These are genuine research/control tasks, not padding.
 
-After a strict 22m clean PASS + WAKE_OK, continue +2m coarse ascent with rotated profiles. First credible duration-related failure creates F; obtain/refine a same-profile server-clock lower anchor and narrow to about 1m.
+After strict 22m clean PASS + retrospective WAKE_OK, continue +2m coarse ascent with rotated profiles. First credible duration failure creates profile-specific F; refine to about 1m.
 
-### Phase B — operating-cap validation
+## Phase B — operating-cap validation
+Require at least 5 clean marker-valid runs at/near candidate, no unresolved duration failure at/below candidate, scheduler verification, durable close, continuation observation where measurable, and representative W3/W5/(W4 or W6)/W7 coverage.
 
-At least 5 clean marker-valid runs at/near candidate, no unresolved duration failure at/below candidate, scheduler verification, durable close, WAKE_OK where observable, representative profile coverage: W3, W5, W4 or W6, W7.
+## Phase C — handoff/admission
+Compare P1-P4, simplest practically equivalent wins. Overlap candidate remains KEEP/TEST/NOT_PROMOTED. Future exact handoff lead/gap metrics require authoritative server-side timing; legacy model/file timestamps are supporting-only.
 
-### Phase C — handoff/admission
+## Phase D — planned-gap optimization
+After runtime/cap stabilizes: +3m -> +2m -> +1m if reliable.
 
-Compare P1 FIXED_THRESHOLD, P2 SOFT_CUTOFF_PLUS_HARD_CAP, P3 ESTIMATED_NEXT_TASK_ADMISSION, P4 ADAPTIVE_ADMISSION. Stop at simplest practically equivalent policy.
+## Phase E — deferred parallel
+PARALLEL-A14-B4-02 remains deferred/supporting-only until Phase A/B gate.
 
-Overlap candidate remains KEEP/TEST/NOT_PROMOTED: 15m owner baseline, +12m successor wake, SHADOW successor, single scheduler owner, generation fencing, next cycle anchored to OWNER_ACTIVATED_AT; later compare 15/11, 15/12, 15/13 with server-authoritative timing where feasible.
-
-### Phase D — planned-gap optimization
-
-After runtime/cap policy stabilizes: +3m -> +2m -> +1m if stable.
-
-### Phase E — deferred parallel
-
-`PARALLEL-A14-B4-02` remains supporting-only until Phase A/B sufficiently complete.
-
-## 4. Study-case queue
-
+## Study cases
 ### SC-A22-CLOCK-01
+PASS: valid marker pair, WORKED >=1320s, sustained substantive W3 work, durable close checkpoint, scheduler WRITE_OK/STATE_OK, no duration-attributable forced stop. Then CLEAN_PASS_PENDING_WAKE; retrospective WAKE_OK advances SERVER_CLOCK_SAFE_LOWER_BOUND=22m and next case.
 
-PASS: valid marker pair, WORKED >=1320s, sustained substantive W3 work, durable close, scheduler WRITE_OK/STATE_OK, no duration-attributable forced stop. Clean close => CLEAN_PASS_PENDING_WAKE; WAKE_OK => SERVER_CLOCK_SAFE_LOWER_BOUND=22m and SC-A24-CLOCK+.
-
-UNDER_TARGET: valid marker pair, WORKED <1320s, no independent failure; boundary unchanged. Repeat only after correcting cause.
-
-Current repeat prerequisite after R4: predeclare a larger genuine W3 workload corpus/task source. Protocol-analysis/checkpoint churn is explicitly insufficient.
-
+UNDER_TARGET: valid marker pair, WORKED <1320s, boundary unchanged; repeat only after correcting cause.
 CLOCK_EVIDENCE_INVALID/NON_DURATION_FAIL: no boundary effect.
-
 DURATION_FAIL_CANDIDATE: profile-controlled bracket/refinement.
 
 ### SC-A24-CLOCK+
-Prior server-clock clean PASS + WAKE_OK; target +2m, rotate profile.
+Prior 22m server-clock clean pass + wake; target +2m, rotated profile.
 
 ### SC-AR-*
 ~1m profile-controlled refinement after first credible duration failure.
 
 ### SC-B-CAP-*
-At least 5 clean validations with representative profile coverage.
+Repeated representative validation.
 
 ### SC-C-POLICY-*
-Replay then live; simplest equivalent wins.
+Replay then live.
 
 ### SC-D-GAP-*
 3m -> 2m -> 1m.
 
 ### SC-E-PARALLEL-01
-Resume deferred parallel only after Phase A/B gate.
+Deferred until Phase A/B gate.
 
-## 5. Per-case record
-
-Record case/probe identity, target/profile, clock marker IDs/timestamps, WORKED, marker validity, terminal classification, boundary effect, next case, anomaly cause, productive evidence, completion-envelope evidence.
-
-## 6. Current execution pointer
-
+## Current execution pointer
 CURRENT_CASE_ID = SC-A22-CLOCK-01
-ACTIVE_PROBE_ID = none
-LATEST_TERMINAL_PROBE = PROBE-22M-SERVERCLOCK-20260923-R4
-LATEST_RESULT = UNDER_TARGET
+ACTIVE_PROBE_ID = PROBE-22M-SERVERCLOCK-20260924-R6
+LATEST_TERMINAL_PROBE = PROBE-22M-SERVERCLOCK-20260923-R5
+LATEST_TERMINAL_RESULT = CLOCK_EVIDENCE_INVALID / NON_DURATION_FAIL
 
-Immediate objective:
-Do not start another duplicate 22m probe using protocol-analysis work. First construct/select a larger genuinely useful W3 MIXED_IO workload corpus directly relevant to the runtime research/control implementation, large enough to naturally sustain 22m without synthetic padding. Then repeat SC-A22-CLOCK-01 with the same GitHub server-clock invariant and +3m planned gap.
+Immediate objective: continue R6's predeclared genuine W3 corpus. Do not start a duplicate probe. At close, persist durable close checkpoint, create END_MARKER, fetch raw server created_at, compute strict WORKED, then terminal-sync all views.
 
-## 7. Final completion gate
-
-Program completes only when SERVER_CLOCK_SAFE_LOWER_BOUND, FAILURE_BOUNDARY or unresolved, OPERATING_CAP, PRODUCTIVE_CAP, SOFT_CUTOFF, HARD_CAP, CLOSE_OVERHEAD, SAFETY_MARGIN, NEXT_TASK_ADMISSION, validation confidence/count, workload coverage, rollback rule, and selected planned gap are traceable to durable evidence.
+## Final completion gate
+Program completes only when server-clock safe lower bound, failure boundary or unresolved status, operating/productive caps, cutoff/hard cap, close overhead, safety margin, next-task admission, validation confidence/count, workload coverage, rollback, and selected planned gap are traceable to durable evidence.
