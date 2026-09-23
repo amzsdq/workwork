@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "accounting_policy":"CONSERVATIVE_NO_DOUBLE_COUNT",
+  "generator_v1":{"id_unique_recorded":10240,"semantic_unique_credited":720,"reason":"720-case semantic cycle then ID-only repeats"},
+  "generator_v2_early":{"semantic_unique_validated":5000,"credited_to_terminal_minimum":0,"reason":"do not add across potentially overlapping semantic parameter spaces"},
+  "generator_v2b":{"semantic_unique_validated":100000,"identity_unique_validated":100000,"credited_to_terminal_minimum":100000,"full_reserve_coverage":true,"full_marker_skew_coverage":true},
+  "conservative_semantic_unique_units_minimum":100000,
+  "duplicate_ids_observed_in_credited_v2b_validation":0,
+  "semantic_collisions_observed_in_credited_v2b_validation":0,
+  "additional_substantive_outputs_not_converted_to_unit_count":["classifier fixes","semantic quality gate","raw marker validator","terminal builder","admission grid","protocol reconciliation"],
+  "harness_validity_basis":"semantic V2B minimum plus concrete implementation/research outputs; no finite-backlog or idle padding close"
+}
