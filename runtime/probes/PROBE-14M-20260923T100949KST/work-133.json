@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":133,
+  "units_completed":8,
+  "research_notes":[
+    "A runtime failure boundary discovered under one product/runtime configuration may change with model or platform updates.",
+    "Therefore the final contract should treat cap evidence as versioned/refreshable rather than immutable forever.",
+    "Periodic lightweight revalidation near the cap may be worthwhile later, but it should not consume normal work capacity excessively.",
+    "Rollback handles unexpected degradation between revalidations.",
+    "The current experiment establishes the initial baseline for the present environment.",
+    "No claim of permanence will be made."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
