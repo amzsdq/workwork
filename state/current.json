@@ -30,7 +30,15 @@
     "last_probe_checkpoint_saved": true,
     "last_probe_retrospective_wake_ok": true,
     "last_probe_wake_observed_at_kst": "2026-09-23T11:56:30+09:00",
-    "next_probe_requirement": "START_STRICT_16M_WITH_60S_CLOSE_RESERVE",
+    "active_probe_id": "PROBE-16M-20260923T121600KST",
+    "active_probe_target_minutes": 16,
+    "active_probe_workload_profile": "W4_REASONING_HEAVY",
+    "active_probe_started_at_kst": "2026-09-23T12:16:00+09:00",
+    "active_probe_prearmed_wake_at_kst": "2026-09-23T12:35:00+09:00",
+    "active_probe_scheduler_write_ok": true,
+    "active_probe_scheduler_state_ok": true,
+    "active_probe_units_persisted": 5,
+    "next_probe_requirement": "COMPLETE_STRICT_16M_WITH_60S_CLOSE_RESERVE",
     "close_reserve_sec": 60
   },
   "overlap_probe": {
@@ -79,5 +87,5 @@
     "priority_2": "COOPERATIVE_PARALLEL_UTILIZATION_AFTER_DURATION_BOUNDARY",
     "sequencing": "Finish strict duration boundary search and operating-cap validation first; resume deferred parallel probes afterward."
   },
-  "updated_at": "2026-09-23T11:56:30+09:00"
+  "updated_at": "2026-09-23T12:16:00+09:00"
 }
