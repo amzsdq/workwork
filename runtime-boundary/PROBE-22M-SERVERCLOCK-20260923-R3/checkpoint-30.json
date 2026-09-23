@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 30,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "ROLLBACK_AND_RECOVERY_AUDIT",
+  "findings": [
+    "If this invocation terminates before END_MARKER, the active-probe pointer and START marker remain durable; the next run must inspect/classify this incomplete probe before any replacement.",
+    "Missing END alone is not automatically a duration failure; independent evidence must distinguish forced termination from tool/provider or other causes.",
+    "This preserves the no-false-boundary rule during the first server-clock migration probe."
+  ],
+  "substantive_unit_count_cumulative": 84,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
