@@ -3,124 +3,113 @@
 Durable workspace for this ChatGPT RRULE relay.
 
 ## Single research objective
-Find the maximum empirically safe useful-work duration per automation invocation **and** the control policy that repeatedly reproduces near-optimal turns without materially increasing run-out/forced-termination risk.
+Find the maximum empirically safe useful-work duration per automation invocation **and** the simplest control policy that repeatedly reproduces near-optimal turns without materially increasing run-out/forced-termination risk.
 
-The final output is not a single number. It must be an operational policy that can be reused by other relay workers.
+The final output is not a single number. It must be an operational policy reusable by other relay workers.
 
-## Why this matters
-With a 10-minute work floor and ~3-minute relay gap, idealized duty cycle is only 10/(10+3) ≈ 76.9% before scheduler jitter and failures. Longer safe turns can materially improve utilization, but pushing too close to the runtime ceiling can lose the final checkpoint/scheduler write and reduce real availability.
+## Optimization target
+The research separates three axes:
+1. **SURVIVAL_BOUNDARY** — how long an invocation can remain active without duration-attributable termination.
+2. **PRODUCTIVE_WINDOW** — how much genuine goal-directed work is delivered during that runtime.
+3. **COMPLETION_ENVELOPE** — how late useful work can continue while still preserving reliable durable close.
 
-The optimization target is long-run useful-work utilization, not merely the longest single observed run. Relay lead time remains fixed at +3m while runtime/handoff policy is varied.
+The objective is long-run useful-work utilization, not the longest observed run. A long sparse run is weak operating-policy evidence; a dense run that loses finalization is also unacceptable.
 
 ## Research contract
 - Reuse the same automation for normal continuation; no replacement automation.
 - Keep a complete recurring VEVENT containing `RRULE:FREQ=HOURLY`.
 - Do not use DTSTART-only one-shot or `dtstart_offset_json`.
-- Normal clean path performs one scheduler mutation immediately after TURN_START, before substantive work. This pre-arms the next wake. Do not mutate the scheduler again at turn end.
-- Wake scheduling is now PRE-ARMED at turn start. Compute NEXT_WAKE = TURN_START + target_runtime + planned_gap. Start with planned_gap=3m as the prior best baseline, then test smaller/larger gaps after runtime behavior is characterized.
-- Measure real elapsed runtime and active test work separately. Deliberately generated bounded workload is allowed when it exists to exercise runtime behavior and its profile is recorded. Idle waiting/sleeping only to consume time remains excluded.
-- A run is only a clean timing PASS if the next wake was successfully pre-armed at turn start, the target workload was exercised, and durable close evidence was saved. The pre-arm scheduler return must contain the intended DTSTART/RRULE/enabled state.
-- WRITE_OK is not future WAKE_OK.
-- Any platform/tool failure not plausibly caused by turn duration must be classified separately rather than counted as a timeout boundary.
+- Immediately after TURN_START, pre-arm the next wake before substantive work. Do not mutate the scheduler again at normal close.
+- Compute NEXT_WAKE = TURN_START + target_runtime + planned_gap. Current Phase-A planned-gap baseline is +3m.
+- Measure real elapsed runtime, productive/goal-directed work evidence, and completion-envelope timing separately.
+- Deliberately generated bounded workload is allowed when it genuinely advances or validates this research and its profile is recorded. Idle/sleep/padding is excluded.
+- A clean close requires verified prearm state, target reached, sustained substantive work, and durable close evidence. Under the strict protocol it remains `CLEAN_PASS_PENDING_WAKE` until a later invocation retrospectively confirms continuation was observed.
+- Wake observation and wake timeliness are separate. A later observed continuation does not by itself prove low idle gap.
+- Any platform/tool failure not plausibly caused by turn duration is classified separately rather than counted as a timeout boundary.
 - Git history and `state/events.log` are recovery evidence.
 
 ## Phase A — find the runtime boundary
-Start from the existing operational 10-minute baseline, treated as prior evidence rather than a newly proven ceiling.
+Current coarse sequence is approximately:
+12 → 14 → 16 → 18 → 20 → continue +2m while clean.
 
-Coarse ascent:
-12 → 14 → 16 → 18 → 20 → continue +2 minutes while clean.
+A target advances only after clean close plus retrospective continuation observation under the strict protocol. This advances an exploratory safe lower bound, not a production cap.
 
-A target may advance after a clean completed run with final checkpoint + scheduler write intact. Any forced termination, missing close, or duration-correlated inability to complete the final handoff creates an upper-bound candidate.
-
-Once a credible failure boundary appears, narrow the interval between the last clean target and first failed target using ~1-minute steps.
+Workload profiles rotate during coarse exploration. Therefore a failure at a higher target under a different profile is initially a target/profile failure pair, not automatically a universal duration boundary. During refinement, hold the failure-producing profile fixed and obtain a same-profile lower anchor when needed. Narrow at roughly 1-minute resolution.
 
 ## Phase B — validate an operating cap
 Do not equate the longest one-off success with the operating limit.
 
 A candidate operating cap should:
-- have at least 5 clean repeated runs at that class,
-- preserve the final durable checkpoint and scheduler write,
-- leave a non-trivial margin below the first credible failure boundary,
-- improve expected long-run duty cycle after observed wake failures/jitter are included.
+- have at least 5 clean repeated runs at/near the candidate,
+- preserve durable close and verified prearm state,
+- include retrospective continuation evidence where observable,
+- leave a meaningful margin below a credible failure boundary,
+- include representative workload-profile coverage,
+- account for close overhead, overshoot variance, wake reliability, and wake timeliness.
 
 If no failure boundary has been observed yet, continue ascent rather than declaring a maximum.
 
 ## Phase C — generalize into a reproducible control policy
-After the boundary is sufficiently characterized, compare ways to reproduce near-optimal runtime.
+Compare in increasing complexity:
+1. P1 FIXED_THRESHOLD
+2. P2 SOFT_CUTOFF_PLUS_HARD_CAP
+3. P3 ESTIMATED_NEXT_TASK_ADMISSION
+4. P4 ADAPTIVE_ADMISSION
 
-Candidate policy families:
-1. Fixed threshold:
-   - before SOFT_CUTOFF: continue next useful unit
-   - at/after SOFT_CUTOFF: prepare handoff
-2. Soft cutoff + hard cap:
-   - before SOFT_CUTOFF: continue normally
-   - after SOFT_CUTOFF: only bounded small units
-   - at HARD_CAP: no new work; close
-3. Estimated-next-task admission:
-   - continue only if elapsed + estimated_next_task + close_overhead + safety_margin < HARD_CAP
-4. Adaptive admission:
-   - same as estimated admission, but update close-overhead/safety margin from recent evidence.
+P3 decision shape:
+`continue iff elapsed + estimated_next_task + close_overhead + safety_margin < hard_cap`
 
-Do not assume the most complex policy is best. Compare actual utilization, clean-close rate, overshoot rate, and control overhead.
+Replay observed samples first. Add complexity only when it materially improves useful-work utilization or reliability. Simulations never alter empirical runtime boundaries.
 
-## Final deliverable
-The final reusable rule should look like:
-- SAFE_LIMIT / credible failure boundary
+## Phase D — optimize the prearmed gap
+After runtime cap/policy are stable enough, test planned gap approximately:
+3m baseline → 2m → 1m if stable.
+
+Choose the smallest planned gap that preserves clean close and stable continuation without materially higher overlap/missed-wake risk.
+
+## Required final deliverable
+- SAFE_LOWER_BOUND
+- FAILURE_BOUNDARY or unresolved
+- OPERATING_CAP
+- PRODUCTIVE_CAP
 - SOFT_CUTOFF
 - HARD_CAP
+- CLOSE_OVERHEAD
 - SAFETY_MARGIN
-- CLOSE_OVERHEAD estimate
 - NEXT_TASK_ADMISSION rule
-- evidence/confidence and observed failure modes
+- validation confidence/count
+- workload-profile coverage
+- rollback rule
+- selected planned gap
 
-Example shape only:
-`if elapsed + estimated_next_task + close_overhead + safety_margin < hard_cap: continue; else: handoff`
-
-The numerical values must come from evidence, not from the example.
-
-## Decision metrics
-Track at minimum:
+## Measurement discipline
+Track when directly observable:
 - target_runtime_min
 - actual_elapsed_sec
-- useful_work_sec
+- direct active_work_sec and productive_ratio, otherwise null
+- goal_directed_window_sec / goal_directed_ratio when necessary tool I/O is inseparable
+- substantive_unit_count
 - clean_close
 - checkpoint_saved
-- prearm_scheduler_write_ok
-- prearm_scheduler_state_ok
-- planned_gap_sec
-- planned_wake_offset_sec
-- actual_idle_gap_sec on the next invocation
-- overlap_or_concurrent_wake
-- next_wake_observed on the following invocation
+- prearm scheduler write/state verification
+- pre_close_ts / close_end_ts / close_overhead_sec
+- overshoot_sec
+- planned wake
+- next wake observed
+- wake_lateness_sec and actual_idle_gap_sec when directly evidenced
 - forced_stop_or_timeout
 - non_duration_failure
-- idle_gap_sec when observable
-- close_overhead_sec
-- next_task_estimate_sec when a policy trial uses it
-- overshoot_sec
+- workload_profile
 - policy_variant during Phase C
+
+Never invent missing timing values. Necessary tool latency may be part of a labeled goal-directed window but must not be silently relabeled as direct active work.
 
 ## Durable state
 - `state/events.log` — canonical append-only experiment history.
-- `state/current.json` — derived current experiment state; rebuildable.
-- `MAX_SAFE_RUNTIME_RESEARCH.md` — experiment/decision protocol.
+- `state/current.json` — mutable current experiment pointer; rebuildable.
+- `RUNTIME_RESEARCH_MASTER_PLAN.md` — canonical execution roadmap.
+- `MAX_SAFE_RUNTIME_RESEARCH.md` — integrated research protocol.
+- `RUNTIME_BOUNDARY_DECISION_RULE.md` — classification/refinement rules.
+- `RUNTIME_MEASUREMENT_PROTOCOL.md` — timing semantics.
 
 Never rewrite historical event meaning. Never persist credentials, cookies, session state, private URLs, or secrets.
-
-
-## Pre-armed wake rule
-The relay no longer schedules the next wake at the end of the turn.
-
-At TURN_START:
-1. Capture START_TS.
-2. Select target_runtime and planned_gap.
-3. Compute NEXT_WAKE = START_TS + target_runtime + planned_gap.
-4. Update this same recurring RRULE automation immediately.
-5. Verify the returned DTSTART, RRULE:FREQ=HOURLY, and enabled=true.
-6. Perform the workload.
-7. Save the final checkpoint and close without another scheduler mutation.
-
-The quantity to optimize is the planned_gap that produces the smallest safe actual idle gap without causing overlap, concurrent invocations, missed checkpoints, or wake instability.
-
-Initial planned-gap baseline: 3 minutes.
-Later gap probes: 2m, 1m, and other values only when justified by evidence.
