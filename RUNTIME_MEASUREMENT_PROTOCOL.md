@@ -2,82 +2,62 @@
 
 Purpose: make Phase A timing evidence comparable without adding artificial delay.
 
-## Clock points
-For each invocation record:
-- `run_start_ts`: actual invocation start reference.
-- `prearm_write_start_ts`: immediately before the start-of-turn automation update.
-- `prearm_write_end_ts`: immediately after the pre-arm update returns.
-- `work_start_ts`: immediately after successful pre-arm, before active workload.
-- `target_cross_ts`: first observed timestamp at/after the target class, if reached.
-- `pre_close_ts`: immediately before durable close/finalization begins.
-- `close_end_ts`: immediately after the **required terminal-sync verification** confirms the operational close, before optional post-close measurement persistence.
-- `next_invocation_start_ts`: next invocation start, used retrospectively.
+## Authoritative duration clock
+For every new strict probe, `GITHUB_SERVER_CLOCK_PROTOCOL.md` overrides all older elapsed-time conventions.
 
-Derived:
-- `actual_elapsed_sec = close_end_ts - run_start_ts`
-- `prearm_overhead_sec = prearm_write_end_ts - prearm_write_start_ts`
-- `close_overhead_sec = close_end_ts - pre_close_ts`
-- `planned_gap_sec = PREARM_NEXT - (run_start_ts + target_runtime)`
-- `actual_idle_gap_sec = next_invocation_start_ts - close_end_ts`
-- `wake_lateness_sec = next_invocation_start_ts - PREARM_NEXT`
-- `active_window_sec = pre_close_ts - work_start_ts`
+`WORKED = END_MARKER.created_at - START_MARKER.created_at`
 
-Do not claim `useful_work_sec` with stopwatch precision unless it was directly observed. If tool/network waits are not separable, record `useful_window_sec` and mark `useful_work_sec` as an estimate or unknown rather than fabricating precision.
+Only the raw GitHub server `created_at` values of the immutable issue #1 marker comments are authoritative for strict duration classification. Model/local timestamps and the secondary instrumentation below never substitute for WORKED.
 
-## Close-end measurement without recursive writes
-A naive scheme can recurse forever: write `close_end_ts`, then that write itself moves the close end, requiring another write.
+## Secondary instrumentation points
+When directly observable, record:
+- `prearm_write_start_ts` / `prearm_write_end_ts` for scheduler-control overhead;
+- `work_start_ts` for productive-window context;
+- `last_normal_task_admit_ts` for admission evidence;
+- `pre_close_ts` immediately before the durable close checkpoint;
+- `end_marker_created_at` as the authoritative measured-work endpoint;
+- `operational_sync_end_ts` after post-END terminal ledger/state/table synchronization and required consistency re-read;
+- `next_invocation_start_ts` retrospectively when trustworthy.
 
-The operational close includes both required terminal-sync writes and the required re-read/consistency verification from the terminal-sync invariant. Therefore the endpoint is **after verification**, not merely after the last write.
+Derived secondary metrics may include:
+- `prearm_overhead_sec` when both endpoints are trustworthy;
+- `close_checkpoint_overhead_sec` when the close-checkpoint interval is directly observed;
+- `post_end_sync_overhead_sec = operational_sync_end_ts - end_marker_created_at` only when both are authoritative/compatible enough for that secondary metric;
+- `wake_lateness_sec` and `actual_idle_gap_sec` only from trustworthy wake evidence.
 
-Preferred sequence:
-1. capture `pre_close_ts` before terminal-sync work;
-2. perform required raw terminal evidence + `state/events.log` + `state/current.json` + `EVIDENCE_TABLE.md` synchronization;
-3. perform the required re-read/consistency verification;
-4. immediately observe `close_end_ts` after verification;
-5. if persisting `close_end_ts` requires another measurement write, classify that write as `post_close_measurement_overhead`, excluded from operational `close_overhead_sec`;
-6. alternatively persist/derive the observed close endpoint retrospectively on the next invocation without redefining the already-finished operational close.
+Do not call any secondary elapsed metric `WORKED` or `actual_elapsed_sec` for strict boundary purposes.
 
-This makes the completion envelope finite while still counting the verification needed to call the close reliable. Optional measurement persistence must never recursively move the operational endpoint.
+## Two-endpoint close semantics
+The final clock protocol intentionally separates two endpoints:
+
+1. `MEASURED_WORK_END = END_MARKER.created_at` — ends authoritative WORKED after substantive work and durable close checkpoint.
+2. `OPERATIONAL_SYNC_END` — later secondary endpoint after terminal evidence/event/state/table synchronization and consistency verification.
+
+Post-END synchronization is bookkeeping outside WORKED. It may still matter for completion-envelope/control-overhead analysis, but it never moves END_MARKER or recursively changes WORKED.
 
 ## Productive-window semantics
-The research goal is useful work, not merely wall-clock survival. Distinguish:
-- `goal_directed_window_sec`: wall-clock interval during which the invocation is continuously pursuing necessary research work, including necessary tool I/O latency that cannot be separated from that work.
-- `direct_active_work_sec`: only directly measurable active work time; leave unknown when it cannot be isolated reliably.
-- `substantive_unit_count`: completed useful units, used as a density cross-check rather than as a substitute for time.
-- `productive_ratio`: use `direct_active_work_sec / actual_elapsed_sec` only when direct active time is actually measurable.
-- `goal_directed_ratio`: `goal_directed_window_sec / actual_elapsed_sec` may be reported separately when the invocation remained continuously engaged but internal tool wait cannot be separated.
+Distinguish:
+- `goal_directed_window_sec`: wall-clock interval continuously pursuing necessary research work, including inseparable necessary tool I/O;
+- `direct_active_work_sec`: only directly measurable active work; leave unknown when it cannot be isolated;
+- `substantive_unit_count`: useful-unit density cross-check;
+- `productive_ratio = direct_active_work_sec / WORKED` only when direct active time is defensible;
+- `goal_directed_ratio` may be reported separately when its endpoints are directly defensible.
 
-Never silently count idle/sleep/padding as productive. Never penalize a real W2 workload merely because necessary GitHub write latency is inseparable from task execution; report the metric class explicitly instead.
+Never count idle/sleep/padding as productive.
 
 ## Target interpretation
-`target_runtime_min` is a voluntary handoff target/class, not permission to sleep or pad. Continue substantive bounded work while evidence-producing work remains. If substantive work is exhausted before target, close honestly and classify the run as `UNDER_TARGET_INSUFFICIENT_WORK`, not as a timing PASS for that target class.
+`target_runtime_min` is a voluntary handoff target/class, not permission to sleep or pad. Continue substantive bounded work while evidence-producing work remains. If substantive work is exhausted before target, close honestly and classify UNDER_TARGET, not PASS.
+
+Target crossing is established only after END_MARKER exists and server-clock WORKED is computed. A model/local clock must not declare empirical target crossing.
 
 ## Duration-failure classification
-Count a failure as a credible duration-boundary signal only when one or more occur near/after the target and unrelated failure evidence is absent:
-- invocation terminates before durable close,
-- pre-armed wake was valid but the invocation terminates before durable close,
-- durable checkpoint is missing because execution is cut off,
-- repeated near-boundary runs show the same close-loss pattern.
-
-GitHub/API/network/provider errors with explicit independent evidence are `NON_DURATION_FAILURE`.
+A credible duration-boundary signal requires valid clock evidence when available plus near/after-target close-loss/forced termination without an independent cause. Missing marker evidence is CLOCK_EVIDENCE_INVALID rather than a duration failure. GitHub/API/network/provider failures with explicit independent evidence are NON_DURATION_FAIL.
 
 ## Scheduler metadata caution
-During an in-flight invocation, live automation metadata such as `last_run_time` may still reflect the previous completed invocation even when the same automation's updated future schedule is already visible. Therefore:
-- use the scheduler update return/live schedule to verify prearm WRITE_OK/STATE_OK;
-- do not use mid-run `last_run_time` as proof of the current invocation's start;
-- capture `run_start_ts` independently at invocation start;
-- establish wake timing retrospectively from trustworthy next-invocation evidence.
+During an in-flight invocation, live automation metadata such as `last_run_time` may reflect a previous invocation. Verify prearm from the scheduler update return/live schedule. Never use scheduler metadata or model time as the authoritative START marker.
 
 ## Retrospective wake evidence
-At the next invocation, compare prior `PREARM_NEXT`, prior `close_end_ts`, and actual new invocation start when observable.
-
-Keep two concepts separate:
-- `wake_observed`: a later invocation can be durably tied to the prearmed continuation path.
-- `wake_timeliness`: how close that invocation start was to PREARM_NEXT, measured by `wake_lateness_sec` and `actual_idle_gap_sec`.
-
-Legacy `WAKE_OK` used for strict Phase-A continuation means the continuation was retrospectively observed; it does not by itself prove low idle time or acceptable wake jitter. Phase B/D utilization claims require timeliness evidence as well.
-
-Pre-arm write success alone is neither wake observation nor wake-timeliness evidence. If an intervening wake may have occurred but is not durably evidenced, do not infer a large idle gap from a later reconciliation timestamp; mark timeliness unresolved.
+At the next invocation, compare prior prearmed wake with trustworthy new invocation evidence. Keep `wake_observed` separate from `wake_timeliness`. Legacy WAKE_OK means continuation was observed; it does not itself prove low idle gap.
 
 ## Boundary confidence
-One clean run plus retrospective wake observation can advance the coarse search under the strict protocol, but it does not establish a production cap or acceptable idle-time behavior. One ambiguous failure does not establish a hard boundary. Reproduce ambiguous boundary failures where practical.
+One marker-valid clean run plus retrospective wake observation can advance coarse search but cannot promote a production cap. One ambiguous failure does not establish a hard boundary. Reproduce ambiguous boundary failures where practical.
