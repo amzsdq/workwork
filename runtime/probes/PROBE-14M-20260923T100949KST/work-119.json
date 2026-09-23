@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":119,
+  "units_completed":8,
+  "research_notes":[
+    "The strict protocol's fixed +3m planned gap is an experimental control, not a claim that three minutes is optimal.",
+    "Earlier relay evidence may suggest smaller gaps are possible, but changing it now would mix variables.",
+    "After runtime cap validation, gap optimization can test 3m, 2m, 1m under otherwise fixed conditions.",
+    "Actual idle gap and overlap risk will determine the preferred value.",
+    "The eventual parallel research may intentionally exploit overlap, but only after scheduler/authority fencing is established.",
+    "Current sample retains the baseline gap."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
