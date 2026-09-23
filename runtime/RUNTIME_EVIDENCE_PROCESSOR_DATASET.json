@@ -1,0 +1,16 @@
+{
+  "schema_version":1,
+  "purpose":"normalized current-server-clock regression corpus",
+  "strict_boundary_mutation_allowed":false,
+  "records":[
+    {"probe_id":"R3","target_runtime_sec":1320,"clock_protocol":"GITHUB_SERVER_MARKER_V1","start_marker_created_at":"2026-09-23T13:32:22Z","end_marker_created_at":"2026-09-23T13:43:14Z","recorded_worked_sec":652,"scheduler_write_ok":true,"scheduler_state_ok":true,"checkpoint_saved":true,"clean_close":true,"forced_stop_or_timeout":false,"non_duration_failure":false,"substantive_unit_count":137,"expected_result":"UNDER_TARGET"},
+    {"probe_id":"R4","target_runtime_sec":1320,"clock_protocol":"GITHUB_SERVER_MARKER_V1","start_marker_created_at":"2026-09-23T13:58:33Z","end_marker_created_at":"2026-09-23T14:10:49Z","recorded_worked_sec":736,"scheduler_write_ok":true,"scheduler_state_ok":true,"checkpoint_saved":true,"clean_close":true,"forced_stop_or_timeout":false,"non_duration_failure":false,"substantive_unit_count":40,"expected_result":"UNDER_TARGET"},
+    {"probe_id":"R5","target_runtime_sec":1320,"clock_protocol":"GITHUB_SERVER_MARKER_V1","start_marker_created_at":null,"end_marker_created_at":null,"recorded_worked_sec":null,"scheduler_write_ok":false,"scheduler_state_ok":false,"checkpoint_saved":false,"clean_close":false,"forced_stop_or_timeout":false,"non_duration_failure":true,"substantive_unit_count":0,"expected_result":"NON_DURATION_FAIL","secondary_clock_annotation":"CLOCK_EVIDENCE_INVALID"},
+    {"probe_id":"R6","target_runtime_sec":1320,"clock_protocol":"GITHUB_SERVER_MARKER_V1","start_marker_created_at":"2026-09-23T15:23:53Z","end_marker_created_at":"2026-09-23T15:40:08Z","recorded_worked_sec":975,"scheduler_write_ok":true,"scheduler_state_ok":true,"checkpoint_saved":true,"clean_close":true,"forced_stop_or_timeout":false,"non_duration_failure":false,"substantive_unit_count":59,"expected_result":"UNDER_TARGET"}
+  ],
+  "synthetic_edge_cases":[
+    {"id":"E1","target_runtime_sec":1320,"clock_protocol":"GITHUB_SERVER_MARKER_V1","start_marker_created_at":"2026-01-01T00:00:00Z","end_marker_created_at":"2026-01-01T00:22:00Z","scheduler_write_ok":true,"scheduler_state_ok":true,"checkpoint_saved":true,"clean_close":true,"substantive_unit_count":1,"expected_result":"CLEAN_PASS_PENDING_WAKE"},
+    {"id":"E2","target_runtime_sec":1320,"clock_protocol":"GITHUB_SERVER_MARKER_V1","start_marker_created_at":"2026-01-01T00:00:00Z","end_marker_created_at":"2026-01-01T00:22:01Z","forced_stop_or_timeout":true,"expected_result":"DURATION_FAIL_CANDIDATE"},
+    {"id":"E3","target_runtime_sec":1320,"clock_protocol":"GITHUB_SERVER_MARKER_V1","start_marker_created_at":"2026-01-01T00:01:00Z","end_marker_created_at":"2026-01-01T00:00:00Z","expected_result":"CLOCK_EVIDENCE_INVALID"}
+  ]
+}
