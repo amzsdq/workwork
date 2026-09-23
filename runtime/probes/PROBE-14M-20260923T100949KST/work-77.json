@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":77,
+  "units_completed":8,
+  "research_notes":[
+    "A scheduler wake scheduled after target plus gap is not itself a handoff; it is continuation availability.",
+    "Authority/handoff semantics can be layered later once the safe runtime and close behavior are known.",
+    "This separation prevents scheduler timing from being mistaken for ownership transfer.",
+    "The earlier handoff experiments showed why ownership evidence needs explicit fencing.",
+    "Those lessons remain preserved but are intentionally not mixed into this strict duration sample.",
+    "Current run remains single-owner strict runtime research."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
