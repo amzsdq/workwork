@@ -1,0 +1,14 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-03-R3",
+  "case_id": "OP-CAP-14M-VALIDATION-03",
+  "event": "TERMINAL",
+  "result": "HARNESS_UNDER_TARGET",
+  "boundary_effect": "NONE",
+  "worked_sec": 190,
+  "productive_window_sec": 167,
+  "close_overhead_sec": 13,
+  "clock_validity": "VALID",
+  "harness_validity": "INVALID_NON_DURATION_LOCAL_EXECUTOR_RESET",
+  "terminal_path": "runtime-boundary/OP-CAP-14M-VALIDATION-03-R3/terminal.json",
+  "next_case": "OP-CAP-14M-VALIDATION-03"
+}
