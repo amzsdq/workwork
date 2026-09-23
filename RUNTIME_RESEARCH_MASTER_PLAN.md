@@ -11,6 +11,7 @@ Answer two questions with empirical evidence:
 2. What is the simplest reproducible handoff/admission policy that operates near that limit with high long-run useful-work utilization without materially increasing forced-stop/run-out risk?
 
 This document is the execution map. Detailed protocols remain in:
+- `GITHUB_SERVER_CLOCK_PROTOCOL.md`
 - `MAX_SAFE_RUNTIME_RESEARCH.md`
 - `RUNTIME_BOUNDARY_DECISION_RULE.md`
 - `RUNTIME_WORKLOAD_PROFILES.md`
@@ -18,10 +19,11 @@ This document is the execution map. Detailed protocols remain in:
 - `PROBE_EXECUTION_PLAN.md`
 
 Evidence authority remains:
-1. raw per-probe evidence,
-2. `state/events.log`,
-3. `state/current.json` as the mutable current pointer,
-4. derived summaries such as `EVIDENCE_TABLE.md`.
+1. raw GitHub START/END marker REST resources for strict WORKED,
+2. raw per-probe evidence,
+3. `state/events.log`,
+4. `state/current.json` as the mutable current pointer,
+5. derived summaries such as `EVIDENCE_TABLE.md`.
 
 A derived summary must never override raw/canonical evidence.
 
@@ -52,16 +54,7 @@ Every invocation must answer exactly three questions before doing work:
 
 Do not repeat a target merely because `next_strict_target_minutes` is unchanged.
 
-If an earlier probe for the active study case has START/checkpoint evidence but no terminal close classification, first classify that incomplete probe from durable evidence as one of:
-- CLEAN_PASS_PENDING_WAKE
-- UNDER_TARGET
-- DURATION_FAIL_CANDIDATE
-- NON_DURATION_FAIL
-- AMBIGUOUS
-
-Only then decide whether a repeat is justified.
-
-A new probe must add decision value. Start-only repetition is not decision value.
+If an earlier probe for the active study case has START/checkpoint evidence but no terminal close classification, first classify or continue that incomplete probe from durable evidence before starting a replacement. A new probe must add decision value. Start-only repetition is not decision value.
 
 ### Terminal-classification write invariant
 
@@ -72,42 +65,32 @@ Whenever a study case reaches a terminal classification or a retrospective WAKE_
 3. `state/current.json`,
 4. `EVIDENCE_TABLE.md` as the derived audit view.
 
-After the writes, re-read all three shared-state views and verify that they agree on:
-- latest terminal probe/result,
-- SAFE_LOWER_BOUND,
-- FAILURE_BOUNDARY,
-- current/next target,
-- current_case_id / next_case_id.
+After the writes, re-read shared-state views and verify agreement on latest terminal probe/result, SERVER_CLOCK_SAFE_LOWER_BOUND, FAILURE_BOUNDARY, current/next target, and current_case_id/next_case_id.
 
-If any of these disagree, the case is not considered fully closed and the next study case must not start until reconciliation is complete.
-
-A tool/provider failure that prevents this synchronization is NON_DURATION_FAIL and must not alter the runtime boundary.
+If they disagree, the case is not fully closed. A tool/provider failure that prevents synchronization is NON_DURATION_FAIL and must not alter the runtime boundary.
 
 ## 2A. Three-axis runtime objective
 
-A runtime target is not useful merely because the invocation survives until that timestamp. Every empirical probe must characterize three distinct axes:
-
 ### A. SURVIVAL_BOUNDARY
-How long the invocation can remain active without a duration-attributable forced stop or timeout.
+How long the invocation can remain active without a duration-attributable forced stop or timeout. Strict wall-clock duration is `WORKED` from GitHub server markers only.
 
 ### B. PRODUCTIVE_WINDOW
 How much of the invocation is spent on genuine goal-directed work.
 
-Measure at minimum:
-- actual_elapsed_sec
-- active_work_sec when directly supportable
-- productive_ratio only when active_work_sec is directly supportable
+Measure when directly supportable:
+- active_work_sec
+- productive_ratio
 - goal_directed_window_sec / goal_directed_ratio when necessary tool I/O cannot be separated
 - substantive_unit_count
 - workload_profile
 
-Do not manufacture work to inflate active time. The workload must contribute to the runtime research goal or directly validate its control/evidence logic.
+Do not manufacture work to inflate active time. Productive metrics never substitute for marker-derived WORKED.
 
 ### C. COMPLETION_ENVELOPE
 How late useful work can continue while still preserving enough time for a reliable durable close.
 
-Measure:
-- last_normal_task_admit_ts when observable
+Measure when defensible:
+- last_normal_task_admit_ts
 - pre_close_ts
 - close_end_ts
 - close_overhead_sec
@@ -115,16 +98,9 @@ Measure:
 - clean_close
 - checkpoint_saved
 
-The purpose is to identify:
-- HARD_CAP = the empirically safe outer wall-clock limit,
-- SOFT_CUTOFF = the latest region where normal work should still be admitted,
-- CLOSE_RESERVE = realistic close overhead plus safety margin,
-- PRODUCTIVE_CAP = the useful-work operating window before close reserve begins.
+Completion-envelope timestamps are secondary instrumentation unless independently server-authoritative. They do not classify WORKED.
 
-A probe that reaches the duration target with very low productive work is survival evidence but weak operating-policy evidence.
-A probe with high productive work but no clean close is not an acceptable operating point.
-
-During Phase A, collect all three axes on the same probes whenever possible so later Phase B/C does not need to repeat avoidable experiments.
+The purpose is to identify HARD_CAP, SOFT_CUTOFF, CLOSE_RESERVE, and PRODUCTIVE_CAP without conflating survival, productivity, and close reliability.
 
 ## 3. Phase gates
 
@@ -132,50 +108,30 @@ During Phase A, collect all three axes on the same probes whenever possible so l
 
 Current state:
 - LEGACY_EXPLORATORY_LOWER_BOUND = 20m
-- SERVER_CLOCK_SAFE_LOWER_BOUND = unresolved until first GITHUB_SERVER_MARKER_V1 pass
+- SERVER_CLOCK_SAFE_LOWER_BOUND = unresolved until first GITHUB_SERVER_MARKER_V1 pass + WAKE_OK
 - FAILURE_BOUNDARY = unresolved
 - active target = 22m server-clock revalidation
 - planned_gap = +3m
 - current profile = W3 MIXED_IO
 
 Coarse ascent:
-- 18m: W2 WRITE_CHECKPOINT_HEAVY
-- 20m: W6 LARGE_UNIT
+- revalidate 22m under server clock,
 - then +2m while clean, rotating profiles per workload protocol.
 
 Exit from coarse ascent:
 - first credible duration-related failure creates a boundary candidate F,
-- last lower clean class is L,
-- move to refinement.
+- last lower server-clock clean class is L,
+- move to profile-controlled refinement.
 
-Refinement:
-- test approximately 1m classes inside [L,F],
-- keep the failure-producing workload profile fixed during the first refinement sequence so duration is not confounded with workload shape,
-- if the lower clean anchor L was established under a different profile, obtain a same-profile lower-anchor run when needed before claiming a profile-specific bracket,
-- continue until the same-profile bracket is about 1m or finer,
-- ambiguous failure at F must be repeated once before narrowing.
-
-Interpretation of a failure discovered while profiles are rotating:
-- initially treat it as a failure for that target/profile pair, not automatically a universal duration boundary,
-- refine with the same profile to determine whether duration is the driver,
-- cross-profile replication near the candidate cap determines whether the final cap can be universal.
-
-Boundary-search stop condition:
-- either a credible refined failure boundary exists for at least one realistic profile and its implication for the operating cap is characterized,
-- or no boundary is found and the program reports only a safe lower bound while continuing ascent.
+Refinement uses approximately 1m classes with the failure-producing profile fixed until a same-profile bracket is about 1m or finer. Ambiguous failure at F must be repeated once before narrowing.
 
 ### Phase B — operating-cap validation
 
 Do not equate max observed success with the operating cap.
 
-Choose a candidate cap below the credible failure boundary using:
-- observed close overhead,
-- elapsed/overshoot variance,
-- safety margin,
-- worst credible representative workload profile.
-
 Promotion gate:
-- at least 5 clean runs at/near the candidate,
+- at least 5 clean runs at/near candidate,
+- valid server-clock marker pair for every counted run,
 - no unresolved duration failure at or below candidate,
 - scheduler WRITE_OK/STATE_OK,
 - durable close checkpoint,
@@ -197,112 +153,61 @@ Compare in increasing complexity:
 - P4 ADAPTIVE_ADMISSION
 
 Accepted overlap-handoff candidate:
-- baseline candidate document: `OVERLAP_HANDOFF_BASELINE_CANDIDATE.md`
-- initial baseline: 15m OWNER work / successor wake at +12m / 3m nominal overlap
-- successor wakes as SHADOW; only the active OWNER may mutate scheduler/control state
-- ownership transfer is fenced by generation/lease
-- next cycle anchor is OWNER_ACTIVATED_AT, not SHADOW_WAKE_AT
+- `OVERLAP_HANDOFF_BASELINE_CANDIDATE.md`
+- initial baseline 15m OWNER work / successor wake at +12m / 3m nominal overlap
+- successor wakes as SHADOW; only active OWNER mutates scheduler/control state
+- ownership transfer fenced by generation/lease
+- next cycle anchored to OWNER_ACTIVATED_AT, not SHADOW_WAKE_AT
 - current evidence supports KEEP/TEST, not production promotion
-- observed +168s wake lateness means a 3m lead can leave only ~12s preparation time, so compare 15/11, 15/12, and 15/13 rather than assuming +12m is final
+- compare 15/11, 15/12, 15/13 rather than assuming +12m is final
 
-
-First use replay/simulation over observed task-duration and close-overhead samples. Then live-test only policies that plausibly improve the objective.
-
-Promotion rule:
-prefer the simplest policy whose observed utilization and continuation reliability are practically indistinguishable from more complex alternatives.
-
-Required outputs:
-- SOFT_CUTOFF
-- HARD_CAP
-- CLOSE_OVERHEAD
-- SAFETY_MARGIN
-- NEXT_TASK_ADMISSION rule
-- rollback rule
+Replay/simulate first; live-test only policies that plausibly improve the objective. Future quantitative handoff timing should use server-authoritative event timestamps when possible.
 
 ### Phase D — planned-gap optimization
 
-Only after runtime cap/policy are stable enough.
-
-Hold runtime policy approximately fixed and test:
-- +3m baseline
-- +2m
-- +1m if stable
-- intermediate/larger gap only when evidence warrants
-
-Choose the smallest planned gap that preserves clean close + stable next wake without materially higher overlap/miss/failure risk.
+After runtime cap/policy are stable enough, hold runtime policy approximately fixed and test +3m baseline, then +2m, then +1m if stable.
 
 ### Phase E — deferred cooperative parallel research
 
-Only after Phase A boundary characterization and Phase B operating-cap validation are sufficiently complete.
-
-Resume `PARALLEL-A14-B4-02` as supporting/cooperative-utilization research.
-Parallel survival evidence must never be promoted into strict runtime PASS evidence.
+Only after Phase A boundary characterization and Phase B operating-cap validation are sufficiently complete. `PARALLEL-A14-B4-02` remains supporting-only.
 
 ## 4. Study-case queue
 
-### SC-A18-01 — close the 18m decision
-Purpose:
-Produce one terminal empirical classification for the 18m W2 class.
+### SC-A22-CLOCK-01 — server-clock 22m revalidation
+Profile: W3 MIXED_IO.
 
-Before starting a new 18m probe:
-- inspect all existing 18m probe evidence,
-- classify any incomplete prior 18m probe,
-- do not create another start-only probe if the previous one can already be classified.
-
-PASS:
-- target reached,
-- substantive W2 workload sustained through the probe rather than a short setup burst,
-- active_work_sec and productive_ratio recorded when directly observable; otherwise use explicitly labeled goal-directed window metrics,
+PASS prerequisites:
+- valid GITHUB_SERVER_MARKER_V1 pair,
+- WORKED >= 1320s,
+- sustained substantive W3 work,
 - durable close checkpoint,
 - scheduler WRITE_OK/STATE_OK,
-- no duration-related forced stop,
-- completion-envelope timestamps recorded when practical.
+- no duration-attributable forced stop.
 
-Interpretation:
-- A clean 18m pass advances SURVIVAL_BOUNDARY evidence after retrospective WAKE_OK.
-- Its productive/goal-directed evidence and close-overhead evidence feed PRODUCTIVE_WINDOW / COMPLETION_ENVELOPE characterization.
-- Do not treat a low-work survival pass as sufficient evidence for the final operating cap.
-
-Then:
-- SAFE_LOWER_BOUND -> 18m after retrospective WAKE_OK,
-- NEXT_CASE -> SC-A20-01.
-
-NON_DURATION_FAIL:
-- boundary unchanged,
-- repeat 18m only after recording the independent cause.
+A clean close is CLEAN_PASS_PENDING_WAKE until retrospective WAKE_OK. Then SERVER_CLOCK_SAFE_LOWER_BOUND -> 22m and NEXT_CASE -> SC-A24-CLOCK+.
 
 UNDER_TARGET:
-- boundary unchanged,
-- diagnose why the invocation ended before target,
-- repeat only after correcting the execution cause.
+- valid marker pair with WORKED <1320s and no independent failure,
+- boundary unchanged; diagnose execution cause before repeat.
+
+CLOCK_EVIDENCE_INVALID or NON_DURATION_FAIL:
+- boundary unchanged.
 
 DURATION_FAIL_CANDIDATE:
-- if credible for W2, candidate interval is [16m,18m] but the 16m anchor was W4,
-- NEXT_CASE -> refinement around 17m using W2; obtain a same-profile lower anchor if needed before calling the bracket profile-specific.
+- establish/refine a profile-controlled bracket; legacy lower-bound evidence may guide test selection but cannot be the new strict lower anchor by itself.
 
-### SC-A20-01 — 20m coarse ascent
-Profile: W6 LARGE_UNIT.
-Entry condition: SC-A18-01 strict clean PASS + WAKE_OK.
-Terminal handling follows the same decision rule, with same-profile refinement if a credible failure appears.
-
-### SC-A22+ — generated coarse ascent
-Entry condition: prior coarse target strict clean PASS + WAKE_OK.
-Target: prior target +2m.
-Rotate workload profile.
-Continue until first credible duration failure, then refine while controlling profile.
+### SC-A24-CLOCK+ — generated coarse ascent
+Entry: prior server-clock target strict clean PASS + WAKE_OK.
+Target: prior target +2m. Rotate workload profile. Continue until first credible duration failure.
 
 ### SC-AR-* — 1m refinement
-Generated after first credible duration failure.
-Maintain a profile-controlled [L,F] bracket.
-Each terminal result must shrink or confirm the bracket rather than mix workload-profile changes into the duration inference.
+Generated after first credible duration failure. Maintain a profile-controlled [L,F] bracket using server-clock evidence.
 
 ### SC-B-CAP-* — candidate-cap validation
-Run at least 5 clean validations, deliberately covering representative workload profiles.
-Do not advance to Phase C until the promotion gate is satisfied.
+At least 5 clean server-clock validations with representative profile coverage.
 
 ### SC-C-POLICY-* — policy comparison
-Replay first, live test second.
-Stop increasing complexity when a simpler policy is practically equivalent.
+Replay first, live test second. Stop increasing complexity when a simpler policy is practically equivalent.
 
 ### SC-D-GAP-* — planned-gap optimization
 3m -> 2m -> 1m subject to continuation stability.
@@ -312,52 +217,34 @@ Resume deferred `PARALLEL-A14-B4-02` only after Phase A/B gate.
 
 ## 5. Per-case record
 
-Every study case should record:
-
+Every new strict case should record:
 - case_id
 - phase
 - hypothesis/question
 - target_runtime_min
 - workload_profile
-- controlled variables
 - probe_id(s)
-- required evidence
+- clock_protocol
+- start_marker_comment_id / start_marker_created_at
+- end_marker_comment_id / end_marker_created_at
+- worked_sec / marker_pair_valid
 - terminal classification
 - boundary/cap effect
 - next_case_id
 - anomaly/non-duration cause
-- decision timestamp
 - active_work_sec / productive_ratio when directly supportable
-- goal_directed_window_sec / goal_directed_ratio when used instead
+- goal_directed_window evidence when used
 - substantive_unit_count
-- last_normal_task_admit_ts when observable
-- pre_close_ts
-- close_end_ts
-- close_overhead_sec
+- completion-envelope evidence when defensible
 
 ## 6. Current execution pointer
 
 CURRENT_CASE_ID = SC-A22-CLOCK-01
+ACTIVE_PROBE_ID = PROBE-22M-SERVERCLOCK-20260923-R3
 
 Immediate objective:
-Re-run the 22m W3 class under GITHUB_SERVER_MARKER_V1. Create START_MARKER before scheduler pre-arm/substantive work, create END_MARKER only after durable close synchronization, and compute WORKED exclusively from the raw GitHub server created_at values. Existing pre-protocol 22m evidence is supporting-only. Handoff/overlap live testing remains deferred so it does not contaminate boundary inference.
+Continue the active 22m W3 server-clock probe. Do not start a duplicate. Its START marker is issue comment 5795782562 with raw server `created_at=2026-09-23T13:32:22Z`. Close only after sustained useful work and a durable close checkpoint; then create END_MARKER and classify exclusively from the two server timestamps.
 
 ## 7. Final program completion gate
 
-The program is complete only when it can report:
-
-- SAFE_LOWER_BOUND
-- FAILURE_BOUNDARY or unresolved
-- OPERATING_CAP
-- PRODUCTIVE_CAP
-- SOFT_CUTOFF
-- HARD_CAP
-- CLOSE_OVERHEAD
-- SAFETY_MARGIN
-- NEXT_TASK_ADMISSION rule
-- validation confidence/count
-- workload-profile coverage
-- rollback rule
-- selected planned gap
-
-and each value is traceable to durable evidence.
+The program is complete only when it can report SERVER_CLOCK_SAFE_LOWER_BOUND, FAILURE_BOUNDARY or unresolved, OPERATING_CAP, PRODUCTIVE_CAP, SOFT_CUTOFF, HARD_CAP, CLOSE_OVERHEAD, SAFETY_MARGIN, NEXT_TASK_ADMISSION rule, validation confidence/count, workload-profile coverage, rollback rule, and selected planned gap, each traceable to durable evidence.
