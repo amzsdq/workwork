@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":114,
+  "units_completed":8,
+  "research_notes":[
+    "The user-defined goal of maximum working time/minimum idle time is best served by reliability-adjusted utilization, not raw per-turn length.",
+    "A turn that is two minutes longer but frequently loses its final checkpoint can be worse overall.",
+    "Likewise a very conservative turn can waste wall time on handoff gaps.",
+    "The staged experiment explicitly measures both sides before choosing the operating point.",
+    "This is why production cap promotion is intentionally stricter than exploratory ascent.",
+    "Current sample contributes one exploratory target observation once closed."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
