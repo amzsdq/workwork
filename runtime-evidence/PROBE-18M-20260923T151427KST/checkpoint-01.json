@@ -1,0 +1,31 @@
+{
+  "probe_id":"PROBE-18M-20260923T151427KST",
+  "checkpoint":1,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "purpose":"durable write/checkpoint stress with invariant validation",
+  "validation_units":[
+    {"id":1,"test":"measurement schema completeness","result":"PASS"},
+    {"id":2,"test":"duration/non-duration taxonomy separation","result":"PASS"},
+    {"id":3,"test":"safe-lower-bound monotonicity","result":"PASS"},
+    {"id":4,"test":"same-automation scheduler invariant","result":"PASS"},
+    {"id":5,"test":"RRULE recurring invariant","result":"PASS"},
+    {"id":6,"test":"planned gap fixed 180s","result":"PASS"},
+    {"id":7,"test":"target 1080s derivation","result":"PASS"},
+    {"id":8,"test":"close reserve tracked separately from prearm","result":"PASS"},
+    {"id":9,"test":"WAKE_OK retrospective-only semantics","result":"PASS"},
+    {"id":10,"test":"production cap not promoted from coarse pass","result":"PASS"},
+    {"id":11,"test":"parallel evidence remains supporting-only","result":"PASS"},
+    {"id":12,"test":"first duration failure creates candidate boundary","result":"PASS"},
+    {"id":13,"test":"ambiguous failure requires repeat","result":"PASS"},
+    {"id":14,"test":"refinement approximately 1m","result":"PASS"},
+    {"id":15,"test":"candidate cap requires >=5 clean closes","result":"PASS"},
+    {"id":16,"test":"next-task admission includes close overhead","result":"PASS"},
+    {"id":17,"test":"scheduler normal-close mutation prohibited","result":"PASS"},
+    {"id":18,"test":"checkpoint probe identity continuity","result":"PASS"},
+    {"id":19,"test":"failure boundary remains null absent duration fail","result":"PASS"},
+    {"id":20,"test":"workload rotation identity retained","result":"PASS"}
+  ],
+  "passed":20,
+  "failed":0,
+  "duration_failure_observed":false
+}
