@@ -1,0 +1,10 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "broad_semantic_cases":50000,
+  "broad_expected_distribution":{"NON_DURATION_FAIL":25000,"CLOCK_EVIDENCE_INVALID":19960,"UNDER_TARGET":2520,"AMBIGUOUS":1400,"DURATION_FAIL_CANDIDATE":840,"CLEAN_PASS_PENDING_WAKE":280},
+  "finding":"Cartesian broad sweep is intentionally robustness-heavy and underweights clean-pass cases.",
+  "fix":"RUNTIME_STRESS_EVALUATOR.stratified now selects equal quotas across six outcome families.",
+  "balanced_target":{"families":6,"per_family":100,"total":600},
+  "empirical_runtime_boundary_effect":"NONE",
+  "purpose":"ensure test-generated workload adds balanced classifier decision value rather than merely high case count"
+}
