@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":178,
+  "units_completed":8,
+  "research_notes":[
+    "The final operating cap should ideally be validated under a workload profile close to actual expected production, with stress profiles used to define safety margin.",
+    "A universal cap based solely on an unusually heavy diagnostic profile may be unnecessarily conservative.",
+    "Conversely ignoring the stress profile entirely could understate worst-case risk.",
+    "The promotion rule should balance representative operation and worst-case evidence explicitly.",
+    "Current coarse ascent does not need to settle that balance yet.",
+    "It only locates the runtime region."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
