@@ -30,8 +30,17 @@ class Probe:
     clock_protocol: Optional[str] = None
     start_marker_comment_id: Optional[int] = None
     start_marker_created_at: Optional[str] = None
+    work_start_marker_comment_id: Optional[int] = None
+    work_start_marker_created_at: Optional[str] = None
+    pre_close_marker_comment_id: Optional[int] = None
+    pre_close_marker_created_at: Optional[str] = None
     end_marker_comment_id: Optional[int] = None
     end_marker_created_at: Optional[str] = None
+    harness_version: Optional[str] = None
+    close_trigger: Optional[str] = None
+    generated_unique_units: int = 0
+    duplicate_units_rejected: int = 0
+    batches_completed: int = 0
     scheduler_write_ok: bool = False
     scheduler_state_ok: bool = False
     checkpoint_saved: bool = False
@@ -45,6 +54,28 @@ class Probe:
     prior_next_wake_observed: bool = False
     legacy: bool = False
     anomalies: list[str] = field(default_factory=list)
+
+
+def interval_metrics(p: Probe) -> dict:
+    out = {
+        "worked_sec": None,
+        "prearm_overhead_sec": None,
+        "productive_window_sec": None,
+        "close_overhead_sec": None,
+        "productive_marker_pair_valid": False,
+    }
+    if p.start_marker_created_at and p.end_marker_created_at:
+        out["worked_sec"] = worked_sec(p.start_marker_created_at, p.end_marker_created_at)
+    if p.start_marker_created_at and p.work_start_marker_created_at:
+        out["prearm_overhead_sec"] = worked_sec(p.start_marker_created_at, p.work_start_marker_created_at)
+    if p.work_start_marker_created_at and p.pre_close_marker_created_at:
+        out["productive_window_sec"] = worked_sec(p.work_start_marker_created_at, p.pre_close_marker_created_at)
+        out["productive_marker_pair_valid"] = (
+            p.work_start_marker_comment_id is not None and p.pre_close_marker_comment_id is not None
+        )
+    if p.pre_close_marker_created_at and p.end_marker_created_at:
+        out["close_overhead_sec"] = worked_sec(p.pre_close_marker_created_at, p.end_marker_created_at)
+    return out
 
 
 def classify(p: Probe) -> dict:
@@ -86,7 +117,11 @@ def classify(p: Probe) -> dict:
         anomalies.append("ACTIVE_WORK_EXCEEDS_WORKED")
 
     if worked < p.target_runtime_sec:
-        result = "UNDER_TARGET"
+        if p.close_trigger == "WORKLOAD_EXHAUSTED":
+            result = "HARNESS_UNDER_TARGET"
+            anomalies.append("FINITE_WORKLOAD_EXHAUSTION_IS_HARNESS_DEFECT")
+        else:
+            result = "UNDER_TARGET"
     elif p.forced_stop_or_timeout:
         result = "DURATION_FAIL_CANDIDATE"
         if p.clean_close:
@@ -97,7 +132,24 @@ def classify(p: Probe) -> dict:
     else:
         result = "AMBIGUOUS"
 
-    return {"probe_id": p.probe_id, "result": result, "boundary_effect": "NONE", "worked_sec": worked, "marker_pair_valid": True, "anomalies": anomalies}
+    metrics = interval_metrics(p)
+    return {
+        "probe_id": p.probe_id,
+        "result": result,
+        "boundary_effect": "NONE",
+        "worked_sec": worked,
+        "marker_pair_valid": True,
+        "prearm_overhead_sec": metrics["prearm_overhead_sec"],
+        "productive_window_sec": metrics["productive_window_sec"],
+        "close_overhead_sec": metrics["close_overhead_sec"],
+        "productive_marker_pair_valid": metrics["productive_marker_pair_valid"],
+        "harness_version": p.harness_version,
+        "close_trigger": p.close_trigger,
+        "generated_unique_units": p.generated_unique_units,
+        "duplicate_units_rejected": p.duplicate_units_rejected,
+        "batches_completed": p.batches_completed,
+        "anomalies": anomalies,
+    }
 
 
 def retrospective_wake(result: dict, wake_observed: bool) -> dict:
