@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":173,
+  "units_completed":8,
+  "research_notes":[
+    "A later scheduler strategy comparison S1 versus S2 should measure prearm overhead and continuation reliability, not only useful-work seconds.",
+    "S1 pays scheduler cost immediately but protects the entire substantive turn.",
+    "S2 may reduce initial critical work interruption but leaves a bootstrap window unprotected.",
+    "Unless S1 overhead is material, S1 has the simpler safety case.",
+    "The current strict protocol appropriately fixes S1 as baseline.",
+    "No scheduler-strategy experiment occurs in this sample."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
