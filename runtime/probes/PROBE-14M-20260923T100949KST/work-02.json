@@ -1,0 +1,26 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":2,
+  "units_completed":18,
+  "checks":[
+    "scheduler pre-arm contract verified from returned automation state",
+    "RRULE retained FREQ=HOURLY",
+    "enabled retained true",
+    "target plus planned gap equals 17 minutes",
+    "no end-of-turn scheduler rewrite permitted",
+    "boundary movement requires clean_pass or duration_fail only",
+    "first failure creates candidate boundary only",
+    "coarse ascent remains +2m after clean pass",
+    "operating cap requires >=5 clean closes near candidate",
+    "close reserve must be empirical, not inferred from one sample",
+    "P3/P4 policy evaluation deferred until boundary/cap stage",
+    "parallel research remains deferred",
+    "under-target result cannot lower safe bound",
+    "non-duration failure cannot lower safe bound",
+    "wake jitter is measured separately from duration failure",
+    "checkpoint loss at close without independent cause is boundary-relevant",
+    "purposeful generated I/O/reasoning is valid experimental load",
+    "sleep/no-op padding remains prohibited"
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
