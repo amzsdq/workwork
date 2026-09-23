@@ -1,20 +1,26 @@
 # Completion Envelope Evidence
 
-Purpose: keep direct close/completion timing evidence separate from target-survival evidence. This is a derived audit view; raw events and per-probe evidence remain authoritative.
+Purpose: keep close/completion evidence separate from strict target-survival evidence.
 
-| Probe/class | Target | Actual elapsed | Overshoot | Direct close overhead | Inferred pre-close offset from target | Clean close | Confidence |
-|---|---:|---:|---:|---:|---:|---|---|
-| 12m mixed-load canonical pass | 720s | 761s | 41s | 32s | +9s | yes | direct close-overhead sample |
-| 14m W3 clean pass | 840s | 928s | 88s | unknown | unknown | yes | close overhead not isolated |
-| 16m W4 clean pass | 960s | >=996s | >=36s | unknown | unknown | yes | close overhead not isolated |
+## Legacy supporting observations
+| Probe/class | Historical target | Historical elapsed | Historical close observation | Scope |
+|---|---:|---:|---:|---|
+| 12m mixed-load canonical pass | 720s | 761s | 32s close-overhead field | LEGACY_PRE_SERVER_CLOCK_SUPPORTING |
+| 14m W3 clean pass | 840s | 928s | close overhead not isolated | LEGACY_PRE_SERVER_CLOCK_SUPPORTING |
+| 16m W4 clean pass | 960s | >=996s | close overhead not isolated | LEGACY_PRE_SERVER_CLOCK_SUPPORTING |
 
-For the 12m row only, `pre_close_offset = overshoot - close_overhead = 41 - 32 = +9s`, assuming the canonical event's elapsed/overshoot/close-overhead clocks share the same close endpoint as recorded. This is useful as one completion-envelope observation, not a universal cutoff.
+These rows are preserved for historical context only. Their elapsed/model-local timing does not establish current strict WORKED. The 32s observation may remain a low-confidence legacy secondary close-cost clue but is **not** a current-protocol sample for reserve promotion.
 
-## Current conclusion
+## Current-protocol evidence
+Current protocol: GITHUB_SERVER_MARKER_V1 with authoritative WORKED ending at END_MARKER.
 
-- Direct `close_overhead_sec` sample count N = 1.
-- Observed direct sample = 32s.
-- Under `CLOSE_RESERVE_ESTIMATOR.md`, N=1 is LOW_CONFIDENCE; max/median are both 32s and no promoted reserve is justified yet.
-- The configured `close_reserve_sec=60` in current state is therefore conservative/provisional configuration, not an empirically promoted reserve.
-- 14m and 16m overshoot cannot be substituted for close overhead because their pre-close timestamps were not isolated.
-- The active 18m W2 probe should capture `pre_close_ts` and `close_end_ts` directly to add the second valid close-overhead sample if it reaches clean close.
+- Current-protocol direct pre-END close sample count: **0**.
+- Current-protocol post-END sync overhead sample count: **0**.
+- Therefore current-protocol CLOSE_RESERVE remains **UNKNOWN / NOT PROMOTED**.
+- Configured 60s remains provisional control configuration only.
+- R3/R4 clean UNDER_TARGET runs did not directly instrument a compatible pre-END close interval; do not infer one.
+- R6 should preserve strict START/END marker evidence and only report close/control overhead if compatible direct endpoints are genuinely observed.
+
+## Endpoint rule
+`MEASURED_WORK_END = END_MARKER.created_at`.
+Post-END terminal ledger/state/table synchronization is bookkeeping outside strict WORKED and may be measured separately as control overhead.
