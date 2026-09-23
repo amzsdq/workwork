@@ -46,15 +46,17 @@
     "last_transfer_at_kst": "2026-09-23T08:35:44+09:00",
     "last_transfer_classification": "FENCED_RECOVERY_NOT_CLEAN_NORMAL_HANDOFF"
   },
-  "updated_at": "2026-09-23T08:42:10+09:00",
+  "updated_at": "2026-09-23T09:22:56+09:00",
   "parallel_research": {
     "status": "ARMED",
-    "probe_id": "PARALLEL-A15-B4-01",
+    "probe_id": "PARALLEL-A15-B4-02",
     "primary_runtime_sec": 900,
     "parallel_b_wake_offset_sec": 240,
-    "target_parallel_window_sec": 660,
-    "mode": "DISJOINT_COOPERATIVE_PARALLEL",
-    "evidence_path": "parallel/PARALLEL-A15-B4-01/",
+    "b_target_active_sec": 480,
+    "instrumentation": "A_POST_B_START_TWO_EVIDENCE_MINIMUM",
+    "evidence_path": "parallel/PARALLEL-A15-B4-02/",
+    "prior_probe": "PARALLEL-A15-B4-01",
+    "prior_result": "INCONCLUSIVE",
     "result": null
   }
 }
