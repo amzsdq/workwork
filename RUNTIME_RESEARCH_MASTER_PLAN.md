@@ -114,11 +114,11 @@ During Phase A, collect all three axes on the same probes whenever possible so l
 ### Phase A — runtime boundary search
 
 Current state:
-- SAFE_LOWER_BOUND = 16m
+- SAFE_LOWER_BOUND = 20m
 - FAILURE_BOUNDARY = unresolved
-- active target = 18m
+- active target = 22m
 - planned_gap = +3m
-- current profile = W2 WRITE_CHECKPOINT_HEAVY
+- current profile = W3 MIXED_IO
 
 Coarse ascent:
 - 18m: W2 WRITE_CHECKPOINT_HEAVY
@@ -177,6 +177,16 @@ Compare in increasing complexity:
 - P2 SOFT_CUTOFF_PLUS_HARD_CAP
 - P3 ESTIMATED_NEXT_TASK_ADMISSION
 - P4 ADAPTIVE_ADMISSION
+
+Accepted overlap-handoff candidate:
+- baseline candidate document: `OVERLAP_HANDOFF_BASELINE_CANDIDATE.md`
+- initial baseline: 15m OWNER work / successor wake at +12m / 3m nominal overlap
+- successor wakes as SHADOW; only the active OWNER may mutate scheduler/control state
+- ownership transfer is fenced by generation/lease
+- next cycle anchor is OWNER_ACTIVATED_AT, not SHADOW_WAKE_AT
+- current evidence supports KEEP/TEST, not production promotion
+- observed +168s wake lateness means a 3m lead can leave only ~12s preparation time, so compare 15/11, 15/12, and 15/13 rather than assuming +12m is final
+
 
 First use replay/simulation over observed task-duration and close-overhead samples. Then live-test only policies that plausibly improve the objective.
 
@@ -309,10 +319,10 @@ Every study case should record:
 
 ## 6. Current execution pointer
 
-CURRENT_CASE_ID = SC-A18-01
+CURRENT_CASE_ID = SC-A22-01
 
 Immediate objective:
-Close the 18m W2 class with a terminal classification. The next useful action is not another generic 18m start; it is to obtain a sustained useful-work 18m W2 run with a valid close/terminal result.
+Continue profile-rotated coarse ascent at 22m while collecting survival, productive-window, and completion-envelope evidence. Handoff/overlap live testing remains deferred so it does not contaminate boundary inference.
 
 ## 7. Final program completion gate
 
