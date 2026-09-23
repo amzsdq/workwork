@@ -1,0 +1,11 @@
+{
+  "unit": 1,
+  "profile": "W3_MIXED_IO_CLOSE_RESERVE",
+  "analysis": {
+    "prior_probe_issue": "close checkpoint missing despite extensive durable workload",
+    "control_change": "reserve final 60 seconds for close path and use bounded batch cadence",
+    "boundary_effect": "none until clean close or credible duration failure",
+    "safe_lower_bound_min": 12
+  },
+  "useful": true
+}
