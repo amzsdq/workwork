@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 29,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "OPERATING_CAP_GUARD_AUDIT",
+  "findings": [
+    "A successful 22m server-clock pass would be only one coarse-ascent lower-bound observation, not OPERATING_CAP evidence.",
+    "Operating-cap promotion still requires repeated clean validations, representative profiles, a safety margin below a credible failure boundary, and close-reserve characterization.",
+    "Therefore this run cannot promote HARD_CAP/SOFT_CUTOFF/PRODUCTIVE_CAP regardless of its eventual WORKED value."
+  ],
+  "substantive_unit_count_cumulative": 81,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
