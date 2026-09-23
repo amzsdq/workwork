@@ -1,0 +1,19 @@
+{
+  "probe_id": "PROBE-14M-20260923T095323KST",
+  "target_runtime_min": 14,
+  "workload_profile": "W3_MIXED_IO",
+  "result": "UNDER_TARGET_INSUFFICIENT_WORK",
+  "target_reached": false,
+  "clean_close": true,
+  "checkpoint_saved": true,
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "forced_stop_or_timeout": false,
+  "non_duration_failure": false,
+  "boundary_effect": "NONE",
+  "safe_lower_bound_min": 12,
+  "failure_boundary_min": null,
+  "work_units_completed": 33,
+  "note": "Useful study backlog was exhausted before a directly observed 14m target crossing; stopped rather than padding with idle/no-op or low-value document churn. Exact close timestamp/elapsed not claimed because no independent clock observation was available at this close point.",
+  "next": "Retry strict 14m with a larger predeclared W3 mixed-I/O workload backlog; preserve already pre-armed wake and collect retrospective wake evidence next invocation."
+}
