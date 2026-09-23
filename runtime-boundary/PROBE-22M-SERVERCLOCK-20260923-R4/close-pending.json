@@ -1,0 +1,21 @@
+{
+  "probe_id":"PROBE-22M-SERVERCLOCK-20260923-R4",
+  "case_id":"SC-A22-CLOCK-01",
+  "clock_protocol":"GITHUB_SERVER_MARKER_V1",
+  "clock_status":"END_PENDING",
+  "target_runtime_sec":1320,
+  "workload_profile":"W3_MIXED_IO",
+  "start_marker_comment_id":5796189180,
+  "start_marker_created_at":"2026-09-23T13:58:33Z",
+  "scheduler_write_ok":true,
+  "scheduler_state_ok":true,
+  "prearmed_wake_target":"2026-09-23T14:23:33Z",
+  "substantive_evidence":"midpoint-01 + analysis-01..40 + sparse validation set; non-padding guard activated after methodological saturation",
+  "direct_active_work_sec":null,
+  "productive_ratio":null,
+  "duration_failure_observed":false,
+  "non_duration_failure_observed":false,
+  "checkpoint_saved":true,
+  "clean_close_pending_end_marker":true,
+  "scheduler_mutated_at_close":false
+}
