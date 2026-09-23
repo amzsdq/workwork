@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":134,
+  "units_completed":8,
+  "research_notes":[
+    "The research program should stop escalating only on evidence, not because a target sounds long subjectively.",
+    "If 14m and subsequent classes pass cleanly, coarse ascent should continue until a credible failure region or a practical external stopping constraint appears.",
+    "If no boundary is found, report the highest tested clean class as a lower bound only.",
+    "This avoids inventing a maximum where none has been observed.",
+    "The operating cap can still be chosen below that lower bound for practical reasons if needed, but must be labeled as policy rather than platform maximum.",
+    "Current run follows this evidence-first rule."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
