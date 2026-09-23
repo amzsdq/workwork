@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 36,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "EVIDENCE_AUTHORITY_ORDER_AUDIT",
+  "findings": [
+    "Master plan now places raw GitHub marker resources above raw per-probe files for strict WORKED authority, while per-probe/state/event evidence governs classification context.",
+    "This resolves the earlier ambiguity where a derived or model-authored elapsed field could appear canonical merely because it was persisted in a raw probe file.",
+    "Persisted model-authored elapsed fields may remain for legacy audit but cannot override marker timestamps."
+  ],
+  "substantive_unit_count_cumulative": 104,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
