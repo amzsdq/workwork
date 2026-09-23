@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":138,
+  "units_completed":8,
+  "research_notes":[
+    "The durable-state-first rule is especially important once refinement begins because target classes may move non-monotonically within a bracket.",
+    "Hard-coded ascent text could otherwise incorrectly jump past a failed boundary.",
+    "The algorithm should therefore read phase, last clean, candidate failure, and next target from state each run.",
+    "The research documents define classification rules, while state selects the current step.",
+    "This separation is stable and compact.",
+    "Current state still selects strict 14m retry until close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
