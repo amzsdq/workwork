@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":148,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual operating cap can be accompanied by a validity condition such as recent validation epoch and workload coverage, not just a naked number.",
+    "This makes the policy self-describing and easier to audit.",
+    "If validity conditions fail, fallback to a conservative prior cap or trigger revalidation.",
+    "Such metadata is low complexity compared with adaptive runtime control.",
+    "The current research is generating the evidence needed to populate it.",
+    "No cap value is yet valid for promotion."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
