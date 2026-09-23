@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":74,
+  "units_completed":8,
+  "research_notes":[
+    "The safest handoff point is a durable checkpoint boundary after the current smallest safe unit, not an arbitrary wall-clock instant mid-write.",
+    "Therefore measured actual elapsed may modestly exceed target even on a correctly executed pass.",
+    "That overshoot should be recorded rather than treated as protocol violation.",
+    "Systematic large overshoot would indicate units are too coarse for the chosen cap.",
+    "Policy-stage task-size controls can reduce that overshoot.",
+    "Current generated units are deliberately bounded to keep close boundaries frequent."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
