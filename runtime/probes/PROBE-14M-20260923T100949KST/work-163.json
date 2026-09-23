@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":163,
+  "units_completed":8,
+  "research_notes":[
+    "A future production worker may not need to know experimental target classes at all; it can consume only the promoted operating contract.",
+    "The research automation can remain separate until that contract is stable.",
+    "This prevents experimental ascent from accidentally changing production behavior prematurely.",
+    "The current repository state correctly leaves promoted_operating_cap_minutes null.",
+    "Only research target is being advanced experimentally.",
+    "No production rule changes are made by this probe."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
