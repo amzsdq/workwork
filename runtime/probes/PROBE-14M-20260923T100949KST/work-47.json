@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":47,
+  "units_completed":8,
+  "research_notes":[
+    "The relay's target metric should ultimately include successful continuation, because a long turn with no usable successor is operationally poor.",
+    "Start pre-arm substantially decouples continuation from late-turn close but does not eliminate wake jitter.",
+    "Gap optimization will therefore need actual next-start measurements after runtime cap validation.",
+    "Intentional overlap may later turn some would-be idle gap into useful shadow/parallel work, but only with fencing.",
+    "The current ordering—runtime envelope, cap validation, policy, then parallel optimization—is methodologically cleaner.",
+    "No evidence from this strict sample should be used to prematurely resume parallel mode."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
