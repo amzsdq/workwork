@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":13,
+  "units_completed":12,
+  "utilization_model":[
+    "Idealized duty cycle rises as active runtime increases for fixed planned gap.",
+    "Actual duty cycle must use actual close and next-start timestamps because overshoot consumes planned gap.",
+    "Wake jitter can turn a nominal +3m plan into a much larger idle gap.",
+    "A longer target that increases close-loss probability can reduce expected useful throughput despite higher nominal duty cycle.",
+    "Therefore operating cap optimization is a reliability-adjusted utilization problem.",
+    "Incremental durable checkpoints reduce expected lost work from abrupt termination but add write overhead.",
+    "Checkpoint cadence itself may later be optimized once boundary behavior is understood.",
+    "During boundary search, evidence cadence should favor observability over micro-optimizing write overhead.",
+    "Pre-arm scheduling shifts continuation protection earlier and removes a fragile late scheduler operation.",
+    "Planned-gap optimization should occur only after runtime cap is stable enough to avoid interaction confounds.",
+    "Intentional parallel successors can later raise aggregate utilization beyond single-owner duty cycle but require duplicate-work fencing.",
+    "The current strict phase correctly postpones that optimization."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
