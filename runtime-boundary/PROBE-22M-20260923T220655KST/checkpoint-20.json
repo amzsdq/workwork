@@ -1,0 +1,18 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":20,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"FINAL_BOUNDED_VERIFICATION_BEFORE_TARGET",
+  "verified":[
+    "same automation was prearmed once at invocation start",
+    "scheduler returned recurring RRULE and enabled state",
+    "raw start evidence and active recovery pointer agree on target/profile/wake",
+    "no duration failure or independent tool/provider failure observed",
+    "terminal branches and close schema are prevalidated",
+    "normal work will stop at target crossing and scheduler will not be mutated at normal close"
+  ],
+  "substantive_unit_count_cumulative":20,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE_TO_TARGET"
+}
