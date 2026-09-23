@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":125,
+  "units_completed":8,
+  "research_notes":[
+    "The present research architecture treats the automation as disposable execution with GitHub as durable evidence/control state.",
+    "This makes invocation lifetime an operational resource to optimize rather than a source of hidden conversational continuity.",
+    "A validated cap plus pre-arm lets each invocation consume that resource predictably.",
+    "Cold-start successors can then resume from durable state without requiring predecessor memory.",
+    "This is consistent with the broader persistent-agent design goal.",
+    "The current sample tests one piece of that contract empirically."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
