@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":35,
+  "units_completed":8,
+  "research_notes":[
+    "Current strict protocol is intentionally conservative about classification but aggressive about coarse target ascent.",
+    "That combination finds the region quickly without promoting unreliable operating limits.",
+    "Once the first failed upper class appears, one-minute refinement is sufficient for the current operational objective.",
+    "Sub-minute boundary precision would likely be false precision given provider/runtime variance.",
+    "Safety margin should absorb observed variance rather than relying on overly precise cutoff estimates.",
+    "The final policy should therefore be robust to timing noise rather than tuned to a single exact second."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
