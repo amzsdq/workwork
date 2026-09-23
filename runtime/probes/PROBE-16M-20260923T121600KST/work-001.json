@@ -1,0 +1,7 @@
+{
+  "probe_id": "PROBE-16M-20260923T121600KST",
+  "unit": 1,
+  "kind": "BOUNDARY_EVIDENCE_RECONCILIATION",
+  "finding": "14m is a strict observed safe lower bound, not an operating cap. The prior 14m close had 88s overshoot and sparse active-work evidence, so 16m should test a reasoning-heavy profile while preserving explicit close reserve rather than interpreting overshoot as free safety margin.",
+  "bounded_implication": "A 16m clean pass can advance the exploratory lower bound; it cannot validate a production cap without repeated near-cap passes across representative profiles."
+}
