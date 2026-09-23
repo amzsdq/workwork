@@ -1,0 +1,11 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":11,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":11,
+  "large_unit":"cross-check 20m W6 evidence against final program outputs",
+  "coverage":{"SAFE_LOWER_BOUND":"18m entering probe","FAILURE_BOUNDARY":"unresolved","OPERATING_CAP":"not promotable yet","PRODUCTIVE_CAP":"not promotable yet","SOFT_CUTOFF":"not promotable yet","HARD_CAP":"20m is test target, not promoted cap","CLOSE_OVERHEAD":"32s prior direct sample; current probe pending","SAFETY_MARGIN":"unresolved","NEXT_TASK_ADMISSION":"P3 inequality has analytical support, empirical promotion pending","selected_planned_gap":"3m baseline only"},
+  "finding":"Current probe is decision-relevant for survival and completion envelope, but final policy remains intentionally unpromoted until boundary and replication evidence exist.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
