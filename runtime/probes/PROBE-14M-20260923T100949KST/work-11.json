@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":11,
+  "units_completed":12,
+  "cap_validation_design":[
+    "After the failure bracket is refined, choose a candidate below the credible boundary rather than max success.",
+    "Require at least five clean closes at/near candidate before promotion.",
+    "Require no unresolved duration failure at or below candidate.",
+    "Require verified start pre-arm and durable final checkpoint on every counted validation pass.",
+    "Attach observed next-wake evidence where measurable.",
+    "Estimate close reserve from multiple observations, including upper-tail/max, not one run.",
+    "Increase safety margin if close variance is high before adding adaptive policy complexity.",
+    "Validation should include representative workload shapes near candidate.",
+    "Promotion should record confidence/count and explicit rollback rule.",
+    "Rollback should lower cap when recent clean-close reliability materially degrades.",
+    "A transient independent tool failure should not automatically trigger runtime-cap rollback.",
+    "A repeated unexplained close loss at/below cap should trigger rollback and renewed boundary investigation."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
