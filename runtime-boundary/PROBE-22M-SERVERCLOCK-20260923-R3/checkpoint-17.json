@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 17,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "SERVER_CLOCK_PHASE_GATE_AUDIT",
+  "findings": [
+    "Phase A now requires 22m server-clock revalidation before +2m ascent; legacy 20m remains contextual rather than strict clock evidence.",
+    "Phase B counted validations now explicitly require valid server-clock marker pairs.",
+    "Phase C overlap work remains deferred and therefore cannot contaminate this strict boundary probe."
+  ],
+  "substantive_unit_count_cumulative": 42,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
