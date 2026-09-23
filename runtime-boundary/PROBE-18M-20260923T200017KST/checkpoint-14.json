@@ -1,0 +1,16 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":14,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":66,
+  "scheduler_midrun_observation":{
+    "same_automation_schedule":"DTSTART 2026-09-23T20:21:17+09:00 with RRULE:FREQ=HOURLY",
+    "enabled":true,
+    "schedule_state":"VERIFIED",
+    "metadata_last_run_time":"still reflected an earlier completed run during this in-flight invocation"
+  },
+  "measurement_implication":"Do not use mid-run last_run_time metadata as the current invocation start proof. It may lag until run completion. Capture invocation start independently and use next-run retrospective evidence for wake timing.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
