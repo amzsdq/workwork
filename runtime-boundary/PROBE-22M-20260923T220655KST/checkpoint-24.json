@@ -1,0 +1,11 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":24,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"FINAL_PRECLOSE_READINESS",
+  "finding":"All decision-relevant preparatory work for terminal classification is complete. Continue bounded active verification through the 22m target; then no further normal task admission.",
+  "substantive_unit_count_cumulative":24,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE_TO_TARGET"
+}
