@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 45,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "FINAL_REPRODUCIBILITY_REAUDIT",
+  "findings": [
+    "Fresh state, master plan, decision rule, execution plan, and evidence table now all use the server-clock invariant consistently for strict duration classification.",
+    "The active probe identity and START marker are durable across all recovery/control views.",
+    "No unresolved protocol contradiction remains that would invalidate terminal classification once END marker exists."
+  ],
+  "substantive_unit_count_cumulative": 131,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
