@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":168,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual worker can reduce bootstrap by reading only state/current, the compact operating contract, and the active checkpoint rather than all research docs.",
+    "Research-specific invocations can read the fuller methodology when needed.",
+    "This separation prevents production context from growing with experiment history.",
+    "It also increases available useful-work time inside the validated cap.",
+    "The current research turn is intentionally heavier because methodology is still being established.",
+    "No production bootstrap change is made yet."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
