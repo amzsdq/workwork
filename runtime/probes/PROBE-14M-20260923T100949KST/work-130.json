@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":130,
+  "units_completed":8,
+  "research_notes":[
+    "A later comparison of S1 immediate pre-arm versus post-bootstrap pre-arm should be deferred until runtime boundary is stable because scheduler timing changes the protected critical path.",
+    "S1 is the correct baseline now because it maximizes continuation protection.",
+    "Only if S1 overhead materially harms useful work should S2 be tested.",
+    "Shadow-side scheduler writes remain high-risk until fencing exists and are not part of strict runtime research.",
+    "This preserves one scheduler writer per normal invocation.",
+    "Current scheduler state remains unchanged since start."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
