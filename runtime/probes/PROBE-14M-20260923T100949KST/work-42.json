@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":42,
+  "units_completed":8,
+  "research_notes":[
+    "The retry has generated enough substantive analytical work that another under-target classification would now more likely reflect timing/tool execution characteristics than a tiny backlog.",
+    "Nevertheless classification remains timestamp-based, not inferred from amount of work.",
+    "A durable close after target is the only clean-pass path.",
+    "If the run ends abruptly, surviving incremental evidence will permit the next invocation to estimate the last confirmed progress point.",
+    "That estimate must not be upgraded to an exact termination timestamp without evidence.",
+    "Conservative uncertainty handling is required near the eventual boundary."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
