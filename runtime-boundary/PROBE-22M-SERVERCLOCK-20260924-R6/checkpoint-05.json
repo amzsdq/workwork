@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260924-R6",
+  "case_id": "SC-A22-CLOCK-01",
+  "workload_profile": "W3_MIXED_IO",
+  "substantive_units_completed_total": 41,
+  "additional_units": [
+    "master plan active-pointer synchronization",
+    "current-state active-pointer synchronization",
+    "event-ledger R6 start synchronization",
+    "evidence-table R5/R6 synchronization",
+    "close-reserve current-vs-legacy sample repair",
+    "completion-envelope evidence current-vs-legacy repair",
+    "policy replay timing-authority repair"
+  ],
+  "status": "ACTIVE_CONTINUE"
+}
