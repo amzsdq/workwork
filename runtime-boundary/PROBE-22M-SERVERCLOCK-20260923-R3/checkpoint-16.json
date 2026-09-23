@@ -1,0 +1,13 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 16,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "MASTER_PLAN_ACTIVE_POINTER_SYNC",
+  "finding": "Updated RUNTIME_RESEARCH_MASTER_PLAN.md to make raw marker resources first timing authority, define SC-A22-CLOCK-01 terminal rules, and point explicitly to the active probe/START marker so a continuation cannot legitimately launch a duplicate.",
+  "decision_value": "Completes durable control-plane alignment for the new server-clock study case while preserving legacy evidence as supporting-only.",
+  "repair_commit": "a8b9d8f7a4768b9476aa14e36163735982533458",
+  "substantive_unit_count_cumulative": 39,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
