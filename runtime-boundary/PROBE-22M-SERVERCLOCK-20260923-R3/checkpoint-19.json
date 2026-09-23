@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 19,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "PROFILE_FIDELITY_REAUDIT",
+  "findings": [
+    "Observed probe work continues to alternate GitHub reads, durable writes, state reconstruction, evidence reconciliation, and compact protocol repairs, matching W3 MIXED_IO definition.",
+    "Writes were necessary for recovery/control consistency rather than artificial load generation.",
+    "No sleep, idle wait, spin, or meaningless API loop has been used to consume duration."
+  ],
+  "substantive_unit_count_cumulative": 49,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
