@@ -12,7 +12,11 @@
     "prior_operational_baseline_minutes": 10,
     "first_failure_boundary_minutes": null,
     "last_clean_target_minutes": 12,
-    "promoted_operating_cap_minutes": null
+    "promoted_operating_cap_minutes": null,
+    "next_strict_target_minutes": 14,
+    "phase": "BOUNDARY_SEARCH_COARSE_ASCENT",
+    "strict_pass_requires_duration_protocol": true,
+    "parallel_probe_runtime_counts_as": "SUPPORTING_SURVIVAL_EVIDENCE_ONLY"
   },
   "overlap_probe": {
     "active": false,
@@ -49,14 +53,20 @@
   "updated_at": "2026-09-23T09:22:56+09:00",
   "parallel_research": {
     "status": "ARMED",
-    "probe_id": "PARALLEL-A15-B4-02",
-    "primary_runtime_sec": 900,
+    "probe_id": "PARALLEL-A14-B4-02",
+    "primary_runtime_sec": 840,
     "parallel_b_wake_offset_sec": 240,
-    "b_target_active_sec": 480,
+    "target_parallel_window_sec": 600,
     "instrumentation": "A_POST_B_START_TWO_EVIDENCE_MINIMUM",
-    "evidence_path": "parallel/PARALLEL-A15-B4-02/",
+    "evidence_path": "parallel/PARALLEL-A14-B4-02/",
     "prior_probe": "PARALLEL-A15-B4-01",
     "prior_result": "INCONCLUSIVE",
+    "duration_relation": "SUPPORTING_SURVIVAL_EVIDENCE_NOT_STRICT_PASS",
     "result": null
+  },
+  "research_program": {
+    "priority_1": "MAX_SAFE_RUNTIME_AND_REPRODUCIBLE_HANDOFF_POLICY",
+    "priority_2": "COOPERATIVE_PARALLEL_UTILIZATION",
+    "sequencing": "alternate strict duration probes with isolated parallel probes; never let parallel scheduling satisfy strict duration PASS"
   }
 }
