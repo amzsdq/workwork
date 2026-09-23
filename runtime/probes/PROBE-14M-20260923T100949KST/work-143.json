@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":143,
+  "units_completed":8,
+  "research_notes":[
+    "If the close succeeds but state update is delayed, the next invocation must prefer close evidence over stale state/current.",
+    "This is why SOURCE_OF_TRUTH includes latest durable runtime evidence in addition to state.",
+    "A reconciliation step can then update state without rerunning the completed probe.",
+    "This avoids duplicate experimental work and preserves append-only history.",
+    "The current sample's transaction order is designed for that recovery path.",
+    "No result is asserted until close evidence exists."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
