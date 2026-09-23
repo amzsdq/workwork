@@ -79,3 +79,40 @@ where required lead is derived from observed wake jitter + successor preparation
 
 ## Rollback
 Fall back to non-overlap/prearm relay on duplicate owner, unfenceable scheduler ownership, successful stale-owner overwrite, repeated successor lateness beyond safe close, or materially increased continuation/forced-stop risk.
+
+## Selective Workaholic absorption
+
+Reviewed source: installed Workaholic continuous-relay skill.
+
+### ADOPT
+The following semantics are promoted into this candidate because they directly improve continuity without fixing an unvalidated timing constant:
+
+1. **SAME_CANONICAL_REUSE** — normal continuation reuses the same canonical RRULE automation; no replacement automation merely for continuation.
+2. **NORMAL_STOP_GATES** — once this handoff policy is promoted to operational relay mode, the only normal voluntary stop gates are:
+   - PROGRAM_COMPLETE
+   - HANDOFF_COMPLETE
+   A subtask/checkpoint/phase completion or merely expecting a successor is not a normal stop gate.
+3. **PREPARE_BEFORE_TRANSFER** — successor must reconstruct durable state and become READY before ownership transfer.
+4. **PREDECESSOR_RETAINS_AUTHORITY** — successor wake/existence alone never completes handoff. Until durable transfer commits, predecessor remains OWNER.
+5. **AMBIGUOUS_HANDOFF_FAILS_CLOSED** — ambiguous transfer means predecessor remains authoritative; never infer success.
+6. **POST_TRANSFER_SINGLE_OWNER** — after transfer, predecessor stops owner-only substantive side effects and successor becomes the sole active owner.
+7. **WHOLE_PROGRAM_COMPLETION** — PROGRAM_COMPLETE means the entire requested program is complete, not just the current unit.
+
+Preferred authority sequence:
+
+`PREDECESSOR_ACTIVE -> SUCCESSOR_AWAKE -> SUCCESSOR_PREPARED -> SUCCESSOR_READY -> TRANSFER_COMMITTED -> SUCCESSOR_ACTIVE`
+
+The new OWNER, not the SHADOW, performs the next scheduler mutation after transfer.
+
+### REJECT / DO NOT PROMOTE
+The following Workaholic rules are intentionally not absorbed:
+
+- **Fixed +14m wake offset** — rejected as an invariant. Wake lead is an empirical tunable and must be derived from jitter + preparation + transfer latency + safety margin.
+- **Successor re-arms before ownership transfer** — rejected because it violates SINGLE_SCHEDULER_OWNER / SHADOW_NO_SCHEDULER_WRITE and creates split-brain scheduler risk.
+- **EGO=WORKAHOLIC** — not required for correctness and has no control-plane authority.
+- **Any fixed 15/12 timing as permanent policy** — 15/12 remains only a test baseline.
+
+### Scope guard
+NORMAL_STOP_GATES applies to the future operational relay after runtime-boundary/cap validation. It does **not** override strict runtime-probe PRE_CLOSE/END semantics during Phase A/B experiments.
+
+If a promoted operational predecessor approaches the empirically established hard runtime cap before HANDOFF_COMPLETE, this is an abnormal recovery/safety condition, not a successful normal stop. The system must preserve durable continuation evidence and avoid pretending handoff succeeded.
