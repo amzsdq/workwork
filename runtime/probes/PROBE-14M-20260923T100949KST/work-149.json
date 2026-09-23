@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":149,
+  "units_completed":8,
+  "research_notes":[
+    "The strict runtime study should remain independent of subjective impressions that a turn feels long or short.",
+    "Raw timestamps and durable outcomes decide advancement.",
+    "This protects the experiment from anchoring on the old 10m operational rule.",
+    "The old rule remains a historical baseline, not a presumed limit.",
+    "The current ascent is explicitly testing beyond it.",
+    "14m still requires the final durable close to become an observed lower bound."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
