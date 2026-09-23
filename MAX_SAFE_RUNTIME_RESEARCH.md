@@ -5,8 +5,9 @@ What is the maximum empirically safe substantive-work duration for one ChatGPT A
 
 This is one integrated research problem. Wake scheduling is pre-armed at turn start; planned gap is now an experimental variable:
 1. characterize the runtime failure boundary,
-2. choose a safe operating cap,
-3. derive a repeatable policy that uses as much of that cap as practical.
+2. characterize the productive work window and reliable completion envelope,
+3. choose a safe operating cap,
+4. derive a repeatable policy that uses as much of that cap as practical.
 
 ## Current operating context
 - Previous operating floor: about 10 minutes of work before handoff.
@@ -16,15 +17,15 @@ This is one integrated research problem. Wake scheduling is pre-armed at turn st
 
 ## Phase A — boundary search
 1. Test-generated workload is valid substantive experimental work when it is deliberately used to exercise runtime behavior and the workload profile is recorded. Idle waiting/sleeping only to consume time remains excluded.
-2. Record actual start, useful work, close time.
+2. Record actual start, useful/goal-directed work evidence, close time, and completion-envelope timestamps when directly observable.
 3. Coarse ascent from prior 10m baseline in about +2m classes.
 4. Clean PASS requires a successful same-automation RRULE pre-arm at TURN_START + active target workload + durable close checkpoint. The pre-arm return must contain the intended DTSTART/RRULE/enabled state; no scheduler mutation is performed at normal turn end.
-5. Next invocation provides retrospective WAKE_OK evidence.
+5. A clean close is initially CLEAN_PASS_PENDING_WAKE. The next actual invocation provides retrospective WAKE_OK evidence; under the strict protocol, only then may SAFE_LOWER_BOUND and the next coarse target advance.
 6. Separate duration-related failures from unrelated tool/network/provider failures.
 7. First credible duration-related failure brackets the upper boundary.
 8. Refine the bracket at ~1m resolution.
 9. If no boundary is observed, report only a lower bound and keep ascending.
-10. Apply `RUNTIME_BOUNDARY_DECISION_RULE.md` for evidence classification, failure bracketing, refinement, and cap promotion. A single coarse PASS may advance the next probe but never promotes a production cap.
+10. Apply `RUNTIME_BOUNDARY_DECISION_RULE.md` for evidence classification, failure bracketing, refinement, and cap promotion. A single coarse clean close never promotes a production cap, and it does not advance strict coarse state until retrospective WAKE_OK.
 
 ## Phase B — operating-cap validation
 The production cap is not max_observed_success.
@@ -55,6 +56,7 @@ Use P3 but derive close_overhead and safety_margin from recent observed runs rat
 
 ## Policy comparison metrics
 - long-run useful_work / wall-clock time
+- goal-directed window / wall-clock time when direct active time is not separable
 - clean-close rate
 - successful next-wake rate
 - overshoot beyond intended cap
@@ -74,6 +76,7 @@ The final reusable operating contract must include:
 - observed safe lower bound
 - first credible failure boundary or unresolved status
 - promoted operating cap
+- productive cap/window
 - soft cutoff
 - hard cap
 - close-overhead estimate
@@ -93,16 +96,13 @@ Small changes are allowed only when directly improving:
 
 Avoid unrelated orchestration expansion.
 
-
 ## Cross-profile generalization
 Runtime safety must be tested across heterogeneous real workload shapes defined in `RUNTIME_WORKLOAD_PROFILES.md`.
 
-A single profile may advance an exploratory lower bound, but a final universal operating cap requires replication across representative workload profiles near the candidate boundary. If a realistic profile has materially worse close behavior or a lower failure boundary, the final policy must account for it rather than averaging the risk away.
-
+A single profile may advance an exploratory lower bound after strict wake confirmation, but a final universal operating cap requires replication across representative workload profiles near the candidate boundary. If a realistic profile has materially worse close behavior or a lower failure boundary, the final policy must account for it rather than averaging the risk away.
 
 ## Test-load interpretation
 For this study, deliberately generated reasoning/I-O/checkpoint workload is part of the experiment, not padding, when it is bounded, measured, and assigned a workload profile. Older wording that broadly rejects artificial/generated load should be interpreted narrowly as rejecting idle/no-op time consumption, not rejecting purposeful stress workload.
-
 
 ## Phase D — pre-armed gap optimization
 After the runtime boundary/operating cap is sufficiently characterized, hold runtime policy approximately fixed and test planned wake gaps.
