@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":79,
+  "units_completed":8,
+  "research_notes":[
+    "The experiment should preserve failures rather than overwrite them with retries, because failure frequency matters for cap validation.",
+    "Append-only probe IDs naturally preserve that history.",
+    "Retries should receive new probe IDs even at the same target class.",
+    "State/current can point to the latest result while aggregate evidence counts all classified samples.",
+    "This avoids survivorship bias from keeping only successful retries.",
+    "The current retry is distinct from the prior under-target 14m sample."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
