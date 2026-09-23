@@ -1,0 +1,15 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "checkpoint":2,
+  "ordinal_range":[2048,10239],
+  "new_unique_units":8192,
+  "cumulative_unique_units":10240,
+  "new_batches":32,
+  "cumulative_batches":40,
+  "duplicate_units_rejected":0,
+  "invariant_assertions_evaluated":55632,
+  "dimensions":{"marker":5,"scheduler":3,"close":3,"provider":2,"wake":2,"shape":4},
+  "decision_checks":["CLOCK_EVIDENCE_INVALID cannot advance lower bound","NON_DURATION_FAIL cannot create duration boundary","scheduler faults remain non-duration","forced-stop precedence blocks false clean pass","wake only promotes pending clean pass","case identity remains deterministic and unique"],
+  "anomalies":0,
+  "status":"SUBSTANTIVE_CONTINUATION"
+}
