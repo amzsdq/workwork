@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":84,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual runtime-health monitor can use classified probe outcomes rather than raw errors to avoid overreacting to irrelevant tool anomalies.",
+    "A rolling clean-close rate near the cap is a more useful health signal than total error count.",
+    "Wake-success rate should be monitored separately because scheduler/provider issues can degrade relay continuity without changing runtime survival.",
+    "Checkpoint-loss rate is another separate critical metric.",
+    "This decomposition supports targeted rollback or recovery rather than one global failure flag.",
+    "Current Phase A is collecting the runtime component first."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
