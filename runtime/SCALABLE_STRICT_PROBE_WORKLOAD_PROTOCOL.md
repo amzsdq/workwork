@@ -40,10 +40,11 @@ After START/WORK_START markers and scheduler pre-arm:
 
 1. process a batch of unique units;
 2. persist a compact batch checkpoint with ordinal range, pass/fail/anomaly counts, and fingerprint;
-3. read authoritative server clock marker(s) only as needed for control decisions;
-4. if still before PRE_CLOSE threshold, request the next unique batch;
-5. never voluntarily close merely because the current batch/corpus finished;
-6. stop admitting new batches only when the close policy says PRE_CLOSE should begin, or on a genuine blocking/non-duration/duration failure.
+3. create/fetch a GitHub PROGRESS_MARKER at bounded batch intervals when an admission/close decision is needed;
+4. compute authoritative elapsed-for-control from PROGRESS_MARKER.created_at - START_MARKER.created_at;
+5. if the server-clock control rule still admits work, request the next unique batch;
+6. never voluntarily close merely because the current batch/corpus finished;
+7. stop admitting new batches only when the close policy says PRE_CLOSE should begin, or on a genuine blocking/non-duration/duration failure.
 
 No sleeping, idle waiting, or duplicate-work padding is allowed.
 
@@ -69,3 +70,10 @@ Persist:
 - assertion_count
 
 These are workload-quality metrics. They supplement, but do not replace, server-clock productive-window measurement.
+
+
+## Control-clock rule
+
+Target/close decisions must be based on GitHub server progress samples, not model-authored/local elapsed time.
+
+For coarse boundary probes, continue unique useful work until an authoritative progress sample shows the configured close threshold has been reached. The exact PRE_CLOSE threshold is part of the completion-envelope experiment; record it explicitly. Never infer target crossing solely from model output.
