@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":140,
+  "units_completed":8,
+  "research_notes":[
+    "The current run's evidence volume confirms that future context/onboarding must use summaries rather than exhaustive file reading.",
+    "A compact latest-probe summary plus state pointer is sufficient for normal continuation.",
+    "Detailed batches are audit material and diagnostic fallback.",
+    "This pattern preserves both efficiency and verifiability.",
+    "The final relay policy should follow the same layered evidence design.",
+    "Current close will serve as the compact latest-probe summary."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
