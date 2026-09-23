@@ -1,0 +1,19 @@
+{
+  "probe_id": "PROBE-18M-20260923T171552KST",
+  "checkpoint": 1,
+  "workload_profile": "W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_work": {
+    "type": "boundary-policy invariant evaluation",
+    "cases": [
+      {"case":"target_reached + clean_close + scheduler_ok + checkpoint_saved + no_duration_failure","classification":"PASS_PENDING_WAKE_OK"},
+      {"case":"target_not_reached","classification":"NOT_PASS"},
+      {"case":"github_write_failure","classification":"NON_DURATION_FAILURE_UNLESS_CLOSE_CHECKPOINT_UNSAVED"},
+      {"case":"forced_termination_before_target","classification":"CREDIBLE_DURATION_FAILURE_CANDIDATE"},
+      {"case":"wake_jitter_after_clean_close","classification":"WAKE_LAYER_ANOMALY_NOT_DURATION_FAILURE"},
+      {"case":"scheduler_write_failed_at_prearm","classification":"SCHEDULER_FAILURE_NOT_DURATION_BOUNDARY"}
+    ],
+    "invariants_checked": 6,
+    "parallel_probe_promotion_allowed": false
+  },
+  "checkpoint_saved": true
+}
