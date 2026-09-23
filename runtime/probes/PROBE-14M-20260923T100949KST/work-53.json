@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":53,
+  "units_completed":8,
+  "research_notes":[
+    "The strict protocol intentionally treats successful incremental writes before target as neither pass nor failure.",
+    "This avoids survivorship bias from partial runs.",
+    "At the same time, incremental writes are valuable for diagnosing where a failed run stopped.",
+    "The final close record is therefore both a classification marker and a measurement of close overhead.",
+    "This dual role justifies keeping it small and stable across probes.",
+    "Future aggregation can use it as the canonical per-probe summary."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
