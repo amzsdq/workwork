@@ -23,8 +23,8 @@
   "boundary_effect":"NONE_PENDING_RETROSPECTIVE_WAKE",
   "safe_lower_bound_min":16,
   "failure_boundary_min":null,
-  "terminal_sync_status":"IN_PROGRESS",
+  "terminal_sync_status":"COMPLETE_PENDING_VERIFICATION",
   "close_end_ts":null,
   "close_overhead_sec":null,
-  "note":"Target reached with sustained useful W2 work. Terminal sync/verification is in progress; close-end timing is observed after required synchronization and verification."
+  "note":"Required terminal writes completed. close_end_ts is observed after consistency verification and persisted as post-close measurement without redefining the operational endpoint."
 }
