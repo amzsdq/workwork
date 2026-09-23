@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 26,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "SAFE_BOUND_SEMANTICS_AUDIT",
+  "findings": [
+    "SERVER_CLOCK_SAFE_LOWER_BOUND is intentionally null during this first post-protocol revalidation even though legacy evidence reached 20m.",
+    "This avoids mixing two clock classes in one strict bound while still retaining legacy 20m as exploratory/supporting context.",
+    "A successful 22m marker pair plus later WAKE_OK can establish 22m directly as the first server-clock lower-bound observation; re-running every lower class is not required by the current master plan."
+  ],
+  "substantive_unit_count_cumulative": 72,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
