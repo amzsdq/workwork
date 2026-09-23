@@ -1,0 +1,12 @@
+{
+  "status":"PENDING_PROJECTION_RECONCILE",
+  "probe_id":"PROBE-22M-SERVERCLOCK-20260924-R9",
+  "reason":"Posthoc generator-v1 audit found ID uniqueness != semantic decision-value uniqueness.",
+  "required_projection_change":"Distinguish 22m server-clock survival observation from strict safe-lower-bound promotion until superseded/revalidated by semantically unique Harness V2 workload.",
+  "clock_evidence":"VALID",
+  "worked_sec":1322,
+  "failure_boundary_effect":"NONE",
+  "do_not_erase":"22m02s clean server-clock survival observation",
+  "do_not_claim_until_reconciled":"22m fully validated substantive-work safe lower bound based solely on R9",
+  "supersession_rule":"A clean semantically-unique 24m+ probe with retrospective WAKE_OK supersedes this concern for lower-bound purposes."
+}
