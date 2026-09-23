@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":169,
+  "units_completed":8,
+  "research_notes":[
+    "A future utilization calculation should avoid double-counting overlapping parallel worker seconds as wall-clock time; aggregate worker-seconds and wall time are different metrics.",
+    "For single-worker strict probes this ambiguity does not arise.",
+    "Later parallel experiments should report both parallelism factor and net useful throughput gain after coordination overhead.",
+    "This reinforces why parallel evidence remains separate from strict runtime counters.",
+    "The current sample has one strict active worker only.",
+    "No concurrency adjustment is needed for its elapsed classification."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
