@@ -1,0 +1,21 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":5,
+  "load_extension_reason":"Initial 72 bounded units completed while substantive derived work remained available; extension is useful analysis, not idle padding.",
+  "units_completed":12,
+  "analysis":[
+    "A workload-unit count is not itself a duration proxy; timing classification must use timestamps.",
+    "Repository round trips exercise I/O and checkpoint paths relevant to the relay workload.",
+    "Frequent immutable checkpoints reduce evidence loss but add overhead; this overhead is part of the tested workload profile.",
+    "Strict duration evidence should record workload profile so later universal-cap claims can test heterogeneous profiles.",
+    "If this invocation terminates before durable close near target without an independent failure, classification must consider duration_fail rather than silently retry.",
+    "If useful work exhausts again before target, classification remains under_target and the generator must be enlarged rather than treating it as a pass/fail.",
+    "The successor wake at START+17m intentionally leaves a +3m planned gap relative to target, preserving the current baseline while runtime is isolated.",
+    "Once a boundary is found, planned-gap optimization can reduce actual idle time independently.",
+    "Long-run utilization depends jointly on active duration, close reliability, wake jitter, and planned gap; maximizing nominal duration alone is insufficient.",
+    "A failed final checkpoint can dominate the utilization benefit of a longer target, motivating repeated cap validation.",
+    "The decision rule correctly distinguishes exploratory lower-bound advancement from production-cap promotion.",
+    "Parallel overlap remains a later optimization because it changes scheduler/control conditions and would confound strict boundary evidence now."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
