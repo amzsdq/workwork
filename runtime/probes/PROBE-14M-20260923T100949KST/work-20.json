@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":20,
+  "units_completed":12,
+  "late_turn_bounded_analysis":[
+    "Late-turn work units are kept small to preserve a safe close boundary without idling.",
+    "This approximates the future P2 concept without using it to classify Phase-A policy performance.",
+    "The scheduler remains untouched after the start pre-arm.",
+    "Durable incremental writes continue to provide termination evidence if the final close is lost.",
+    "The current sample has substantially more durable workload evidence than the prior under-target sample.",
+    "No evidence currently supports lowering the 12m safe lower bound.",
+    "No evidence currently establishes a failure boundary.",
+    "A successful target close is still required before raising the lower bound to 14m."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
