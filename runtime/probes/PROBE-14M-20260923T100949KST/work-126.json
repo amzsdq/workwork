@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":126,
+  "units_completed":8,
+  "research_notes":[
+    "The current sample's numerous durable commits also verify that state/evidence persistence can occur incrementally without rewriting a shared mutable probe file.",
+    "Append-only evidence avoids intra-run overwrite races and preserves audit history.",
+    "For normal single-owner strict probes, this is conservative but straightforward.",
+    "For later parallel probes, per-worker append-only namespaces become essential rather than merely convenient.",
+    "The same evidence discipline can therefore carry forward across research stages.",
+    "No parallel writes are active now."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
