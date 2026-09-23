@@ -35,20 +35,18 @@
     "last_probe_direct_active_work_sec": null,
     "last_probe_productive_ratio": null,
     "last_probe_substantive_unit_count": 16,
-    "active_probe_id": null,
-    "active_probe_started_at_kst": null,
+    "active_probe_id": "PROBE-22M-20260923T220655KST",
+    "active_probe_started_at_kst": "2026-09-23T22:06:55+09:00",
     "active_probe_target_minutes": 22,
     "active_probe_workload_profile": "W3_MIXED_IO",
-    "active_probe_prearmed_wake_at_kst": null,
-    "active_probe_status": "READY_TO_START",
-    "next_probe_requirement": "RUN_STRICT_22M_WITH_ROTATED_PROFILE_AND_THREE_AXIS_MEASUREMENT",
+    "active_probe_prearmed_wake_at_kst": "2026-09-23T22:31:55+09:00",
+    "active_probe_status": "RUNNING",
+    "next_probe_requirement": "COMPLETE_STRICT_22M_W3_THREE_AXIS_MEASUREMENT",
     "next_probe_workload_profile": "W3_MIXED_IO",
     "close_reserve_sec": 60,
     "close_reserve_status": "PROVISIONAL_CONFIG_NOT_PROMOTED",
     "direct_close_overhead_sample_count": 1,
-    "direct_close_overhead_samples_sec": [
-      32
-    ],
+    "direct_close_overhead_samples_sec": [32],
     "active_study_case_id": "SC-A22-01",
     "next_case_on_clean_pass": "SC-A24+",
     "next_case_on_duration_fail_candidate": "SC-AR-PROFILE_CONTROLLED",
@@ -82,18 +80,11 @@
       "overlap_probe": "OVERLAP-15M-WAKE12M-01",
       "overlap_observed_sec": 198,
       "overlap_wake_lateness_sec": 4,
-      "other_wake_lateness_samples_sec": [
-        21,
-        168
-      ],
+      "other_wake_lateness_samples_sec": [21,168],
       "max_observed_wake_lateness_sec": 168,
       "remaining_prep_sec_at_180s_lead_under_max_observed_lateness": 12
     },
-    "live_test_matrix": [
-      "15m/11m",
-      "15m/12m",
-      "15m/13m"
-    ],
+    "live_test_matrix": ["15m/11m","15m/12m","15m/13m"],
     "live_test_status": "DEFERRED_UNTIL_RUNTIME_BOUNDARY_AND_CAP_VALIDATION_UNLESS_USER_REPRIORITIZES",
     "decision": "KEEP_TEST_NOT_PROMOTED"
   },
@@ -114,5 +105,5 @@
     "handoff_candidate_path": "OVERLAP_HANDOFF_BASELINE_CANDIDATE.md",
     "handoff_candidate_decision": "KEEP_TEST_NOT_PROMOTED"
   },
-  "updated_at": "2026-09-23T21:55:00+09:00"
+  "updated_at": "2026-09-23T22:17:30+09:00"
 }
