@@ -64,7 +64,8 @@ Test overshoot/close behavior when the current unit cannot be stopped every few 
 ### W7 — CLOSE_HEAVY
 Characteristics:
 - substantive work plus a deliberately realistic but necessary close path:
-  checkpoint, derived-state update, evidence validation, final RRULE write.
+  checkpoint, state/evidence update, derived-view validation, and verification of the scheduler state prearmed at invocation start.
+- No normal-close scheduler mutation; the same automation is already armed before substantive work begins.
 - No redundant reads/writes solely to increase load.
 
 Goal:
