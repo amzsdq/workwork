@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":136,
+  "units_completed":8,
+  "research_notes":[
+    "A later automation prompt should not hard-code stale last-clean targets if state/current is fresher; durable state must win.",
+    "The prompt should define the algorithm while state carries the current experimental pointer.",
+    "This prevents scheduled text from becoming a competing source of truth as probes advance.",
+    "The present invocation reconciled state/current before starting the retry.",
+    "Future invocations should continue that practice.",
+    "Current close will update state only after evidence is durable."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
