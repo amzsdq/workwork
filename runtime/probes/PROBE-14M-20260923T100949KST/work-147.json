@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":147,
+  "units_completed":8,
+  "research_notes":[
+    "A future aggregate should report both sample counts and latest timestamps because old evidence may become less representative after platform changes.",
+    "Historical passes remain factual but operational confidence should weight recent validation more heavily.",
+    "The rollback/revalidation lifecycle can formalize this later.",
+    "The present sample is current-environment evidence dated explicitly by probe ID/start.",
+    "This supports future drift analysis.",
+    "Final close will complete the sample."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
