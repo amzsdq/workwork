@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":24,
+  "units_completed":10,
+  "close_readiness":[
+    "Start timestamp and target are durably recorded.",
+    "Scheduler pre-arm success is durably recorded.",
+    "Substantive mixed workload is durably demonstrated across many batches.",
+    "No scheduler mutation occurred after pre-arm.",
+    "No parallel worker was intentionally launched during this strict sample.",
+    "No independent tool failure has interrupted the evidence stream.",
+    "Close schema will preserve elapsed, target, active-work estimate, and classification.",
+    "State summary will only advance after close evidence succeeds."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
