@@ -1,0 +1,19 @@
+{
+  "probe_id":"PROBE-18M-20260923T133042KST",
+  "checkpoint":1,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "purpose":"exercise repeated durable-write/checkpoint path under strict 18m probe",
+  "work_units":[
+    {"id":1,"op":"validate_state_invariants","result":"PASS","detail":"safe lower bound 16m; next strict target 18m"},
+    {"id":2,"op":"validate_scheduler_contract","result":"PASS","detail":"same automation; recurring RRULE; exact schedule; enabled"},
+    {"id":3,"op":"validate_probe_identity","result":"PASS","detail":"unique append-only probe directory"},
+    {"id":4,"op":"validate_close_reserve","result":"PASS","detail":"60s reserved for durable close"},
+    {"id":5,"op":"validate_boundary_logic","result":"PASS","detail":"no failure boundary yet; 18m is coarse-ascent candidate"},
+    {"id":6,"op":"validate_parallel_defer","result":"PASS","detail":"parallel probe remains deferred"},
+    {"id":7,"op":"derive_next_if_pass","result":"PASS","detail":"20m strict target after retrospective WAKE_OK"},
+    {"id":8,"op":"derive_next_if_duration_failure","result":"PASS","detail":"bracket 16m..18m and refine near 17m"},
+    {"id":9,"op":"derive_non_duration_handling","result":"PASS","detail":"retry 18m without moving boundary"},
+    {"id":10,"op":"checkpoint_persistence","result":"PASS","detail":"checkpoint persisted through GitHub contents write"}
+  ],
+  "status":"ACTIVE_CONTINUE"
+}
