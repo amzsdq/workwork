@@ -1,0 +1,14 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260924-R6",
+  "case_id": "SC-A22-CLOCK-01",
+  "workload_profile": "W3_MIXED_IO",
+  "substantive_units_completed_total": 46,
+  "additional_units": [
+    "boundary decision close-reserve semantic repair",
+    "max-safe-runtime authoritative-start repair",
+    "probe execution target-cross semantic repair",
+    "current-protocol close sample accounting repair",
+    "handoff-state deferred legacy-state repair"
+  ],
+  "status": "ACTIVE_CONTINUE"
+}
