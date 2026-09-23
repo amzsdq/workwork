@@ -9,6 +9,20 @@ This is one integrated research problem. Wake scheduling is pre-armed at turn st
 3. choose a safe operating cap,
 4. derive a repeatable policy that uses as much of that cap as practical.
 
+## Final clock invariant
+
+All new strict runtime measurements use `GITHUB_SERVER_CLOCK_PROTOCOL.md`.
+
+```
+WORKED = END_MARKER.created_at - START_MARKER.created_at
+```
+
+The two values must be raw GitHub server `created_at` timestamps from immutable marker comments in issue #1. Model-written time strings are never used for runtime classification.
+
+A missing/invalid marker pair makes the run `CLOCK_EVIDENCE_INVALID` for exact-duration inference.
+
+Historical pre-protocol timing data remains supporting evidence only for future strict promotions.
+
 ## Current operating context
 - Previous operating floor: about 10 minutes of work before handoff.
 - Wake rule: immediately after TURN_START, pre-arm NEXT_WAKE = START_TS + target_runtime + planned_gap. Use planned_gap=3m as the initial baseline because prior relay research found +3m best among tested end-of-turn leads. Do not wait until turn end to schedule the next wake.
@@ -17,9 +31,9 @@ This is one integrated research problem. Wake scheduling is pre-armed at turn st
 
 ## Phase A — boundary search
 1. Test-generated workload is valid substantive experimental work when it is deliberately used to exercise runtime behavior and the workload profile is recorded. Idle waiting/sleeping only to consume time remains excluded.
-2. Record actual start, useful/goal-directed work evidence, close time, and completion-envelope timestamps when directly observable.
+2. Create a GitHub START_MARKER as the first timing action and an END_MARKER after durable close synchronization. Compute actual WORKED only from the raw server created_at values. Record useful/goal-directed work evidence separately.
 3. Coarse ascent from prior 10m baseline in about +2m classes.
-4. Clean PASS requires a successful same-automation RRULE pre-arm at TURN_START + active target workload + durable close checkpoint. The pre-arm return must contain the intended DTSTART/RRULE/enabled state; no scheduler mutation is performed at normal turn end.
+4. Clean PASS requires a valid GitHub server START/END marker pair whose WORKED reaches the target, plus a successful same-automation RRULE pre-arm at TURN_START + active target workload + durable close checkpoint. The pre-arm return must contain the intended DTSTART/RRULE/enabled state; no scheduler mutation is performed at normal turn end.
 5. A clean close is initially CLEAN_PASS_PENDING_WAKE. The next actual invocation provides retrospective WAKE_OK evidence; under the strict protocol, only then may SAFE_LOWER_BOUND and the next coarse target advance.
 6. Separate duration-related failures from unrelated tool/network/provider failures.
 7. First credible duration-related failure brackets the upper boundary.
