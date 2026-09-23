@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":86,
+  "units_completed":8,
+  "research_notes":[
+    "For future longer targets, useful backlog can include aggregate analysis of accumulated probe evidence rather than repetitive isolated notes.",
+    "This increases experimental value while still exercising mixed I/O/reasoning.",
+    "A compact aggregation artifact can be generated outside the critical close path.",
+    "The raw probe evidence should remain immutable even after aggregation.",
+    "This provides both auditability and efficient future onboarding.",
+    "Current retry continues to preserve raw batches."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
