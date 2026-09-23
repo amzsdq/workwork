@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":103,
+  "units_completed":8,
+  "research_notes":[
+    "A useful future close schema should include target_sec, start_ts, pre_close_ts, close_end_ts, elapsed_sec, overshoot_sec, close_overhead_sec, classification, and independent_failure fields.",
+    "It should also reference scheduler pre-arm evidence rather than duplicate mutable scheduler assumptions.",
+    "This supports deterministic later aggregation.",
+    "The current close will use this conceptual structure as far as available timestamps permit.",
+    "State/current will then summarize last clean target and next target.",
+    "No scheduler rewrite will occur at close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
