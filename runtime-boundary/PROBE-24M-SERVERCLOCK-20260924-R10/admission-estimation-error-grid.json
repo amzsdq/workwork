@@ -1,0 +1,13 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "base_grid_cases":109928,
+  "synthetic_estimation_error_sec_range":[-15,15],
+  "P3_admitted_base_states":60242,
+  "expanded_admission_error_cases":1867502,
+  "reserve_violations_without_estimation_margin":86800,
+  "violation_fraction":0.04647920055775041,
+  "admissions_with_plus15s_margin":49427,
+  "admission_reduction_fraction_vs_no_margin":0.17952591215431093,
+  "interpretation":"Under an artificial uniform integer error sweep, zero-margin P3 is sensitive to positive estimation error; +15s removes errors up to +15s but rejects ~18% of base admissions. This is sensitivity analysis only, not an empirical error model.",
+  "promotion_status":"NONE; measure real estimation error before selecting margin"
+}
