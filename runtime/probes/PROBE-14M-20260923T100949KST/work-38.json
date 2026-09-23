@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":38,
+  "units_completed":8,
+  "research_notes":[
+    "At validation stage, five clean runs is an initial minimum rather than proof of a stationary platform limit.",
+    "Confidence should be described empirically rather than overstated statistically from tiny samples.",
+    "A rolling health check can later detect degradation and trigger cap rollback.",
+    "The rollback rule should be simpler than the promotion rule so safety reacts quickly to repeated failures.",
+    "A single clearly independent outage should be excluded rather than causing needless cap collapse.",
+    "Ambiguous repeated failures should bias toward safety until classified."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
