@@ -1,0 +1,13 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 4,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "CANONICAL_DOCUMENT_REPAIR",
+  "finding": "Repaired MAX_SAFE_RUNTIME_RESEARCH.md Phase A close ordering to match GITHUB_SERVER_CLOCK_PROTOCOL.md: durable close checkpoint precedes END_MARKER; terminal ledger/state/table synchronization follows END and is outside WORKED.",
+  "decision_value": "Removes a protocol ambiguity that could otherwise inflate WORKED or create inconsistent end-marker placement across probes.",
+  "repair_commit": "fe5072d8247c6e1189af27d8bb048112f6d5f953",
+  "substantive_unit_count_cumulative": 15,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
