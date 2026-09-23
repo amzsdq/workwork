@@ -19,14 +19,14 @@ Model-authored or inferred time strings are ignored for duration judgment.
 If this gate fails, classify the exact-duration evidence as `CLOCK_EVIDENCE_INVALID`. It affects neither lower bound nor failure boundary.
 
 ## Evidence states per target/profile class
-Treat target runtime and workload profile as a pair during causal interpretation. Each target/profile class has four counters:
+Treat target runtime and workload profile as a pair during causal interpretation. Each target/profile class has five evidence states:
 - `clean_pass`: a valid GitHub server marker pair proves WORKED reached the class, pre-arm scheduler state was verified, and durable close completed normally.
 - `duration_fail`: credible near/after-target close-loss or forced termination without independent non-duration cause.
 - `non_duration_fail`: explicit independent GitHub/network/tool/provider failure.
 - `under_target`: a valid GitHub server marker pair proves WORKED ended before the class; informative for workload generation but not boundary evidence.
 - `clock_evidence_invalid`: exact duration cannot be established from a valid server marker pair; no boundary effect.
 
-Only `clean_pass` and `duration_fail` affect runtime-boundary inference. `non_duration_fail` and `under_target` do not move it.
+Only `clean_pass` and `duration_fail` affect runtime-boundary inference. `non_duration_fail`, `under_target`, and `clock_evidence_invalid` do not move it.
 
 A clean close is initially `CLEAN_PASS_PENDING_WAKE`. Under the current strict protocol, SAFE_LOWER_BOUND and the next coarse target advance only after the following actual invocation retrospectively confirms WAKE_OK for that pass.
 
@@ -68,7 +68,9 @@ For every timing pass record `pre_close_ts` and `close_end_ts` when practical.
 
 `close_overhead_sec = close_end_ts - pre_close_ts`
 
-The scheduler pre-arm happens at START and is not part of close reserve. Track `prearm_overhead_sec` separately.
+These completion-envelope timestamps are secondary instrumentation unless they themselves come from an explicitly authoritative server-side source. They must never substitute for the GitHub START/END marker pair used to compute WORKED.
+
+The scheduler pre-arm happens after START_MARKER and is not part of close reserve. Track `prearm_overhead_sec` separately.
 
 Until enough observations exist, do not hard-code a close reserve from one sample. Track at least median and upper-tail/max observed close overhead. Phase C may then test whether a fixed reserve is sufficient or adaptive reserve materially improves utilization.
 
