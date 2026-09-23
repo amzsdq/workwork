@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":21,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"TARGET_APPROACH_CHECK",
+  "target_cross_kst":"2026-09-23T22:28:55+09:00",
+  "finding":"Probe remains alive with useful W3 work and durable checkpoints approaching the 22m class. No duration-attributable failure has appeared. Continue only bounded verification until direct target crossing, then close.",
+  "substantive_unit_count_cumulative":21,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE_TO_TARGET"
+}
