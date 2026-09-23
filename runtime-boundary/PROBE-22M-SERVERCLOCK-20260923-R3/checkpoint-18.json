@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 18,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "FINALIZATION_SCHEMA_PREP",
+  "findings": [
+    "Terminal close must contain start_marker_comment_id=5795782562 and its immutable server created_at.",
+    "END marker must be created only after the durable close checkpoint; worked_sec is then computed from raw END minus raw START.",
+    "If worked_sec >=1320 and other clean criteria hold, result is CLEAN_PASS_PENDING_WAKE; otherwise classification follows UNDER_TARGET/CLOCK_EVIDENCE_INVALID/NON_DURATION_FAIL/DURATION_FAIL_CANDIDATE rules.",
+    "No scheduler mutation is permitted during normal close because the wake is already prearmed."
+  ],
+  "substantive_unit_count_cumulative": 46,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
