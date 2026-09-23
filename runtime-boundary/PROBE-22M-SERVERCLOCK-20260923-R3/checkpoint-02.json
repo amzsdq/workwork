@@ -1,0 +1,17 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 2,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "CLOCK_AND_COMPLETION_ENVELOPE_RECONCILIATION",
+  "findings": [
+    "Server-clock START marker is valid and raw REST created_at is available.",
+    "Scheduler prearm was derived from the authoritative START marker: target 22m + planned gap 3m = +25m.",
+    "W3 remains appropriate because this probe alternates durable reads, evidence comparison, scheduler control validation, and necessary checkpoint writes.",
+    "PRODUCTIVE_CAP and SOFT_CUTOFF remain distinct: productive cap is empirical; admission cutoff is a policy decision and must not be inferred from survival alone.",
+    "Post-END ledger synchronization must remain outside WORKED so terminal bookkeeping cannot inflate measured work duration."
+  ],
+  "substantive_unit_count_cumulative": 10,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
