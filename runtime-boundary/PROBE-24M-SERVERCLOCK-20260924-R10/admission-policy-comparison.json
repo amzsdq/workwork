@@ -1,0 +1,13 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "synthetic_grid_cases":109928,
+  "P2_fixed_reserve_admissions":77168,
+  "P3_task_plus_reserve_admissions":60242,
+  "P2_admissions_rejected_by_P3_due_task_cost":16926,
+  "fraction_of_P2_admissions_with_insufficient_task_plus_reserve_budget":0.21933962264150944,
+  "P3_exact_equality_cases":728,
+  "P3_equality_fraction_of_grid":0.006622516556291391,
+  "interpretation":"On this deterministic grid, fixed reserve alone ignores next-task cost in 21.9% of its admissions; P3 explicitly prevents those. This is analytic support only, not live promotion.",
+  "promotion_status":"NOT_PROMOTED_PHASE_C_DEFERRED",
+  "boundary_effect":"NONE"
+}
