@@ -1,0 +1,24 @@
+{
+  "probe_id": "PROBE-18M-20260923T185804KST",
+  "checkpoint": 1,
+  "workload_profile": "W2_WRITE_CHECKPOINT_HEAVY",
+  "work_units": [
+    "fresh_state_parse_and_invariant_validation",
+    "strict_pass_predicate_evaluation",
+    "scheduler_prearm_state_validation",
+    "durable_evidence_schema_validation",
+    "boundary_progression_consistency_check",
+    "parallel_deferral_invariant_check",
+    "failure_classification_partition_check",
+    "measurement_field_completeness_check"
+  ],
+  "invariants": {
+    "safe_lower_bound_min": 16,
+    "current_target_min": 18,
+    "failure_boundary": null,
+    "parallel_probe_deferred": true,
+    "normal_close_scheduler_mutation_allowed": false,
+    "retrospective_wake_required_for_final_pass": true
+  },
+  "result": "CHECKPOINT_OK"
+}
