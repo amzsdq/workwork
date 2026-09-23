@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":156,
+  "units_completed":8,
+  "research_notes":[
+    "A future cost model can balance checkpoint overhead against expected lost-tail work from abrupt termination.",
+    "Near a reliable cap with low failure probability, checkpoint cadence may be relaxed.",
+    "Near an uncertain boundary, denser checkpoints reduce experimental and operational loss.",
+    "This suggests checkpoint cadence may be phase-dependent even if the runtime cap is fixed.",
+    "Such adaptation is simpler than full runtime-cap adaptation and may have practical value.",
+    "It remains a later supporting optimization."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
