@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 6,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "BOUNDARY_DECISION_GATE_AUDIT",
+  "findings": [
+    "Decision rule correctly gates clean_pass on a valid GitHub server marker pair.",
+    "CLOCK_EVIDENCE_INVALID is explicitly no-boundary-effect, preventing a missing marker from masquerading as a duration failure.",
+    "The decision rule currently says four counters but enumerates five evidence states; this is a documentation-count defect, not a runtime-boundary defect.",
+    "Close-reserve fields pre_close_ts/close_end_ts are still model-observation fields unless separately server-instrumented; they may inform completion-envelope analysis but cannot replace WORKED."
+  ],
+  "substantive_unit_count_cumulative": 20,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
