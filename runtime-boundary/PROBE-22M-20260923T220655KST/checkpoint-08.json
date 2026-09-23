@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":8,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"CAP_PROMOTION_GUARD_AUDIT",
+  "findings":[
+    "No credible duration failure exists through the current 20m safe lower bound, so there is not yet a failure-derived safety margin from which to promote an operating cap.",
+    "Even if 22m cleanly survives, it can only advance the exploratory SAFE_LOWER_BOUND after retrospective WAKE_OK; it cannot become OPERATING_CAP from a single run.",
+    "Phase B still requires >=5 clean runs at/near a candidate with representative W3/W5/(W4 or W6)/W7 coverage and no unresolved duration failure at or below candidate.",
+    "This guard prevents conflating maximum observed survival with production policy."
+  ],
+  "substantive_unit_count_cumulative":8,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
