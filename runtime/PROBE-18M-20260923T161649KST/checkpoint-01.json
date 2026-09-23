@@ -1,0 +1,18 @@
+{
+  "probe_id":"PROBE-18M-20260923T161649KST",
+  "checkpoint":1,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "work_units":[
+    {"id":1,"test":"measurement-schema completeness","result":"PASS"},
+    {"id":2,"test":"strict-pass conjunction invariants","result":"PASS"},
+    {"id":3,"test":"duration-vs-provider failure attribution","result":"PASS"},
+    {"id":4,"test":"boundary advancement monotonicity","result":"PASS"},
+    {"id":5,"test":"parallel evidence non-promotion","result":"PASS"},
+    {"id":6,"test":"scheduler recurring invariant","result":"PASS"},
+    {"id":7,"test":"same-automation invariant","result":"PASS"},
+    {"id":8,"test":"planned-gap fixed at 3m","result":"PASS"},
+    {"id":9,"test":"clean-close checkpoint requirement","result":"PASS"},
+    {"id":10,"test":"retrospective WAKE_OK separation","result":"PASS"}
+  ],
+  "status":"ACTIVE"
+}
