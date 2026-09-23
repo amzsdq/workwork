@@ -1,0 +1,15 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":9,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"STATE_MUTATION_AND_RECOVERY_POINTER_VERIFICATION",
+  "findings":[
+    "state/current.json active probe pointer now identifies PROBE-22M-20260923T220655KST, target 22m, W3_MIXED_IO, prearmed wake 22:31:55 KST, status RUNNING.",
+    "Boundary fields remain unchanged while probe is active: SAFE_LOWER_BOUND=20m and FAILURE_BOUNDARY unresolved.",
+    "This write exercises the W3 alternating read/write path while preserving the rule that mutable current state is a recovery pointer, not empirical proof."
+  ],
+  "substantive_unit_count_cumulative":9,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
