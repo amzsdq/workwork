@@ -1,0 +1,7 @@
+{
+  "probe_id": "PROBE-16M-20260923T121600KST",
+  "unit": 5,
+  "kind": "PROFILE_GENERALIZATION_ANALYSIS",
+  "finding": "W4 reasoning-heavy is a materially different shape from the preceding W3 mixed-I/O probe: fewer tool operations and larger reasoning units reduce checkpoint/write pressure but increase uninterrupted-unit risk near cutoff.",
+  "implication": "A W4 pass at 16m broadens coarse boundary evidence but cannot establish universal safety. Candidate cap validation must still revisit MIXED_IO, MICRO_UNIT_CHAIN, and REASONING_HEAVY or LARGE_UNIT near the candidate boundary."
+}
