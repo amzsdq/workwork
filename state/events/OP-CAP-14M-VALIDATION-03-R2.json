@@ -1,0 +1,11 @@
+{
+  "probe_id":"OP-CAP-14M-VALIDATION-03-R2",
+  "result":"HARNESS_UNDER_TARGET",
+  "boundary_effect":"NONE",
+  "worked_sec":76,
+  "clock_validity":"VALID",
+  "harness_validity":"INVALID_UNDER_TARGET",
+  "counts_for_14m_validation":false,
+  "reason":"invocation closed before authoritative 840s target; no duration inference",
+  "next_case":"OP-CAP-14M-VALIDATION-03"
+}
