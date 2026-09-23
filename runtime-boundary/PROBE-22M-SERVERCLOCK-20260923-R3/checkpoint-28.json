@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 28,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "STRICT_EVIDENCE_MINIMALITY_AUDIT",
+  "findings": [
+    "Strict duration classification needs only the immutable marker pair plus clean-close/scheduler/failure evidence; the many intermediate checkpoints are supporting productivity/recovery evidence, not clock authority.",
+    "Future probes should reduce checkpoint count once server-clock protocol stability is established, preserving useful-work utilization and avoiding instrumentation becoming the workload itself.",
+    "This first migration probe justifies extra checkpoint density because it is simultaneously validating and repairing the new timing/control path."
+  ],
+  "substantive_unit_count_cumulative": 78,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
