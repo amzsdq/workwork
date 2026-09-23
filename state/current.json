@@ -1,5 +1,5 @@
 {
-  "schema_version": 23,
+  "schema_version": 24,
   "status": "RESEARCH_ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
@@ -19,8 +19,8 @@
     "parallel_probe_runtime_counts_as": "SUPPORTING_SURVIVAL_EVIDENCE_ONLY",
     "mode": "STRICT_DURATION",
     "last_probe_id": "PROBE-22M-20260923T220655KST",
-    "last_probe_result": "CLEAN_PASS_PENDING_WAKE",
-    "last_probe_boundary_effect": "NONE_PENDING_RETROSPECTIVE_WAKE",
+    "last_probe_result": "CLEAN_PASS_PENDING_WAKE_LEGACY_SUPPORTING",
+    "last_probe_boundary_effect": "NONE_PRE_SERVER_CLOCK",
     "last_probe_scheduler_write_ok": true,
     "last_probe_scheduler_state_ok": true,
     "last_probe_target_reached": true,
@@ -35,20 +35,20 @@
     "last_probe_direct_active_work_sec": null,
     "last_probe_productive_ratio": null,
     "last_probe_substantive_unit_count": 29,
-    "active_probe_id": null,
+    "active_probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
     "active_probe_started_at_kst": null,
+    "active_probe_start_marker_comment_id": 5795782562,
+    "active_probe_start_marker_created_at": "2026-09-23T13:32:22Z",
     "active_probe_target_minutes": 22,
     "active_probe_workload_profile": "W3_MIXED_IO",
-    "active_probe_prearmed_wake_at_kst": null,
-    "active_probe_status": "READY_TO_REVALIDATE_WITH_SERVER_CLOCK",
-    "next_probe_requirement": "RUN_STRICT_22M_W3_WITH_GITHUB_SERVER_START_END_MARKERS",
+    "active_probe_prearmed_wake_at_kst": "2026-09-23T22:57:22+09:00",
+    "active_probe_status": "ACTIVE_SERVER_CLOCK_STRICT",
+    "next_probe_requirement": "CLOSE_CURRENT_22M_SERVER_CLOCK_PROBE_WITH_VALID_END_MARKER; DO_NOT START DUPLICATE",
     "next_probe_workload_profile": "W3_MIXED_IO",
     "close_reserve_sec": 60,
     "close_reserve_status": "PROVISIONAL_CONFIG_NOT_PROMOTED",
     "direct_close_overhead_sample_count": 1,
-    "direct_close_overhead_samples_sec": [
-      32
-    ],
+    "direct_close_overhead_samples_sec": [32],
     "active_study_case_id": "SC-A22-CLOCK-01",
     "next_case_on_clean_pass": "SC-A24-CLOCK+",
     "next_case_on_duration_fail_candidate": "SC-AR-PROFILE_CONTROLLED",
@@ -87,18 +87,11 @@
       "overlap_probe": "OVERLAP-15M-WAKE12M-01",
       "overlap_observed_sec": 198,
       "overlap_wake_lateness_sec": 4,
-      "other_wake_lateness_samples_sec": [
-        21,
-        168
-      ],
+      "other_wake_lateness_samples_sec": [21,168],
       "max_observed_wake_lateness_sec": 168,
       "remaining_prep_sec_at_180s_lead_under_max_observed_lateness": 12
     },
-    "live_test_matrix": [
-      "15m/11m",
-      "15m/12m",
-      "15m/13m"
-    ],
+    "live_test_matrix": ["15m/11m","15m/12m","15m/13m"],
     "live_test_status": "DEFERRED_UNTIL_RUNTIME_BOUNDARY_AND_CAP_VALIDATION_UNLESS_USER_REPRIORITIZES",
     "decision": "KEEP_TEST_NOT_PROMOTED"
   },
@@ -121,7 +114,7 @@
     "clock_protocol_path": "GITHUB_SERVER_CLOCK_PROTOCOL.md",
     "clock_invariant": "WORKED=END_MARKER.created_at-START_MARKER.created_at; model time strings forbidden for duration judgment"
   },
-  "updated_at": "2026-09-23T22:28:55+09:00",
+  "updated_at": "2026-09-23T22:36:00+09:00",
   "clock_protocol": {
     "version": "GITHUB_SERVER_MARKER_V1",
     "status": "FINAL_INVARIANT_ACTIVE",
