@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":7,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":7,
+  "large_unit":"define measurement integrity constraints for productive ratio",
+  "constraints":[
+    "Do not report tool-call latency as direct active work unless measurement can separate it reliably.",
+    "When direct active_work_sec is unavailable, report goal_directed_window_sec/ratio separately rather than relabeling it productive_ratio.",
+    "Count substantive units only when they add a new decision, measurement, or durable validation result.",
+    "Terminal close operations belong to completion envelope, not productive task time."
+  ],
+  "measurement_status":{"direct_active_work_sec":"UNOBSERVABLE_WITH_CURRENT_INSTRUMENTATION","goal_directed_window":"OBSERVABLE_FROM_DURABLE_TIMESTAMPS_AT_CLOSE"},
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
