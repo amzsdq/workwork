@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":22,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"FINAL_STATE_AGREEMENT_CHECK_BEFORE_TARGET",
+  "verified":{"active_probe_id":"PROBE-22M-20260923T220655KST","target_min":22,"profile":"W3_MIXED_IO","prearmed_wake":"2026-09-23T22:31:55+09:00","safe_lower_bound_min":20,"failure_boundary":null,"active_status":"RUNNING"},
+  "finding":"Recovery pointer remains coherent immediately before target-class close work. No terminal state has been written early.",
+  "substantive_unit_count_cumulative":22,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE_TO_TARGET"
+}
