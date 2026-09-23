@@ -35,6 +35,22 @@ Use only the server-populated `created_at` value from that raw resource.
 
 The normalized connector comment listing may omit/null `created_at`; therefore it is not the timing source.
 
+## Human-readable timestamp display
+
+GitHub raw `created_at` UTC remains the only authoritative timing value for calculation and classification.
+
+Whenever a GitHub server timestamp is shown to the user or in a human-facing run report, display the original UTC value first and append the exact Asia/Seoul conversion in parentheses.
+
+Required display format:
+
+`2026-09-23T17:15:25Z (2026-09-24 02:15:25 KST)`
+
+Rules:
+- never replace, round, or rewrite the raw UTC value;
+- KST is display-only and equals UTC+09:00 with no daylight-saving adjustment;
+- include the full KST calendar date so UTC-to-KST date rollover is explicit;
+- duration calculations continue to use only the raw GitHub UTC `created_at` values.
+
 ## Marker lifecycle
 
 At invocation start:
