@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":90,
+  "units_completed":8,
+  "research_notes":[
+    "A strict clean pass is intentionally harder to earn than simple evidence of being alive near target.",
+    "This prevents the operating policy from being based on runs that survived but failed to checkpoint cleanly.",
+    "For a persistent relay, clean continuation is more valuable than raw maximum lifetime.",
+    "That criterion aligns the experiment with the actual system objective.",
+    "The current retry has continued producing durable evidence and is ready to close at the first safe boundary once target is reached.",
+    "No scheduler action remains on the close path."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
