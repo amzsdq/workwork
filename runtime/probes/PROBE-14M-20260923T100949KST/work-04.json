@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":4,
+  "units_completed":18,
+  "checkpoint_integrity_checks":[
+    "start evidence immutable",
+    "work batches immutable and sequential",
+    "no concurrent shared-file rewrite in strict-duration mode",
+    "state/current update reserved for classification/continuation",
+    "scheduler write performed once at start",
+    "close evidence will record actual timing separately from workload units"
+  ],
+  "policy_replay_notes":[
+    "P1 fixed threshold is simplest but may strand tail capacity when unit sizes vary.",
+    "P2 soft cutoff plus hard cap can reduce risky late starts with low estimation overhead.",
+    "P3 estimated-next-task admission should only be compared after task-duration observations exist.",
+    "P4 adaptive admission adds complexity and should be promoted only if empirically superior."
+  ],
+  "status":"PREDECLARED_BACKLOG_72_UNITS_COMPLETED"
+}
