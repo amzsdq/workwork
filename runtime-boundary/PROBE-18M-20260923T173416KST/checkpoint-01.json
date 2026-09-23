@@ -1,0 +1,9 @@
+{
+  "probe_id":"PROBE-18M-20260923T173416KST",
+  "checkpoint":1,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_work":"strict-contract audit + measurement-schema consistency + prior-boundary evidence verification",
+  "checks":{"source_of_truth_fresh":true,"safe_lower_bound_16m":true,"failure_boundary_unresolved":true,"parallel_deferred":true,"prearm_verified":true},
+  "derived":{"candidate_next_if_clean_min":20,"boundary_action_if_duration_failure":"BRACKET_16_TO_18_AND_REFINE_APPROX_1M","pass_requires_retrospective_wake":true},
+  "status":"ACTIVE"
+}
