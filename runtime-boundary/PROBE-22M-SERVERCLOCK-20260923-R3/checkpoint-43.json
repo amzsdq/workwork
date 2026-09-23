@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 43,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "FINAL_DURABLE_CLOSE_PRECHECK",
+  "findings": [
+    "All substantive protocol repairs needed for this migration probe are complete.",
+    "The remaining useful work is final evidence consistency verification and terminal close; no unrelated orchestration expansion is justified.",
+    "A durable close checkpoint must precede END_MARKER so the marker includes required close persistence inside WORKED."
+  ],
+  "substantive_unit_count_cumulative": 125,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
