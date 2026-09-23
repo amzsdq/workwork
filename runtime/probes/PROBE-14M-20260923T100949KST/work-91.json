@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":91,
+  "units_completed":8,
+  "research_notes":[
+    "The final report should explicitly state failure boundary unresolved if no credible failure has yet been seen.",
+    "This avoids implying the current safe lower bound is a maximum.",
+    "Likewise operating cap remains null until repeated validation is complete.",
+    "These distinctions should remain visible even if the user asks for a short summary.",
+    "The next target after a clean 14m sample is exploratory 16m, not production adoption of 14m.",
+    "Current classification still awaits final timing close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
