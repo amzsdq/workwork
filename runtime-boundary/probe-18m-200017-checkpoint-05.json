@@ -1,0 +1,20 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":5,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":26,
+  "measurement_reconstruction":{
+    "run_start_ts":"2026-09-23T20:00:17+09:00",
+    "prearm_write_end_ts":"2026-09-23T20:00:21.217093+09:00",
+    "work_start_lower_bound_ts":"2026-09-23T20:00:21.217093+09:00",
+    "prearm_write_start_ts":null,
+    "direct_active_work_sec":null,
+    "productive_ratio":null,
+    "goal_directed_window_status":"IN_PROGRESS"
+  },
+  "new_artifact":"COMPLETION_ENVELOPE_EVIDENCE.md",
+  "new_finding":"The 12m canonical pass is the only direct close-overhead sample: 32s. With 41s total overshoot, its pre-close point was 9s after target on the shared clock basis. This is one low-confidence completion-envelope observation, not a cutoff.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
