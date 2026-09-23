@@ -1,0 +1,21 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":4,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"ADMISSION_RULE_REPLAY_VECTORS",
+  "purpose":"Validate candidate control logic without treating simulation as empirical runtime evidence.",
+  "candidate_rule":"estimated_next_task_sec + close_reserve_sec <= remaining_budget_sec",
+  "vectors":[
+    {"remaining_budget_sec":240,"estimated_next_task_sec":120,"close_reserve_sec":60,"admit":true,"slack_sec":60},
+    {"remaining_budget_sec":180,"estimated_next_task_sec":120,"close_reserve_sec":60,"admit":true,"slack_sec":0},
+    {"remaining_budget_sec":179,"estimated_next_task_sec":120,"close_reserve_sec":60,"admit":false,"slack_sec":-1},
+    {"remaining_budget_sec":180,"estimated_next_task_sec":60,"close_reserve_sec":117,"admit":true,"slack_sec":3},
+    {"remaining_budget_sec":176,"estimated_next_task_sec":60,"close_reserve_sec":117,"admit":false,"slack_sec":-1}
+  ],
+  "finding":"The rule is monotone and produces an explicit task-size-aware completion frontier. Reserve uncertainty directly changes admission decisions, reinforcing the need to measure close reserve before policy promotion.",
+  "empirical_boundary_effect":"NONE_SIMULATION_ONLY",
+  "substantive_unit_count_cumulative":4,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
