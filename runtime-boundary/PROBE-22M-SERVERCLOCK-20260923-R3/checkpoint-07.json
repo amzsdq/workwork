@@ -1,0 +1,13 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 7,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "DECISION_RULE_REPAIR",
+  "finding": "Corrected evidence-state count and explicitly demoted pre_close_ts/close_end_ts to secondary completion-envelope instrumentation unless server-authoritative; they cannot substitute for marker-derived WORKED.",
+  "decision_value": "Prevents accidental reuse of model-authored close timestamps as runtime duration evidence under the new invariant.",
+  "repair_commit": "538309b3a7f442c4adcd2e24f2e19c246939ec81",
+  "substantive_unit_count_cumulative": 21,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
