@@ -41,6 +41,22 @@ Require initially >=5 clean marker-valid runs near candidate, representative pro
 ## Phase C — admission/handoff policy
 Compare P1-P4. Candidate rule: `estimated_next_task_sec + close_reserve_sec <= remaining_budget_sec`. Controlled overlap remains deferred KEEP/TEST/NOT_PROMOTED.
 
+Selected handoff semantics to test/promote:
+- same canonical RRULE automation for normal continuation;
+- successor wake does not imply ownership;
+- successor reconstructs durable state and reaches READY before transfer;
+- predecessor remains authoritative until durable transfer commits;
+- ambiguous transfer fails closed to predecessor ownership;
+- after transfer, predecessor stops owner-only side effects and successor is sole OWNER;
+- in promoted operational mode, normal voluntary stop gates are PROGRAM_COMPLETE or HANDOFF_COMPLETE only.
+
+Explicitly not promoted:
+- fixed +14m wake lead;
+- SHADOW scheduler mutation before transfer;
+- fixed 15/12 timing as a permanent constant.
+
+Lead time remains an empirical parameter derived from authoritative jitter/preparation/transfer evidence. Strict Phase A/B runtime probes retain their own PRE_CLOSE/END termination semantics.
+
 ## Phase D
 Gap optimization +3m -> +2m -> +1m after cap stabilization.
 
