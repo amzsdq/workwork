@@ -1,0 +1,19 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "generator":"RUNTIME_STRESS_WORKLOAD_GENERATOR",
+  "seed":"SC-A24-CLOCK",
+  "generated_unique_units":2048,
+  "duplicate_units_rejected":0,
+  "batches":[
+    {"batch":1,"ordinal_range":[0,255],"count":256,"fingerprint":"73b6570143a1bcf2231c6a10c48133c119efa6c687918e05a39f63de94ec6133"},
+    {"batch":2,"ordinal_range":[256,511],"count":256,"fingerprint":"586229861b13a59bbd9ac2a719529b34085167f4e5af5ba1685287d8ac1a0354"},
+    {"batch":3,"ordinal_range":[512,767],"count":256,"fingerprint":"9b9183ac5d1003c583f7d7b0e89a108412deb66a44bcf4cf055cbc2d77c8430e"},
+    {"batch":4,"ordinal_range":[768,1023],"count":256,"fingerprint":"0c819b2fd2e853c26d5d8cac6313d2c61dcd24753ae805b50539382cc1031236"},
+    {"batch":5,"ordinal_range":[1024,1279],"count":256,"fingerprint":"65c828efb9b17d7ff24e772d7c3f874d0c0b8b340a30591fbfe1e0780b6fdb7b"},
+    {"batch":6,"ordinal_range":[1280,1535],"count":256,"fingerprint":"68dd71c86a71a0720c0378ea238576e7bb655c351cce0059c6adbfe1fa6e3f44"},
+    {"batch":7,"ordinal_range":[1536,1791],"count":256,"fingerprint":"2607812f2f82ada382d6e62ffb58a1c92f8d7c725f621fc21ae31578c897cc17"},
+    {"batch":8,"ordinal_range":[1792,2047],"count":256,"fingerprint":"6b02477bed5a088e9986488da110d04ccb2db1c1d13bd8784e01d4896809bafd"}
+  ],
+  "checks":["server_clock_only","clock_invalid_no_boundary","non_duration_fail_no_boundary","scheduler_fault_no_duration_boundary","forced_stop_precedence","duplicate_rejection","deterministic_case_identity"],
+  "status":"CHECKPOINT_1"
+}
