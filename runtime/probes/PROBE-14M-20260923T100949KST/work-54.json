@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":54,
+  "units_completed":8,
+  "research_notes":[
+    "The later policy comparison should use the same workload distributions across P1-P4 where possible.",
+    "Otherwise policy effects can be confounded with task-size distribution.",
+    "Record per-unit duration estimates and actuals only when the policy uses them.",
+    "P1/P2 should not pay prediction overhead they do not need.",
+    "P3/P4 must justify their added estimation/adaptation cost through measured utilization or reliability gains.",
+    "The simplest near-optimal policy remains the promotion criterion."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
