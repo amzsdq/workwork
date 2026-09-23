@@ -10,7 +10,7 @@ For each invocation record:
 - `work_start_ts`: immediately after successful pre-arm, before active workload.
 - `target_cross_ts`: first observed timestamp at/after the target class, if reached.
 - `pre_close_ts`: immediately before durable close/finalization begins.
-- `close_end_ts`: immediately after the final durable checkpoint/evidence is complete.
+- `close_end_ts`: completion time of the last **required operational terminal-sync write**, not of optional post-close measurement/audit work.
 - `next_invocation_start_ts`: next invocation start, used retrospectively.
 
 Derived:
@@ -23,6 +23,20 @@ Derived:
 - `active_window_sec = pre_close_ts - work_start_ts`
 
 Do not claim `useful_work_sec` with stopwatch precision unless it was directly observed. If tool/network waits are not separable, record `useful_window_sec` and mark `useful_work_sec` as an estimate or unknown rather than fabricating precision.
+
+## Close-end measurement without recursive writes
+A naive scheme can recurse forever: write `close_end_ts`, then that write itself moves the close end, requiring another write.
+
+Avoid this by defining the operational close endpoint as the completion/commit time of the final required terminal-sync write among raw terminal evidence, `state/events.log`, `state/current.json`, and `EVIDENCE_TABLE.md`.
+
+Preferred evidence order:
+1. capture `pre_close_ts` before terminal-sync work;
+2. perform the required terminal-sync writes;
+3. use the final required write's trustworthy commit/completion timestamp as `close_end_ts` when available;
+4. if that timestamp is only available retrospectively, persist/derive it on the next invocation as measurement evidence without redefining the already-finished operational close;
+5. optional post-close measurement writes are excluded from `close_overhead_sec` but should be reported separately if they materially extend wall time.
+
+This gives a finite, reproducible completion envelope and prevents instrumentation from moving the endpoint it is trying to measure.
 
 ## Productive-window semantics
 The research goal is useful work, not merely wall-clock survival. Distinguish:
