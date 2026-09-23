@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":73,
+  "units_completed":8,
+  "research_notes":[
+    "The final production policy should not require an external watchdog for every normal handoff if start pre-arm and durable state are reliable enough.",
+    "A watchdog can remain recovery-only for missed continuation or stale ownership.",
+    "Reducing normal-path actors lowers scheduler race and coordination complexity.",
+    "Runtime/cap evidence will indicate how much normal-path safety margin is needed before recovery mechanisms engage.",
+    "This supports the user's preference for minimal essential control structure.",
+    "Current strict test remains focused on the normal path."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
