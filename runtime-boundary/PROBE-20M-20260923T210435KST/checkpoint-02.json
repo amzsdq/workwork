@@ -1,0 +1,17 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":2,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":2,
+  "large_unit":"stress-test next-task admission against heterogeneous task durations using observed 32s close sample and provisional 60s reserve",
+  "admission_examples":[
+    {"elapsed_sec":900,"remaining_sec":300,"estimated_next_task_sec":180,"reserve_sec":60,"admit":true,"post_task_slack_sec":60},
+    {"elapsed_sec":960,"remaining_sec":240,"estimated_next_task_sec":180,"reserve_sec":60,"admit":true,"post_task_slack_sec":0},
+    {"elapsed_sec":1020,"remaining_sec":180,"estimated_next_task_sec":120,"reserve_sec":60,"admit":true,"post_task_slack_sec":0},
+    {"elapsed_sec":1080,"remaining_sec":120,"estimated_next_task_sec":90,"reserve_sec":60,"admit":false,"deficit_sec":30},
+    {"elapsed_sec":1140,"remaining_sec":60,"estimated_next_task_sec":1,"reserve_sec":60,"admit":false,"deficit_sec":1}
+  ],
+  "finding":"A fixed 19m soft cutoff is inferior to task-duration admission: large W6 units may need rejection substantially earlier while very short units may fit later. P3/P4 therefore remain plausible but unpromoted.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
