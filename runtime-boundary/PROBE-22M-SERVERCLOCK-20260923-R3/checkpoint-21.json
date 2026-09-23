@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 21,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "FAILURE_CLASSIFICATION_REAUDIT",
+  "findings": [
+    "No GitHub/network/provider failure has prevented required durable writes; connector operations continue to succeed.",
+    "No forced termination or timeout has occurred so far.",
+    "No marker corruption has occurred: START raw resource remains readable and immutable.",
+    "Therefore there is currently no basis for NON_DURATION_FAIL, CLOCK_EVIDENCE_INVALID, or DURATION_FAIL_CANDIDATE."
+  ],
+  "substantive_unit_count_cumulative": 57,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
