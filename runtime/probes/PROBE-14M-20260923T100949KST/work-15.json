@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":15,
+  "units_completed":12,
+  "boundary_search_audit":[
+    "Current last strict clean class remains 12m until this probe durably closes after 14m target.",
+    "Current first credible failure boundary remains null.",
+    "A clean 14m close raises exploratory safe lower bound to 14m and next target to 16m.",
+    "A credible 14m duration failure would create candidate bracket [12m,14m].",
+    "An ambiguous 14m failure should trigger one repeat at 14m before refinement.",
+    "A non-duration failure at 14m leaves target at 14m for retry.",
+    "An under-target result at 14m leaves target at 14m with workload-generation remediation.",
+    "Refinement begins only after a credible failed upper class exists.",
+    "Production-cap validation begins only after the boundary is sufficiently characterized.",
+    "The final cap should retain meaningful margin below the failure boundary.",
+    "If no failure is found through tested classes, report only a lower bound and continue ascent.",
+    "Do not infer a hidden platform timeout from one incomplete sample without classification evidence."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
