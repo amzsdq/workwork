@@ -1,0 +1,11 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":13,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":13,
+  "large_unit":"derive evidence-aware distinction between productive ceiling and operating cutoff",
+  "finding":"PRODUCTIVE_CAP is an empirical envelope, while SOFT_CUTOFF is a policy decision. A P3/P4 admission policy can have no single task-start cutoff; instead the admissible frontier is hard_cap - reserve - estimated_task_duration. Therefore final reporting should preserve both a scalar conservative cutoff (for simple fallback) and the task-size-dependent admission frontier if P3/P4 wins.",
+  "fallback_candidate":"If policy simplicity is required before enough estimation data exist, use a conservative scalar cutoff derived from worst representative task size rather than the shortest task size.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
