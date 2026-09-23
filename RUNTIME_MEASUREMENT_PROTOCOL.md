@@ -46,6 +46,13 @@ Count a failure as a credible duration-boundary signal only when one or more occ
 
 GitHub/API/network/provider errors with explicit independent evidence are `NON_DURATION_FAILURE`.
 
+## Scheduler metadata caution
+During an in-flight invocation, live automation metadata such as `last_run_time` may still reflect the previous completed invocation even when the same automation's updated future schedule is already visible. Therefore:
+- use the scheduler update return/live schedule to verify prearm WRITE_OK/STATE_OK;
+- do not use mid-run `last_run_time` as proof of the current invocation's start;
+- capture `run_start_ts` independently at invocation start;
+- establish wake timing retrospectively from trustworthy next-invocation evidence.
+
 ## Retrospective wake evidence
 At the next invocation, compare prior `PREARM_NEXT`, prior `close_end_ts`, and actual new invocation start when observable.
 
