@@ -1,0 +1,23 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-02",
+  "case_id": "OP-CAP-14M-VALIDATION-02",
+  "target_sec": 840,
+  "harness_version": "STRICT_RUNTIME_HARNESS_V2",
+  "workload_profile": "ROTATED_STRICT_PROFILE",
+  "generated_unique_units": 975000000,
+  "logical_batches": 1354179,
+  "duplicate_units_rejected": 0,
+  "close_trigger": "AUTHORITATIVE_PROGRESS_TARGET_REACHED",
+  "start_marker_comment_id": 5802565805,
+  "start_marker_created_at": "2026-09-23T20:39:49Z",
+  "work_start_marker_comment_id": 5802567058,
+  "work_start_marker_created_at": "2026-09-23T20:39:54Z",
+  "progress_marker_comment_id": 5802762288,
+  "progress_marker_created_at": "2026-09-23T20:54:01Z",
+  "pre_close_marker_comment_id": 5802763892,
+  "pre_close_marker_created_at": "2026-09-23T20:54:08Z",
+  "authoritative_elapsed_at_progress_sec": 852,
+  "checkpoint_saved": true,
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true
+}
