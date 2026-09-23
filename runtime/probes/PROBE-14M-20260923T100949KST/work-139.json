@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":139,
+  "units_completed":8,
+  "research_notes":[
+    "A later state schema can track per-class counters clean_pass, duration_fail, non_duration_fail, and under_target directly.",
+    "That would make the decision rule executable without scanning all history on every run.",
+    "The counters should be derived/updated only from immutable classified evidence to avoid drift.",
+    "Supporting evidence should have separate counters or references.",
+    "This is a small observability improvement consistent with the research goal.",
+    "It can be implemented after the current timing-sensitive run closes."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
