@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":11,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"EVIDENCE_OVERHEAD_AND_ANTI_FRAGMENTATION_AUDIT",
+  "finding":"Canonical layout requires only start, materially useful checkpoints, and close. The current probe's writes each encode distinct decision-relevant findings, but further checkpoints should be consolidated as target approaches to avoid turning instrumentation itself into the dominant W3 workload.",
+  "control_action":"Continue useful mixed read/reconciliation work but reserve the final write sequence for target-cross/terminal synchronization rather than creating mechanically frequent checkpoints.",
+  "substantive_unit_count_cumulative":11,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
