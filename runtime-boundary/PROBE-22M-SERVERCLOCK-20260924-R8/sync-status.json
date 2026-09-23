@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-22M-SERVERCLOCK-20260924-R8",
+  "terminal_result":"UNDER_TARGET",
+  "worked_sec":182,
+  "boundary_effect":"NONE",
+  "terminal_sync_complete":false,
+  "sync_failure_class":"NON_DURATION_FAIL_CONTROL_PLANE",
+  "failed_surface":"state/events.log",
+  "failure":"optimistic concurrency SHA conflict (HTTP 409) during terminal append",
+  "safety_action":"did not overwrite concurrent writer; runtime boundary unchanged",
+  "recovery":"next invocation must re-read shared state/events and reconcile R8 terminal evidence before starting another strict probe"
+}
