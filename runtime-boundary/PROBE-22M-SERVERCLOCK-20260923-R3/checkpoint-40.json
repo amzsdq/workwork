@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 40,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "FINAL_PRODUCTIVE_WINDOW_AUDIT",
+  "findings": [
+    "The run has produced protocol repairs and empirical-control hardening directly relevant to the research goal throughout the invocation.",
+    "Because direct active-work instrumentation is absent, active_work_sec and productive_ratio must remain null at terminal close.",
+    "substantive_unit_count will be reported as the defensible productivity indicator, with no conversion of unit count into seconds."
+  ],
+  "substantive_unit_count_cumulative": 116,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
