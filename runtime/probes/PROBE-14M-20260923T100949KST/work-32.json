@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":32,
+  "units_completed":8,
+  "research_notes":[
+    "The coarse search should remain monotonic in target classes until the first credible failed upper class.",
+    "Changing both runtime and planned gap simultaneously would reduce interpretability, so gap remains fixed.",
+    "Changing to parallel execution before the cap is validated would likewise confound runtime survival evidence.",
+    "The eventual cap should be chosen for repeated reliability, not maximum one-off duration.",
+    "The future policy comparison should measure unnecessary early handoff as well as unsafe overshoot.",
+    "The final contract should remain simple enough to execute reliably under long-turn pressure."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
