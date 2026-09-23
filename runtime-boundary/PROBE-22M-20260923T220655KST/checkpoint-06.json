@@ -1,0 +1,15 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":6,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"WAKE_JITTER_SEPARATION_AUDIT",
+  "observed_wake_lateness_sec":[4,21,168],
+  "sources":["OVERLAP-15M-WAKE12M-01","18m retrospective continuation","20m retrospective continuation"],
+  "finding":"Wake timing variance is material but orthogonal to strict invocation survival. It must not create a duration failure boundary. It is instead an input to later handoff lead/gap optimization.",
+  "handoff_implication":"A fixed 180s overlap lead leaves 176s, 159s, or 12s of nominal preparation time under these observed lateness samples, so 15/12 remains baseline-only rather than promoted policy.",
+  "empirical_boundary_effect":"NONE",
+  "substantive_unit_count_cumulative":6,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
