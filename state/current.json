@@ -1,6 +1,6 @@
 {
   "schema_version": 36,
-  "status": "PAUSED_BY_USER",
+  "status": "ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
   "relay": {
@@ -74,8 +74,8 @@
     "productive_metrics_authority": "GITHUB_SERVER_RAW_CREATED_AT",
     "terminal_event_authority": "IMMUTABLE_PER_PROBE_EVENT",
     "shared_projection_conflict_policy": "CAS_REFETCH_RECONCILE_RETRY_X3_THEN_PENDING_RECONCILIATION",
-    "status": "PAUSED_BY_USER",
-    "paused_by_user": true,
+    "status": "ACTIVE",
+    "paused_by_user": false,
     "current_priority": "CONSERVATIVE_OPERATIONAL_CAP_VALIDATION",
     "operational_cap_candidate_minutes": 14,
     "operational_cap_status": "UNPROMOTED_REQUIRES_REPEATED_STRICT_VALIDATION",
@@ -145,7 +145,7 @@
     "current_case_id": "OP-CAP-14M-VALIDATION-01",
     "clock_protocol_path": "GITHUB_SERVER_CLOCK_PROTOCOL.md",
     "harness_version": "STRICT_RUNTIME_HARNESS_V2",
-    "resume_policy": "PAUSED_BY_USER",
+    "resume_policy": "ACTIVE",
     "current_priority": "CONSERVATIVE_OPERATIONAL_CAP_VALIDATION",
     "operational_policy_path": "OPERATIONAL_RELAY_POLICY.md"
   },
