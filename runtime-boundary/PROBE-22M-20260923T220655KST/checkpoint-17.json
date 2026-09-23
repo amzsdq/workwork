@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-22M-20260923T220655KST",
+  "case_id":"SC-A22-01",
+  "checkpoint":17,
+  "workload_profile":"W3_MIXED_IO",
+  "unit":"FINAL_NORMAL_WORK_ADMISSION_CHECK",
+  "finding":"Historical overshoot and close observations do not justify an arbitrary early cutoff in Phase A. With no duration failure observed in the active invocation, continue bounded W3 work until the directly observed target class, then stop normal admission and execute terminal close.",
+  "close_risk_control":"Do not start a new large unit near target; only bounded verification/read units are admissible so terminal synchronization can begin promptly at target crossing.",
+  "substantive_unit_count_cumulative":17,
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
