@@ -1,0 +1,12 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260924-R6",
+  "case_id": "SC-A22-CLOCK-01",
+  "workload_profile": "W3_MIXED_IO",
+  "substantive_units_completed_total": 52,
+  "additional_units": [
+    "evidence-integrity final-clock repair",
+    "strict evidence-layout marker-reference repair",
+    "commit chronology cross-check for sustained mixed I/O work"
+  ],
+  "status": "ACTIVE_CONTINUE"
+}
