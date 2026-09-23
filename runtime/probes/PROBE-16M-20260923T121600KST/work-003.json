@@ -1,0 +1,12 @@
+{
+  "probe_id": "PROBE-16M-20260923T121600KST",
+  "unit": 3,
+  "kind": "FAILURE_CLASSIFICATION_REPLAY",
+  "cases": {
+    "clean_target_and_close": "clean_pass",
+    "forced_stop_near_or_after_16m_without_independent_cause": "duration_fail_candidate",
+    "github_or_tool_failure_with_independent_evidence": "non_duration_fail",
+    "reasoning_backlog_exhausted_before_16m": "under_target"
+  },
+  "decision": "Only clean_pass or credible duration_fail may move the boundary. Ambiguous close loss at 16m must be repeated once before narrowing."
+}
