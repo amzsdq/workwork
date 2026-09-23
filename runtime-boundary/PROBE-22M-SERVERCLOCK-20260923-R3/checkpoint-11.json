@@ -1,0 +1,13 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 11,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "CRASH_RECOVERY_POINTER_HARDENING",
+  "finding": "Updated state/current.json to point at the active server-clock probe, its immutable START marker ID/server timestamp, target/profile, and the requirement to close this probe rather than starting a duplicate if continuation/recovery occurs.",
+  "decision_value": "If this invocation terminates before END_MARKER, the next invocation can classify/recover the incomplete probe from durable evidence instead of creating another start-only 22m probe.",
+  "repair_commit": "8ac7cc95aa21878ade4df46ae2961529c1644150",
+  "substantive_unit_count_cumulative": 32,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
