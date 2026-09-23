@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260923-R3",
+  "case_id": "SC-A22-CLOCK-01",
+  "checkpoint": 37,
+  "workload_profile": "W3_MIXED_IO",
+  "unit": "PROTOCOL_OVERHEAD_AUDIT",
+  "findings": [
+    "The first server-clock migration probe has unusually high instrumentation/write density because it repaired several stale protocol paths.",
+    "This is useful W3 work but should not become the normal profile template; future probes should use start + sparse material checkpoints + close.",
+    "Reducing measurement overhead later is necessary to estimate ordinary productive utilization rather than instrumentation utilization."
+  ],
+  "substantive_unit_count_cumulative": 107,
+  "duration_failure_observed": false,
+  "status": "ACTIVE_CONTINUE"
+}
