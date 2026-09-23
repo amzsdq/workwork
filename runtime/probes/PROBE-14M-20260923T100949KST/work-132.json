@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":132,
+  "units_completed":8,
+  "research_notes":[
+    "The final operating policy should include a behavior for missing duration estimates: use a conservative default unit class or hand off if residual budget is small.",
+    "It should include a behavior for failed checkpoint writes: retry within bounded close reserve, then preserve failure evidence for successor recovery.",
+    "It should not attempt unbounded retries near hard cap.",
+    "These operational details can be tested after close-overhead and failure data exist.",
+    "The current experiment provides the timing envelope for such retry budgets.",
+    "No policy-stage retry logic is activated now."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
