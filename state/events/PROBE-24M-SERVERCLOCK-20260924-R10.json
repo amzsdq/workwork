@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "case_id":"SC-A24-CLOCK+",
+  "result":"UNDER_TARGET",
+  "boundary_effect":"NONE",
+  "clock_validity":"VALID",
+  "harness_validity":"VALID",
+  "target_sec":1440,
+  "worked_sec":1402,
+  "productive_window_sec":1376,
+  "close_overhead_sec":14,
+  "target_shortfall_sec":38,
+  "semantic_unique_units_min":100000,
+  "logical_batches_min":391,
+  "close_trigger":"TIMING_ADMISSION",
+  "cause":"PROVISIONAL_CLOSE_RESERVE_OVERHEAD_MISMATCH",
+  "duration_failure":false,
+  "terminal_evidence_path":"runtime-boundary/PROBE-24M-SERVERCLOCK-20260924-R10/terminal.json",
+  "next_case":"SC-A24-CLOCK+"
+}
