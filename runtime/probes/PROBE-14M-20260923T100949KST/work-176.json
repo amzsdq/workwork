@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":176,
+  "units_completed":8,
+  "research_notes":[
+    "The current strict sample uses a single scheduler writer and single authoritative worker, eliminating duplicate-authority ambiguity from the runtime measurement.",
+    "This is important because concurrent authoritative work could make a clean close appear successful while hiding side-effect duplication.",
+    "Parallelism will later require separate duplicate-work metrics and fencing.",
+    "Those concerns are intentionally absent from the current boundary evidence.",
+    "The sample therefore isolates runtime/close behavior more cleanly.",
+    "No control conflict has been observed."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
