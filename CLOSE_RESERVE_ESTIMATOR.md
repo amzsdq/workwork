@@ -1,47 +1,45 @@
 # Close Reserve Estimator
 
-Purpose: estimate how much runtime must remain for durable close after the next wake has already been pre-armed at turn start, without pretending sparse samples are precise.
+Purpose: estimate how much budget must remain for the durable close checkpoint before authoritative END_MARKER, while separately observing post-END terminal-sync overhead.
+
+## Final-clock semantics
+Strict WORKED always ends at raw GitHub `END_MARKER.created_at`. Therefore separate:
+- `pre_end_close_overhead`: necessary close/checkpoint work before END_MARKER;
+- `post_end_sync_overhead`: terminal evidence/event/state/table synchronization after END, outside WORKED.
+
+Do not collapse the two into a single strict duration endpoint.
 
 ## Observation
-For each timing probe, when directly observable, record:
-- `pre_close_ts`
-- `close_end_ts`
-- `checkpoint_write_sec` if separately observable
-- `close_overhead_sec = close_end_ts - pre_close_ts`
-- `prearm_overhead_sec` separately from the start-of-turn scheduler mutation
-- `workload_profile`
+When directly observable with compatible trustworthy clocks, record:
+- last normal task admission evidence;
+- pre-close checkpoint start;
+- END_MARKER server timestamp;
+- pre-end close/checkpoint overhead;
+- post-END operational-sync end and overhead;
+- prearm overhead separately;
+- workload profile.
 
-Do not infer missing timestamps.
+Do not infer missing timestamps. Pre-server-clock close samples remain legacy supporting only unless their timing source is independently trustworthy for the secondary metric; they cannot establish strict WORKED.
 
 ## Sparse-sample rule
-Let N be the number of valid direct `close_overhead_sec` observations.
+For N valid direct **current-protocol** pre-end close samples:
+- N=0: current-protocol reserve UNKNOWN; no numeric reserve promotion.
+- N=1..4: report median/max and LOW_CONFIDENCE provisional reference.
+- N>=5: report median, p80 nearest-rank, max, count; candidate fixed reserve may use observed upper behavior plus separately justified uncertainty.
 
-- N=0: reserve is UNKNOWN. Do not use a numeric reserve to promote a cap.
-- N=1..4: report median and max; use max as the provisional observed close-overhead reference, explicitly LOW_CONFIDENCE.
-- N>=5: report median, p80 (nearest-rank), max, and sample count. The policy-stage fixed reserve candidate is `max(p80, median + observed_jitter_allowance)`; max remains diagnostic rather than automatically becoming the reserve.
-
-`observed_jitter_allowance` must come from repeated close observations (for example upper-minus-median spread), not an invented constant.
+Legacy samples are reported separately and do not increase current-protocol N.
 
 ## Profile handling
-Close cost may depend on workload/close shape. Track samples by workload profile as well as pooled.
-
-- With sparse data, do not pretend profiles are equivalent.
-- If representative profiles show materially different close distributions, use the worst credible operational profile for a UNIVERSAL_CAP/reserve or explicitly adopt a PROFILE_AWARE reserve only when the utilization benefit justifies the added complexity.
-- A W3/mixed-load close sample does not by itself establish W2 write-heavy close overhead.
+Track by profile and pooled. If realistic profiles differ materially, use worst credible profile for a universal reserve or adopt profile-aware reserve only when utilization benefit justifies complexity.
 
 ## Separation from safety margin
-`close_overhead` and `safety_margin` are different:
-- close_overhead estimates expected time required to persist/finalize after work; scheduler pre-arm is already complete and is tracked separately;
-- safety_margin covers uncertainty in runtime ceiling, task-duration estimate error, and close-time variance.
-
-Do not double-count the same observed variance in both terms.
+Close reserve covers expected pre-END close/checkpoint work. Safety margin covers uncertainty in runtime ceiling, unit-duration estimation, and close variance. Do not double-count the same variance.
 
 ## Phase-C use
-For an admission decision at elapsed E with estimated next unit D:
+A future admission decision may use:
+`predicted_finish = elapsed_control_estimate + estimated_next_unit + close_reserve + safety_margin`
 
-`predicted_finish = E + D + close_reserve + safety_margin`
-
-P3/P4 may admit the unit only when predicted_finish is below HARD_CAP. Record the estimate and actual outcome so estimate error can be measured.
+The in-flight elapsed estimate is control guidance, not final strict WORKED. Final empirical outcome is reconciled after END_MARKER.
 
 ## Promotion discipline
-No operating cap or adaptive policy is promoted solely because the estimator exists. Runtime-boundary evidence remains primary. This estimator only converts that boundary into a repeatable close/admission rule.
+No cap/reserve/adaptive policy is promoted because the estimator exists. Runtime-boundary and repeated current-protocol completion evidence dominate.
