@@ -1,0 +1,10 @@
+{
+  "probe_id":"PROBE-20M-20260923T210435KST",
+  "checkpoint":15,
+  "workload_profile":"W6_LARGE_UNIT",
+  "substantive_unit_count":15,
+  "large_unit":"terminal evidence schema prevalidation",
+  "required_close_fields":["target_runtime_min","actual_elapsed_sec","goal_directed_window_sec","goal_directed_ratio","direct_active_work_sec","productive_ratio","substantive_unit_count","pre_close_ts","close_end_ts","close_overhead_sec","overshoot_sec","clean_close","checkpoint_saved","scheduler_write_ok","scheduler_state_ok","forced_stop_or_timeout","non_duration_failure"],
+  "schema_valid":true,
+  "status":"ACTIVE_CONTINUE"
+}
