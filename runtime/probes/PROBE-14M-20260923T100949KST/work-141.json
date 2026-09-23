@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":141,
+  "units_completed":8,
+  "research_notes":[
+    "The final close should avoid unnecessary extra analysis after target because close latency itself is being measured.",
+    "At the first safe boundary at/after target, capture pre_close and perform only the minimum durable close/state operations.",
+    "This yields a meaningful close-overhead observation.",
+    "Starting another large work batch after target would contaminate that measurement.",
+    "The current bounded units keep safe boundaries frequent.",
+    "The next target-crossing boundary should therefore transition directly to close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
