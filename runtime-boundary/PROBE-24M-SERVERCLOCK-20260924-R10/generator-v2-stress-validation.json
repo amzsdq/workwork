@@ -1,0 +1,13 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "generator_version":"SEMANTIC_EPOCH_V2",
+  "validation_units":50000,
+  "identity_unique":50000,
+  "semantic_unique":50000,
+  "identity_collisions":0,
+  "semantic_collisions":0,
+  "base_cartesian_size":720,
+  "epochs_crossed":70,
+  "result":"PASS",
+  "interpretation":"Generator V2 remains scalable beyond a single Cartesian epoch without degenerating into ID-only repeated work."
+}
