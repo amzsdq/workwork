@@ -1,0 +1,16 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":26,
+  "units_completed":10,
+  "bounded_close_tail":[
+    "Verify that failure-boundary status is still unresolved before close.",
+    "Verify last strict clean target remains 12m before close.",
+    "Verify next target transition is transactional on durable close success.",
+    "Verify parallel probe status remains deferred.",
+    "Verify no user-facing claim of 14m PASS is made before close evidence.",
+    "Verify no scheduler rewrite is required at close.",
+    "Verify next invocation can recover from incremental evidence if final close is lost.",
+    "Verify generated load remains directly relevant to the research question."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
