@@ -1,86 +1,53 @@
 # Runtime Boundary Decision Rule
 
-Purpose: prevent false promotion of a runtime limit from sparse or misclassified evidence while keeping Phase A efficient.
+Purpose: prevent false promotion from sparse/misclassified evidence while keeping Phase A efficient.
 
 ## Clock validity gate
+Before strict classification require:
+- START_MARKER comment ID and raw server created_at;
+- END_MARKER comment ID and raw server created_at;
+- WORKED = END - START;
+- marker_pair_valid=true.
 
-Before runtime-boundary classification, validate the GitHub server marker pair defined in `GITHUB_SERVER_CLOCK_PROTOCOL.md`.
+Model/inferred time is ignored. Missing/invalid pair => CLOCK_EVIDENCE_INVALID, no lower/failure-boundary effect.
 
-Required:
-- START_MARKER comment ID
-- raw START_MARKER.created_at
-- END_MARKER comment ID
-- raw END_MARKER.created_at
-- `WORKED = END_MARKER.created_at - START_MARKER.created_at`
-- `marker_pair_valid=true`
+## Evidence states
+Treat target/profile as a pair:
+- clean_pass: valid server marker pair proves WORKED reached class, prearm verified, durable close checkpoint completed normally;
+- duration_fail: credible near/after-target close loss/forced termination without independent cause;
+- non_duration_fail: explicit independent provider/tool/network/scheduler cause;
+- under_target: valid pair proves WORKED below class;
+- clock_evidence_invalid: exact duration unavailable.
 
-Model-authored or inferred time strings are ignored for duration judgment.
+Only clean_pass and credible duration_fail affect runtime-boundary inference. Clean close is CLEAN_PASS_PENDING_WAKE until retrospective continuation observation; only then may server-clock safe lower bound advance.
 
-If this gate fails, classify the exact-duration evidence as `CLOCK_EVIDENCE_INVALID`. It affects neither lower bound nor failure boundary.
-
-## Evidence states per target/profile class
-Treat target runtime and workload profile as a pair during causal interpretation. Each target/profile class has five evidence states:
-- `clean_pass`: a valid GitHub server marker pair proves WORKED reached the class, pre-arm scheduler state was verified, and durable close completed normally.
-- `duration_fail`: credible near/after-target close-loss or forced termination without independent non-duration cause.
-- `non_duration_fail`: explicit independent GitHub/network/tool/provider failure.
-- `under_target`: a valid GitHub server marker pair proves WORKED ended before the class; informative for workload generation but not boundary evidence.
-- `clock_evidence_invalid`: exact duration cannot be established from a valid server marker pair; no boundary effect.
-
-Only `clean_pass` and `duration_fail` affect runtime-boundary inference. `non_duration_fail`, `under_target`, and `clock_evidence_invalid` do not move it.
-
-A clean close is initially `CLEAN_PASS_PENDING_WAKE`. Under the current strict protocol, SAFE_LOWER_BOUND and the next coarse target advance only after the following actual invocation retrospectively confirms WAKE_OK for that pass.
-
-## Coarse ascent
-- A single clean pass at target T plus retrospective WAKE_OK is enough to move the exploratory probe target to T+2m.
-- It is not enough to promote T as a production cap.
-- `SAFE_LOWER_BOUND` may be reported as the highest class with at least one clean timing pass whose next wake was retrospectively observed, explicitly marked as a lower-bound observation rather than a validated universal cap.
-- Rotating profiles during coarse ascent broadens exploration but means adjacent target classes are not automatically a causally clean duration bracket.
-
-## Failure handling
-A first credible duration failure at F under profile P creates `FAILURE_BOUNDARY_CANDIDATE=(F,P)`, not a final universal boundary.
-- If the immediately lower tested class L used the same profile P and has a clean pass, refine inside [L,F] with P fixed.
-- If L used a different profile, run the first refinement with P fixed and obtain a same-profile lower anchor when needed before claiming a profile-specific bracket.
-- If the failure is ambiguous, repeat F with P fixed once before narrowing.
-- If an independent failure cause is found, reclassify as `non_duration_fail` and continue the prior search.
-
-## Refinement
-Use approximately 1-minute target classes while holding the failure-producing profile fixed.
-- Clean midpoint raises the same-profile lower anchor after retrospective WAKE_OK under the strict protocol.
-- Credible duration failure lowers the same-profile upper anchor.
-- Continue until the profile-controlled bracket is about 1 minute or finer, subject to available evidence.
-- Cross-profile validation near the eventual candidate cap determines whether the final rule can be UNIVERSAL_CAP or must account for profile-dependent risk.
+## Coarse ascent / refinement
+A clean target + retrospective wake advances exploratory target by about +2m but does not promote production cap. First credible duration failure is profile-specific until same-profile bracketing/refinement narrows it near 1m. Cross-profile validation determines universal vs profile-aware final policy.
 
 ## Operating-cap promotion
-`max_observed_success` is never automatically the operating cap.
+Candidate C initially requires >=5 clean marker-valid closes at/near C, no unresolved duration failure at/below C, verified prearm, durable close, continuation evidence where measurable, explicit safety margin, and representative profiles. Longest one-off success is never automatically the cap.
 
-A candidate operating cap C requires initially:
-- >=5 clean closes at/near C,
-- no unresolved duration failure at or below C,
-- preserved start-of-turn pre-arm RRULE state and final durable checkpoint on each counted pass,
-- observed next wake for the prior run where measurable,
-- explicit safety margin below the credible failure boundary,
-- representative workload-profile coverage sufficient to distinguish a universal cap from profile-specific risk.
+## Completion-envelope / close reserve
+Under `GITHUB_SERVER_CLOCK_PROTOCOL.md`:
+- strict measured work ends at END_MARKER.created_at after substantive work + durable close checkpoint;
+- terminal ledger/state/table synchronization occurs after END and is outside WORKED.
 
-If variance in close overhead or elapsed runtime is large, widen the safety margin rather than increasing policy complexity first.
+Therefore distinguish:
+1. `pre_end_close_overhead` — checkpoint/finalization work before END, relevant to admission reserve;
+2. `post_end_sync_overhead` — bookkeeping/control overhead after END, relevant to long-run utilization/recovery but not strict WORKED.
 
-## Close-reserve measurement
-For every timing pass record `pre_close_ts` and `close_end_ts` when practical.
+Record either only when directly observable with compatible trustworthy clocks. Legacy pre-server-clock close observations are supporting-only and do not count toward current-protocol reserve-promotion sample N.
 
-`close_overhead_sec = close_end_ts - pre_close_ts`
-
-These completion-envelope timestamps are secondary instrumentation unless they themselves come from an explicitly authoritative server-side source. They must never substitute for the GitHub START/END marker pair used to compute WORKED.
-
-The scheduler pre-arm happens after START_MARKER and is not part of close reserve. Track `prearm_overhead_sec` separately.
-
-Until enough observations exist, do not hard-code a close reserve from one sample. Track at least median and upper-tail/max observed close overhead. Phase C may then test whether a fixed reserve is sufficient or adaptive reserve materially improves utilization.
+Scheduler prearm occurs after START and is tracked separately.
 
 ## Policy-stage admission evidence
-For P3/P4, every decision to continue should record:
-- elapsed time at admission,
-- estimated next-unit duration,
-- predicted close reserve,
-- safety margin,
-- actual next-unit duration when observable,
-- whether the decision caused overshoot or unnecessary early handoff.
+For P3/P4 record, when trustworthy:
+- control elapsed estimate/timing scope at admission;
+- estimated next-unit duration;
+- predicted close reserve;
+- safety margin;
+- actual next-unit duration when observable;
+- empirical outcome reconciled after END;
+- overshoot or unnecessary early handoff.
 
-This allows the final policy to be evaluated on decision quality rather than only aggregate runtime.
+This evaluates decision quality without letting in-flight model time become strict duration proof.
