@@ -1,0 +1,24 @@
+{
+  "probe_id": "PROBE-22M-SERVERCLOCK-20260924-R6",
+  "case_id": "SC-A22-CLOCK-01",
+  "clock_protocol": "GITHUB_SERVER_MARKER_V1",
+  "workload_profile": "W3_MIXED_IO",
+  "substantive_units_completed_total": 21,
+  "additional_units": [
+    "timing event schema repair",
+    "evidence layout audit",
+    "runtime workload profile audit",
+    "policy utility model audit",
+    "legacy result mapping repair",
+    "handoff READY schema timing repair",
+    "overlap candidate timing-authority repair",
+    "handoff lead-note timing repair",
+    "handoff sample acceptance timing repair"
+  ],
+  "new_findings": [
+    "handoff-state.json contains model-authored updated_at legacy metadata; it must not be reused as empirical timing",
+    "future handoff quantitative timing needs explicit authoritative endpoint mechanism separate from model file timestamps",
+    "pre-server-clock 32s close sample remains legacy supporting only"
+  ],
+  "status": "ACTIVE_CONTINUE"
+}
