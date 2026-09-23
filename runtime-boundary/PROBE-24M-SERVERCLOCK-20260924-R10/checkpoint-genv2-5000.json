@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "generator_version":"SEMANTIC_EPOCH_V2",
+  "seed":"SC-A24-CLOCK:R10:GENV2",
+  "generated_units":5000,
+  "case_id_unique":5000,
+  "semantic_scenario_unique":5000,
+  "duplicates":0,
+  "cartesian_base_size":720,
+  "epoch_variants":["target_delta_sec","marker_skew_sec","close_reserve_sec"],
+  "validation":"5000/5000 unique IDs AND 5000/5000 unique semantic keys",
+  "decision_value":"near-boundary perturbation + marker-skew + close-reserve sensitivity across runtime/control state combinations",
+  "status":"SUBSTANTIVE_CONTINUATION_VALID"
+}
