@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":39,
+  "units_completed":8,
+  "research_notes":[
+    "The strict boundary study now has a workload-generation pattern that can scale to longer target classes.",
+    "For 16m and above, fewer but richer immutable batches may reduce repository overhead while preserving evidence continuity.",
+    "The current dense retry is justified because it specifically diagnoses the prior workload-exhaustion confound.",
+    "Future profile rotation should avoid changing evidence cadence so drastically that close overhead becomes incomparable.",
+    "Raw timestamps and profile metadata permit later stratified analysis.",
+    "The experimental program remains focused on useful relay operation rather than synthetic timeout hunting alone."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
