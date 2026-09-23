@@ -1,0 +1,12 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "status":"SUBSTANTIVE_WORK_COMPLETE_FOR_ADMISSION_WINDOW_PENDING_SERVER_PROGRESS",
+  "semantic_unique_units_min":100000,
+  "logical_batches_min":391,
+  "additional_research_outputs":18,
+  "major_defects_found_and_fixed":11,
+  "duration_failure_observed":false,
+  "finite_backlog_close_used":false,
+  "idle_or_sleep_padding_used":false,
+  "next_action":"authoritative PROGRESS sample; PRE_CLOSE only when admission threshold reached"
+}
