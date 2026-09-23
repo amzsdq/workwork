@@ -1,0 +1,12 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":11,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":55,
+  "new_finding":"The latest safe work point is not generally one scalar timestamp; it is a frontier that depends on the next unit's duration plus close reserve and safety margin.",
+  "formalization":"remaining_slack = hard_cap - elapsed - close_reserve - safety_margin; admit next unit only when its credible duration fits the slack.",
+  "design_result":"Final program should expose both a conservative scalar PRODUCTIVE_CAP for simple P1/P2 operation and a task-size-aware COMPLETION_ENVELOPE for P3/P4. Complexity is promoted only if variable task sizes make the scalar cutoff materially wasteful.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
