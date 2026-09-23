@@ -1,0 +1,7 @@
+{
+  "probe_id":"PROBE-24M-SERVERCLOCK-20260924-R10",
+  "status":"READY_WHEN_SERVER_PROGRESS_REACHES_ADMISSION_CLOSE_WINDOW",
+  "checks":{"start_raw_valid":true,"work_start_raw_valid":true,"scheduler_same_automation_prearmed":true,"scheduler_state_ok":true,"semantic_workload_available":true,"conservative_semantic_unique_units_min":100000,"duplicate_ids_in_credited_set":0,"semantic_collisions_in_credited_set":0,"durable_substantive_findings_checkpoint":true,"terminal_builder_available":true,"projection_plan_available":true,"duration_failure_observed":false},
+  "must_not_do":["use local/model time to declare threshold","close because backlog exhausted","mutate scheduler at normal close","promote 24m before retrospective wake"],
+  "next_control_action":"create/raw-fetch PROGRESS; if authoritative admission threshold reached, create/raw-fetch PRE_CLOSE"
+}
