@@ -1,0 +1,23 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":15,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":70,
+  "final_output_readiness":{
+    "SAFE_LOWER_BOUND":"16m exploratory lower bound",
+    "FAILURE_BOUNDARY":"unresolved",
+    "OPERATING_CAP":null,
+    "PRODUCTIVE_CAP":null,
+    "SOFT_CUTOFF":null,
+    "HARD_CAP":null,
+    "CLOSE_OVERHEAD":"one direct 32s mixed-load sample; LOW_CONFIDENCE; W2 sample pending",
+    "SAFETY_MARGIN":null,
+    "NEXT_TASK_ADMISSION":"decision form defined, not promoted",
+    "workload_profile_coverage":"W3 14m clean, W4 16m clean, W2 18m active; not universal-cap validation",
+    "rollback_rule":"defined with layer separation",
+    "selected_planned_gap":"not promoted; +3m remains Phase-A baseline"
+  },
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
