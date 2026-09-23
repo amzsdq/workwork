@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":72,
+  "units_completed":8,
+  "research_notes":[
+    "A later observer should compute wake jitter as actual next start minus scheduled-for time.",
+    "That metric should not be backfilled from notification/display timestamps unless they represent actual invocation start.",
+    "Actual idle gap is next start minus predecessor close end.",
+    "Negative idle gap indicates overlap and must be classified as concurrency.",
+    "During strict boundary phase, unexpected overlap is a control anomaly rather than a desired optimization.",
+    "No such overlap is intentionally created by this sample's +3m planned gap."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
