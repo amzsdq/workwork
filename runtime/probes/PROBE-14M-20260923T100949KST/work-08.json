@@ -1,0 +1,20 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":8,
+  "units_completed":12,
+  "metric_integrity":[
+    "actual_elapsed_sec should be derived from captured start and close timestamps, not estimated from tool count.",
+    "active_work_sec may be lower than elapsed due to tool latency; both should be retained when measurable.",
+    "prearm_overhead_sec is separate from close_overhead_sec.",
+    "overshoot_sec should be positive only beyond target and must not be conflated with close reserve.",
+    "actual_idle_gap requires current close and next invocation actual start, so it is retrospective.",
+    "safe lower bound is exploratory evidence; operating cap is a separately validated policy parameter.",
+    "failure boundary remains unresolved until credible duration failure exists.",
+    "workload profile labels are required to detect profile-specific lower boundaries.",
+    "load_origin distinguishes purposeful generated stress load from production/user work without devaluing the former.",
+    "checkpoint_saved must refer to durable repository evidence, not merely an intended write.",
+    "scheduler_write_ok and scheduler_state_ok are distinct: transport success is insufficient if returned state differs.",
+    "clean_close should only be asserted after durable close evidence exists."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
