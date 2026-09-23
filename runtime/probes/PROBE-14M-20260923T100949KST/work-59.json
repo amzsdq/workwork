@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":59,
+  "units_completed":8,
+  "research_notes":[
+    "Current workload has exercised both reasoning synthesis and persistent I/O rather than one homogeneous operation.",
+    "This supports the W3 mixed-profile label.",
+    "A future reasoning-heavy profile should reduce write frequency while retaining durable periodic checkpoints.",
+    "A future I/O-heavy profile can stress checkpoint latency more explicitly.",
+    "If both support similar boundaries, confidence in a universal cap increases.",
+    "If they diverge, cap/policy must respect the lower-risk profile result."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
