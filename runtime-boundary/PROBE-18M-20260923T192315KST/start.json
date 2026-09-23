@@ -12,6 +12,12 @@
   "prior_safe_lower_bound_min": 16,
   "failure_boundary_min": null,
   "terminal_sync_invariant": true,
-  "status": "ACTIVE",
-  "objective": "Produce terminal 18m classification with durable close; avoid another start-only probe."
+  "status": "UNDER_TARGET",
+  "target_reached": false,
+  "clean_close": false,
+  "checkpoint_saved": false,
+  "forced_stop_or_timeout": false,
+  "boundary_effect": "NONE",
+  "classification_reason": "No durable checkpoint or close establishes reaching the 18m target; missing close alone is not a duration failure.",
+  "classified_at_kst": "2026-09-23T19:39:38+09:00"
 }
