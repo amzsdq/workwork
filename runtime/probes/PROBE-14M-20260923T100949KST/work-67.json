@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":67,
+  "units_completed":8,
+  "research_notes":[
+    "The boundary search should record any automatic/runtime termination separately from an explicit voluntary close at the target.",
+    "A voluntary close just after target demonstrates survival to that class; it does not locate the true maximum.",
+    "That is why coarse ascent continues after each pass.",
+    "The first credible involuntary/failed close supplies the upper-region evidence.",
+    "This design avoids intentionally running every successful sample until failure, which would risk unnecessary checkpoint loss.",
+    "The present 14m probe should close normally at the first safe boundary after target."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
