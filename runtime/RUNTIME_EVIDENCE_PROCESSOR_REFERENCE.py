@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional
+from typing import Iterable, Optional
 
 SERVER_CLOCK = "GITHUB_SERVER_MARKER_V1"
 
@@ -25,8 +25,12 @@ def worked_sec(start_created_at: str, end_created_at: str) -> int:
 class Probe:
     probe_id: str
     target_runtime_sec: int
+    case_id: Optional[str] = None
+    workload_profile: Optional[str] = None
     clock_protocol: Optional[str] = None
+    start_marker_comment_id: Optional[int] = None
     start_marker_created_at: Optional[str] = None
+    end_marker_comment_id: Optional[int] = None
     end_marker_created_at: Optional[str] = None
     scheduler_write_ok: bool = False
     scheduler_state_ok: bool = False
@@ -35,45 +39,55 @@ class Probe:
     forced_stop_or_timeout: bool = False
     non_duration_failure: bool = False
     substantive_unit_count: int = 0
+    active_work_sec: Optional[int] = None
+    productive_ratio: Optional[float] = None
     recorded_worked_sec: Optional[int] = None
+    prior_next_wake_observed: bool = False
     legacy: bool = False
     anomalies: list[str] = field(default_factory=list)
 
 
 def classify(p: Probe) -> dict:
-    """Pure classifier. It never mutates empirical bounds."""
+    """Pure classifier. Never mutates empirical bounds or trusts model elapsed time."""
     if p.legacy or p.clock_protocol != SERVER_CLOCK:
-        return {"result": "LEGACY_SUPPORTING", "boundary_effect": "NONE", "worked_sec": None, "anomalies": list(p.anomalies)}
+        return {"probe_id": p.probe_id, "result": "LEGACY_SUPPORTING", "boundary_effect": "NONE", "worked_sec": None, "marker_pair_valid": False, "anomalies": list(p.anomalies)}
 
-    # An independently established provider/network/scheduler failure is causal
-    # even if clock evidence is also unavailable. It cannot become a duration fail.
+    anomalies = list(p.anomalies)
+    marker_ids_complete = p.start_marker_comment_id is not None and p.end_marker_comment_id is not None
+    marker_times_complete = bool(p.start_marker_created_at and p.end_marker_created_at)
+
     if p.non_duration_failure:
         worked = None
-        anomalies = list(p.anomalies)
-        if p.start_marker_created_at and p.end_marker_created_at:
+        if marker_times_complete:
             try:
                 worked = worked_sec(p.start_marker_created_at, p.end_marker_created_at)
             except ValueError as exc:
                 anomalies.append(f"CLOCK_INVALID:{exc}")
-        return {"result": "NON_DURATION_FAIL", "boundary_effect": "NONE", "worked_sec": worked, "anomalies": anomalies}
+        return {"probe_id": p.probe_id, "result": "NON_DURATION_FAIL", "boundary_effect": "NONE", "worked_sec": worked, "marker_pair_valid": marker_ids_complete and marker_times_complete and worked is not None, "anomalies": anomalies}
 
-    if not p.start_marker_created_at or not p.end_marker_created_at:
-        return {"result": "CLOCK_EVIDENCE_INVALID", "boundary_effect": "NONE", "worked_sec": None, "anomalies": list(p.anomalies)}
+    if not marker_ids_complete:
+        anomalies.append("MARKER_ID_PAIR_INCOMPLETE")
+    if not marker_times_complete:
+        anomalies.append("MARKER_TIMESTAMP_PAIR_INCOMPLETE")
+    if not marker_ids_complete or not marker_times_complete:
+        return {"probe_id": p.probe_id, "result": "CLOCK_EVIDENCE_INVALID", "boundary_effect": "NONE", "worked_sec": None, "marker_pair_valid": False, "anomalies": anomalies}
 
     try:
         worked = worked_sec(p.start_marker_created_at, p.end_marker_created_at)
     except ValueError as exc:
-        return {"result": "CLOCK_EVIDENCE_INVALID", "boundary_effect": "NONE", "worked_sec": None, "error": str(exc), "anomalies": list(p.anomalies)}
+        anomalies.append(f"CLOCK_INVALID:{exc}")
+        return {"probe_id": p.probe_id, "result": "CLOCK_EVIDENCE_INVALID", "boundary_effect": "NONE", "worked_sec": None, "marker_pair_valid": False, "anomalies": anomalies}
 
-    anomalies = list(p.anomalies)
     if p.recorded_worked_sec is not None and p.recorded_worked_sec != worked:
         anomalies.append(f"RECORDED_WORKED_MISMATCH:{p.recorded_worked_sec}!={worked}")
+    if p.productive_ratio is not None and p.active_work_sec is None:
+        anomalies.append("PRODUCTIVE_RATIO_WITHOUT_DIRECT_ACTIVE_WORK")
+    if p.active_work_sec is not None and p.active_work_sec > worked:
+        anomalies.append("ACTIVE_WORK_EXCEEDS_WORKED")
 
     if worked < p.target_runtime_sec:
         result = "UNDER_TARGET"
     elif p.forced_stop_or_timeout:
-        # Forced stop takes precedence over clean-close flags if inconsistent data
-        # contains both; downstream reproduction decides whether to confirm a bound.
         result = "DURATION_FAIL_CANDIDATE"
         if p.clean_close:
             anomalies.append("INCONSISTENT_FORCED_STOP_AND_CLEAN_CLOSE")
@@ -83,7 +97,7 @@ def classify(p: Probe) -> dict:
     else:
         result = "AMBIGUOUS"
 
-    return {"result": result, "boundary_effect": "NONE", "worked_sec": worked, "anomalies": anomalies}
+    return {"probe_id": p.probe_id, "result": result, "boundary_effect": "NONE", "worked_sec": worked, "marker_pair_valid": True, "anomalies": anomalies}
 
 
 def retrospective_wake(result: dict, wake_observed: bool) -> dict:
@@ -94,12 +108,45 @@ def retrospective_wake(result: dict, wake_observed: bool) -> dict:
     return out
 
 
+def reconcile_duplicate_records(records: Iterable[Probe]) -> dict[str, Probe]:
+    """Collapse duplicate normalized records conservatively.
+
+    Exact duplicates are harmless. Conflicting records for the same probe are rejected
+    rather than merged because field-wise merging can fabricate a marker pair or clean close.
+    """
+    out: dict[str, Probe] = {}
+    for record in records:
+        prior = out.get(record.probe_id)
+        if prior is None:
+            out[record.probe_id] = record
+        elif prior != record:
+            raise ValueError(f"CONFLICTING_DUPLICATE_PROBE:{record.probe_id}")
+    return out
+
+
+def derive_bounds(classified: Iterable[dict]) -> dict:
+    """Derive only facts justified by terminal classifications.
+
+    A failure candidate is deliberately not promoted to a confirmed boundary here.
+    Confirmation requires profile-controlled reproduction outside this pure aggregator.
+    """
+    clean = [r for r in classified if r.get("result") == "CLEAN_PASS_WAKE_OK"]
+    failure_candidates = [r for r in classified if r.get("result") == "DURATION_FAIL_CANDIDATE"]
+    clean_targets = [r.get("target_runtime_sec") for r in clean if isinstance(r.get("target_runtime_sec"), int)]
+    return {
+        "server_clock_safe_lower_bound_sec": max(clean_targets) if clean_targets else None,
+        "server_clock_failure_boundary_sec": None,
+        "duration_failure_candidate_count": len(failure_candidates),
+        "clean_wake_ok_count": len(clean),
+    }
+
+
 if __name__ == "__main__":
     corpus = [
-        Probe("R3", 1320, SERVER_CLOCK, "2026-09-23T13:32:22Z", "2026-09-23T13:43:14Z", True, True, True, True, False, False, 137, 652),
-        Probe("R4", 1320, SERVER_CLOCK, "2026-09-23T13:58:33Z", "2026-09-23T14:10:49Z", True, True, True, True, False, False, 40, 736),
-        Probe("R5", 1320, SERVER_CLOCK, None, None, False, False, False, False, False, True, 0, None),
-        Probe("R6", 1320, SERVER_CLOCK, "2026-09-23T15:23:53Z", "2026-09-23T15:40:08Z", True, True, True, True, False, False, 59, 975),
+        Probe("R3", 1320, clock_protocol=SERVER_CLOCK, start_marker_comment_id=1, start_marker_created_at="2026-09-23T13:32:22Z", end_marker_comment_id=2, end_marker_created_at="2026-09-23T13:43:14Z", scheduler_write_ok=True, scheduler_state_ok=True, checkpoint_saved=True, clean_close=True, substantive_unit_count=137, recorded_worked_sec=652),
+        Probe("R4", 1320, clock_protocol=SERVER_CLOCK, start_marker_comment_id=3, start_marker_created_at="2026-09-23T13:58:33Z", end_marker_comment_id=4, end_marker_created_at="2026-09-23T14:10:49Z", scheduler_write_ok=True, scheduler_state_ok=True, checkpoint_saved=True, clean_close=True, substantive_unit_count=40, recorded_worked_sec=736),
+        Probe("R5", 1320, clock_protocol=SERVER_CLOCK, non_duration_failure=True),
+        Probe("R6", 1320, clock_protocol=SERVER_CLOCK, start_marker_comment_id=5, start_marker_created_at="2026-09-23T15:23:53Z", end_marker_comment_id=6, end_marker_created_at="2026-09-23T15:40:08Z", scheduler_write_ok=True, scheduler_state_ok=True, checkpoint_saved=True, clean_close=True, substantive_unit_count=59, recorded_worked_sec=975),
     ]
     for probe in corpus:
-        print(probe.probe_id, classify(probe))
+        print(classify(probe))
