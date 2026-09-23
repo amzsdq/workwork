@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":137,
+  "units_completed":8,
+  "research_notes":[
+    "The current automation prompt still mentions 12m/14m explicitly, so after a clean advancement the durable state should be treated as authoritative even if prompt text lags.",
+    "A later prompt cleanup can replace hard-coded current values with instructions to read state first.",
+    "That reduces maintenance and avoids accidental regression to an old target.",
+    "This is supporting development but should not interrupt the current timing probe.",
+    "The next invocation can update prompt wording if necessary after reconciling the close.",
+    "No scheduler change is needed now."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
