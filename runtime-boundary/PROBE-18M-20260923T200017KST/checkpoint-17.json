@@ -1,0 +1,18 @@
+{
+  "case_id":"SC-A18-01",
+  "probe_id":"PROBE-18M-20260923T200017KST",
+  "checkpoint":17,
+  "workload_profile":"W2_WRITE_CHECKPOINT_HEAVY",
+  "substantive_unit_count_cumulative":78,
+  "close_plan":{
+    "target_cross":"observe directly at/after 20:18:17 KST",
+    "pre_close":"capture immediately after finishing the current bounded useful unit",
+    "required_sync":"raw terminal evidence + events.log + current.json + EVIDENCE_TABLE.md",
+    "required_verification":"re-read shared views and verify terminal result/boundary/case agreement",
+    "close_end":"observe immediately after verification",
+    "post_close_measurement":"persist separately without recursively redefining close_end"
+  },
+  "productive_measurement":"direct_active_work_sec remains unknown; use directly bounded goal-directed window from verified prearm completion to pre_close, with necessary W2 tool I/O explicitly included.",
+  "duration_failure_observed":false,
+  "status":"ACTIVE_CONTINUE"
+}
