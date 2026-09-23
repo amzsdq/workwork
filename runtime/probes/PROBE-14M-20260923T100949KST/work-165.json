@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":165,
+  "units_completed":8,
+  "research_notes":[
+    "The eventual cross-profile matrix need not test every target on every profile; representative replication near the candidate boundary is sufficient for practical generalization.",
+    "Coarse ascent can remain on W3 to locate the region efficiently.",
+    "Then reasoning-heavy and I/O-heavy profiles can test near the candidate cap/boundary.",
+    "This balances evidence quality with automation budget.",
+    "If a secondary profile fails materially lower, refinement should account for it.",
+    "Current W3 ascent remains appropriate."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
