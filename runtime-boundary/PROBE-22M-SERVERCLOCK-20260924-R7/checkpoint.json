@@ -1,0 +1,26 @@
+{
+  "probe_id":"PROBE-22M-SERVERCLOCK-20260924-R7",
+  "case_id":"SC-A22-CLOCK-01",
+  "clock_protocol":"GITHUB_SERVER_MARKER_V1",
+  "status":"ACTIVE_CHECKPOINT",
+  "start_marker_comment_id":5798028706,
+  "start_marker_created_at":"2026-09-23T15:50:42Z",
+  "target_runtime_sec":1320,
+  "scheduler_write_ok":true,
+  "scheduler_state_ok":true,
+  "workload_profile":"W3_MIXED_IO",
+  "work_completed":[
+    "specified deterministic runtime evidence processor",
+    "implemented pure Python reference classifier",
+    "created normalized R3/R4/R5/R6 regression dataset",
+    "created classifier test matrix",
+    "found and repaired non-duration-failure precedence bug",
+    "found and repaired forced-stop precedence bug",
+    "designed raw marker REST verification path",
+    "re-fetched and verified raw START/END pairs for R3/R4/R6",
+    "documented raw-pair audit and remaining implementation gap"
+  ],
+  "substantive_unit_count_so_far":31,
+  "boundary_effect":"NONE_ACTIVE",
+  "note":"Do not infer target crossing from this checkpoint. Only END marker server created_at can establish WORKED."
+}
