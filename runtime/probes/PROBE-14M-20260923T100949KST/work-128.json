@@ -1,0 +1,14 @@
+{
+  "probe_id":"PROBE-14M-20260923T100949KST",
+  "batch":128,
+  "units_completed":8,
+  "research_notes":[
+    "The next invocation should avoid rereading hundreds of batch files unless needed; close.json plus state/current should be sufficient for normal continuation.",
+    "If close is absent, targeted inspection of the latest batch can diagnose the last confirmed progress point.",
+    "This preserves efficient cold-start onboarding despite dense evidence.",
+    "The source-of-truth hierarchy should therefore prefer fresh summary plus immutable decisive evidence, not exhaustive replay by default.",
+    "This is directly relevant to reducing bootstrap overhead in the final relay.",
+    "Current run continues until target close."
+  ],
+  "status":"USEFUL_WORK_COMPLETE"
+}
