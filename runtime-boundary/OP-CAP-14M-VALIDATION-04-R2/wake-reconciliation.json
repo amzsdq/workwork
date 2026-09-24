@@ -1,0 +1,13 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04-R2",
+  "terminal_classification": "CLEAN_PASS_PENDING_WAKE",
+  "terminal_end_created_at": "2026-09-24T07:59:18Z",
+  "later_wake_observed": true,
+  "later_wake_evidence": {
+    "automation_last_run_time": "2026-09-24T07:59:55.692998Z",
+    "same_canonical_id": "6ab2823a68548191876ab2d55caf915f"
+  },
+  "retrospective_wake_ok": true,
+  "resolved_classification": "CLEAN_PASS_WAKE_OK",
+  "note": "Separate reconciliation evidence only. Immutable terminal.json is intentionally unchanged under TERMINAL_STATE_SYNC_PROTOCOL."
+}
