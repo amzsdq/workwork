@@ -1,0 +1,10 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-05",
+  "case_id": "OP-CAP-14M-VALIDATION-05",
+  "target_minutes": 14,
+  "clock_protocol": "GITHUB_SERVER_MARKER_V1",
+  "harness_version": "STRICT_RUNTIME_HARNESS_V2",
+  "start_marker_comment_id": 5810240111,
+  "start_marker_created_at": "2026-09-24T08:01:31Z",
+  "status": "ACTIVE_INCOMPLETE"
+}
