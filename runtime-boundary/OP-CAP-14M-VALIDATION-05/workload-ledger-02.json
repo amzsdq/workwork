@@ -1,0 +1,15 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-05",
+  "checkpoint": 2,
+  "start_marker_created_at": "2026-09-24T08:01:31Z",
+  "ordinal_start": 3010000000,
+  "ordinal_end_exclusive": 3020000000,
+  "semantic_unique_units": 10000000,
+  "duplicate_units_rejected": 0,
+  "semantic_repeats_rejected": 0,
+  "anomalies": 0,
+  "focus": "runtime_control_state_target_delta_marker_skew_close_reserve_cross_product",
+  "assertions_minimum": 80000000,
+  "continuity": "CONTIGUOUS_FROM_CHECKPOINT_01_NO_REPLAY",
+  "next_ordinal": 3020000000
+}
