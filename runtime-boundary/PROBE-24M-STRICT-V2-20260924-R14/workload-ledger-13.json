@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "ledger": 13,
+  "ordinal_start": 4120000000,
+  "ordinal_end_exclusive": 4130000000,
+  "semantic_unique_units": 10000000,
+  "assertions_per_unit_min": 8,
+  "assertions_min": 80000000,
+  "focus": "completion continuity + scheduler state distinction under overlap",
+  "checks": ["ledger continuity from 4120000000", "completion envelope cannot imply terminal before close", "WRITE_OK distinct from STATE_OK", "STATE_OK distinct from WAKE_OK", "WAKE_OK distinct from WORK_OK", "overlap preserves single-owner mutation authority"],
+  "duplicate_count": 0,
+  "repeat_count": 0,
+  "anomaly_count": 0,
+  "next_ordinal": 4130000000
+}
