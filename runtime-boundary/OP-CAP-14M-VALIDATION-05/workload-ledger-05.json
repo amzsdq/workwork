@@ -1,0 +1,15 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-05",
+  "checkpoint": 5,
+  "ordinal_start": 3040000000,
+  "ordinal_end_exclusive": 3050000000,
+  "semantic_unique_units": 10000000,
+  "assertions_minimum": 80000000,
+  "duplicate_units_rejected": 0,
+  "semantic_repeats_detected": 0,
+  "anomaly_count": 0,
+  "focus": "ownership fencing + SHADOW/OWNER handoff safety + ambiguous transfer fail-closed",
+  "continuity_previous_end": 3040000000,
+  "next_ordinal": 3050000000,
+  "evidence_class": "SUBSTANTIVE_SCALABLE_SEMANTIC_WORKLOAD"
+}
