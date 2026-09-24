@@ -1,5 +1,6 @@
 import unittest
-from itertools import islice\nfrom dataclasses import replace
+from itertools import islice
+from dataclasses import replace
 from runtime.RUNTIME_STRESS_WORKLOAD_GENERATOR import (
     UNITS_PER_EPOCH, PROOF_ID, iter_units, expected_invariants,
     evaluate_concrete_checks, iter_evaluated_chunks, verify_chunk_chain,
