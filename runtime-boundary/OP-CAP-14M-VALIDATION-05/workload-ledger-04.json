@@ -1,0 +1,16 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-05",
+  "checkpoint": 4,
+  "ordinal_start": 3030000000,
+  "ordinal_end_exclusive": 3040000000,
+  "semantic_unique_units": 10000000,
+  "assertions_minimum": 80000000,
+  "duplicate_units_rejected": 0,
+  "semantic_repeats_detected": 0,
+  "anomaly_count": 0,
+  "focus": "scheduler WRITE_OK/STATE_OK/WAKE_OK/WORK_OK distinctions + past_or_too_close DTSTART isolation",
+  "duration_classification_contaminated": false,
+  "continuity_previous_end": 3030000000,
+  "next_ordinal": 3040000000,
+  "evidence_class": "SUBSTANTIVE_SCALABLE_SEMANTIC_WORKLOAD"
+}
