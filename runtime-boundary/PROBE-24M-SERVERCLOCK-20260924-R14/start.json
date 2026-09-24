@@ -1,0 +1,20 @@
+{
+  "probe_id": "PROBE-24M-SERVERCLOCK-20260924-R14",
+  "case_id": "SC-A24-CLOCK+",
+  "target_minutes": 24,
+  "status": "ACTIVE",
+  "harness_version": "STRICT_RUNTIME_HARNESS_V2",
+  "generator_version": "V2",
+  "strict_substantive": true,
+  "start_marker_comment_id": 5808350823,
+  "start_marker_created_at": "2026-09-24T05:37:16Z",
+  "scheduler_prearm": {
+    "automation_id": "6ab2823a68548191876ab2d55caf915f",
+    "dtstart_kst": "2026-09-24T14:37:09",
+    "rrule": "FREQ=HOURLY",
+    "enabled": true,
+    "verified": true
+  },
+  "workload_ledger_required": true,
+  "target_reaching_admission": true
+}
