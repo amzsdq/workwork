@@ -93,9 +93,12 @@ def _chain_hash(seed:str,ordinal_start:int,ordinal_end_exclusive:int,previous_ch
 def verify_chunk_chain(artifacts:Iterable[ChunkArtifact],checkpoint_prev_hash:str="")->bool:
     expected_prev=checkpoint_prev_hash
     expected_start=None
+    expected_seed=None
     seen=False
     for artifact in artifacts:
         seen=True
+        if expected_seed is None: expected_seed=artifact.seed
+        elif artifact.seed!=expected_seed:return False
         if artifact.previous_chunk_hash!=expected_prev:return False
         if artifact.ordinal_end_exclusive<=artifact.ordinal_start:return False
         if expected_start is not None and artifact.ordinal_start!=expected_start:return False

@@ -88,6 +88,20 @@ class GeneratorV3IntegrationTests(unittest.TestCase):
         tampered=replace(a,content_digest="0"*64)
         self.assertFalse(verify_chunk_chain([tampered]))
 
+    def test_verify_chunk_chain_rejects_mixed_seed_even_if_rehashed(self):
+        import runtime.RUNTIME_STRESS_WORKLOAD_GENERATOR as g
+        it=g.iter_evaluated_chunks("seed-a",20,3)
+        a=next(it); b=next(it)
+        mixed_hash=g._chain_hash("seed-b",b.ordinal_start,b.ordinal_end_exclusive,a.chunk_hash,b.content_digest)
+        mixed=replace(b,seed="seed-b",previous_chunk_hash=a.chunk_hash,chunk_hash=mixed_hash)
+        self.assertFalse(verify_chunk_chain([a,mixed]))
+
+    def test_verify_chunk_chain_checkpoint_prev_hash(self):
+        it=iter_evaluated_chunks("verify",20,3)
+        a=next(it); b=next(it); c=next(it)
+        self.assertTrue(verify_chunk_chain([b,c],checkpoint_prev_hash=a.chunk_hash))
+        self.assertFalse(verify_chunk_chain([b,c],checkpoint_prev_hash="0"*64))
+
     def test_invalid_chunk_size(self):
         with self.assertRaises(ValueError): next(iter_evaluated_chunks(chunk_size=0))
 
