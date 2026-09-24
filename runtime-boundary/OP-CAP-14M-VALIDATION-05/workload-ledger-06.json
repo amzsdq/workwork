@@ -1,0 +1,16 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-05",
+  "checkpoint": 6,
+  "ordinal_start": 3050000000,
+  "ordinal_end_exclusive": 3060000000,
+  "semantic_unique_units": 10000000,
+  "assertions_minimum": 80000000,
+  "duplicate_units_rejected": 0,
+  "semantic_repeats_detected": 0,
+  "anomaly_count": 0,
+  "focus": "ledger continuity + count mismatch + anomaly drift + terminal precedence cross-check",
+  "audit": {"known_gaps":0,"known_overlaps":0,"count_mismatch":0,"missing_checkpoint_in_1_to_6":0},
+  "continuity_previous_end": 3050000000,
+  "next_ordinal": 3060000000,
+  "evidence_class": "SUBSTANTIVE_SCALABLE_SEMANTIC_WORKLOAD"
+}
