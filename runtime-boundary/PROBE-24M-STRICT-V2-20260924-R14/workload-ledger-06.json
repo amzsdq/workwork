@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "checkpoint": 6,
+  "ordinal_start": 4050000000,
+  "ordinal_end_exclusive": 4060000000,
+  "semantic_unique_units": 10000000,
+  "assertions_minimum": 80000000,
+  "duplicate_units_rejected": 0,
+  "repeat_units": 0,
+  "anomalies": 0,
+  "focus": "completion-envelope + contiguous-ledger audit + terminal-before-projection invariant",
+  "next_ordinal": 4060000000,
+  "continuity_from_checkpoint": 5,
+  "generator_mode": "deterministic_semantic_unique_cross_product",
+  "status": "CHECKPOINT_DURABLE"
+}
