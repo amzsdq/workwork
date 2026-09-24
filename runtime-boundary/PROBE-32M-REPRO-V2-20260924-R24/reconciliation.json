@@ -1,0 +1,25 @@
+{
+  "probe_id": "PROBE-32M-REPRO-V2-20260924-R24",
+  "case_id": "PHASE_B_SAMPLE_5",
+  "target_seconds": 1920,
+  "harness_version": "STRICT_RUNTIME_HARNESS_V2",
+  "status": "ORPHANED_PENDING_RECONCILIATION",
+  "reconstruction": {
+    "kind": "RECONSTRUCTED_FROM_RAW_GITHUB_MARKERS",
+    "contemporaneous_start_artifact": false,
+    "reason": "Canonical per-probe start.json was missing; this artifact preserves already-existing raw marker identity without claiming contemporaneous persistence."
+  },
+  "clock_authority": "GITHUB_SERVER_RAW_CREATED_AT",
+  "start_marker_comment_id": 5817062347,
+  "start_marker_created_at": "2026-09-24T15:26:20Z",
+  "ledger_01_comment_id": 5817063999,
+  "progress_comment_id": 5817065020,
+  "progress_created_at": "2026-09-24T15:26:29Z",
+  "close_checkpoint_comment_id": 5817066845,
+  "exact_elapsed_sec_at_close_checkpoint": 9,
+  "remaining_sec_at_close_checkpoint": 1911,
+  "terminal_marker_observed": false,
+  "strict_substantive_pass": false,
+  "boundary_effect": "NONE_PENDING_RECONCILIATION",
+  "source_of_truth_note": "Raw GitHub issue markers remain authoritative; this file is a reconciliation artifact, not retroactive terminal evidence."
+}
