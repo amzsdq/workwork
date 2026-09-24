@@ -1,0 +1,10 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04-R2",
+  "event": "STRICT_PROBE_TERMINAL",
+  "classification": "CLEAN_PASS_PENDING_WAKE",
+  "worked_sec": 850,
+  "productive_window_sec": 833,
+  "target_minutes": 14,
+  "terminal_path": "runtime-boundary/OP-CAP-14M-VALIDATION-04-R2/terminal.json",
+  "terminal_commit": "20ea84ce4f2301c13ef4323242b2834949fe62bd"
+}
