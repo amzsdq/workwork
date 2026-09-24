@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "ledger": 10,
+  "ordinal_start": 4090000000,
+  "ordinal_end_exclusive": 4100000000,
+  "semantic_unique_units": 10000000,
+  "assertions_per_unit_min": 8,
+  "assertions_min": 80000000,
+  "focus": "scheduler WRITE_OK/STATE_OK/WAKE_OK/WORK_OK distinctions + ownership fencing under overlap",
+  "checks": ["WRITE_OK not imply STATE_OK", "STATE_OK not imply WAKE_OK", "WAKE_OK not imply WORK_OK", "single OWNER durable fence", "overlap entrant SHADOW", "stale owner cannot advance ordinal"],
+  "duplicate_count": 0,
+  "repeat_count": 0,
+  "anomaly_count": 0,
+  "next_ordinal": 4100000000
+}
