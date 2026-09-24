@@ -1,0 +1,14 @@
+{
+  "event_type": "STRICT_PROBE_TERMINAL",
+  "probe_id": "OP-CAP-14M-VALIDATION-05",
+  "classification": "CLEAN_PASS_PENDING_WAKE",
+  "terminal_path": "runtime-boundary/OP-CAP-14M-VALIDATION-05/terminal.json",
+  "worked_sec": 921,
+  "productive_window_sec": 904,
+  "close_overhead_sec": 8,
+  "target_sec": 840,
+  "target_reached": true,
+  "end_comment_id": 5810464000,
+  "end_created_at": "2026-09-24T08:16:52Z",
+  "immutable": true
+}
