@@ -1,6 +1,6 @@
 # Operational Relay Policy
 
-Status: CANDIDATE_CANONICAL
+Status: PROMOTED_CONSERVATIVE_OPERATIONAL_CAP
 Purpose: define the operational relay semantics separately from maximum-runtime boundary research.
 
 ## Core operational rule
@@ -41,19 +41,13 @@ When the safety cap is approaching before HANDOFF_COMPLETE:
 
 ## Current candidate
 
-14 minutes is a CANDIDATE conservative operating-cap class, not yet a promoted safe cap under the current strict server-clock harness.
+14 minutes is the PROMOTED conservative operating cap under the current strict server-clock harness.
 
-Promotion requires repeated clean, marker-valid, semantically substantive runs across representative workload profiles.
+Promotion evidence: 5/5 clean strict 14m validations are durably confirmed, including valid GitHub server markers, sustained semantically unique substantive work, clean completion envelopes, scheduler WRITE_OK / STATE_OK, retrospective WAKE_OK, and no duration-attributable forced stop/timeout. The fifth confirmation is `OP-CAP-14M-VALIDATION-05` with WORKED=921s and PRODUCTIVE_WINDOW=904s.
 
-Initial validation gate:
-- >=5 clean 14m strict runs;
-- valid GitHub server markers;
-- sustained semantically unique substantive work;
-- clean completion envelope;
-- scheduler WRITE_OK / STATE_OK;
-- no duration-attributable forced stop/timeout.
+This promotion is operational only; it does not define the hard runtime boundary. Hard-boundary research continues separately at the canonical 24m strict revalidation case.
 
-After 14m is validated as conservative operational cap, test successor wake lead separately.
+Successor wake lead remains a separate empirical optimization problem.
 Do not assume 15/12, +14m, or any other timing constant is final.
 
 ## Two separate research questions
