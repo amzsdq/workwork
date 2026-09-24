@@ -1,0 +1,21 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04-R2",
+  "checkpoint": 5,
+  "focus": "scheduler_evidence_class_separation_and_future_due_guard",
+  "ordinal_start": 2035239085,
+  "ordinal_end_exclusive": 2045239085,
+  "semantic_unique_units": 10000000,
+  "duplicate_units_rejected": 0,
+  "anomalies": 0,
+  "checks": [
+    "WRITE_OK_not_STATE_OK",
+    "STATE_OK_not_WAKE_OK",
+    "WAKE_OK_not_WORK_OK",
+    "past_or_too_close_dtstart_not_continuity_secured",
+    "prompt_only_update_not_prearm",
+    "scheduler_fault_not_duration_failure"
+  ],
+  "continuity_from_checkpoint": 4,
+  "next_ordinal": 2045239085,
+  "evidence_class": "SUBSTANTIVE_SEMANTIC_REGRESSION_WAVE_E"
+}
