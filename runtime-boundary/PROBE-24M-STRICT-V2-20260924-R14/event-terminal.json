@@ -1,0 +1,14 @@
+{
+  "event": "STRICT_PROBE_TERMINAL",
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "result": "CLEAN_PASS_PENDING_WAKE",
+  "terminal_commit": "4d6a9479cf466b572b0ddbb54dfe3dbb7a7dc4cb",
+  "worked_seconds": 1523,
+  "productive_window_seconds": 1506,
+  "close_overhead_seconds": 6,
+  "target_seconds": 1440,
+  "semantic_unique_units_total_min": 310000000,
+  "assertions_total_min": 2480000000,
+  "anomaly": 0,
+  "wake_ok": null
+}
