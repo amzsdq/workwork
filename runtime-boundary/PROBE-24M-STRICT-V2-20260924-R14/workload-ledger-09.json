@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "ledger": 9,
+  "ordinal_start": 4080000000,
+  "ordinal_end_exclusive": 4090000000,
+  "semantic_unique_units": 10000000,
+  "assertions_per_unit_min": 8,
+  "assertions_min": 80000000,
+  "focus": "completion-envelope + ledger-continuity audit under terminal/projection disagreement",
+  "checks": ["completion identity stable", "contiguous ordinal predecessor=4080000000", "immutable terminal precedence preserved", "stale projection cannot synthesize completion", "no replay of prior semantic range", "next ordinal deterministic"],
+  "duplicate_count": 0,
+  "repeat_count": 0,
+  "anomaly_count": 0,
+  "next_ordinal": 4090000000
+}
