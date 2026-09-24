@@ -1,0 +1,18 @@
+{
+  "event_type": "RUNTIME_PROBE_TERMINAL",
+  "probe_id": "PROBE-32M-STRICT-V2-20260924-R18",
+  "case_id": "SC-A32-STRICT+",
+  "classification": "STRICT_SUBSTANTIVE_PASS_PENDING_WAKE",
+  "target_sec": 1920,
+  "productive_window_sec": 1921,
+  "worked_sec": 1939,
+  "close_overhead_sec": 18,
+  "qualifying_progress_comment_id": 5813700638,
+  "end_comment_id": 5813705212,
+  "ledger_count": 25,
+  "semantic_unique_units_minimum": 250000000,
+  "assertions_minimum": 2000000000,
+  "terminal_commit": "1165e15af9402585dee26c5639913802cd6afcd2",
+  "wake_ok": null,
+  "clock_authority": "GITHUB_SERVER_RAW_CREATED_AT"
+}
