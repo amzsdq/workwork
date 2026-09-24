@@ -1,0 +1,14 @@
+{
+  "probe_id": "PROBE-24M-SERVERCLOCK-20260924-R13",
+  "case_id": "SC-A24-CLOCK+",
+  "target_sec": 1440,
+  "clock_protocol": "GITHUB_SERVER_MARKER_V1",
+  "harness": "STRICT_RUNTIME_HARNESS_V2",
+  "start_comment_id": 5808063740,
+  "start_created_at": "2026-09-24T05:08:16Z",
+  "work_start_comment_id": 5808064915,
+  "work_start_created_at": "2026-09-24T05:08:21Z",
+  "canonical_automation_id": "6ab2823a68548191876ab2d55caf915f",
+  "durable_start_record_status": "LATE_RECONSTRUCTED_FROM_RAW_IMMUTABLE_MARKERS",
+  "note": "The required start.json was missing when this wake reconciled R13. Raw GitHub marker resources pre-existed and remain authoritative; this late record does not retroactively satisfy timely checkpointing."
+}
