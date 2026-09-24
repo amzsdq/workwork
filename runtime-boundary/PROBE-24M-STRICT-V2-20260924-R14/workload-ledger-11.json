@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "ledger": 11,
+  "ordinal_start": 4100000000,
+  "ordinal_end_exclusive": 4110000000,
+  "semantic_unique_units": 10000000,
+  "assertions_per_unit_min": 8,
+  "assertions_min": 80000000,
+  "focus": "marker skew + close reserve + admission boundary cross-axis matrix",
+  "checks": ["raw created_at dominates model time", "PROGRESS below target forbids close", "PRE_CLOSE follows admission stop", "close reserve does not count as productive window", "ordinal continuity preserved", "terminal absence keeps probe nonterminal"],
+  "duplicate_count": 0,
+  "repeat_count": 0,
+  "anomaly_count": 0,
+  "next_ordinal": 4110000000
+}
