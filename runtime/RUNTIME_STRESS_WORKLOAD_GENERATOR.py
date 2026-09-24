@@ -68,7 +68,7 @@ class ChunkArtifact:
     seed:str; ordinal_start:int; ordinal_end_exclusive:int
     proven_unique_units:int; proof_id:str
     executed_assertion_count:int; failed_assertion_count:int
-    duplicate_ids_rejected:int; anomaly_count:int; previous_chunk_hash:str; chunk_hash:str
+    duplicate_ids_rejected:int; anomaly_count:int; content_digest:str; previous_chunk_hash:str; chunk_hash:str
 
 GENERATOR_VERSION="v3-streaming-actual-checks"
 PROOF_ID="iter_units-ordinal-uniqueness-v1"
@@ -86,14 +86,32 @@ def evaluate_concrete_checks(unit:WorkUnit)->tuple[CheckOutcome,...]:
         CheckOutcome("close_reserve_range",30<=unit.close_reserve_sec<=120),
     )
 
+def _chain_hash(seed:str,ordinal_start:int,ordinal_end_exclusive:int,previous_chunk_hash:str,content_digest:str)->str:
+    header={"seed":seed,"ordinal_start":ordinal_start,"ordinal_end_exclusive":ordinal_end_exclusive,"previous_chunk_hash":previous_chunk_hash,"content_digest":content_digest}
+    return sha256(json.dumps(header,sort_keys=True,separators=(",",":")).encode()).hexdigest()
+
+def verify_chunk_chain(artifacts:Iterable[ChunkArtifact],checkpoint_prev_hash:str="")->bool:
+    expected_prev=checkpoint_prev_hash
+    expected_start=None
+    seen=False
+    for artifact in artifacts:
+        seen=True
+        if artifact.previous_chunk_hash!=expected_prev:return False
+        if artifact.ordinal_end_exclusive<=artifact.ordinal_start:return False
+        if expected_start is not None and artifact.ordinal_start!=expected_start:return False
+        if artifact.chunk_hash!=_chain_hash(artifact.seed,artifact.ordinal_start,artifact.ordinal_end_exclusive,artifact.previous_chunk_hash,artifact.content_digest):return False
+        expected_prev=artifact.chunk_hash
+        expected_start=artifact.ordinal_end_exclusive
+    return seen
+
 def iter_evaluated_chunks(seed:str="SC-A22-CLOCK",start_ordinal:int=0,chunk_size:int=1024)->Iterator[ChunkArtifact]:
-    """Bounded-memory actual predicate execution with incremental canonical hashing."""
+    """Bounded-memory actual predicate execution with independently verifiable chained artifacts."""
     if chunk_size<=0: raise ValueError("chunk_size must be > 0")
     units=iter_units(seed,start_ordinal); ordinal=start_ordinal; previous_chunk_hash=""
     while True:
-        h=sha256()
-        h.update(json.dumps({"seed":seed,"ordinal_start":ordinal,"previous_chunk_hash":previous_chunk_hash},sort_keys=True,separators=(",",":")).encode()); h.update(b"\n")
-         executed=failed=duplicates=anomalies=0; ids=set(); count=0
+        content=sha256()
+        executed=failed=duplicates=anomalies=0; ids=set(); count=0
+        chunk_start=ordinal
         for _ in range(chunk_size):
             unit=next(units); count+=1
             outcomes=evaluate_concrete_checks(unit)
@@ -102,38 +120,11 @@ def iter_evaluated_chunks(seed:str="SC-A22-CLOCK",start_ordinal:int=0,chunk_size
             for outcome in outcomes:
                 executed+=1
                 if not outcome.passed: failed+=1
-                h.update(json.dumps({"ordinal":unit.ordinal,"case_id":unit.case_id,"check":outcome.name,"passed":outcome.passed},sort_keys=True,separators=(",",":")).encode()); h.update(b"\n")
+                content.update(json.dumps({"ordinal":unit.ordinal,"case_id":unit.case_id,"check":outcome.name,"passed":outcome.passed},sort_keys=True,separators=(",",":")).encode()); content.update(b"\n")
             if unit.ordinal!=ordinal: anomalies+=1
             ordinal+=1
-        chunk_hash=h.hexdigest()
-        yield ChunkArtifact(seed,ordinal-count,ordinal,count,PROOF_ID,executed,failed,duplicates,anomalies,previous_chunk_hash,chunk_hash)
+        content_digest=content.hexdigest()
+        chunk_hash=_chain_hash(seed,chunk_start,ordinal,previous_chunk_hash,content_digest)
+        yield ChunkArtifact(seed,chunk_start,ordinal,count,PROOF_ID,executed,failed,duplicates,anomalies,content_digest,previous_chunk_hash,chunk_hash)
         previous_chunk_hash=chunk_hash
 
-def batch(seed:str,start_ordinal:int,count:int)->list[dict]:
-    if count < 0: raise ValueError("count must be >= 0")
-    out=[]
-    for unit in islice(iter_units(seed,start_ordinal),count):
-        row=unit.payload();row["expected_invariants"]=expected_invariants(unit);out.append(row)
-    return out
-
-def fingerprint(rows:Iterable[dict])->str:return sha256(json.dumps(list(rows),sort_keys=True,separators=(",",":")).encode()).hexdigest()
-
-def validate_semantic_uniqueness(rows:Iterable[dict])->bool:
-    seen=set()
-    for r in rows:
-        key=(r["marker_state"],r["scheduler_state"],r["close_state"],r["provider_state"],r["wake_state"],r["workload_shape"],r["target_delta_sec"],r["marker_skew_sec"],r["close_reserve_sec"])
-        if key in seen:return False
-        seen.add(key)
-    return True
-
-if __name__=="__main__":
-    assert gcd(17,91)==1 and gcd(17,121)==1 and UNITS_PER_EPOCH==720
-    rows=batch("SC-A22-CLOCK",0,50000)
-    assert len({r["case_id"] for r in rows})==len(rows) and validate_semantic_uniqueness(rows)
-    # Regression: high-offset batch must preserve ordinal continuity without replaying the prefix.
-    high=batch("scale-regression",10**9,3)
-    assert [r["ordinal"] for r in high]==[10**9,10**9+1,10**9+2]
-    assert len({r["case_id"] for r in high})==3
-    reserves={r["close_reserve_sec"] for r in batch("coverage",0,91*720)}
-    assert len(reserves)==91 and min(reserves)==30 and max(reserves)==120
-    print(json.dumps({"count":len(rows),"fingerprint":fingerprint(rows),"semantic_unique":True,"reserve_coverage":len(reserves),"high_offset_random_access":True},indent=2))

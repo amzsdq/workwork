@@ -1,8 +1,8 @@
 import unittest
-from itertools import islice
+from itertools import islice\nfrom dataclasses import replace
 from runtime.RUNTIME_STRESS_WORKLOAD_GENERATOR import (
     UNITS_PER_EPOCH, PROOF_ID, iter_units, expected_invariants,
-    evaluate_concrete_checks, iter_evaluated_chunks,
+    evaluate_concrete_checks, iter_evaluated_chunks, verify_chunk_chain,
 )
 
 class GeneratorV3IntegrationTests(unittest.TestCase):
@@ -66,6 +66,26 @@ class GeneratorV3IntegrationTests(unittest.TestCase):
         next(chained); second=next(chained)
         independent=next(iter_evaluated_chunks("chain",103,3))
         self.assertNotEqual(second.chunk_hash,independent.chunk_hash)
+
+    def test_verify_chunk_chain_accepts_valid_chain(self):
+        it=iter_evaluated_chunks("verify",20,3)
+        artifacts=[next(it),next(it),next(it)]
+        self.assertTrue(verify_chunk_chain(artifacts))
+
+    def test_verify_chunk_chain_rejects_missing_chunk(self):
+        it=iter_evaluated_chunks("verify",20,3)
+        a=next(it); next(it); c=next(it)
+        self.assertFalse(verify_chunk_chain([a,c]))
+
+    def test_verify_chunk_chain_rejects_reorder(self):
+        it=iter_evaluated_chunks("verify",20,3)
+        a=next(it); b=next(it)
+        self.assertFalse(verify_chunk_chain([b,a]))
+
+    def test_verify_chunk_chain_rejects_content_digest_mutation(self):
+        a=next(iter_evaluated_chunks("verify",20,3))
+        tampered=replace(a,content_digest="0"*64)
+        self.assertFalse(verify_chunk_chain([tampered]))
 
     def test_invalid_chunk_size(self):
         with self.assertRaises(ValueError): next(iter_evaluated_chunks(chunk_size=0))
