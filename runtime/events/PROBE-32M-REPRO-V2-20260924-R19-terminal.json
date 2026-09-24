@@ -1,0 +1,14 @@
+{
+  "event_type": "RUNTIME_PROBE_TERMINAL",
+  "probe_id": "PROBE-32M-REPRO-V2-20260924-R19",
+  "result": "STRICT_SUBSTANTIVE_PASS_PENDING_WAKE",
+  "terminal_commit": "f024ae7a2a7b1e179ae2d9e637059901d8842e08",
+  "start_created_at": "2026-09-24T12:32:17Z",
+  "qualifying_progress_created_at": "2026-09-24T13:14:14Z",
+  "end_created_at": "2026-09-24T13:14:23Z",
+  "qualifying_elapsed_sec": 2517,
+  "worked_sec": 2526,
+  "target_sec": 1920,
+  "phase": "PHASE_B_REPRODUCIBILITY",
+  "wake_status": "PENDING_SEPARATE_OBSERVATION"
+}
