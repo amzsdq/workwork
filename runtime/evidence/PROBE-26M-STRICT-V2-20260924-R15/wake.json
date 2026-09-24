@@ -1,0 +1,11 @@
+{
+  "probe": "PROBE-26M-STRICT-V2-20260924-R15",
+  "wake_ok": true,
+  "wake_comment_id": 5812331309,
+  "wake_created_at": "2026-09-24T10:24:53Z",
+  "terminal_end_comment_id": 5812282122,
+  "terminal_end_created_at": "2026-09-24T10:21:20Z",
+  "terminal_immutable": true,
+  "classification": "CLEAN_STRICT_26M_SUBSTANTIVE_PASS",
+  "evidence_scope": "SEPARATE_POST_TERMINAL_WAKE"
+}
