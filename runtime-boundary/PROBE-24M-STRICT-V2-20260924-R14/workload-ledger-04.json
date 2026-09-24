@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "ledger_index": 4,
+  "ordinal_start": 4030000000,
+  "ordinal_end_exclusive": 4040000000,
+  "semantic_unique_units": 10000000,
+  "assertions_minimum": 80000000,
+  "duplicate_units_rejected": 0,
+  "repeat_units": 0,
+  "anomalies": 0,
+  "focus": "scheduler_WRITE_OK_STATE_OK_WAKE_OK_WORK_OK_distinction_matrix",
+  "continuity_from_previous": true,
+  "next_ordinal": 4040000000,
+  "workload_profile": "STRICT_RUNTIME_HARNESS_V2",
+  "notes": "Fresh semantic range testing independent scheduler evidence dimensions and false-equivalence rejection."
+}
