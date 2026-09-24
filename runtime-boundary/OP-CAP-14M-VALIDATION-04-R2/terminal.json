@@ -1,0 +1,22 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04-R2",
+  "case_id": "OP-CAP-14M-VALIDATION-04",
+  "classification": "CLEAN_PASS_PENDING_WAKE",
+  "target_minutes": 14,
+  "start_created_at": "2026-09-24T07:45:08Z",
+  "work_start_created_at": "2026-09-24T07:45:22Z",
+  "target_progress_comment_id": 5810203751,
+  "target_progress_created_at": "2026-09-24T07:59:10Z",
+  "pre_close_comment_id": 5810205289,
+  "pre_close_created_at": "2026-09-24T07:59:15Z",
+  "end_comment_id": 5810206254,
+  "end_created_at": "2026-09-24T07:59:18Z",
+  "worked_sec": 850,
+  "productive_window_sec": 833,
+  "close_overhead_sec": 3,
+  "target_reached": true,
+  "clean_close": true,
+  "wake_ok": "PENDING_LATER_WAKE",
+  "clock_authority": "GITHUB_SERVER_RAW_CREATED_AT",
+  "note": "Immutable terminal for strict validation repeat; later wake evidence may resolve WAKE_OK without mutating this file."
+}
