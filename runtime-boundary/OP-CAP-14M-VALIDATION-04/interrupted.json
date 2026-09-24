@@ -1,0 +1,12 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04",
+  "case_id": "OP-CAP-14M-VALIDATION-04",
+  "status": "INTERRUPTED_RELAY_GAP_NOT_STRICT_DURATION_EVIDENCE",
+  "start_marker_created_at": "2026-09-24T06:46:14Z",
+  "interruption_marker_comment_id": 5809966316,
+  "interruption_marker_created_at": "2026-09-24T07:43:54Z",
+  "last_durable_workload_checkpoint": "workload-ledger-0001.json",
+  "duration_credit": false,
+  "productive_gap_credit": false,
+  "restart_requirement": "REPEAT_VALIDATION_04_WITH_FRESH_PROBE_ID_AFTER_CONTINUITY_SECURED"
+}
