@@ -1,0 +1,19 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-05",
+  "case_id": "OP-CAP-14M-VALIDATION-05",
+  "event_type": "RETROSPECTIVE_WAKE_CONFIRMATION",
+  "classification": "CLEAN_PASS_WAKE_OK",
+  "prior_terminal_classification": "CLEAN_PASS_PENDING_WAKE",
+  "worked_sec": 921,
+  "productive_window_sec": 904,
+  "close_overhead_sec": 8,
+  "clean_close": true,
+  "retrospective_wake_ok": true,
+  "observed_later_automation_last_run_time": "2026-09-24T08:17:22.400058Z",
+  "terminal_end_created_at": "2026-09-24T08:16:52Z",
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "operational_cap_clean_runs_after_confirmation": 5,
+  "operational_cap_required_clean_runs": 5,
+  "next_case": "SC-A24-CLOCK+"
+}
