@@ -1,0 +1,14 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-05",
+  "checkpoint": 8,
+  "ordinal_start": 3070000000,
+  "ordinal_end_exclusive": 3080000000,
+  "semantic_unique_units": 10000000,
+  "duplicate_units_rejected": 0,
+  "semantic_repeats": 0,
+  "anomalies": 0,
+  "focus": "post-threshold fresh semantic refill + terminal-admission boundary + scheduler/ownership/projection cross-axis",
+  "continuity_from_previous": true,
+  "previous_checkpoint": 7,
+  "next_ordinal": 3080000000
+}
