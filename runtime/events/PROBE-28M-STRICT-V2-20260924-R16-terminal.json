@@ -1,0 +1,17 @@
+{
+  "event": "PROBE_TERMINAL",
+  "probe_id": "PROBE-28M-STRICT-V2-20260924-R16",
+  "result": "STRICT_SUBSTANTIVE_PASS_PENDING_WAKE",
+  "target_active_sec": 1680,
+  "qualifying_progress_elapsed_sec": 1884,
+  "worked_sec": 1893,
+  "close_overhead_sec": 9,
+  "ledger_count": 18,
+  "semantic_unique_units_minimum": 180000000,
+  "assertions_minimum": 1440000000,
+  "duplicate": 0,
+  "repeat": 0,
+  "anomaly": 0,
+  "terminal_evidence_path": "runtime/evidence/PROBE-28M-STRICT-V2-20260924-R16/terminal.json",
+  "wake_observation": "PENDING_SEPARATE_EVIDENCE"
+}
