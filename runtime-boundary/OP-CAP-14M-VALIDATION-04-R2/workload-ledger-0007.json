@@ -1,0 +1,13 @@
+{
+  "probe_id":"OP-CAP-14M-VALIDATION-04-R2",
+  "checkpoint":7,
+  "focus":"refill_cross_axis_terminal_scheduler_ownership_matrix",
+  "ordinal_start":2055239085,
+  "ordinal_end_exclusive":2065239085,
+  "semantic_unique_units":10000000,
+  "duplicate_units_rejected":0,
+  "anomalies":0,
+  "continuity_from_checkpoint":6,
+  "next_ordinal":2065239085,
+  "evidence_class":"SUBSTANTIVE_REFILL"
+}
