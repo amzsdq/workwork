@@ -1,0 +1,13 @@
+{
+  "probe_id": "PROBE-24M-SERVERCLOCK-20260924-R13",
+  "case_id": "SC-A24-CLOCK+",
+  "result": "CLOCK_TARGET_REACHED_STRICT_SUBSTANTIVE_INVALID",
+  "worked_sec": 1649,
+  "target_sec": 1440,
+  "target_reached": true,
+  "duration_failure": false,
+  "boundary_effect": "NONE",
+  "strict_promotion_eligible": false,
+  "terminal_path": "runtime-boundary/PROBE-24M-SERVERCLOCK-20260924-R13/terminal.json",
+  "next_action": "REPEAT_24M_WITH_TARGET_REACHING_ADMISSION_AND_COMPLETE_DURABLE_WORKLOAD_LEDGER"
+}
