@@ -6,18 +6,20 @@ Repo: amzsdq/workwork
 ## Objective
 Find maximum safe substantive-work duration and simplest reproducible near-limit handoff/admission policy.
 
-Authority: raw GitHub markers -> immutable probe terminal/event -> mutable projections. Model/local time never classifies duration.
+Authority: raw GitHub markers -> immutable probe terminal/event/wake -> mutable projections. Model/local time never classifies duration.
 
 ## Current evidence
 - R9: raw clean survival WORKED=1322s, productive=1257s, close=57s, WAKE_OK; posthoc generator-v1 semantic-repeat audit means strict substantive promotion requires revalidation/supersession.
 - R10: **Harness V2 valid**, WORKED=1402s, productive=1376s, close=14s, semantic unique minimum=100,000, clean durable close/scheduler OK, but **UNDER_TARGET by 38s** because provisional 60s close reserve began normal close too early. Boundary effect NONE; not a duration failure.
-- R13: valid raw GitHub clock pair with WORKED=1649s, target progress elapsed=1617s, productive-marker wall-clock window=1619s, close=25s, scheduler prearm verified. This establishes **clock survival beyond 24m**, with no duration failure. However, strict substantive promotion is **FAIL_CLOSED** because the durable evidence does not establish sustained semantically unique substantive work across the full measured interval; the probe spanned multiple wake turns and required `start.json` was missing until late reconciliation. R13 therefore does not advance the strict substantive safe lower bound.
+- R13: valid raw GitHub clock pair with WORKED=1649s, target progress elapsed=1617s, productive-marker wall-clock window=1619s, close=25s, scheduler prearm verified. This establishes clock survival beyond 24m but strict substantive promotion is FAIL_CLOSED because full sustained semantic-work evidence was incomplete.
+- R14: **clean strict 24m substantive pass** under target-reaching admission. WORKED=1523s, productive window=1506s, close=6s; 310,000,000 semantic-unique units, >=2,480,000,000 assertions, duplicate/repeat/anomaly=0; terminal/event immutable and separate WAKE_OK confirmed.
+- R15: **clean strict 26m substantive pass**. START=2026-09-24T09:52:27Z; qualifying PROGRESS=10:21:00Z (1713s); END=10:21:20Z; WORKED=1733s; close=13s; 110,000,000 semantic-unique units, >=880,000,000 assertions, duplicate/repeat/anomaly=0; terminal/event immutable and separate WAKE_OK comment=5812331309, wake commit=dc1261dae01c08c53e6462b025e5185f6010fcc9.
 - FAILURE_BOUNDARY: unresolved; credible duration failures=0.
 
 ## Phase A decision
-Current case remains `SC-A24-CLOCK+`. Do not ascend to 26m. R10's admission/close timing defect is corrected durably in `runtime/SCALABLE_STRICT_PROBE_WORKLOAD_PROTOCOL.md` at commit `86d21949a09dce91c3a8701b866ff2fbff065cbe`.
+The prior 24m revalidation requirement is satisfied by R14, and R15 independently establishes a clean strict substantive 26m pass with separate wake evidence. Coarse boundary search therefore advances one step to **28m strict substantive**. This does not promote the operational cap: the conservative operating cap remains 14m until Phase B reproducibility/safety-margin evidence explicitly changes it.
 
-The target-reaching admission rule itself has now produced a raw server-clock sample beyond 24m in R13, but R13 is not a clean strict substantive pass. The next strict probe must repeat 24m with a complete durable workload ledger and timely active-start record so that sustained semantic work quality is auditable.
+The next probe must use a fresh identity, target-reaching admission, complete durable workload ledger, timely START/WORK_START markers, raw GitHub created_at authority, immutable terminal/event, and separate WAKE_OK. Survival alone is insufficient.
 
 ## Close/admission correction
 Promoted for strict repeats: **target-reaching admission**.
@@ -37,14 +39,15 @@ P3 task-aware admission remains analytically stronger than fixed reserve; synthe
 Gap optimization +3m -> +2m -> +1m after cap stabilization.
 
 ## Current execution pointer
-CURRENT_CASE_ID = SC-A24-CLOCK+
-ACTIVE_TARGET = 24m
-LATEST_TERMINAL_PROBE = PROBE-24M-SERVERCLOCK-20260924-R13
-LATEST_TERMINAL_RESULT = CLOCK_TARGET_REACHED_STRICT_SUBSTANTIVE_INVALID
-LATEST_WORKED = 1649s
-LATEST_PRODUCTIVE_MARKER_WALLCLOCK = 1619s
-LATEST_CLOSE_OVERHEAD = 25s
-STRICT_SUBSTANTIVE_SAFE_LOWER_BOUND = REVALIDATION_PENDING
-CLOCK_SURVIVAL_OBSERVED_AT_OR_ABOVE_24M = true
+CURRENT_CASE_ID = SC-A28-STRICT+
+ACTIVE_TARGET = 28m
+LATEST_TERMINAL_PROBE = PROBE-26M-STRICT-V2-20260924-R15
+LATEST_TERMINAL_RESULT = CLEAN_STRICT_SUBSTANTIVE_PASS_WAKE_OK
+LATEST_WORKED = 1733s
+LATEST_QUALIFYING_PROGRESS_ELAPSED = 1713s
+LATEST_CLOSE_OVERHEAD = 13s
+STRICT_SUBSTANTIVE_SAFE_LOWER_BOUND = 26m_ONE_CLEAN_CURRENT_PROTOCOL_SAMPLE
+CLOCK_SURVIVAL_OBSERVED_AT_OR_ABOVE_26M = true
 FAILURE_BOUNDARY = unresolved
-NEXT_ACTION = REPEAT_24M_WITH_TARGET_REACHING_ADMISSION_AND_COMPLETE_DURABLE_WORKLOAD_LEDGER
+OPERATIONAL_CAP = 14m_PROMOTED_CONSERVATIVE_5_OF_5
+NEXT_ACTION = RUN_FRESH_28M_STRICT_SUBSTANTIVE_PROBE
