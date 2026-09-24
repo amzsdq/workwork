@@ -1,0 +1,17 @@
+{
+  "event_type": "OPERATIONAL_CAP_PROMOTION",
+  "cap_minutes": 14,
+  "status": "PROMOTED_CONSERVATIVE_OPERATIONAL_CAP",
+  "clean_strict_validations": 5,
+  "required_clean_strict_validations": 5,
+  "promotion_basis": [
+    "valid GitHub server markers",
+    "sustained semantic workload",
+    "clean completion envelope",
+    "scheduler WRITE_OK/STATE_OK",
+    "retrospective WAKE_OK",
+    "no duration-attributable forced stop"
+  ],
+  "hard_runtime_boundary_research": "CONTINUES_SEPARATELY",
+  "next_case": "SC-A24-CLOCK+"
+}
