@@ -1,0 +1,19 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04-R2",
+  "checkpoint": 4,
+  "focus": "terminal_precedence_immutable_terminal_projection_reconciliation",
+  "ordinal_start": 2025239085,
+  "ordinal_end_exclusive": 2035239085,
+  "semantic_unique_units": 10000000,
+  "duplicate_units_rejected": 0,
+  "anomalies": 0,
+  "checks": [
+    "immutable_terminal_precedes_mutable_projection",
+    "immutable_event_precedes_stale_current_json",
+    "interruption_record_not_overwritten_by_projection",
+    "projection_reconciliation_does_not_rerun_terminal_probe"
+  ],
+  "continuity_from_checkpoint": 3,
+  "next_ordinal": 2035239085,
+  "evidence_class": "SUBSTANTIVE_SEMANTIC_REGRESSION_WAVE_D"
+}
