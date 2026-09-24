@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "probe_id": "PROBE-30M-STRICT-V2-20260924-R17",
+  "result": "WAKE_OK",
+  "raw_wake_comment_id": 5813209105,
+  "raw_wake_created_at": "2026-09-24T11:31:03Z",
+  "terminal_commit": "f4beb4926e29f854fee5c987455fd92707aebaf9",
+  "event_commit": "dd71dbd2ad504939bc5f13c66bd4f99c0575a6d5",
+  "terminal_mutated": false,
+  "event_mutated": false,
+  "authority": "GITHUB_SERVER_RAW_CREATED_AT"
+}
