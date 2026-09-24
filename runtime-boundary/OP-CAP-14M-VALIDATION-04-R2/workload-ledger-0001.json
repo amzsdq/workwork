@@ -1,0 +1,15 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04-R2",
+  "checkpoint": 1,
+  "wave": "A_MARKER_INTEGRITY_GENERATOR_UNIQUENESS",
+  "ordinal_start": 2000000000,
+  "ordinal_end_exclusive": 2006321760,
+  "semantic_unique_units": 6321760,
+  "assertions": 53477856,
+  "duplicate_units_rejected": 0,
+  "anomalies": 0,
+  "fingerprint": "5a792fcdbed5cbb34db2c4ba3c6d12ca23babccc592a0e74087ac5f2fcba3da6",
+  "substantive_compute_sec": 20.002,
+  "generator": "runtime/RUNTIME_STRESS_WORKLOAD_GENERATOR.py",
+  "next_ordinal": 2006321760
+}
