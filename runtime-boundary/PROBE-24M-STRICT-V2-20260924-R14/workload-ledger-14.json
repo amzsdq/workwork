@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "ledger": 14,
+  "ordinal_start": 4130000000,
+  "ordinal_end_exclusive": 4140000000,
+  "semantic_unique_units": 10000000,
+  "assertions_per_unit_min": 8,
+  "assertions_min": 80000000,
+  "focus": "ownership generation CAS + marker skew close-reserve admission boundary",
+  "checks": ["ledger continuity from 4130000000", "generation fencing rejects stale owner", "stale CAS cannot replace newer projection", "marker skew does not alter raw created_at authority", "close reserve remains non-authoritative until promoted", "admission boundary cannot trigger early terminal"],
+  "duplicate_count": 0,
+  "repeat_count": 0,
+  "anomaly_count": 0,
+  "next_ordinal": 4140000000
+}
