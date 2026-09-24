@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "ledger": 7,
+  "ordinal_start": 4060000000,
+  "ordinal_end_exclusive": 4070000000,
+  "semantic_unique_units": 10000000,
+  "assertions_min": 80000000,
+  "duplicate_count": 0,
+  "repeat_count": 0,
+  "anomaly_count": 0,
+  "focus": ["admission-boundary", "early-close-regression", "marker-skew", "close-reserve"],
+  "generator": "STRICT_RUNTIME_HARNESS_V2",
+  "next_ordinal": 4070000000,
+  "continuity": "previous_end=4060000000; gap=0; overlap=0"
+}
