@@ -1,0 +1,18 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04",
+  "checkpoint": 1,
+  "generator_version": "RUNTIME_STRESS_WORKLOAD_GENERATOR_V2_O1_POSITIONING_COMPATIBLE",
+  "seed": "OP-CAP-14M-VALIDATION-04",
+  "ordinal_start": 1800000000,
+  "ordinal_end_exclusive": 1818061226,
+  "generated_id_unique_units": 18061226,
+  "generated_semantic_unique_units": 18061226,
+  "duplicate_ids_rejected": 0,
+  "semantic_repeats_rejected": 0,
+  "assertion_count": 152786340,
+  "anomaly_count": 0,
+  "cpu_substantive_elapsed_sec": 45.000145311,
+  "rolling_fingerprint": "6d3da3b207333a641e606694ad9060fa49f8d4409a0a44951cae9a972163e77a",
+  "work_profile": "runtime-control-state cross-product + epoch numeric conditions + invariant assertion accounting",
+  "note": "Checkpoint supplements server-clock productive-window evidence; it does not itself classify duration."
+}
