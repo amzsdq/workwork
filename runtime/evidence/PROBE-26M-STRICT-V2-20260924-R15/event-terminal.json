@@ -1,0 +1,14 @@
+{
+  "event": "STRICT_PROBE_TERMINAL",
+  "probe": "PROBE-26M-STRICT-V2-20260924-R15",
+  "result": "PASS",
+  "terminal_commit": "b84bdf55cb40441772838893d7bdbc1d7867c230",
+  "target_seconds": 1560,
+  "qualifying_elapsed_seconds": 1713,
+  "worked_seconds": 1733,
+  "ledger_through": 11,
+  "semantic_unique_total_min": 110000000,
+  "assertions_total_min": 880000000,
+  "anomaly": 0,
+  "wake_evidence": "SEPARATE_AND_PENDING"
+}
