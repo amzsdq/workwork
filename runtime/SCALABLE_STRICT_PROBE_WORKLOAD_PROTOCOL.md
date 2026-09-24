@@ -29,8 +29,17 @@ After START, scheduler prearm, and WORK_START:
 
 No sleeping, idle waiting, ID-only mutation, or duplicate-work padding.
 
+## Target-reaching admission rule
+For a strict target T, a provisional close reserve MUST NOT cause normal substantive work to stop before T. The reserve is not credited toward target attainment.
+
+Normal target close is eligible only after an authoritative raw GitHub PROGRESS marker proves `PROGRESS.created_at - START.created_at >= T` while substantive work has remained valid through that sample. Once that condition is observed, stop admitting new substantive batches, create/raw-fetch PRE_CLOSE, perform durable close, then create/raw-fetch END.
+
+A separately configured emergency close cap may force early close when required to preserve durable state or avoid a known hard execution boundary. If it fires before T, classify the probe as safety/harness early-close evidence, not as a duration failure and not as a clean target pass. The emergency cap is a safety guard only; it is never normal pre-target admission budget.
+
+If the final admitted batch begins below T and finishes above T, its semantic work remains valid. Do not start another batch merely to pad elapsed time after an authoritative progress sample has already established target attainment.
+
 ## Completion condition
-For target T and close reserve R, continue useful work while the admission rule permits. At close threshold create/raw-fetch PRE_CLOSE, perform durable close checkpoint/finalization, then create/raw-fetch END.
+Continue useful work until authoritative server-clock evidence establishes target attainment, unless a genuine failure/block/user stop or emergency close cap occurs first. After target attainment, create/raw-fetch PRE_CLOSE, perform durable close checkpoint/finalization, then create/raw-fetch END.
 
 ## Productivity accounting
 Persist at minimum:
