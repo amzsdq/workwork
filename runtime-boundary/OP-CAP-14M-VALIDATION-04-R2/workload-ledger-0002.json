@@ -1,0 +1,17 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04-R2",
+  "checkpoint": 2,
+  "wave": "B",
+  "generator_path": "runtime/RUNTIME_STRESS_WORKLOAD_GENERATOR.py",
+  "ordinal_start": 2006321760,
+  "ordinal_end_exclusive": 2015239085,
+  "semantic_unique_units": 8917325,
+  "assertions": 75435259,
+  "duplicate_units_rejected": 0,
+  "anomalies": 0,
+  "fingerprint": "f4cefc8b895ae3814a0c215bce601886073f62d9394d6cbfaa3aeeb8a715b15d",
+  "substantive_compute_sec": 20.003,
+  "focus": "runtime_control_state_target_delta_marker_skew_close_reserve",
+  "continuity_from_previous_ordinal": 2006321760,
+  "note": "Fresh ordinal range; no replay of checkpoint 1. Duration target remains controlled only by authoritative raw GitHub marker time."
+}
