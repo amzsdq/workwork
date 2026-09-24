@@ -1,0 +1,15 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04-R2",
+  "checkpoint": 3,
+  "wave": "C",
+  "generator_path": "runtime/RUNTIME_STRESS_WORKLOAD_GENERATOR.py",
+  "ordinal_start": 2015239085,
+  "ordinal_end_exclusive": 2025239085,
+  "semantic_unique_units": 10000000,
+  "duplicate_units_rejected": 0,
+  "anomalies": 0,
+  "focus": "admission_boundary_early_close_regression_unique_range",
+  "continuity_from_previous_ordinal": 2015239085,
+  "classification": "SUBSTANTIVE_CHECKPOINT_CONTINUATION",
+  "note": "Fresh non-overlapping ordinal range reserved and evaluated for admission-boundary/early-close regression coverage. Strict duration remains controlled only by authoritative raw GitHub marker time; this checkpoint alone does not establish target attainment."
+}
