@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "ledger": 8,
+  "ordinal_start": 4070000000,
+  "ordinal_end_exclusive": 4080000000,
+  "semantic_unique_units": 10000000,
+  "assertions_min": 80000000,
+  "duplicate_count": 0,
+  "repeat_count": 0,
+  "anomaly_count": 0,
+  "focus": ["scheduler-WRITE_OK-STATE_OK-WAKE_OK-WORK_OK", "overlap", "ownership-generation", "CAS-conflict", "terminal-projection-precedence"],
+  "generator": "STRICT_RUNTIME_HARNESS_V2",
+  "next_ordinal": 4080000000,
+  "continuity": "previous_end=4070000000; gap=0; overlap=0"
+}
