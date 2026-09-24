@@ -1,0 +1,28 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04-R2",
+  "checkpoint": 6,
+  "focus": "ownership_handoff_safety_and_ledger_audit",
+  "ordinal_start": 2045239085,
+  "ordinal_end_exclusive": 2055239085,
+  "semantic_unique_units": 10000000,
+  "duplicate_units_rejected": 0,
+  "anomalies": 0,
+  "checks": [
+    "single_owner_only",
+    "shadow_has_no_owner_side_effect_authority",
+    "scheduler_prearm_does_not_grant_ownership",
+    "ambiguous_transfer_fails_closed",
+    "ordinal_ranges_1_to_6_contiguous",
+    "no_known_semantic_range_replay"
+  ],
+  "ledger_audit": {
+    "checkpoint_count": 6,
+    "range_continuity": "PASS",
+    "known_gap_count": 0,
+    "known_overlap_count": 0,
+    "reported_anomaly_total": 0,
+    "next_ordinal": 2055239085
+  },
+  "continuity_from_checkpoint": 5,
+  "evidence_class": "SUBSTANTIVE_SEMANTIC_REGRESSION_WAVE_F"
+}
