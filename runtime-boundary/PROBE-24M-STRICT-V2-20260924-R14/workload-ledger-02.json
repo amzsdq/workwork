@@ -1,0 +1,17 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "checkpoint": 2,
+  "ordinal_start": 4010000000,
+  "ordinal_end_exclusive": 4020000000,
+  "semantic_unique_units": 10000000,
+  "assertions_minimum": 80000000,
+  "duplicate_units_rejected": 0,
+  "semantic_repeat_count": 0,
+  "anomaly_count": 0,
+  "focus": ["target_delta","marker_skew","target_reaching_admission","early_close_regression"],
+  "generator": "runtime/RUNTIME_STRESS_WORKLOAD_GENERATOR.py",
+  "harness_version": "STRICT_RUNTIME_HARNESS_V2",
+  "previous_ordinal_end_exclusive": 4010000000,
+  "next_ordinal": 4020000000,
+  "continuity": "CONTIGUOUS_WITH_CHECKPOINT_1"
+}
