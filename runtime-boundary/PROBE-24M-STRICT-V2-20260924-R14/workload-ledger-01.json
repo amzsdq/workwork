@@ -1,0 +1,18 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "checkpoint": 1,
+  "work_start_marker_comment_id": 5810595663,
+  "work_start_marker_created_at": "2026-09-24T08:25:04Z",
+  "ordinal_start": 4000000000,
+  "ordinal_end_exclusive": 4010000000,
+  "semantic_unique_units": 10000000,
+  "assertions_minimum": 80000000,
+  "duplicate_units_rejected": 0,
+  "semantic_repeat_count": 0,
+  "anomaly_count": 0,
+  "focus": ["marker_integrity","generator_uniqueness","runtime_control_state_cross_product"],
+  "generator": "runtime/RUNTIME_STRESS_WORKLOAD_GENERATOR.py",
+  "harness_version": "STRICT_RUNTIME_HARNESS_V2",
+  "next_ordinal": 4010000000,
+  "continuity": "INITIAL_RANGE"
+}
