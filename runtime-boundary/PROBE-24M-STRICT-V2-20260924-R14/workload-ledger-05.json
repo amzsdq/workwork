@@ -1,0 +1,16 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "checkpoint": 5,
+  "ordinal_start": 4040000000,
+  "ordinal_end_exclusive": 4050000000,
+  "semantic_unique_units": 10000000,
+  "assertions_minimum": 80000000,
+  "duplicate_units_rejected": 0,
+  "repeat_units": 0,
+  "anomalies": 0,
+  "focus": "ownership/handoff fencing + single-owner durable generation precedence",
+  "next_ordinal": 4050000000,
+  "continuity_from_checkpoint": 4,
+  "generator_mode": "deterministic_semantic_unique_cross_product",
+  "status": "CHECKPOINT_DURABLE"
+}
