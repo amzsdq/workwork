@@ -1,0 +1,13 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04",
+  "case_id": "OP-CAP-14M-VALIDATION-04",
+  "status": "ACTIVE",
+  "target_minutes": 14,
+  "mode": "CONSERVATIVE_OPERATIONAL_CAP_VALIDATION",
+  "harness_version": "STRICT_RUNTIME_HARNESS_V2",
+  "start_marker_comment_id": 5809190144,
+  "start_marker_created_at": "2026-09-24T06:46:14Z",
+  "scheduler_write_ok": true,
+  "scheduler_state_ok": true,
+  "scheduler_due_kst": "2026-09-24T15:49:00+09:00"
+}
