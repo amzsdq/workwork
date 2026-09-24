@@ -1,0 +1,13 @@
+{
+  "probe_id":"OP-CAP-14M-VALIDATION-04-R2",
+  "checkpoint":8,
+  "focus":"refill_projection_cas_conflict_and_terminal_authority_matrix",
+  "ordinal_start":2065239085,
+  "ordinal_end_exclusive":2075239085,
+  "semantic_unique_units":10000000,
+  "duplicate_units_rejected":0,
+  "anomalies":0,
+  "continuity_from_checkpoint":7,
+  "next_ordinal":2075239085,
+  "evidence_class":"SUBSTANTIVE_REFILL"
+}
