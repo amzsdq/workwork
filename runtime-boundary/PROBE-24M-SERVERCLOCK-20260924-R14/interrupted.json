@@ -1,0 +1,21 @@
+{
+  "probe_id": "PROBE-24M-SERVERCLOCK-20260924-R14",
+  "case_id": "SC-A24-CLOCK+",
+  "status": "INTERRUPTED",
+  "classification": "INTERRUPTED_RELAY_GAP_NOT_STRICT_DURATION_EVIDENCE",
+  "interruption_marker_comment_id": 5809105063,
+  "reason": "The pre-armed successor occurrence was missed and the relay fell through to the hourly recurrence. The elapsed wall-clock gap is not continuous same-invocation substantive work and must not be credited toward the 24m strict target.",
+  "scheduler_recovery": {
+    "automation_id": "6ab2823a68548191876ab2d55caf915f",
+    "rearmed_dtstart_kst": "2026-09-24T15:44:00",
+    "rrule": "FREQ=HOURLY",
+    "enabled": true,
+    "update_returned_at_utc": "2026-09-24T06:40:04.394511+00:00",
+    "future_guard_at_return_sec": 235.605489,
+    "verified_future_at_return": true
+  },
+  "boundary_effect": "NONE",
+  "strict_substantive_pass": false,
+  "duration_failure": false,
+  "next_action": "REPEAT_24M_STRICT_WITH_COMPLETE_LEDGER_AFTER_RELAY_SCHEDULER_RECOVERY"
+}
