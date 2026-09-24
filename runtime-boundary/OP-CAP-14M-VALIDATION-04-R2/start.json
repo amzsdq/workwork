@@ -1,0 +1,11 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04-R2",
+  "case_id": "OP-CAP-14M-VALIDATION-04",
+  "status": "ACTIVE",
+  "target_minutes": 14,
+  "clock_protocol": "GITHUB_SERVER_MARKER_V1",
+  "start_marker_comment_id": 5809981239,
+  "start_marker_created_at": "2026-09-24T07:45:08Z",
+  "prior_interrupted_probe": "OP-CAP-14M-VALIDATION-04",
+  "prior_gap_credit": false
+}
