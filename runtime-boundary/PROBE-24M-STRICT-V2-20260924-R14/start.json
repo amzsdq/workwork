@@ -1,0 +1,11 @@
+{
+  "probe_id": "PROBE-24M-STRICT-V2-20260924-R14",
+  "case_id": "SC-A24-CLOCK+",
+  "target_minutes": 24,
+  "harness_version": "STRICT_RUNTIME_HARNESS_V2",
+  "start_marker_comment_id": 5810593439,
+  "start_marker_created_at": "2026-09-24T08:24:53Z",
+  "clock_authority": "GITHUB_SERVER_RAW_CREATED_AT",
+  "status": "ACTIVE",
+  "workload_profile": "ROTATED_STRICT_PROFILE"
+}
