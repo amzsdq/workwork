@@ -68,7 +68,7 @@ class ChunkArtifact:
     seed:str; ordinal_start:int; ordinal_end_exclusive:int
     proven_unique_units:int; proof_id:str
     executed_assertion_count:int; failed_assertion_count:int
-    duplicate_ids_rejected:int; anomaly_count:int; chunk_hash:str
+    duplicate_ids_rejected:int; anomaly_count:int; previous_chunk_hash:str; chunk_hash:str
 
 GENERATOR_VERSION="v3-streaming-actual-checks"
 PROOF_ID="iter_units-ordinal-uniqueness-v1"
@@ -89,9 +89,11 @@ def evaluate_concrete_checks(unit:WorkUnit)->tuple[CheckOutcome,...]:
 def iter_evaluated_chunks(seed:str="SC-A22-CLOCK",start_ordinal:int=0,chunk_size:int=1024)->Iterator[ChunkArtifact]:
     """Bounded-memory actual predicate execution with incremental canonical hashing."""
     if chunk_size<=0: raise ValueError("chunk_size must be > 0")
-    units=iter_units(seed,start_ordinal); ordinal=start_ordinal
+    units=iter_units(seed,start_ordinal); ordinal=start_ordinal; previous_chunk_hash=""
     while True:
-        h=sha256(); executed=failed=duplicates=anomalies=0; ids=set(); count=0
+        h=sha256()
+        h.update(json.dumps({"seed":seed,"ordinal_start":ordinal,"previous_chunk_hash":previous_chunk_hash},sort_keys=True,separators=(",",":")).encode()); h.update(b"\n")
+         executed=failed=duplicates=anomalies=0; ids=set(); count=0
         for _ in range(chunk_size):
             unit=next(units); count+=1
             outcomes=evaluate_concrete_checks(unit)
@@ -103,7 +105,9 @@ def iter_evaluated_chunks(seed:str="SC-A22-CLOCK",start_ordinal:int=0,chunk_size
                 h.update(json.dumps({"ordinal":unit.ordinal,"case_id":unit.case_id,"check":outcome.name,"passed":outcome.passed},sort_keys=True,separators=(",",":")).encode()); h.update(b"\n")
             if unit.ordinal!=ordinal: anomalies+=1
             ordinal+=1
-        yield ChunkArtifact(seed,ordinal-count,ordinal,count,PROOF_ID,executed,failed,duplicates,anomalies,h.hexdigest())
+        chunk_hash=h.hexdigest()
+        yield ChunkArtifact(seed,ordinal-count,ordinal,count,PROOF_ID,executed,failed,duplicates,anomalies,previous_chunk_hash,chunk_hash)
+        previous_chunk_hash=chunk_hash
 
 def batch(seed:str,start_ordinal:int,count:int)->list[dict]:
     if count < 0: raise ValueError("count must be >= 0")

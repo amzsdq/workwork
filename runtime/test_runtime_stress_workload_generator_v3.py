@@ -54,6 +54,19 @@ class GeneratorV3IntegrationTests(unittest.TestCase):
         self.assertEqual(c.ordinal_start,b.ordinal_end_exclusive)
         self.assertEqual(c.ordinal_end_exclusive,135)
         self.assertEqual(a.anomaly_count+b.anomaly_count+c.anomaly_count,0)
+    def test_chunk_hash_chain_links_predecessors(self):
+        it=iter_evaluated_chunks("chain",100,3)
+        a=next(it); b=next(it); c=next(it)
+        self.assertEqual(a.previous_chunk_hash,"")
+        self.assertEqual(b.previous_chunk_hash,a.chunk_hash)
+        self.assertEqual(c.previous_chunk_hash,b.chunk_hash)
+
+    def test_chain_context_changes_later_hash(self):
+        chained=iter_evaluated_chunks("chain",100,3)
+        next(chained); second=next(chained)
+        independent=next(iter_evaluated_chunks("chain",103,3))
+        self.assertNotEqual(second.chunk_hash,independent.chunk_hash)
+
     def test_invalid_chunk_size(self):
         with self.assertRaises(ValueError): next(iter_evaluated_chunks(chunk_size=0))
 
