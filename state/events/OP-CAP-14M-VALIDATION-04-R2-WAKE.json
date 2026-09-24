@@ -1,0 +1,15 @@
+{
+  "probe_id": "OP-CAP-14M-VALIDATION-04-R2",
+  "case_id": "OP-CAP-14M-VALIDATION-04",
+  "event_type": "RETROSPECTIVE_WAKE_CONFIRMATION",
+  "classification": "CLEAN_PASS_WAKE_OK",
+  "prior_terminal_classification": "CLEAN_PASS_PENDING_WAKE",
+  "worked_sec": 850,
+  "productive_window_sec": 833,
+  "close_overhead_sec": 3,
+  "clean_close": true,
+  "retrospective_wake_ok": true,
+  "operational_cap_clean_runs_after_confirmation": 4,
+  "operational_cap_required_clean_runs": 5,
+  "next_case": "OP-CAP-14M-VALIDATION-05"
+}
