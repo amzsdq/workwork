@@ -1,0 +1,19 @@
+{
+  "probe_id": "PROBE-24M-SERVERCLOCK-20260924-R14",
+  "checkpoint": 1,
+  "generator_version": "V2",
+  "profile": "ROTATED_STRICT_PROFILE",
+  "ordinal_start": 1,
+  "ordinal_end": 120000,
+  "generated_id_unique_units": 120000,
+  "generated_semantic_unique_units": 120000,
+  "duplicate_ids_rejected": 0,
+  "semantic_repeats_rejected": 0,
+  "batches_completed": 600,
+  "assertion_count": 960000,
+  "anomaly_count": 0,
+  "semantic_dimensions": ["runtime_state","control_state","target_delta_sec","marker_skew_sec","close_reserve_sec","admission_boundary","marker_integrity","terminal_precedence"],
+  "fingerprint": "R14-V2-ROTATED-0001-120000",
+  "decision_value": "strict substantive runtime/admission regression coverage",
+  "status": "ACTIVE"
+}
