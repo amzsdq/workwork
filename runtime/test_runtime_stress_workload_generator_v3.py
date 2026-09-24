@@ -42,6 +42,18 @@ class GeneratorV3IntegrationTests(unittest.TestCase):
         self.assertEqual(c.proof_id,PROOF_ID)
         self.assertEqual(c.proven_unique_units,3)
         self.assertGreater(c.executed_assertion_count,c.proven_unique_units)
+    def test_chunk_hash_changes_with_seed(self):
+        a=next(iter_evaluated_chunks("seed-a",9,5))
+        b=next(iter_evaluated_chunks("seed-b",9,5))
+        self.assertNotEqual(a.chunk_hash,b.chunk_hash)
+    def test_multiple_chunks_preserve_continuity(self):
+        it=iter_evaluated_chunks("s",123,4)
+        a=next(it); b=next(it); c=next(it)
+        self.assertEqual((a.ordinal_start,a.ordinal_end_exclusive),(123,127))
+        self.assertEqual(b.ordinal_start,a.ordinal_end_exclusive)
+        self.assertEqual(c.ordinal_start,b.ordinal_end_exclusive)
+        self.assertEqual(c.ordinal_end_exclusive,135)
+        self.assertEqual(a.anomaly_count+b.anomaly_count+c.anomaly_count,0)
     def test_invalid_chunk_size(self):
         with self.assertRaises(ValueError): next(iter_evaluated_chunks(chunk_size=0))
 
