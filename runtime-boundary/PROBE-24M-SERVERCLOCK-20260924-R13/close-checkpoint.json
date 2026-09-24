@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-24M-SERVERCLOCK-20260924-R13",
+  "case_id": "SC-A24-CLOCK+",
+  "target_sec": 1440,
+  "target_progress_comment_id": 5808331109,
+  "target_progress_created_at": "2026-09-24T05:35:13Z",
+  "start_created_at": "2026-09-24T05:08:16Z",
+  "elapsed_at_target_sample_sec": 1617,
+  "target_reached": true,
+  "pre_close_comment_id": 5808332339,
+  "pre_close_created_at": "2026-09-24T05:35:20Z",
+  "strict_substantive_continuity_audit": "FAIL_CLOSED",
+  "strict_promotion_eligible": false,
+  "reason": "The wall-clock target was reached, but durable evidence does not establish sustained semantically substantive work across the full interval; prior continuation turns left no complete workload ledger and start.json was missing until reconciliation. Preserve clock survival separately; do not promote strict safe lower bound from R13."
+}
