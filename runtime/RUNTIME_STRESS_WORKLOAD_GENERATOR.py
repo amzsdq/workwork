@@ -61,7 +61,7 @@ def expected_invariants(unit:WorkUnit)->list[str]:
 
 @dataclass(frozen=True)
 class CheckOutcome:
-    name:int|str; passed:bool
+    name:str; passed:bool
 
 @dataclass(frozen=True)
 class ChunkArtifact:
@@ -71,7 +71,7 @@ class ChunkArtifact:
     duplicate_ids_rejected:int; anomaly_count:int; chunk_hash:str
 
 GENERATOR_VERSION="v3-streaming-actual-checks"
-PROOF_ID="iter_units-injective-case-id-v1"
+PROOF_ID="iter_units-ordinal-uniqueness-v1"
 
 def evaluate_concrete_checks(unit:WorkUnit)->tuple[CheckOutcome,...]:
     """Actually invoke bounded structural predicates; labels alone never count."""
