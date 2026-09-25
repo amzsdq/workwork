@@ -1,0 +1,21 @@
+{
+  "probe_id": "PROBE-32M-REPRO-V2-20260924-R24",
+  "status": "INTERRUPTED_ORPHANED_RECONCILED",
+  "recovery_kind": "POST_INVOCATION_ORPHAN_RECONCILIATION",
+  "start_evidence_mode": "VERIFIED_RAW_START_RECONSTRUCTION",
+  "contemporaneous_start_artifact": false,
+  "reconciliation_path": "runtime-boundary/PROBE-32M-REPRO-V2-20260924-R24/reconciliation.json",
+  "reconciliation_blob_sha": "23c0d8cb420dbcee60ae324a369fa7f570adb45a",
+  "raw_start_comment_id": 5817062347,
+  "raw_start_created_at": "2026-09-24T15:26:20Z",
+  "raw_progress_comment_id": 5817065020,
+  "raw_progress_created_at": "2026-09-24T15:26:29Z",
+  "close_checkpoint_comment_id": 5817066845,
+  "observed_elapsed_sec_at_checkpoint": 9,
+  "observed_elapsed_semantics": "DESCRIPTIVE_CHECKPOINT_ONLY_NOT_TARGET_DURATION",
+  "terminal_marker_observed": false,
+  "strict_substantive_pass": false,
+  "boundary_effect": "NONE",
+  "runtime_lower_bound_effect": "NONE",
+  "source_of_truth_note": "Recovery bookkeeping identity reconstructed from canonical reconciliation plus authoritative raw GitHub marker identity; not retroactive start.json, terminal, duration, END, PASS, or qualifying-boundary evidence."
+}
