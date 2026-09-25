@@ -1,5 +1,5 @@
 {
-  "schema_version": 48,
+  "schema_version": 49,
   "status": "ACTIVE",
   "repo": "amzsdq/workwork",
   "single_research_goal": "maximum_safe_runtime_reproducible_handoff_and_prearmed_gap",
@@ -54,7 +54,64 @@
     "last_recovery_disposition": "runtime-boundary/PROBE-32M-REPRO-V2-20260924-R24/recovery-disposition.json",
     "last_recovery_event": "state/recovery-events/PROBE-32M-REPRO-V2-20260924-R24.json",
     "last_recovery_boundary_effect": "NONE",
-    "last_recovery_runtime_lower_bound_effect": "NONE"
+    "last_recovery_runtime_lower_bound_effect": "NONE",
+    "last_probe_authority": "LEGACY_EMPIRICAL_PROJECTION",
+    "last_probe_durable": false,
+    "latest_empirical_probe": {
+      "probe_id": "PROBE-32M-REPRO-V2-20260924-R23",
+      "result": "PASS",
+      "source_kind": "RAW_MARKER_CHAIN",
+      "authority": "EMPIRICAL_ONLY",
+      "start_comment_id": 5816524780,
+      "start_created_at": "2026-09-24T14:54:34Z",
+      "end_comment_id": 5817059569,
+      "end_created_at": "2026-09-24T15:26:10Z",
+      "terminal_event_comment_id": 5817061290,
+      "terminal_event_created_at": "2026-09-24T15:26:16Z",
+      "raw_created_at_verified": true
+    },
+    "latest_durable_normal": {
+      "probe_id": "PROBE-32M-REPRO-V2-20260924-R19",
+      "authority": "DURABLE_NORMAL",
+      "terminal_commit": "f024ae7a2a7b1e179ae2d9e637059901d8842e08",
+      "terminal_path": "runtime/probes/PROBE-32M-REPRO-V2-20260924-R19/terminal.json",
+      "event_commit": "6c40cda9d213d1e898fa5bdc824b3505ef52eabc",
+      "event_path": "runtime/events/PROBE-32M-REPRO-V2-20260924-R19-terminal.json",
+      "terminal_result": "STRICT_SUBSTANTIVE_PASS_PENDING_WAKE",
+      "start_comment_id": 5814166747,
+      "start_created_at": "2026-09-24T12:32:17Z",
+      "end_comment_id": 5814827734,
+      "end_created_at": "2026-09-24T13:14:23Z",
+      "target_sec": 1920,
+      "qualifying_elapsed_sec": 2517,
+      "worked_sec": 2526,
+      "wake": {
+        "result": "WAKE_OK",
+        "source_kind": "RAW_COMMENT",
+        "comment_id": 5814866450,
+        "created_at": "2026-09-24T13:16:49Z",
+        "raw_created_at_verified": true,
+        "terminal_commit": "f024ae7a2a7b1e179ae2d9e637059901d8842e08",
+        "event_commit": "6c40cda9d213d1e898fa5bdc824b3505ef52eabc"
+      }
+    },
+    "latest_runtime_truth_start": {
+      "probe_id": "PROBE-32M-REPRO-V2-20260924-R24",
+      "comment_id": 5817062347,
+      "created_at": "2026-09-24T15:26:20Z",
+      "evidence_kind": "RECOVERY_DISPOSITION"
+    },
+    "projection_debt": {
+      "legacy_last_probe_semantics": "EMPIRICAL_RESULT_NOT_DURABLE_LIFECYCLE",
+      "unresolved_probe_ids": [
+        "PROBE-32M-REPRO-V2-20260924-R20",
+        "PROBE-32M-REPRO-V2-20260924-R21",
+        "PROBE-32M-REPRO-V2-20260924-R22",
+        "PROBE-32M-REPRO-V2-20260924-R23"
+      ],
+      "reason": "NO_CANONICAL_DURABLE_NORMAL_PAIR_FOUND_UNDER_ACTIVE_PROTOCOL",
+      "durable_normal_frontier": "PROBE-32M-REPRO-V2-20260924-R19"
+    }
   },
   "handoff_research": {
     "status": "CANDIDATE_ACCEPTED_REPLAY_PASS_LIVE_DEFERRED",
