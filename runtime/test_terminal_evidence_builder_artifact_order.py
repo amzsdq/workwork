@@ -16,25 +16,38 @@ COMMON=dict(
 )
 
 class BuilderArtifactOrderTests(unittest.TestCase):
-    def test_rejects_before_probe_or_classify(self):
+    def test_rejects_unverified_raw_start_before_probe_or_classify(self):
         order=ArtifactOrderState(
-            raw_start_verified=True,
+            raw_start_verified=False,
             start_artifact_persisted=True,
             terminal_or_interrupted_persisted=False,
-            immutable_event_persisted=True,
+            immutable_event_persisted=False,
         )
         with patch.object(builder,"Probe") as probe, patch.object(builder,"classify") as classify:
-            with self.assertRaisesRegex(ArtifactOrderError,"TERMINAL_OR_INTERRUPTED_ARTIFACT_NOT_PERSISTED"):
+            with self.assertRaisesRegex(ArtifactOrderError,"RAW_START_NOT_VERIFIED"):
                 builder.build_terminal(artifact_order=order,**COMMON)
             probe.assert_not_called()
             classify.assert_not_called()
 
-    def test_success_path_regression(self):
+    def test_rejects_missing_start_artifact_before_probe_or_classify(self):
+        order=ArtifactOrderState(
+            raw_start_verified=True,
+            start_artifact_persisted=False,
+            terminal_or_interrupted_persisted=False,
+            immutable_event_persisted=False,
+        )
+        with patch.object(builder,"Probe") as probe, patch.object(builder,"classify") as classify:
+            with self.assertRaisesRegex(ArtifactOrderError,"START_ARTIFACT_NOT_PERSISTED"):
+                builder.build_terminal(artifact_order=order,**COMMON)
+            probe.assert_not_called()
+            classify.assert_not_called()
+
+    def test_success_path_regression_before_terminal_and_event_persistence(self):
         order=ArtifactOrderState(
             raw_start_verified=True,
             start_artifact_persisted=True,
-            terminal_or_interrupted_persisted=True,
-            immutable_event_persisted=True,
+            terminal_or_interrupted_persisted=False,
+            immutable_event_persisted=False,
         )
         result=builder.build_terminal(artifact_order=order,**COMMON)
         self.assertEqual(result["classification"],"CLEAN_PASS_PENDING_WAKE")

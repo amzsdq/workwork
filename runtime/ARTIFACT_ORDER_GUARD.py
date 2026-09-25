@@ -17,6 +17,9 @@ def require_workload_admission(state: ArtifactOrderState) -> None:
     if not state.start_artifact_persisted:
         raise ArtifactOrderError("START_ARTIFACT_NOT_PERSISTED")
 
+def require_terminal_construction_admission(state: ArtifactOrderState) -> None:
+    require_workload_admission(state)
+
 def require_terminal_projection_admission(state: ArtifactOrderState) -> None:
     require_workload_admission(state)
     if not state.terminal_or_interrupted_persisted:
