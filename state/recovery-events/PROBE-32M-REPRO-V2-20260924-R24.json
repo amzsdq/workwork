@@ -1,0 +1,15 @@
+{
+  "probe_id": "PROBE-32M-REPRO-V2-20260924-R24",
+  "event_kind": "RECOVERY_DISPOSITION_RECORDED",
+  "status": "INTERRUPTED_ORPHANED_RECONCILED",
+  "disposition_path": "runtime-boundary/PROBE-32M-REPRO-V2-20260924-R24/recovery-disposition.json",
+  "disposition_blob_sha": "992f965a7d7752c88c9796ba8b947da074df4e31",
+  "reconciliation_path": "runtime-boundary/PROBE-32M-REPRO-V2-20260924-R24/reconciliation.json",
+  "reconciliation_blob_sha": "23c0d8cb420dbcee60ae324a369fa7f570adb45a",
+  "start_evidence_mode": "VERIFIED_RAW_START_RECONSTRUCTION",
+  "terminal_marker_observed": false,
+  "strict_substantive_pass": false,
+  "boundary_effect": "NONE",
+  "runtime_lower_bound_effect": "NONE",
+  "source_of_truth_note": "Immutable recovery event derived only from verified recovery disposition and reconciliation; not END, PASS, target-duration, or qualifying-boundary evidence."
+}
