@@ -40,3 +40,24 @@ Empirical terminal truth is durable once immutable terminal + per-probe event ex
 
 ## Single-writer / idempotency
 Only the active invocation for a probe may originate its immutable terminal/event. Retries compare-and-accept-identical, never overwrite. Shared mutable projections use CAS and may be reconciled later.
+
+## Recovery classification — distinct immutable disposition
+A later recovery invocation may originate a distinct recovery disposition only when all of the following are freshly verified:
+1. durable per-probe start evidence exists;
+2. the normal immutable terminal and event are absent;
+3. raw marker history and the probe reconciliation record have been freshly read; and
+4. the original invocation can no longer continue.
+
+The recovery actor does not become, and must not impersonate, the original active invocation.
+
+Recovery ordering is CREATE ONLY:
+1. `runtime-boundary/<PROBE_ID>/recovery-disposition.json`
+2. `state/recovery-events/<PROBE_ID>.json`
+3. mutable projection reconciliation
+
+The recovery disposition must reference only raw START/WORK_START/PROGRESS/PRE_CLOSE/checkpoint identifiers and timestamps that actually exist. It must record `terminal_marker_observed=false` and use the non-pass status `INTERRUPTED_ORPHANED_RECONCILED`.
+
+A recovery disposition MUST NOT synthesize an END marker, END identifier, END timestamp, target-duration elapsed value, PASS/CLEAN_PASS, substantive-pass claim, or qualifying duration-boundary evidence. It is recovery/bookkeeping truth, not empirical duration terminal evidence, and never advances the runtime lower bound.
+
+If a recovery disposition or recovery event already exists, fetch and compare it. Semantically identical content is an idempotent retry. Differing content is `IMMUTABLE_RECOVERY_CONFLICT`; preserve the existing immutable object and reconcile explicitly.
+
