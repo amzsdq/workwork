@@ -43,7 +43,9 @@ Only the active invocation for a probe may originate its immutable terminal/even
 
 ## Recovery classification — distinct immutable disposition
 A later recovery invocation may originate a distinct recovery disposition only when all of the following are freshly verified:
-1. durable per-probe start evidence exists;
+1. verified start identity exists by exactly one of these modes:
+   - `CONTEMPORANEOUS_START_ARTIFACT`: durable per-probe `start.json` exists; or
+   - `VERIFIED_RAW_START_RECONSTRUCTION`: a canonical reconciliation artifact explicitly records `contemporaneous_start_artifact=false`, and its raw START comment id + `created_at` are freshly reverified against authoritative GitHub marker history;
 2. the normal immutable terminal and event are absent;
 3. raw marker history and the probe reconciliation record have been freshly read; and
 4. the original invocation can no longer continue.
@@ -56,6 +58,8 @@ Recovery ordering is CREATE ONLY:
 3. mutable projection reconciliation
 
 The recovery disposition must reference only raw START/WORK_START/PROGRESS/PRE_CLOSE/checkpoint identifiers and timestamps that actually exist. It must record `terminal_marker_observed=false` and use the non-pass status `INTERRUPTED_ORPHANED_RECONCILED`.
+
+It must also record `start_evidence_mode`, `contemporaneous_start_artifact`, `reconciliation_path`, `reconciliation_blob_sha`, `raw_start_comment_id`, and `raw_start_created_at`. Under `VERIFIED_RAW_START_RECONSTRUCTION`, `contemporaneous_start_artifact` MUST be `false`; the reconciliation source must explicitly state that it is not retroactive terminal evidence. This mode establishes recovery bookkeeping identity only: it does not assert that `start.json` existed contemporaneously and is not terminal or duration evidence. Any mismatch between the reconstruction and freshly read raw START id/timestamp is `RECOVERY_START_IDENTITY_CONFLICT`; create no recovery disposition.
 
 A recovery disposition MUST NOT synthesize an END marker, END identifier, END timestamp, target-duration elapsed value, PASS/CLEAN_PASS, substantive-pass claim, or qualifying duration-boundary evidence. It is recovery/bookkeeping truth, not empirical duration terminal evidence, and never advances the runtime lower bound.
 
