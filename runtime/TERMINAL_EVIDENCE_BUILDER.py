@@ -1,12 +1,15 @@
 from __future__ import annotations
+from ARTIFACT_ORDER_GUARD import ArtifactOrderState, require_terminal_projection_admission
 from RUNTIME_EVIDENCE_PROCESSOR_REFERENCE import Probe,SERVER_CLOCK,HARNESS_V2,classify
 
-def build_terminal(*,probe_id:str,case_id:str,target_sec:int,workload_profile:str,
+def build_terminal(*,artifact_order:ArtifactOrderState,
+                   probe_id:str,case_id:str,target_sec:int,workload_profile:str,
                    start_id:int,start_at:str,work_start_id:int,work_start_at:str,
                    pre_close_id:int,pre_close_at:str,end_id:int,end_at:str,
                    scheduler_write_ok:bool,scheduler_state_ok:bool,checkpoint_saved:bool,clean_close:bool,
                    semantic_unique_units:int,batches_completed:int,duplicate_ids_rejected:int=0,semantic_repeats_rejected:int=0,
                    harness_valid:bool=True,close_trigger:str="TIMING_ADMISSION",forced_stop:bool=False,non_duration_failure:bool=False)->dict:
+    require_terminal_projection_admission(artifact_order)
     p=Probe(probe_id=probe_id,case_id=case_id,target_runtime_sec=target_sec,workload_profile=workload_profile,clock_protocol=SERVER_CLOCK,
         start_marker_comment_id=start_id,start_marker_created_at=start_at,work_start_marker_comment_id=work_start_id,work_start_marker_created_at=work_start_at,
         pre_close_marker_comment_id=pre_close_id,pre_close_marker_created_at=pre_close_at,end_marker_comment_id=end_id,end_marker_created_at=end_at,
@@ -28,5 +31,6 @@ def build_terminal(*,probe_id:str,case_id:str,target_sec:int,workload_profile:st
     }
 
 if __name__=="__main__":
-    t=build_terminal(probe_id="T",case_id="C",target_sec=10,workload_profile="test",start_id=1,start_at="2026-01-01T00:00:00Z",work_start_id=2,work_start_at="2026-01-01T00:00:01Z",pre_close_id=3,pre_close_at="2026-01-01T00:00:09Z",end_id=4,end_at="2026-01-01T00:00:11Z",scheduler_write_ok=True,scheduler_state_ok=True,checkpoint_saved=True,clean_close=True,semantic_unique_units=10,batches_completed=1)
+    artifact_order=ArtifactOrderState(raw_start_verified=True,start_artifact_persisted=True,terminal_or_interrupted_persisted=True,immutable_event_persisted=True)
+    t=build_terminal(artifact_order=artifact_order,probe_id="T",case_id="C",target_sec=10,workload_profile="test",start_id=1,start_at="2026-01-01T00:00:00Z",work_start_id=2,work_start_at="2026-01-01T00:00:01Z",pre_close_id=3,pre_close_at="2026-01-01T00:00:09Z",end_id=4,end_at="2026-01-01T00:00:11Z",scheduler_write_ok=True,scheduler_state_ok=True,checkpoint_saved=True,clean_close=True,semantic_unique_units=10,batches_completed=1)
     assert t["classification"]=="CLEAN_PASS_PENDING_WAKE" and t["worked_sec"]==11 and t["productive_window_sec"]==8 and t["close_overhead_sec"]==2
